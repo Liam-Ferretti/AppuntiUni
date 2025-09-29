@@ -1,0 +1,45 @@
+% -------------------------------
+% Pacchetti di base
+% -------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath, amssymb, amsthm, mathtools, physics}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+% -------------------------------
+% Per codice (Lab Calcolo)
+% -------------------------------
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstnewenvironment{code}
+{\lstset{
+		language=C++,
+		inputencoding=utf8,
+		extendedchars=true,
+		literate={à}{{\`a}}1
+		{è}{{\`e}}1
+		{é}{{\'e}}1
+		{ì}{{\`i}}1
+		{ò}{{\`o}}1
+		{ù}{{\`u}}1,
+		basicstyle=\ttfamily\footnotesize,
+		numbers=left,
+		numberstyle=\tiny,
+		frame=single,
+		breaklines=true,
+		showstringspaces=false,
+		commentstyle=\color{gray},  % commenti verdi
+		keywordstyle=\color{cyan},      % parole chiave azzurre
+		stringstyle=\color{orange}      % stringhe arancioni
+}}
+{}
+
+
+
+
