@@ -2,16 +2,361 @@
 
 % pacchetti comuni
 \input{preambolo.tex}
+\usetikzlibrary{arrows.meta}
 
 % info documento
 \title{Appunti di Geometria}
 \author{Liam Ferretti}
+
 \date{\today}
 
 \begin{document}
 	
 	\maketitle
+	
+	\begin{abstract}
+		Le informazioni sul corso si trovano sul \hyperlink{https://sites.google.com/uniroma1.it/kieranogrady}{sito del docente}.
+		
+		Di regola il lunedì verranno svolti esercizi o chiariti dubbi, e le lezioni saranno svolte da S. Molcho.
+		
+		Ogni settimana (probabilmente il giovedì) verranno caricati degli esercizi su classroom da riconsegnare entro domenica sera.
+		
+		Il ricevimento avrà luogo nello studio 137 nell'edificio CU006 il martedì dalle 11:15 alle 12:45.
+		
+		Le dispense sono disponibili sul sito, il libro non è necessario.
+	\end{abstract}
+		
 	\tableofcontents
 	\clearpage
+	
+	\section{Insiemi}
+	Per insieme si intende una collezione di oggetti, detti elementi.
+	Preso l'insieme $X$ e $a$ un elemento, allora:
+	\[
+	a \in X: \text{ significa che "a è un elemento di X"}
+	\]
+	
+	\[
+	a \not \in X: \text{ significa che "a NON è un elemento di X"}
+	\]
+	
+	Per definire un insieme si usa questa notazione:
+	\[
+	X := \{a | a \text{ ha la proprietà P}\}
+	\]
+	
+	Es: 
+	\[
+		X_a := \{a \in \mathbb{N} \mid 2 | a\} = \{0, 2, 4, 6, 8, ...\}
+	\]
+	Con $2 \mid a$ si intende che 2 è un divisore di a, quindi che a è pari.\newline
+	
+	Esiste un insieme chiamato insieme vuoto che non contiene nessun elemento ed è rappresentato con: $\varnothing$ \newline
+	
+	È possibile dichiarare una famiglia di insiemi numerati da un altro insieme in questo modo:
+	\[
+	\{X_i\}_{i \in I}
+	\]
+	
+	Es: 
+	\[
+	X_a := \{m \in \mathbb{Z} \mid a | m\}
+	\]
+	Allora:
+	\begin{align*}
+		X_0 &:= \{0\} \\
+		X_1 &:= \mathbb{Z} \\
+		X_2 &:= \{0, \pm 2, \pm 4, ...\}
+	\end{align*}
+	\newline	
+	Insiemi che è necessario conoscere:
+	\[
+		\mathbb{N} = \{ \text{numeri naturali} \}
+	\]
+	\[
+		\mathbb{Z} = \{ \text{numeri interi} \}
+	\]
+	\[
+		\mathbb{Q} = \{ \text{numeri razionali} \} = \left\{ \frac{p}{q} \;\middle|\; p,q \in \mathbb{Z}, \; q \neq 0 \right\}
+	\]
+	\[
+		\mathbb{R} = \{ \text{numeri reali} \}
+	\]
+	\[
+		\mathbb{C} = \{ \text{numeri complessi} \}
+	\]
+	
+	\subsection{Sotto insieme}
+	Presi due insiemi $X, Y$, $X$ è sotto insieme di $Y$, se ogni elemento di X è elemento di Y, formalmente si esprime con:
+	\[
+	X \subset Y \iff \forall x \in X, x \in Y
+	\]
+	
+	OSS: X è sotto insieme di se stessa in quanto contiene tutti i suoi elementi, quindi ha senso dire che:
+	\[
+	X \subset X
+	\]
+	
+	\subsection{Operazioni tra insiemi}
+	Le operazioni che si possono effettuare tra insiemi sono 2:
+	\begin{itemize}
+		\item Unione, rappresentata da $\cup$
+		\item Intersezione, rappresentata da $\cap$
+	\end{itemize}
+	
+	\subsubsection{Unione}
+	Preso l'insieme:
+	 
+	\[
+	X_i := \{m \in \mathbb{Z} \mid i | m\}
+	\]
+	L'unione degli insiemi $X_i$ è l'insieme $X \mid x\in X \iff \exists i \in I \mid x \in X_i$
+	
+	\[
+	X = \bigcup_{i \in I} X_i
+	\]
+	
+	Se $I = \{1, 2\} \rightarrow X_1 \cup X_2$
+	
+	Se $I = \{1, 2, 3\} \rightarrow X_1 \cup X_2 \cup X_3$
+		
+	Se $\displaystyle I = \mathbb{Z} \rightarrow \bigcup_{i \in I} X_i = \mathbb{Z}$
+	
+	\subsubsection{Intersezione}
+	Preso l'insieme:
+	
+	\[
+	X_i := \{m \in \mathbb{Z} \mid i | m\}
+	\]
+	L'intersezione degli insiemi $X_i$ è l'insieme $X \mid x\in X \iff \forall i \in I \exists x \in X_i$
+	
+	\[
+	X = \bigcap_{i \in I} X_i
+	\]
+	
+	Se $I = \{1, 2\} \rightarrow X_1 \cap X_2$
+	
+	Se $I = \{1, 2, 3\} \rightarrow X_1 \cap X_2 \cap X_3$
+	
+	Se $\displaystyle I = \mathbb{Z} \rightarrow \bigcap_{i \in I} X_i = \{0\}$	
+	
+	\section{Applicazione tra insiemi}
+	
+	Presi gli insiemi $X, Y$, si definisce un'applicazione $f$ da $X$ (insieme di input o \textbf{dominio}) a $Y$ (insieme di output o \textbf{codominio}) come una legge che associa a ogni elemento $x \in X$ un elemento $f(x) \in Y$. La notazione è:
+	\[
+	X \xlongrightarrow{f} Y
+	\]
+	ovvero, l'applicazione manda l'insieme $X$ nell'insieme $Y$.  
+	Se si considerano i singoli elementi degli insiemi, si scrive:
+	\[
+	x \mapsto f(x)
+	\]
+
+	Es:
+	\begin{align*}
+		\mathbb{Z} & \xlongrightarrow{f} \mathbb{Z} \\
+		m & \longmapsto 3m
+	\end{align*}
+	
+	Affinché 2 applicazioni sono uguali devono coincidere: \textbf{dominio}, \textbf{codominio} e \textbf{funzione}.
+	
+	\subsection{Composizione di applicazioni}
+	Presi gli insiemi $X$, $Y$, $Z$ e le applicazioni $f$ e $g$ allora:
+	
+	\[
+	\begin{tikzpicture}[>=stealth, node distance=2cm]
+		\node (X) {$X$};
+		\node (Y) [right of=X] {$Y$};
+		\node (Z) [right of=Y] {$Z$};
+		
+		\draw[->] (X) -- node[above] {$g$} (Y);
+		\draw[->] (Y) -- node[above] {$f$} (Z);
+		
+		\node (x) [below of=X] {$x$};
+		\node (gx) [below of=Y] {$g(x)$};
+		\node (fgx) [below of=Z] {$f(g(x))$};
+		
+		\draw[|-{Stealth}] (x) -- (gx);
+		\draw[|-{Stealth}] (gx) -- (fgx);
+		
+	\end{tikzpicture}
+	\]
+	è possibile definire la composizione di g e f, ovvero una applicazione del tipo:
+	
+	\[
+	X \xrightarrow{f \circ g} Z
+	\]
+	
+	$f \circ g$, si legge f composto g, ed è definito come:
+	\[
+	f \circ g := f(g(x)) \forall x\in X
+	\]
+	
+	Es: avendo tre insiemi $\mathbb{Z}$, e due applicazioni $f$ e $g$, allora:
+	\[
+	\begin{array}{c c c c c}
+		X & \xlongrightarrow{g} & Y & \xlongrightarrow{f} & Z \\
+		n & \longmapsto & 3n+1 & & \\
+		&& n & \longmapsto & n^2
+	\end{array}
+	\]
+	
+	Allora le composizioni di applicazioni sono:
+	
+	\[
+	(f \circ g)(n) := f(3n + 1) = 9m^2 + 6m + 1
+	\]	
+	
+	\[
+	(g \circ f)(n) := g(n^2) = 3n^2 + 1
+	\]
+	Bisogna notare che in questo caso ha senso sia $f \circ g$ sia $g \circ f$, ma $(f \circ g) \not = (g \circ f)$
+	
+	
+	OSS: 
+	\[
+	X \xlongrightarrow{g} Y \xlongrightarrow{f} X
+	\]
+	In questo caso e solo nel caso in cui l'insieme iniziale è lo stesso di quello finale, hanno senso sia $f \circ g$ sia $g \circ f$:
+	\begin{center}
+		Per $f \circ g : X \xlongrightarrow{f \circ g} X$ e per $g \circ f : Y \xlongrightarrow{g \circ f} Y$
+	\end{center}
+	Se $f \circ g = g \circ f$, allora $X = Y$, ma se $X = Y$ non è certo che $f \circ g = g \circ f$
+	
+	\subsection{Proprietà associativa della composizione}
+	
+	Avendo 4 insiemi $X, Y, W, Z$ e applicazioni $f, g, h$
+	\[
+	X \xlongrightarrow{f} Y \xlongrightarrow{g} W \xlongrightarrow{h} Z
+	\]
+	allora vale
+	\[
+	h \circ (g \circ f) = (h \circ g) \circ f
+	\]
+	Dimostrazione:
+	\begin{align}
+		(h \circ (g \circ f))(x) = h(g \circ f(x)) = h(g(f(x))) \\
+		((h \circ g) \circ f))(x) = (h \circ g)(f(x)) = h(g(f(x)))
+	\end{align}
+	
+	Perciò $\forall x \in X: (h \circ (g \circ f))(x) = ((h \circ g) \circ f))(x)$, quindi la composizione di applicazioni è una proprietà associativa, in cui il modo in cui si raggruppano le parentesi non cambia il risultato finale
+	
+	\subsection{Insieme identità di una applicazione}
+	L'insieme identità di $X$ è l'applicazione:
+	\[
+	\begin{array}{c c c}
+		X & \xlongrightarrow{Id_x} & X \\
+		x & \longmapsto & x \\
+	\end{array}
+	\]
+	Può essere espressa sia come $Id_x$ sia come $1_x$
+	
+	\setcounter{equation}{0}
+	\begin{align}
+		X & \xlongrightarrow{1_X} X \xlongrightarrow{f} Y \\
+		X & \xlongrightarrow{f} Y \xlongrightarrow{1_Y} Y
+	\end{align}
+	Nel caso (1) l'applicazione composta $(f \circ 1_x) = f$ e nel caso (2) l'applicazione $(1_x \circ f) = f$.
+	
+	\subsection{Iniettività}
+	Presi due insiemi $X, Y$ e una applicazione $f$:
+	\[
+	X \xlongrightarrow{f} Y
+	\] 
+	
+	\begin{center}
+		$f$ è iniettiva $\iff \forall x_1,x_2 \in X \rightarrow f(x_1) = f(x_2) \Rightarrow x_1 = x_2$.
+	\end{center}
+	
+	Se presi due elementi $x_1, x_2 \in X$ allora gli elementi del codominio sono diversi se e solo se $x_1 \not = x_2$
+	
+	Es: 
+	\[
+	\begin{array}{c c c}
+		\mathbb{R} & \xlongrightarrow{f} & \mathbb{R} \\
+		x & \longmapsto & 3x + 1\\
+	\end{array}
+	\]
+	è iniettiva in quanto:
+	\[
+	f(x_1) = f(x_2) \iff 3x_1 + 1 = 3x_2 + 1 \iff 3(x_1 - x_2) = 0 \iff x_1 = x_2
+	\]
+	
+	\subsection{Suriettività}
+	Presi due insiemi $X, Y$ e una applicazione $f$:
+	\[
+	X \xlongrightarrow{f} Y
+	\] 
+	
+	\begin{center}
+		$f$ è suriettiva $\iff \forall y \in Y \; \exists x\in X \mid f(x) = y$.
+	\end{center}
+	
+	L'immagine di $f$, ovvero, Im $f$ è definito come: 
+	\[
+	\text{Im} f:= \{y \in Y \mid \exists x\in X \mid f(x) = y\}
+	\]
+	OSS: f è suriettiva $\iff$ Im$f = Y$
+	\subsection{Biettività}
+	Presi due insiemi $X, Y$ e una applicazione $f$:
+	\[
+	X \xlongrightarrow{f} Y
+	\] 
+	
+	\[
+	f \text{ è biunivoca} \iff \forall y \in Y \; \exists! x \in X \text{ tale che } f(x) = y 
+	\]
+	\[
+	\text{(con } \exists! \text{ si intende esiste ed è unico})
+	\]
+	
+	
+	\subsection{Applicazione inversa}
+	Presi due insiemi $X, Y$ e una applicazione $f$ biunivoca:
+	\[
+	X \xlongrightarrow{f} Y
+	\] 
+	
+	L'applicazione inversa di $f$ è l'applicazione:
+	\[
+	\begin{array}{c c c}
+		Y & \xlongrightarrow{f^{-1}} & X \\
+		y & \longmapsto & x \in X \mid \exists ! x \mid f^{-1}(x) = y
+	\end{array}
+	\]
+	
+	Es:
+	
+	\[
+	\begin{array}{c c c}
+		\mathbb{R} & \xlongrightarrow{f} & \mathbb{R} \\
+		x & \longmapsto & 3x + 1
+	\end{array}
+	\]
+	è biunivoca in quanto è sia suriettiva sia iniettiva, perciò è possibile trovare $f^{-1}$ risolvendo per x:
+	\[
+	3x + 1 = y \Longrightarrow 3x = y - 1 \Longrightarrow x = \dfrac{y -1}{3}
+	\]
+	Quindi l'applicazione inversa è:
+	\[
+	\begin{array}{c c c}
+		\mathbb{R} & \xlongrightarrow{f^{-1}} & \mathbb{R} \\
+		y & \longmapsto & \dfrac{y -1}{3}
+	\end{array}
+	\]
+	
+	È quindi possibile vedere che l'applicazione composta tra $f$ e $f^{-1}$ in qualsiasi ordine rappresenta l'applicazione identità:	
+	\[
+	\begin{array}{c c c c c c}
+		X & \xlongrightarrow{f} & Y & \xlongrightarrow{f^{-1}} & X: & f^{-1} \circ f = Id_x \\
+		Y & \xlongrightarrow{f^{-1}} & X & \xlongrightarrow{f} & Y: & f \circ f^{-1} = Id_x
+	\end{array}
+	\]\newline
+	Presi due insiemi $X, Y$ e l'applicazione $f$:
+	\[
+	X \xlongrightarrow{f} Y
+ 	\]
+ 	
+	se $y \in Y \rightarrow f^{-1}(y) := \{x \in X | f(x) = y\}$, in questo caso ha senso anche se non si tratta di applicazioni biunivoche in quanto restituisce un insieme e non un singolo elemento, quindi nel caso esistano più $x | f(x) = y$ si otterrà come risultato l'insieme numerico che contiene tutte le $x$
 	
 \end{document}

@@ -1,2 +1,15 @@
 \babel@toc {italian}{}\relax 
 \babel@toc {italian}{}\relax 
+\contentsline {section}{\numberline {1}Insiemi}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Sotto insieme}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Operazioni tra insiemi}{3}{subsection.1.2}%
+\contentsline {subsubsection}{\numberline {1.2.1}Unione}{3}{subsubsection.1.2.1}%
+\contentsline {subsubsection}{\numberline {1.2.2}Intersezione}{3}{subsubsection.1.2.2}%
+\contentsline {section}{\numberline {2}Applicazione tra insiemi}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Composizione di applicazioni}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Proprietà associativa della composizione}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Insieme identità di una applicazione}{5}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Iniettività}{5}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Suriettività}{6}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Biettività}{6}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Applicazione inversa}{6}{subsection.2.7}%
