@@ -3,6 +3,12 @@
 % pacchetti comuni
 \input{preambolo.tex}
 \usetikzlibrary{arrows.meta}
+\usepackage{verbatim}
+
+\newcommand{\rel}[1][R]{R}
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+\newcommand{\tc}{\;\text{t.c.}\;}
+
 
 % info documento
 \title{Appunti di Geometria}
@@ -99,10 +105,11 @@
 	\]
 	
 	\subsection{Operazioni tra insiemi}
-	Le operazioni che si possono effettuare tra insiemi sono 2:
+	Le operazioni che si possono effettuare tra insiemi sono diverse:
 	\begin{itemize}
 		\item Unione, rappresentata da $\cup$
 		\item Intersezione, rappresentata da $\cap$
+		\item Prodotto cartesiano, rappresentata da $\times$
 	\end{itemize}
 	
 	\subsubsection{Unione}
@@ -140,6 +147,19 @@
 	Se $I = \{1, 2, 3\} \rightarrow X_1 \cap X_2 \cap X_3$
 	
 	Se $\displaystyle I = \mathbb{Z} \rightarrow \bigcap_{i \in I} X_i = \{0\}$	
+	
+	\subsubsection{Prodotto cartesiano}
+	Il prodotto cartesiano di due insiemi $X, Y$, è definito come l'insieme i cui elementi sono le coppie ordinate $(x,y)$, con $x\in X, y\in Y$.
+	\[
+	X = Y = \mathbb{R} \rightarrow \mathbb{R} \times \mathbb{R} := \{(x, y) \mid x,y\in \mathbb{R}\}
+	\]
+	\[
+	\mathbb{R} \times \mathbb{R} \rightarrow \mathbb{R}^2
+	\]
+	Se si hanno più insiemi:
+	\[
+	X_1 \times X_2 \times X_3 \times ... \times X_n := \{(x_1, x_2, x_3, ... ,x_n) \mid x_n \in X_n¨\}
+	\]
 	
 	\section{Applicazione tra insiemi}
 	
@@ -327,7 +347,7 @@
 	\]
 	
 	Es:
-	
+	scelto
 	\[
 	\begin{array}{c c c}
 		\mathbb{R} & \xlongrightarrow{f} & \mathbb{R} \\
@@ -359,5 +379,156 @@
  	\]
  	
 	se $y \in Y \rightarrow f^{-1}(y) := \{x \in X | f(x) = y\}$, in questo caso ha senso anche se non si tratta di applicazioni biunivoche in quanto restituisce un insieme e non un singolo elemento, quindi nel caso esistano più $x | f(x) = y$ si otterrà come risultato l'insieme numerico che contiene tutte le $x$
+	
+	\section{Relazioni}
+	Preso $X$ un insieme, una relazione su X è un sottoinsieme $\rel \subset X^2 = X \times X$ 
+	
+	Per $x \rel y$ si intende che $(x, y)\in \rel$
+	
+	Es 1: 
+	\[
+	X = \{\text{cittadini italiani}\}
+	\]
+	\[
+	\rel = \{(x, y) \mid \text{x e y sono coetanei}\}
+	\]
+	\[
+	x\rel y \rightarrow \text{x e y sono coetanei}
+	\]
+	Es 2:
+	
+	$X = \mathbb{Z} \text{, scelto } n \in \mathbb{Z}$
+	\[
+	\rel_n = \{(x, y) \mid n|(x - y), x,y \in X\} = x \equiv y \Mod{n}, \text{questa è la relazione di congruenza modulo n}
+	\]
+	
+	\subsection{Relazioni di equivalenza}
+	Per relazione di equivalenza si intende una relazione $\rel$ su $X$, con $X$ un insieme qualsiasi, in cui valgono 3 proprietà:
+	\begin{itemize}
+		\item Riflessiva: $x \rel x, \text{ con } x \in X$
+		\item Simmetrica: $x \rel y \rightarrow y \rel x, \text{ con } x,y \in X$
+		\item Transitiva: $x \rel y \wedge y \rel z \rightarrow x \rel z, \text{ con } x,y,z \in X$
+	\end{itemize}
+	Controllo se l´esempio 2 è una relazione di equivalenza:
+	\[
+	X = \mathbb{Z}, n\in \mathbb{Z}
+	\]
+	\[
+	x \rel y \text{ se } x \equiv y \Mod n
+	\]
+	\begin{itemize}
+		\item Riflessiva: $x \equiv x \Mod n$ se $n|(x - x) \rightarrow n|0$, vera
+		\item Simmetrica: $x \equiv y \Mod n$ se $n|(x - y) \rightarrow x-y = n*q \rightarrow -x + y = n * (-q)$, vera
+		\item Transitiva: $x \equiv y \Mod n \wedge y \equiv z \Mod n \rightarrow x \equiv z \Mod{n}$, dimostrazione:
+		\[
+		n|(x-y) \wedge n|(y - x) = (x - y = q * n) \wedge (y - z = r * n)
+		\]
+		sommando due numeri multipli di n ottengo un multiplo di n
+		\[
+		(x -y) + (y -z) = q * n + r * n = n (q+r)
+		\]
+		quindi è verificata la proprietà transitiva
+	\end{itemize}
+	
+	\subsubsection{Classe di equivalenza}
+	Sia $x \in X$, allora la classe di equivalenza di x è:
+	\[
+	[x] := \{y \in X \mid x \rel y\}
+	\]
+	fissato x, $[x]$ è l'insieme composta dagli elementi $y$ $t.c.$ $x \rel y$
+	
+	\subsubsection{Quoziente di X modulo R o insieme quoziente}
+	Definiti $X$ un insieme e $\rel$ una relazione, il quoziente di X modulo $\rel$ è l'insieme i cui elementi sono le classi R-equivalenza, ovvero le classi di equivalenza rispetto alla relazione $\rel$ su $X$, quindi l'insieme quoziente è l'insieme composto dalle classi di equivalenza in $X$ generate da $\rel$ ed è rappresentato da: $X/R$
+	
+	\[
+	X/R := \{[x] \tc x \in X\}
+	\]
+	
+	In riferimento all'esempio 1:
+	\[
+	C/R := \{[0], [1], [2], ... , \text{ [età massima] }\} %% check notazione
+	\], e ogni elemento ad esempio [19], ha la proprio classe di equivalenza:
+	\[
+	[19] = \{x \in C \mid eta(x) = 19\}
+	\]
+	
+	\newpage
+	
+	\section{Anello e campo}
+	A è un insieme i cui elementi sono coppie ordinate $(x,y)$, ed ha 2 operazioni:
+	\begin{itemize}
+		\item somma: 
+		\[
+		\begin{array}{c c c}
+			A \times A & \xlongrightarrow{somma} & A \\
+			(x, y) & \longmapsto & x + y \\
+		\end{array}
+		\]
+		\item prodotto:
+		\[
+		\begin{array}{c c c}
+			A \times A & \xlongrightarrow{prodotto} & A \\
+			(x, y) & \longmapsto & x * y \\
+		\end{array}
+		\]		
+	\end{itemize}
+	Le proprietà che rendono un insieme un anello o un campo sono:
+	\begin{enumerate}
+		\item Esistenza ed unicità dell'elemento neutro della somma, quindi:
+		\[\exists! 0\in A \tc 0 + z = z + 0 = z \forall z\in A\]
+		dimostrazione: presi $a \in A, b,c \in A \tc a + b = 0 \wedge a + c = 0, b \not = c$
+		
+		ipotesi: $b \stackrel{?}{=} c$
+		\[0 = 0 \rightarrow a + b = a + c \rightarrow b = c\]
+		\[Q.E.D\]
+		\item Proprietà commutativa della somma, quindi: 
+		\[z_1 + z_2 = z_2 + z_1, \forall z_1,z_2\in A\]
+		\item Proprietà associativa della somma, quindi:
+		\[z_1 + (z_2+z_3) = (z_1 + z_2) + z_3, \forall z_1,z_2,z_3\in A\]
+		\item Esistenza ed unicità dell'opposto di $z \in A$, quindi:
+		\[\forall z \in A \exists! w\in A \tc z + w = 0\]
+		\item Proprietà associativa del prodotto, quindi:
+		\[(z_1 * z_2) * z_3 = z_1 * (z_2 * z_3), \forall z_1,z_2,z_3\in A\]
+		\item Proprietà distributiva del prodotto rispetto alla somma, quindi:
+		\[z_1 * (z_2 + z_3) = z_1 * z_2 + z_1 * z_3 \wedge (z_1 + z_2) * z_3 = z_1 * z+3 + z_2 * z_3, \forall z_1,z_2,z_3\in A\]
+		\item Proprietà commutativa rispetto al prodotto, quindi:
+		\[w * z = z * w, \forall w,z \in A\]
+		\item L'esistenza ed unicità dell'unità neutra del prodotto ($u \in A$) (unità moltiplicativa), diversa dall'unità neutra della somma, quindi $\not = 0$:
+		\[u * x = x * u = x, \forall x \in A\]
+		\item L'esistenza ed unicità dell'inverso moltiplicativo, quindi:
+		\[\forall x\not = 0 \in A, \exists! w\in A \tc x * w = 1 \rightarrow w = x^{-1}\]
+	\end{enumerate}
+	
+	\subsection{Anello}
+	A (con le operazioni definite) è un anello se valgono le prime 6 proprietà (o assiomi).
+	
+	D'ora in avanti per completezza e facilità in diverse situazioni, per anello si intende un anello commutativo rispetto al prodotto e che presenta l'unità moltiplicativa, quindi in cui valgono anche le proprietà 7 e 8.
+	
+	\subsection{Campo}
+	A (con le operazioni definite) è un campo se valgono le prime 9 proprietà (o assiomi).
+	\begin{comment}
+	\subsection{Dimostrazione proprietà}
+	\begin{enumerate}
+		\item Ipotesi: Sia $A$ un anello, e supponiamo che $0 \not = 0^\prime \wedge 0, 0^\prime\in A \wedge 0 + x = x \wedge 0^\prime + x = x \forall x\in A$
+		\[x = x \rightarrow 0 + x = 0^\prime + x \rightarrow 0 = 0^\prime\]
+		quindi lo zero è unico
+		\item Assiomatica (Peano) o 
+		\item Proprietà associativa della somma, quindi:
+		\[z_1 + (z_2+z_3) = (z_1 + z_2) + z_3, \forall z_1,z_2,z_3\in A\]
+		\item Esistenza ed unicità dell'opposto di $z \in A$, quindi:
+		\[\forall z \in A \exists! w\in A \tc z + w = 0\]
+		\item Proprietà associativa del prodotto, quindi:
+		\[(z_1 * z_2) * z_3 = z_1 * (z_2 * z_3), \forall z_1,z_2,z_3\in A\]
+		\item Proprietà distributiva del prodotto rispetto alla somma, quindi:
+		\[z_1 * (z_2 + z_3) = z_1 * z_2 + z_1 * z_3 \wedge (z_1 + z_2) * z_3 = z_1 * z+3 + z_2 * z_3, \forall z_1,z_2,z_3\in A\]
+		\item Proprietà commutativa rispetto al prodotto, quindi:
+		\[w * z = z * w, \forall w,z \in A\]
+		\item L'esistenza ed unicità dell'unità neutra del prodotto ($u \in A$) (unità moltiplicativa), diversa dall'unità neutra della somma, quindi $\not = 0$:
+		\[u * x = x * u = x, \forall x \in A\]
+		\item L'esistenza ed unicità dell'inverso moltiplicativo, quindi:
+		\[\forall x\not = 0 \in A, \exists! w\in A \tc x * w = 1 \rightarrow w = x^{-1}\]
+	\end{enumerate}
+	\end{comment}
+	
 	
 \end{document}

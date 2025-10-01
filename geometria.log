@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.10.1)  1 OCT 2025 15:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.10.1)  1 OCT 2025 23:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -684,29 +684,35 @@ File: pgflibraryarrows.meta.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfarrowlength=\dimen286
 \pgfarrowwidth=\dimen287
 \pgfarrowlinewidth=\dimen288
-) (./geometria.aux)
+) (/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2023-11-06 v1.5v LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks45
+\verbatim@line=\toks46
+\verbatim@in@stream=\read4
+)
+(./geometria.aux)
 \openout1 = `geometria.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Info: Redefining \it@ocap on input line 13.
-LaTeX Info: Redefining \it@ccap on input line 13.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Info: Redefining \it@ocap on input line 19.
+LaTeX Info: Redefining \it@ccap on input line 19.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -715,12 +721,12 @@ LaTeX Info: Redefining \it@ccap on input line 13.
 \scratchbox=\box68
 \nofMPsegments=\count328
 \nofMParguments=\count329
-\everyMPshowfont=\toks45
+\everyMPshowfont=\toks47
 \MPscratchCnt=\count330
 \MPscratchDim=\dimen290
 \MPnumerator=\count331
 \makeMPintoPDFobject=\count332
-\everyMPtoPDFconversion=\toks46
+\everyMPtoPDFconversion=\toks48
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -730,7 +736,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 13.
+Package hyperref Info: Link coloring OFF on input line 19.
 
 (./geometria.out) (./geometria.out)
 \@outlinefile=\write4
@@ -772,12 +778,12 @@ Package hyperref Info: Link coloring OFF on input line 13.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \c@lstlisting=\count333
-LaTeX Font Info:    Trying to load font information for U+msa on input line 16.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 22.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 16.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 22.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -790,43 +796,63 @@ dvips/cm-super/cm-super-t1.enc}] (./geometria.toc)
 \openout5 = `geometria.toc'.
 
  [2]
-Underfull \hbox (badness 10000) in paragraph at lines 52--54
+Underfull \hbox (badness 10000) in paragraph at lines 58--60
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 55--56
+Underfull \hbox (badness 10000) in paragraph at lines 61--62
 
  []
 
 [3
 
-] [4{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [5]
-[6
+]
+
+LaTeX Warning: Command \textasciidieresis invalid in math mode on input line 16
+1.
+
+
+LaTeX Warning: Command \textasciidieresis invalid in math mode on input line 16
+1.
+
+Missing character: There is no ¨ in font cmr12!
+[4{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [5] [6
 pdfTeX warning (ext4): destination with the same identifier (name{equation.2.1}
 ) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.299 	\]
+l.304 	\]
          
 pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2}
 ) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.299 	\]
-         ] [7] [8] (./geometria.aux)
+l.304 	\]
+         ] [7]
+Overfull \hbox (40.32811pt too wide) detected at line 403
+\OML/cmm/m/it/12 R[] \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OT1/cmr/m/n/12 (\OML/
+cmm/m/it/12 x; y\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 j \OML/cmm/m/it/12 n\OMS/cms
+y/m/n/12 j\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/i
+t/12 y\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; x; y \OMS/cmsy/m/n/12 2 \OML/cmm/m/it
+/12 X\OMS/cmsy/m/n/12 g \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 x \OMS/cmsy/m/n/12 ^
+^Q \OML/cmm/m/it/12 y \OT1/cmr/m/n/12 ([] \OML/cmm/m/it/12 n\OT1/cmr/m/n/12 )\O
+ML/cmm/m/it/12 ; []
+ []
+
+[8] [9] [10] [11] (./geometria.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `geometria.out' has not changed.
-(rerunfilecheck)             Checksum: 71445212FA3D4E0E42D37DF6DC43EA8E;2002.
+(rerunfilecheck)             Checksum: D61F2D527308D79B02872E533D7B6CB7;3215.
  ) 
 Here is how much of TeX's memory you used:
- 25004 strings out of 474222
- 450405 string characters out of 5748733
- 1940975 words of memory out of 5000000
- 46837 multiletter control sequences out of 15000+600000
+ 25081 strings out of 474222
+ 451716 string characters out of 5748733
+ 1942975 words of memory out of 5000000
+ 46892 multiletter control sequences out of 15000+600000
  574132 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,18n,96p,546b,696s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -851,10 +877,10 @@ ublic/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1
 texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/pu
 blic/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm20
 74.pfb>
-Output written on geometria.pdf (8 pages, 247779 bytes).
+Output written on geometria.pdf (11 pages, 269918 bytes).
 PDF statistics:
- 223 PDF objects out of 1000 (max. 8388607)
- 172 compressed objects within 2 object streams
- 26 named destinations out of 1000 (max. 500000)
- 117 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 290 PDF objects out of 1000 (max. 8388607)
+ 235 compressed objects within 3 object streams
+ 46 named destinations out of 1000 (max. 500000)
+ 181 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -53,5 +53,30 @@
 	\newpage
 	\tableofcontents
 	\clearpage
+	
+	\section{Principi di funzionamento di un computer}
+	Esistono diversi \textbf{sistemi di numerazione}, ovvero delle composizioni di regole con cui vengono rappresentati i numeri, i computer usano il binario, le cui cifre sono: $\{0, 1\}$
+	Nella base decimale, quella che si usa quotidianamente, le cifre sono: $\{0, 1, ..., 8, 9\}$.
+	Sono sistemi posizionali in cui, quindi, la posizione delle cifre.
+	
+	Es: $(123)_{10} = 1*10^2 + 2*10^1 + 3*10^0$
+	
+	$(101)_2 = 1*2^2+0*2^1+1*2^0$
+	
+	\subsection{Conversione decimale -> binario}
+	Per convertire un numero da decimale a binario, si usa il metodo dei resti, ovvero si prende il numero, lo si divide per la base, e si scrive il resto, e si ripete, quando il numero sarà minore della base si trascrive quel numero come resto, e poi si scrive il numero in binario prendendo i resti dal basso verso l'alto.
+	
+	Es: n = $(43)_{10} \rightarrow (101011)_2$
+	\[
+	\begin{array}{c | c}
+		43 & 2 : 1\\
+		21 & 2 : 1\\
+		10 & 2 : 0\\
+		5 & 2 : 1\\
+		2 & 2 : 0\\
+		1 & 2 : 1\\
+		0 & 2 \; \; \; \; \, \\
+	\end{array}
+	\]
 		
 \end{document}
