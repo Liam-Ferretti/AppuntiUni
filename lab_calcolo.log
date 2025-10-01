@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.23)  27 SEP 2025 20:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.23)  30 SEP 2025 20:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -836,16 +836,17 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 28.
 (C:\Users\tzuna\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+
+[1
+
+{C:/Users/tzuna/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 (lab_calcolo.toc)
 \tf@toc=\write5
 \openout5 = `lab_calcolo.toc'.
 
 
 
-[1
-
-{C:/Users/tzuna/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-(lab_calcolo.aux)
+[2] (lab_calcolo.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -854,21 +855,24 @@ Package rerunfilecheck Info: File `lab_calcolo.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 24577 strings out of 473530
- 446056 string characters out of 5714794
- 1012793 words of memory out of 5000000
- 47413 multiletter control sequences out of 15000+600000
- 565583 words of font info for 53 fonts, out of 8000000 for 9000
+ 24589 strings out of 473530
+ 446267 string characters out of 5714794
+ 1019793 words of memory out of 5000000
+ 47421 multiletter control sequences out of 15000+600000
+ 567476 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 89i,6n,96p,550b,454s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\tzuna\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm
-1200.pk> <C:\Users\tzuna\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
-0\ecbx1728.pk> <C:\Users\tzuna\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
-/dpi600\ecrm1440.pk> <C:\Users\tzuna\AppData\Local\MiKTeX\fonts/pk/ljfour/jknap
-pen/ec/dpi600\ecrm2074.pk>
-Output written on lab_calcolo.pdf (1 page, 17126 bytes).
+ 89i,6n,96p,550b,455s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\tzuna\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx
+1728.pk> <C:\Users\tzuna\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
+0\ecrm1200.pk> <C:\Users\tzuna\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
+/dpi600\tcrm1095.pk> <C:\Users\tzuna\AppData\Local\MiKTeX\fonts/pk/ljfour/jknap
+pen/ec/dpi600\ecrm1095.pk> <C:\Users\tzuna\AppData\Local\MiKTeX\fonts/pk/ljfour
+/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\tzuna\AppData\Local\MiKTeX\fonts/pk/
+ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\tzuna\AppData\Local\MiKTeX\fon
+ts/pk/ljfour/jknappen/ec/dpi600\ecrm2074.pk>
+Output written on lab_calcolo.pdf (2 pages, 42451 bytes).
 PDF statistics:
- 67 PDF objects out of 1000 (max. 8388607)
- 3 named destinations out of 1000 (max. 500000)
+ 152 PDF objects out of 1000 (max. 8388607)
+ 4 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

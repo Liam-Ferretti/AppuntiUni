@@ -1,2 +1,14 @@
 \babel@toc {italian}{}\relax 
 \babel@toc {italian}{}\relax 
+\contentsline {section}{\numberline {1}Cenni di logica ed insiemistica}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Notazione}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Le proposizioni}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Insiemi}{4}{subsection.1.3}%
+\contentsline {subsubsection}{\numberline {1.3.1}Notazione degli insiemi}{4}{subsubsection.1.3.1}%
+\contentsline {subsubsection}{\numberline {1.3.2}Relazione di ordine o inclusione}{4}{subsubsection.1.3.2}%
+\contentsline {subsubsection}{\numberline {1.3.3}Proprietà degli insiemi}{5}{subsubsection.1.3.3}%
+\contentsline {subsubsection}{\numberline {1.3.4}Operazioni tra insiemi}{5}{subsubsection.1.3.4}%
+\contentsline {subsection}{\numberline {1.4}Predicato}{6}{subsection.1.4}%
+\contentsline {subsubsection}{\numberline {1.4.1}Confronto simbologia logica e insiemistica}{6}{subsubsection.1.4.1}%
+\contentsline {subsubsection}{\numberline {1.4.2}Notazione}{7}{subsubsection.1.4.2}%
+\contentsline {subsubsection}{\numberline {1.4.3}Insieme parti di I}{7}{subsubsection.1.4.3}%

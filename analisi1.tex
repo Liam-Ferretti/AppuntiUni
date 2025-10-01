@@ -2,6 +2,8 @@
 
 % pacchetti comuni
 \input{preambolo.tex}
+\usetikzlibrary{backgrounds}
+\usepackage{parcolumns}
 
 % info documento
 \title{Appunti di Analisi Matematica}
@@ -11,7 +13,268 @@
 \begin{document}
 	
 	\maketitle
+	
+	\begin{abstract}
+		Per i ricevimenti bisogna prenotarsi via e-mail, e si svolgeranno nell'edificio 105 dell'edificio Castel Nuovo
+		Si potranno trovare note ed esercizi su e-learning
+		
+		Programma:
+		\begin{itemize}
+		\item Numeri reali  
+		\item Funzioni di variabili reali  
+		\item Successioni e serie
+		\item Limiti e continuità
+		\item Calcolo differenziale ad una variabile  
+		\item Integrali
+		\item Equazioni differenze lineari  
+		\item Funzioni di più variabili (tutti i capitoli precedenti comprendono le funzioni a più variabili)
+		\end{itemize}
+		I libri di testo sono presenti su e-learning, ed è consigliato "Crasta Malusa", da cui assegnerà gli esercizi.
+		
+		L'esame sarà composto da scritto più orale, non ci sarà probabilmente un esonero, e con l'orale si può incrementare o decrementare il voto di fino a 3 punti in positivo o 3 in negativo, tranne nel caso in cui si commettano errori su: limiti, continuità o divisione per 0, che comporta la bocciatura immediata.
+	\end{abstract}
+	
+	\newpage
 	\tableofcontents
 	\clearpage
+	
+	\section{Cenni di logica ed insiemistica}
+		La matematica si costruisce su:
+		\begin{itemize}
+			\item elementi di base:
+				\subitem oggetti di base (enti primitivi)
+				\subitem proprietà di basa (assiomi)
+			\item regole di deduzione che sono fissate
+		\end{itemize}
+	\subsection{Notazione}
+	La notazione si divide in:
+	\begin{itemize}
+		\item Connettiva:
+			\subitem $\neg$ , non
+			\subitem $\vee$ ,  e
+			\subitem $\wedge$ , o
+			\subitem $\Rightarrow$ , implica 
+			\subitem $\iff$ , equivale (se e solo se)
+			\subitem : (t.c.) , tale che / tale per cui
+		\item Quantificativa:
+			\subitem $\exists$ , esiste
+			\subitem $\not \exists$ , non esiste
+			\subitem $\exists!$ , esiste ed è unico
+			\subitem $\forall$ , per ogni
+	\end{itemize}
+	\subsection{Le proposizioni}
+	Per proposizione Si intende una affermazione.
+	
+	Es:
+		\begin{itemize}
+			\item P = oggi è martedì
+			\item $\neg$P = oggi non è martedì
+			\item Q = c'è il sole
+			\item P $\wedge$ Q = oggi è martedì e c'è il sole
+			\item P $\vee$ Q = oggi è martedì oppure c'è il sole
+			
+			\item $\neg$(P $\wedge$ Q) $\Rightarrow$ P $\vee$ Q può essere vera (P oppure Q), ma P $\wedge$ Q non può essere vera (P e Q), quindi non possono essere vere allo stesso tempo
+		\end{itemize}
+	A $\Rightarrow$ B, vuol dire se A è vero allora B è vero. \newline
+	A $\iff$ B = (A $\Rightarrow$ B) $\wedge$ (B $\Rightarrow$ A), e vuol dire se e solo se A allora B.\newline
+	Partendo dalla proposizione precedente, è vero che:
+	\[
+	A \Rightarrow B \iff \neg B \Rightarrow \neg A
+	\]
+	cioè è utile nelle dimostrazioni per assurdo. Nelle dimostrazioni si parte dagli assiomi e con le regole logiche si fanno ipotesi (affermazioni) che nel caso in cui fosse vera rende la tesi (la validità di una o più proprietà).
+	
+	OSS: è \textbf{sbagliato} dire che:
+	\[
+	A \Rightarrow B \iff \neg A \Rightarrow \neg B
+	\]
+	in quanto il non avvenire di A non implica che B non possa avvenire per altre motivazioni.
+	
+	\subsection{Insiemi}
+	Un insieme è una collezioni di elementi
+	\subsubsection{Notazione degli insiemi}
+	\begin{itemize}
+		\item definizione di insieme: G $:= \{e_1, e_2, e_3, ...\}$, è necessario l'uso di $:=$ per definire un insieme, e vuol dire "definito come".
+		\item quando due insiemi hanno gli stessi elementi si dichiara l'uguaglianza tra $I_1$ e $I_2$, con il simbolo =, ad esempio
+		\[
+		F := \{0, 1\}, H := \{1, 0\} \rightarrow F = H
+		\]
+		\item per definire l'appartenenza di un elemento in un insieme si scrive $a \in I$,  se questo elemento non appartiene all'insieme si rappresenta $a \not \in I$ con $a$ un elemento qualsiasi e $I$ un insieme qualsiasi.
+		
+	\end{itemize}
+	\subsubsection{Relazione di ordine o inclusione}
+	Se $A_1 \subset A_2 \rightarrow A_1$ è contenuto in $A_2$, e $A_1$ è al tal più grande quanto $A_2$, ovvero $A_1$ è un sotto insieme di $A_2$.
+	
+	Se i due insiemi non sono uguali allora si segna $A_1 \not \subseteq A_2$, è quindi strettamente contenuto.
+	
+	Se invece i due insiemi possono essere uguali, si scrive $A_1 \subseteq A_2$.
+	\newpage
+	Es:
+	\[
+	\begin{tikzpicture}
+		% Insieme grande X
+		\draw (0,0) ellipse (3cm and 2cm);
+		\node at (3.5,0) {$A_2$}; % scritta attaccata al bordo destro
+		
+		% Sottoinsieme Y
+		\draw (0,0) ellipse (1.5cm and 1cm);
+		\node at (2,0) {$A_1$}; % scritta vicino al bordo destro
+		
+		\node at (-0.5,0.3) {$a$};
+		\node at (0.4,-0.2) {$b$};
+		\node at (0.5,+0.5) {$c$};
+	\end{tikzpicture}
+	\] 
+	contengono gli stessi elementi quindi: $A_1 = A_2$ 
+	\[
+	\begin{tikzpicture}
+		% Insieme grande X
+		\draw (0,0) ellipse (3cm and 2cm);
+		\node at (3.5,0) {$A_2$}; % scritta attaccata al bordo destro
+		
+		% Sottoinsieme Y
+		\draw (0,0) ellipse (1.5cm and 1cm);
+		\node at (2,0) {$A_1$}; % scritta vicino al bordo destro
+		
+		\node at (-0.5,0.3) {$a$};
+		\node at (0.4,-0.2) {$b$};
+		\node at (0.5,+0.5) {$c$};
+		\node at (-2,-1) {$d$};
+		\node at (-1.8, -0.2) {$e$};
+	\end{tikzpicture}
+	\]
+	in questo caso $A_2$ contiene più elementi di $A_1$, quindi $A_1 \not \subseteq A_2$
+	
+	\subsubsection{Proprietà degli insiemi}
+	Gli insiemi hanno 3 proprietà principali:
+	\begin{itemize}
+		\item Riflessiva: $A \subseteq A$, per $A$ insieme qualsiasi, quindi l'insieme contiene se stesso
+		\item Antisimmetrica: $(A \subseteq B) \wedge (B \subseteq A) \Rightarrow A = B$, per $A, B$ insiemi qualsiasi
+		\item Transitiva:$(A \subseteq B) \wedge (B \subseteq C) \Rightarrow A \subseteq C$, per $A, B, C$ insiemi qualsiasi
+	\end{itemize}
+	
+	\subsubsection{Operazioni tra insiemi}	
+	Presi due insiemi $A, B$ allora esistono diverse proprietà:
+	\begin{itemize}
+		\item Unione (o): $A \cup B$ := $\{a : a\in A \vee a \in B\}$
+		\[
+		\begin{tikzpicture}
+			
+			\begin{scope}
+				\clip (0,0) circle (1.5cm);
+				\fill[blue!30] (-2,-2) rectangle (4,2);
+			\end{scope}
+			
+			\begin{scope}
+				\clip (2,0) circle (1.5cm);
+				\fill[blue!30] (-2,-2) rectangle (4,2);
+			\end{scope}
+			
+			\draw (0,0) circle (1.5cm);
+			\node at (-2,0) {$A$};
+			\draw (2,0) circle (1.5cm);
+			\node at (4,0) {$B$};
+		\end{tikzpicture}
+		\]
+		\item Intersezione (e): $A \cap B$ := $\{a : a\in A \wedge a \in B\}$ 
+		\[
+		\begin{tikzpicture}
+			\begin{scope}
+				\clip (0,0) circle (1.5cm);
+				\fill[blue!30] (2,0) circle (1.5cm);
+			\end{scope}
+			
+			\draw (0,0) circle (1.5cm);
+			\node at (-2,0) {$A$};
+			\draw (2,0) circle (1.5cm);
+			\node at (4,0) {$B$};		
+		\end{tikzpicture}
+		\]
+		\item Differenza (-): $A \setminus B $ :=  $\{a : a \in A, a\not \in B\}$
+		\[
+		\begin{tikzpicture}
+			% Coloro A \ B
+			\begin{scope}
+				\clip (0,0) circle (1.5cm);
+				\fill[blue!30] (-2,-2) rectangle (2,2);
+			\end{scope}
+			
+			% Rimuovo l’intersezione con B
+			\begin{scope}
+				\clip (2,0) circle (1.5cm);
+				\fill[white] (-2,-2) rectangle (4,2);
+			\end{scope}
+			
+			
+			\draw (0,0) circle (1.5cm);
+			\node at (-2,0) {$A$};
+			\draw (2,0) circle (1.5cm);
+			\node at (4,0) {$B$};	
+		\end{tikzpicture}
+		\]
+		\item Prodotto cartesiano: $A \times B$ := $\{(a, b) : a \in A \wedge b \in B\}$
+		\[
+		\begin{tikzpicture}
+			% A e B come insiemi puntuali
+			\foreach \x in {1/2,2/2,3/2,4/2,5/2,6/2} {
+				\foreach \y in {1/2,2/2,3/2,4/2,5/2,6/2} {
+					\fill[blue!30] (\x,\y) circle (0.1cm);
+				}
+			}
+			
+			% Etichette
+			\node[left] at (0,2) {$B$};
+			\node[below] at (2,0) {$A$};
+		\end{tikzpicture}
+		\]
+	\end{itemize}
+	
+	\subsection{Predicato}
+	Una preposizione può dipendere da una o più variabili, ovvero un ente che varia in un gruppo, in quel caso prende il nome di predicato. 
+	Es: 
+	
+	$P$ = oggi è martedì
+	
+	$P(x)$ = $x$ è martedì 
+	
+	allora preso $A := \{lunedì, martedì, ... , domenica\}, x \in A$
+	
+	$B := \{x\in A : P(x)\}$ = $\{martedì\}$, con $P(x)$ si intendono le x che rendono $P(x)$ vera, quindi si cercano le x appartenenti ad $A$ t.c. $P(x)$ sia vera.
+	
+	\subsubsection{Confronto simbologia logica e insiemistica}
+	La simbologia nella logica e nella insiemistica è diversa, ma i termini sono gli stessi: \newline
+	\begin{center}
+		\begin{tabular}{p{0.45\textwidth} p{0.45\textwidth}}
+			\textbf{Logica} &
+			\textbf{Insiemistica} \\
+			A, ovvero A è vera &
+			$A := \{x \in I : A(x)\}$, con $A \subset I$ \\
+			$\neg A$, ovvero A non è vera &
+			$A^c := \{x \in B : \neg A(x)\}$, con $A^c \not\subset B$ \\
+			$\neg (A \wedge B) = \neg A \vee \neg B$ &
+			$(A \cap B)^c = A^c \cup B^c$ \\
+			$\neg (A \vee B) = \neg A \wedge \neg B$ &
+			$(A \cup B)^c = A^c \cap B^c$ \\
+			$\Rightarrow$, ad esempio $A \Rightarrow B$ &
+			$A \subset B$, perchè A è definito come gli elementi x appartenenti ad un insieme $I$ t.c. $A(x)$ sia vera, allo stesso tempo B è definito come gli elementi x appartenenti ad un insieme $I$ t.c. $B(x)$ sia vera, perciò dire che A implica B, vuol dire che gli elementi x che rendono veri A sono contenuti in B \\
+			$\iff$, ad esempio $A \iff B$ & $A = B$, riprendendo la stessa argomentazione in questo caso B è vera se A è vera, ma allo stesso tempo A è vera se B è vera, perciò i due insiemi coincideranno
+		\end{tabular}
+	\end{center}
+	
+	\subsubsection{Notazione}
+	\begin{itemize}
+		\item $x\in A \xRightarrow{def}$ x è elemento di A 
+		\item $x\not \in A \xRightarrow{def}$ x non è elemento di A, quindi $x\in A^c$
+		\item $A \cap B := \{a : A(a) \wedge B(a)\} = \{x : x \in A \wedge x \in B\} \}$
+		\item $A \cup B := \{a : A(a) \vee B(a)\} = \{x : x \in A \vee x \in B\}$
+		\item $A \setminus B := \{a : A(a) \vee \neg B(a)\} = \{x : x\in A \vee x \not \in B\} = \{x : x\in A \vee x \in B^c\}$
+		\item $A \Delta B := (A \setminus B ) \cup (B \setminus A) = (A \cap B)^c$
+	\end{itemize}
+	
+	\subsubsection{Insieme parti di I}
+	L'insieme parti di I, è definito come:
+	\[
+	P(I) := \{X : X \subset I\}, \text{con $X$ insieme}
+	\]
+	Preso $I := \{0, 1\} \Rightarrow P(I) = \{0, 1, \{0, 1\}\}$, $P(I)$ rappresenta l'insieme parti, ovvero l'insieme composto da tutti i possibili sottoinsiemi di $I$
 	
 \end{document}
