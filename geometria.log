@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.10.1)  1 OCT 2025 23:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.10.1)  5 OCT 2025 14:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -652,24 +652,26 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layoutvoffset=\dimen280
 \Gm@dimlist=\toks43
 )
+\c@proposition=\count319
+
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count319
+\lst@mode=\count320
 \lst@gtempboxa=\box66
 \lst@token=\toks44
-\lst@length=\count320
+\lst@length=\count321
 \lst@currlwidth=\dimen281
-\lst@column=\count321
-\lst@pos=\count322
+\lst@column=\count322
+\lst@pos=\count323
 \lst@lostspace=\dimen282
 \lst@width=\dimen283
-\lst@newlines=\count323
-\lst@lineno=\count324
+\lst@newlines=\count324
+\lst@lineno=\count325
 \lst@maxwidth=\dimen284
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
-\c@lstnumber=\count325
-\lst@skipnumbers=\count326
+\c@lstnumber=\count326
+\lst@skipnumbers=\count327
 \lst@framebox=\box67
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
@@ -684,48 +686,56 @@ File: pgflibraryarrows.meta.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfarrowlength=\dimen286
 \pgfarrowwidth=\dimen287
 \pgfarrowlinewidth=\dimen288
-) (/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryangles.code.tex
+File: tikzlibraryangles.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryquotes.code.tex
+File: tikzlibraryquotes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2023-11-06 v1.5v LaTeX2e package for verbatim enhancements
 \every@verbatim=\toks45
 \verbatim@line=\toks46
 \verbatim@in@stream=\read4
-)
-(./geometria.aux)
+) (./geometria.aux)
 \openout1 = `geometria.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Info: Redefining \it@ocap on input line 19.
-LaTeX Info: Redefining \it@ccap on input line 19.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Info: Redefining \it@ocap on input line 20.
+LaTeX Info: Redefining \it@ccap on input line 20.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count327
+\scratchcounter=\count328
 \scratchdimen=\dimen289
 \scratchbox=\box68
-\nofMPsegments=\count328
-\nofMParguments=\count329
+\nofMPsegments=\count329
+\nofMParguments=\count330
 \everyMPshowfont=\toks47
-\MPscratchCnt=\count330
+\MPscratchCnt=\count331
 \MPscratchDim=\dimen290
-\MPnumerator=\count331
-\makeMPintoPDFobject=\count332
+\MPnumerator=\count332
+\makeMPintoPDFobject=\count333
 \everyMPtoPDFconversion=\toks48
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -736,7 +746,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 19.
+Package hyperref Info: Link coloring OFF on input line 20.
 
 (./geometria.out) (./geometria.out)
 \@outlinefile=\write4
@@ -777,13 +787,13 @@ Package hyperref Info: Link coloring OFF on input line 19.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\c@lstlisting=\count333
-LaTeX Font Info:    Trying to load font information for U+msa on input line 22.
+\c@lstlisting=\count334
+LaTeX Font Info:    Trying to load font information for U+msa on input line 23.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 22.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 23.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -796,12 +806,12 @@ dvips/cm-super/cm-super-t1.enc}] (./geometria.toc)
 \openout5 = `geometria.toc'.
 
  [2]
-Underfull \hbox (badness 10000) in paragraph at lines 58--60
+Underfull \hbox (badness 10000) in paragraph at lines 59--61
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 61--62
+Underfull \hbox (badness 10000) in paragraph at lines 62--63
 
  []
 
@@ -810,11 +820,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 61--62
 ]
 
 LaTeX Warning: Command \textasciidieresis invalid in math mode on input line 16
-1.
+2.
 
 
 LaTeX Warning: Command \textasciidieresis invalid in math mode on input line 16
-1.
+2.
 
 Missing character: There is no ¨ in font cmr12!
 [4{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [5] [6
@@ -822,15 +832,15 @@ pdfTeX warning (ext4): destination with the same identifier (name{equation.2.1}
 ) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.304 	\]
+l.305 	\]
          
 pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2}
 ) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.304 	\]
+l.305 	\]
          ] [7]
-Overfull \hbox (40.32811pt too wide) detected at line 403
+Overfull \hbox (40.32811pt too wide) detected at line 404
 \OML/cmm/m/it/12 R[] \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OT1/cmr/m/n/12 (\OML/
 cmm/m/it/12 x; y\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 j \OML/cmm/m/it/12 n\OMS/cms
 y/m/n/12 j\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/i
@@ -840,22 +850,82 @@ t/12 y\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; x; y \OMS/cmsy/m/n/12 2 \OML/cmm/m/it
 ML/cmm/m/it/12 ; []
  []
 
-[8] [9] [10] [11] (./geometria.aux)
+[8] [9] [10]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 523.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 523.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 523.
+
+[11]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 571.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 571.
+
+
+Overfull \hbox (2.5166pt too wide) detected at line 578
+\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 A \OMS/cmsy/m/n/12 ^^C \OML/cmm/m/it/12 x \OM
+S/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 B \OMS/cmsy/m/n/12 ^^C \OML/cmm/m/it/12 y; A
+ \OMS/cmsy/m/n/12 ^^C \OML/cmm/m/it/12 y \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 B \
+OMS/cmsy/m/n/12 ^^C \OML/cmm/m/it/12 x\OT1/cmr/m/n/12 ) = ((\OML/cmm/m/it/12 a 
+\OMS/cmsy/m/n/12 ^^C \OML/cmm/m/it/12 c \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 b
+ \OMS/cmsy/m/n/12 ^^C \OML/cmm/m/it/12 d\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 ^^C 
+\OML/cmm/m/it/12 x \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 a \OM
+S/cmsy/m/n/12 ^^C \OML/cmm/m/it/12 d \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 b \OMS/
+cmsy/m/n/12 ^^C \OML/cmm/m/it/12 c\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 ^^C \OML/c
+mm/m/it/12 y; \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 a \OMS/cmsy/m/n/12 ^^C \OML/cmm
+/m/it/12 c \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 b \OMS/cmsy/m/n/12 ^^C \OML/cm
+m/m/it/12 d\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 ^^C \OML/cmm/m/it/12 y \OT1/cmr/m
+/n/12 + (\OML/cmm/m/it/12 a \OMS/cmsy/m/n/12 ^^C \OML/cmm/m/it/12 d \OT1/cmr/m/
+n/12 + \OML/cmm/m/it/12 b \OMS/cmsy/m/n/12 ^^C \OML/cmm/m/it/12 c\OT1/cmr/m/n/1
+2 ) \OMS/cmsy/m/n/12 ^^C \OML/cmm/m/it/12 x\OT1/cmr/m/n/12 )
+ []
+
+
+Overfull \hbox (4.53714pt too wide) detected at line 583
+\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 a \OMS/cmsy/m/n/12 ^^C \OML/cmm/m/it/12 C \OM
+S/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 b \OMS/cmsy/m/n/12 ^^C \OML/cmm/m/it/12 D; a
+ \OMS/cmsy/m/n/12 ^^C \OML/cmm/m/it/12 D \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 b \
+OMS/cmsy/m/n/12 ^^C \OML/cmm/m/it/12 C\OT1/cmr/m/n/12 ) = (\OML/cmm/m/it/12 a \
+OMS/cmsy/m/n/12 ^^C \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 c \OMS/cmsy/m/n/12 ^^C \O
+ML/cmm/m/it/12 x \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 d \OMS/cmsy/m/n/12 ^^C \
+OML/cmm/m/it/12 y\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 b \OMS
+/cmsy/m/n/12 ^^C \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 c \OMS/cmsy/m/n/12 ^^C \OML/
+cmm/m/it/12 y \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 d \OMS/cmsy/m/n/12 ^^C \OML/cm
+m/m/it/12 x\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; a \OMS/cmsy/m/n/12 ^^C \OT1/cmr/
+m/n/12 (\OML/cmm/m/it/12 c \OMS/cmsy/m/n/12 ^^C \OML/cmm/m/it/12 y \OT1/cmr/m/n
+/12 + \OML/cmm/m/it/12 d \OMS/cmsy/m/n/12 ^^C \OML/cmm/m/it/12 x\OT1/cmr/m/n/12
+ ) + \OML/cmm/m/it/12 b \OMS/cmsy/m/n/12 ^^C \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 
+c \OMS/cmsy/m/n/12 ^^C \OML/cmm/m/it/12 x \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12
+ d \OMS/cmsy/m/n/12 ^^C \OML/cmm/m/it/12 y\OT1/cmr/m/n/12 ))
+ []
+
+[12] [13] [14] [15] [16] (./geometria.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `geometria.out' has not changed.
-(rerunfilecheck)             Checksum: D61F2D527308D79B02872E533D7B6CB7;3215.
+(rerunfilecheck)             Checksum: 00035B4D3B233A379A407AD765CA0722;4263.
  ) 
 Here is how much of TeX's memory you used:
- 25081 strings out of 474222
- 451716 string characters out of 5748733
+ 25303 strings out of 474222
+ 456851 string characters out of 5748733
  1942975 words of memory out of 5000000
- 46892 multiletter control sequences out of 15000+600000
- 574132 words of font info for 77 fonts, out of 8000000 for 9000
+ 47086 multiletter control sequences out of 15000+600000
+ 574777 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 89i,18n,96p,546b,696s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,18n,96p,546b,990s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{https://sites.google.com/uniroma1.it/kieranogrady} 
 has been referenced but does not exist, replaced by a fixed one
@@ -864,23 +934,23 @@ has been referenced but does not exist, replaced by a fixed one
 share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/
 texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/ms
-bm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1095.pfb></usr/share
-/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/p
-ublic/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1
-728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/
-texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/pu
-blic/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm20
-74.pfb>
-Output written on geometria.pdf (11 pages, 269918 bytes).
+dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pf
+b></usr/share/texmf/fonts/type1/public/cm-super/sfbx1095.pfb></usr/share/texmf/
+fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/c
+m-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1728.pfb
+></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf/f
+onts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm
+-super/sfrm1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm2074.pfb>
+Output written on geometria.pdf (16 pages, 301229 bytes).
 PDF statistics:
- 290 PDF objects out of 1000 (max. 8388607)
- 235 compressed objects within 3 object streams
- 46 named destinations out of 1000 (max. 500000)
- 181 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 362 PDF objects out of 1000 (max. 8388607)
+ 300 compressed objects within 3 object streams
+ 66 named destinations out of 1000 (max. 500000)
+ 237 words of extra memory for PDF output out of 10000 (max. 10000000)
 

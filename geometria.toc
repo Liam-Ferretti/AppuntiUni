@@ -21,3 +21,10 @@
 \contentsline {section}{\numberline {4}Anello e campo}{10}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Anello}{11}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Campo}{11}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Numeri complessi}{11}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Verifica $\mathbb {R}^2$}{11}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Notazione}{12}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Continuo verifica $\mathbb {R}$}{12}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Caratteristiche}{14}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Rappresentazione grafica}{14}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}Teorema fondamentale dell'algebra}{15}{subsection.5.6}%

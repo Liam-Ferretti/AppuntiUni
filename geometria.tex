@@ -3,11 +3,12 @@
 % pacchetti comuni
 \input{preambolo.tex}
 \usetikzlibrary{arrows.meta}
+\usetikzlibrary{angles,quotes, arrows.meta}
+
 \usepackage{verbatim}
 
 \newcommand{\rel}[1][R]{R}
 \newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
-\newcommand{\tc}{\;\text{t.c.}\;}
 
 
 % info documento
@@ -506,29 +507,279 @@
 	
 	\subsection{Campo}
 	A (con le operazioni definite) è un campo se valgono le prime 9 proprietà (o assiomi).
-	\begin{comment}
-	\subsection{Dimostrazione proprietà}
+		
+	\section{Numeri complessi}
+	Definite due operazioni in $\mathbb{R}^2$:
+	\begin{itemize}
+		\item Somma:
+		\[(x_1, y_1), (x_2, y_2) \in \mathbb{R}^2\]
+		\[(x_1, y_1) + (x_2, y_2) := (x_1 + x_2, y_1 + y_2)\]
+		\item Prodotto:
+		\[(x_1, y_1), (x_2, y_2) \in \mathbb{R}^2\]
+		\[(x_1, y_1) * (x_2, y_2) := ((x_1 * x_2 - y_1*y_2), (x_1 * y_2 + x_2 * y_1))\]
+	\end{itemize}
+	il prodotto è così perchè se fosse definito come$(x_1 * x_2 , y_1 * y_2)$ allora $\mathbb{R}^2$ non sarebbe un anello (commutativo ed unitario)
+	
+	\subsection{Verifica $\mathbb{R}^2$}
+	Verifichiamo che $\mathbb{R}^2$ con le proprietà definite è un campo:
 	\begin{enumerate}
-		\item Ipotesi: Sia $A$ un anello, e supponiamo che $0 \not = 0^\prime \wedge 0, 0^\prime\in A \wedge 0 + x = x \wedge 0^\prime + x = x \forall x\in A$
-		\[x = x \rightarrow 0 + x = 0^\prime + x \rightarrow 0 = 0^\prime\]
-		quindi lo zero è unico
-		\item Assiomatica (Peano) o 
-		\item Proprietà associativa della somma, quindi:
-		\[z_1 + (z_2+z_3) = (z_1 + z_2) + z_3, \forall z_1,z_2,z_3\in A\]
-		\item Esistenza ed unicità dell'opposto di $z \in A$, quindi:
-		\[\forall z \in A \exists! w\in A \tc z + w = 0\]
-		\item Proprietà associativa del prodotto, quindi:
-		\[(z_1 * z_2) * z_3 = z_1 * (z_2 * z_3), \forall z_1,z_2,z_3\in A\]
-		\item Proprietà distributiva del prodotto rispetto alla somma, quindi:
-		\[z_1 * (z_2 + z_3) = z_1 * z_2 + z_1 * z_3 \wedge (z_1 + z_2) * z_3 = z_1 * z+3 + z_2 * z_3, \forall z_1,z_2,z_3\in A\]
-		\item Proprietà commutativa rispetto al prodotto, quindi:
-		\[w * z = z * w, \forall w,z \in A\]
-		\item L'esistenza ed unicità dell'unità neutra del prodotto ($u \in A$) (unità moltiplicativa), diversa dall'unità neutra della somma, quindi $\not = 0$:
-		\[u * x = x * u = x, \forall x \in A\]
-		\item L'esistenza ed unicità dell'inverso moltiplicativo, quindi:
-		\[\forall x\not = 0 \in A, \exists! w\in A \tc x * w = 1 \rightarrow w = x^{-1}\]
+		\item Unicità dell'elemento neutro della somma:
+		\[(0, 0) \not = (0^\prime, 0^\prime)\]
+		\[(0, 0) + (x, y) = (x,y) \wedge (0^\prime, 0^\prime) + (x, y) = (x, y)\]
+		\[(x, y) = (x, y) \rightarrow (0, 0) = (0^\prime, 0^\prime)\]
+		\item Proprietà commutativa della somma:
+		\[(a, b) + (c, d) = (a + c, b + d) = (c + d) + (a + b)\]
+		la proprietà commutativa degli elementi $a,b,c,d$ non va dimostrata in questo momento essendo essi elementi di $\mathbb{R}$ commutativi.
+		\item Associatività della somma:
+		\[(a, b) + ((c, d) + (e, f)) = (a, b) + (c + e, d + f) = (c + e + a, d + f+ b)\]
+		\[((a,b) +  (c, d)) + (e, f) = (a + c, b + d) + (e, f) = (a + c + e, b + d + f)\]
+		\[(c + e + a, d + f+ b) = (a + c + e, b + d + f)\]
+		per la proprietà commutativa in $\mathbb{R}$
+		\item Esistenza ed unicità dell'opposto:
+		\[(z, w) \not = (z^\prime, w^\prime)\]
+		\[(x, y) + (z, w) = (0, 0) \wedge (x, y) + (z^\prime, w^\prime) = (0, 0)\]
+		\[(0, 0) = (0, 0) \rightarrow (x, y) + (z, w) = (x, y) + (z^\prime, w^\prime)\]
+		\[(z, w) = (z^\prime, w^\prime)\]
+		quindi esiste ed è unico l'opposto della somma
 	\end{enumerate}
-	\end{comment}
+	
+	Oss: 
+	\[(1, 0) * (x, y) = (1 * x - 0 * y, 1 * y + 0 * x) = (x, y)\]
+	quindi la coppia $(1, 0)$ è l'elemento neutro del prodotto
+	
+	\subsection{Notazione}
+	\[
+	\left\{
+	\begin{aligned}
+		1:= (1, 0) \quad & i := (0, 1) \\
+		\forall a \in \mathbb{R} \quad \quad & a(x, y) :=(ax, ay) \\
+		i^2 = -1 \quad \;\;\;& 
+	\end{aligned}
+	\right.
+	\]
+	Un numero complesso $z = a1 + bi = a + bi := (a, 0) + (0, b) = (a, b)$
+	
+	Allora abbiamo che un prodotto tra numeri complessi è in questa forma:
+	\[(a + bi) * (c + di) = a * c - bi * c + a * di + b * d * i^2 = (a*c - b*d + (a*d + b*c)i)\]
+	
+	Il prodotto in C, tra coppie, deriva:
+	\[z = a + bi = (a, b) \wedge w = c + di = (c, d)\] 
+	\[z * w = (a, b) * (c, d) = (a + bi) * (c + di)\]
+	A questo punto svolgo le normali moltiplicazioni tra parentesi in R, perché non sono più coppie, ma sono numeri,  da questo ottengo una somma tra una parte reale e una parte immaginaria, da cui deriva il prodotto in $\mathbb{C}$.
+	\[(a*c - b*d + (a*d + b*c)i) = ((a*c - b*d), (a*d + b*c))\]
+	
+	\subsection{Continuo verifica $\mathbb{R}$}
+	continuo con la verifica delle proprietà dalla 5 alla 9
+	\begin{enumerate}
+		\setcounter{enumi}{4} % parte da 3 perché LaTeX aggiunge +1
+		\item Associatività del prodotto:
+		\[((a, b) * (c, d)) * (x, y) = (a * c - b * d, a*d + b*c) * (x, y)\]
+		\[(A, B) := (a * c - b * d, a*d + b*c) \rightarrow (A, B) * (x, y)\]
+		\[(A * x - B*y, A*y + B*x) = ((a * c - b * d) * x - (a*d + b*c)*y, (a * c - b * d) * y + (a*d + b*c)*x)\]
+		\[((a * c * x - b*d*x - a*d*y -b*c*y), (a*c*y - b*d*y + a*d*x+b*c*x))\]
+		ora vediamo se la proprietà associativa vale:
+		\[(a,b) * ((c, d) * (x, y)) = (a,b) * (c*x - d*y, c*y + d*x)\]		
+		\[(C, D) := (c*x - d*y, c*y + d*x) \rightarrow (a,b) * (C, D)\]
+		\[(a* C - b*D, a*D + b*C) = (a*(c*x - d*y) - b*(c*y + d*x), a*(c*y + d*x) + b*(c*x - d*y))\]
+		\[((a*c*x - a*d*y - b*c*y - b*d*x), (a*c*y + a*d*x + b*c*x - b*d*y))\]
+		
+		secondo la proprietà commutativa della somma, i due prodotti sono equivalenti, quindi la proprietà associativa è verificata
+			
+		\item Proprietà associativa del prodotto rispetto alla somma:
+		\[z_1 * (z_2 + z_3) = (a,b) * ((c,d) + (x,y))\]		
+		\[(c,d) + (x,y) = (c+x, d+y) \rightarrow (a,b) * (c+x, d+y)\]		
+		\[(a,b)*(c+x, d+y) = (a*(c+x) - b*(d+y), a*(d+y) + b*(c+x))\]		
+		\[(a*c + a*x - b*d - b*y, a*d + a*y + b*c + b*x)\]		
+		\[(a*c - b*d, a*d + b*c) + (a*x - b*y, a*y + b*x)\]			
+		\[(a,b)*(c,d) + (a,b)*(x,y)\]		
+		\[\Rightarrow z_1*(z_2 + z_3) = z_1*z_2 + z_1*z_3\]
+		
+		\item unità neutra del prodotto
+				
+		\item Esistenza ed unicità dell'inverso moltiplicativo:
+		\[(a, b) * (x, y) = (1, 0) = 1 + 0i\]
+		\[(ax - by, ay + bx)\]
+		Dato che vogliamo che la parte reale del prodotto sia uguale a uno e quella immaginaria sia zero, possiamo scrivere questa equazione come un sistema.
+		\[
+		\left\{
+		\begin{aligned}
+			ax - by & = 1\\
+			ay + bx & = 0
+		\end{aligned}
+		\right.
+		\]
+		Dal secondo:
+		\[ay + bx = 0 \implies y = -\frac{b}{a}x, a \not = 0\]
+		Sostituendo nella prima equazione:
+		\[ax - b(-\frac{b}{a}x) = 1 \implies ax + \frac{b^2}{a}x = 1 \implies a^2x+b^2x = a \implies x = \frac{a}{a^2 + b^2}\]
+		Sapendo che $y = -\frac{b}{a}x$, allora:
+		\[y = -\frac{b}{a} \frac{a}{a^2 + b^2} = \frac{b}{a^2 + b^2}\]
+		Quindi abbiamo dimostrato che la coppia $\left(\dfrac{a}{a^2 + b^2}, \dfrac{b}{a^2 + b^2}\right) = (a, b)^{-1}$ quindi:
+		\[(a, b) * \left(\dfrac{a}{a^2 + b^2}, \dfrac{b}{a^2 + b^2}\right) = (1, 0)\] 
+	\end{enumerate}
+	
+	\subsection{Caratteristiche}
+	Un numero $z \in \mathbb{C} = a + bi, a,b \in \mathbb{R}$, e con $\mathbb{R}$ in intende $\mathbb{R}^2$ con le operazioni di somma e prodotto definite.
+	La parte reale dei numeri complessi è definita da $Re(z) := a$ e la parte immaginaria $Im(z) := b$
+	
+	\subsection{Rappresentazione grafica}
+	Scelto un sistema di coordinate cartesiano del piano, allora ad $a + bi \in C$, corrisponde un punto/vettore $P(a,b)$. Presi $z = a+bi, w = c+ di$
+	\begin{center}
+		\begin{tikzpicture}[->, thick]
+			% assi
+			\draw[->] (-3,0) -- (3,0) node[above] {$Re$};
+			\draw[->] (0,-3) -- (0,3) node[above] {$Im$};
+			
+			\fill (1, 0) circle (2pt) node[below] {$(1, 0)$};
+			\fill (0, 1) circle (2pt) node[left] {$(0, 1)$};
+			
+			% vettore
+			\draw[->, red] (0,0) -- (0.5,1) node[above] {$z$};
+			\draw[->, blue] (0,0) -- (2,0.5) node[above] {$w$};
+			
+			
+			\draw[->, red, dashed] (2,0.5) -- (2.5, 1.5) node[above] {};
+			
+			\draw[->, darkgray] (0, 0) -- (2.5, 1.5) node[above] {$w + z$};
+		\end{tikzpicture}
+	\end{center}
+	la somma tra due numeri $w,z \in \mathbb{C}$ equivale alla somma tra vettori. 
+	
+	Per il prodotto tra $z_1, z_2 \in \mathbb{C}$ bisogna definire il modulo di numero complesso:
+	\[|z| = \rho := \sqrt{a^2 + b^2}\]
+	e l'argomento di z:
+	\[Arg(z) = \theta, \text{ determinato a meno di sommare un multiplo intero di 2$\pi$}, z\not = 0\]
+	
+	\begin{center}
+		\begin{tikzpicture}[->, thick]
+			    % assi
+			\draw[->] (-3,0) -- (3,0) node[above] {$Re$};
+			\draw[->] (0,-3) -- (0,3) node[above] {$Im$};
+			
+			% punti base
+			\fill (1,0) circle (2pt) node[below] {$(1,0)$};
+			\fill (0,1) circle (2pt) node[left] {$(0,1)$};
+			
+			% vettore z
+			\draw[->, black, thick] (0,0) -- (2,0.8) node[above] {$z$};
+			
+			\draw[black] (0,0) -- (2,0.8) node[midway, above] {$\rho$};
+			
+			% nodi
+			\coordinate (X) at (2,0);
+			\coordinate (O) at (0,0);
+			\coordinate (Z) at (2,0.8);
+			
+			% angolo senza freccia
+			\pic [draw=black, "$\theta$", angle eccentricity=1.5, angle radius=1cm, mark=none]
+			{angle = X--O--Z};
+		\end{tikzpicture}
+	\end{center}
+	
+	sapendo che le coordinate di z son $(a, b)$, allora posso definirle in funzione di $\rho, \theta$:
+	\[
+	\left\{
+	\begin{aligned}
+		a =& \rho * \cos\theta\\
+		b =& \rho * \sin\theta
+	\end{aligned}
+	\right. \Rightarrow z = \rho * \cos\theta + i\rho * \sin\theta = \rho( \cos\theta + i\sin\theta)
+	\]
+	Allora presi: $z_1 = \rho_1( \cos\theta_1 + i \sin\theta_1), z_2 = \rho_2( \cos\theta_2 + i\sin\theta_2)$
+	\[ z * w = \rho_1 * \rho_2(\cos\theta_1 + i\sin\theta_1) * (\cos\theta_2 + i\sin\theta_2) = \]
+	\[ = \rho_1 * \rho_2(\cos\theta_1 * \cos\theta_2 - \sin\theta_1 * \sin\theta_2) + i(\cos\theta_1 * \sin\theta_2 + \sin\theta_1 * \cos\theta_2 ) = \]
+	\[= \rho_1 * \rho_2(\cos(\theta_1+\theta_2) + i\sin(\theta_1+\theta_2))\]
+	quindi:
+	\[
+	\left\{
+	\begin{aligned}
+		|z_1 * z_2| = |z_1| * |z_1| = \rho_1 * \rho_2 \quad \quad \\
+		Arg(z_1 * z_2) = Arg(z_1) + Arg(z_2)
+	\end{aligned}\right.\]
+	$Arg(z_1 * z_2)$ è determinato a meno di un multiplo intero di 2$\pi$
+	
+	\begin{center}
+		\begin{tikzpicture}[->, thick]
+			% assi
+			\draw[->] (-3,0) -- (3,0) node[above] {$Re$};
+			\draw[->] (0,-3) -- (0,3) node[above] {$Im$};
+			
+			% punti base
+			\fill (1,0) circle (2pt) node[below] {$(1,0)$};
+			\fill (0,1) circle (2pt) node[left] {$(0,1)$};
+			
+			% vettore z_1
+			\draw[->, black, thick] (0,0) -- (2,0.8) node[above] {$z_1$};
+			
+			\draw[black] (0,0) -- (2,0.8) node[midway, above] {$\rho_1$};
+			
+			% nodi
+			\coordinate (X) at (2,0);
+			\coordinate (O) at (0,0);
+			\coordinate (Z) at (2,0.8);
+			
+			% angolo senza freccia
+			\pic [draw=black, "$\theta_1$", angle eccentricity=1.5, angle radius=1cm, mark=none]
+			{angle = X--O--Z};
+			
+			% vettore z_2
+			\draw[->, black, thick] (0,0) -- (2,2.2) node[above] {$z_2$};
+			
+			\draw[black] (0,0) -- (2,2.2) node[midway, above] {$\rho_2$};
+			
+			% nodi
+			\coordinate (Y) at (2,0);
+			\coordinate (O) at (0,0);
+			\coordinate (K) at (2,2.2);
+			
+			% angolo senza freccia
+			\pic [draw=black, "$\theta_2$", angle eccentricity=1.3, angle radius=1.5cm, mark=none]			
+			{angle = Y--O--K};
+			
+			% vettore prodotto
+    		\draw[->, red, thick] (0,0) -- (69.5:6.1) node[above] {$z_1 * z_2$};
+			
+		\end{tikzpicture}
+	\end{center}	
+	
+	moltiplicare un numero complesso per $i$, vuol dire ruotarlo di 90 gradi verso sinistra
+	
+	\subsection{Teorema fondamentale dell'algebra}
+	Sia $P(z) = a_0z^n + a_1z^{n-1} + a_2z^{n-2} + ... + a_n$, polinomio in $z$ a coefficienti in $\mathbb{C}$ di grado $n > 0$ con $a_0 \not = 0$, allora:
+	\[\exists \xi \in \mathbb{C} \tc P(\xi) = 0\]
+	($\xi$ è una "radice di $P(z) = 0$")
+	
+	T.F.A $\implies \exists \lambda_1, \lambda_2, ..., \lambda_n \in \mathbb{C} \tc P(z) = a_0(z - \lambda_1)(z - \lambda_2) * ... * (z - \lambda_n)$
+	
+	Per via del teorema di Ruffini in quanto:
+	\begin{center}
+		essendo $\lambda_1$ radice di $P(z) = 0 \rightarrow P(z) = (z - \lambda_1)*q(z)$, in cui il grado di $q(z)$ = grado di $P(z)$ - 1
+	\end{center}
+	
+	Es:
+	
+	\[p(z) = z^n - a\]
+	si cercano le radici di $z^n - a = 0$:
+	\begin{itemize}
+		\item $a = 0 \rightarrow z^n = 0$, la radice è unica con molteplicità $n$
+		\item $a \not = 0$, se $n = 3$:
+		\[
+		\begin{aligned}
+			z &= \rho(\cos\theta + i\sin\theta) \\
+			z^n &= \rho(\cos n\theta + i\sin n\theta) \\
+			a \, \, &= \rho_0(\cos\theta_0 + i\sin\theta_0)
+		\end{aligned}
+		\]
+		\[z^n = a \iff \left\{
+		\begin{aligned}
+			\rho^n &= \rho_0 \rightarrow \rho = \sqrt[n]{\rho_0}\\
+			n\theta &= \theta_0 \text{ a meno di multipli interi di } 2\pi
+		\end{aligned} \right.\]
+		
+		\[Arg(z = \sqrt[n]{a}) = \theta = \left\{\frac{\theta_0}{n} + \frac{k2\pi}{n}, k \in \{0, 1, ..., n -1\}\right\}\]
+		
+	\end{itemize}
+	
 	
 	
 \end{document}

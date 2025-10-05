@@ -37,16 +37,16 @@
 	\newpage
 	\tableofcontents
 	\clearpage
+	La matematica si costruisce su:
+	\begin{itemize}
+		\item elementi di base:
+			\subitem oggetti di base (enti primitivi)
+			\subitem proprietà di basa (assiomi)
+		\item regole di deduzione che sono fissate
+	\end{itemize}
 	
-	\section{Cenni di logica ed insiemistica}
-		La matematica si costruisce su:
-		\begin{itemize}
-			\item elementi di base:
-				\subitem oggetti di base (enti primitivi)
-				\subitem proprietà di basa (assiomi)
-			\item regole di deduzione che sono fissate
-		\end{itemize}
-	\subsection{Notazione}
+	\section{Notazione}
+	
 	La notazione si divide in:
 	\begin{itemize}
 		\item Connettiva:
@@ -62,7 +62,8 @@
 			\subitem $\exists!$ , esiste ed è unico
 			\subitem $\forall$ , per ogni
 	\end{itemize}
-	\subsection{Le proposizioni}
+	
+	\section{Le proposizioni}
 	Per proposizione Si intende una affermazione.
 	
 	Es:
@@ -89,9 +90,9 @@
 	\]
 	in quanto il non avvenire di A non implica che B non possa avvenire per altre motivazioni.
 	
-	\subsection{Insiemi}
+	\section{Insiemi}
 	Un insieme è una collezioni di elementi
-	\subsubsection{Notazione degli insiemi}
+	\subsection{Notazione degli insiemi}
 	\begin{itemize}
 		\item definizione di insieme: G $:= \{e_1, e_2, e_3, ...\}$, è necessario l'uso di $:=$ per definire un insieme, e vuol dire "definito come".
 		\item quando due insiemi hanno gli stessi elementi si dichiara l'uguaglianza tra $I_1$ e $I_2$, con il simbolo =, ad esempio
@@ -101,7 +102,7 @@
 		\item per definire l'appartenenza di un elemento in un insieme si scrive $a \in I$,  se questo elemento non appartiene all'insieme si rappresenta $a \not \in I$ con $a$ un elemento qualsiasi e $I$ un insieme qualsiasi.
 		
 	\end{itemize}
-	\subsubsection{Relazione di ordine o inclusione}
+	\subsection{Relazione di ordine o inclusione}
 	Se $A_1 \subset A_2 \rightarrow A_1$ è contenuto in $A_2$, e $A_1$ è al tal più grande quanto $A_2$, ovvero $A_1$ è un sotto insieme di $A_2$.
 	
 	Se i due insiemi non sono uguali allora si segna $A_1 \not \subseteq A_2$, è quindi strettamente contenuto.
@@ -144,7 +145,7 @@
 	\]
 	in questo caso $A_2$ contiene più elementi di $A_1$, quindi $A_1 \not \subseteq A_2$
 	
-	\subsubsection{Proprietà degli insiemi}
+	\subsection{Proprietà degli insiemi}
 	Gli insiemi hanno 3 proprietà principali:
 	\begin{itemize}
 		\item Riflessiva: $A \subseteq A$, per $A$ insieme qualsiasi, quindi l'insieme contiene se stesso
@@ -152,7 +153,7 @@
 		\item Transitiva:$(A \subseteq B) \wedge (B \subseteq C) \Rightarrow A \subseteq C$, per $A, B, C$ insiemi qualsiasi
 	\end{itemize}
 	
-	\subsubsection{Operazioni tra insiemi}	
+	\subsection{Operazioni tra insiemi}	
 	Presi due insiemi $A, B$ allora esistono diverse proprietà:
 	\begin{itemize}
 		\item Unione (o): $A \cup B$ := $\{a : a\in A \vee a \in B\}$
@@ -228,7 +229,7 @@
 		\]
 	\end{itemize}
 	
-	\subsection{Predicato}
+	\section{Predicato}
 	Una preposizione può dipendere da una o più variabili, ovvero un ente che varia in un gruppo, in quel caso prende il nome di predicato. 
 	Es: 
 	
@@ -240,7 +241,7 @@
 	
 	$B := \{x\in A : P(x)\}$ = $\{martedì\}$, con $P(x)$ si intendono le x che rendono $P(x)$ vera, quindi si cercano le x appartenenti ad $A$ t.c. $P(x)$ sia vera.
 	
-	\subsubsection{Confronto simbologia logica e insiemistica}
+	\subsection{Confronto simbologia logica e insiemistica}
 	La simbologia nella logica e nella insiemistica è diversa, ma i termini sono gli stessi: \newline
 	\begin{center}
 		\begin{tabular}{p{0.45\textwidth} p{0.45\textwidth}}
@@ -260,7 +261,7 @@
 		\end{tabular}
 	\end{center}
 	
-	\subsubsection{Notazione}
+	\subsection{Notazione}
 	\begin{itemize}
 		\item $x\in A \xRightarrow{def}$ x è elemento di A 
 		\item $x\not \in A \xRightarrow{def}$ x non è elemento di A, quindi $x\in A^c$
@@ -270,11 +271,161 @@
 		\item $A \Delta B := (A \setminus B ) \cup (B \setminus A) = (A \cap B)^c$
 	\end{itemize}
 	
-	\subsubsection{Insieme parti di I}
+	\subsection{Insieme parti di I}
 	L'insieme parti di I, è definito come:
 	\[
 	P(I) := \{X : X \subset I\}, \text{con $X$ insieme}
 	\]
-	Preso $I := \{0, 1\} \Rightarrow P(I) = \{0, 1, \{0, 1\}\}$, $P(I)$ rappresenta l'insieme parti, ovvero l'insieme composto da tutti i possibili sottoinsiemi di $I$
+	Preso $I := \{0, 1\} \Rightarrow P(I) = \{0, 1, \{0, 1\}\}$, $P(I)$ rappresenta l'insieme parti, ovvero l'insieme composto da tutti i possibili sottoinsiemi di $I$.
+	Es:
+	\[A =\{0, 1\} \Rightarrow P(A) = \{0, 1, \{0, 1\}\}\]
 	
+	\subsection{Predicato con più variabili}
+	\[L(x) = x \text{ segue la lezione}, \forall x \in I\]
+	\[P(x, y) = x \text{ segue la lezione il giorno }y, \forall x\in I, y\in G\]
+	
+	preso $x \in \{\text{studenti del canali 2 del corso Analisi}\} = \{Luca, Liam, ...\}$, allora:
+	\begin{itemize}
+		\item $\forall x, L(x) \Rightarrow \text{ Luca segue la lezione $\wedge$ Liam segue la lezione $\wedge$ ... }$
+		\item $\exists x \tc L(x) \Rightarrow \text{ Luca segue la lezione $\vee$ Liam segue la lezione $\vee$ ... }$
+		\item $x = Luca \rightarrow P(Luca, y)$ // Luca segue la lezione il giorno y, se $y = oggi \rightarrow P(Luca, oggi)$ è vero
+	\end{itemize}
+	Come scrivo che ogni studenti segue la lezione almeno un giorno?
+	\[\forall x \in S, \exists y \in G \tc P(x, y)\]
+	l'ordine nei quantificatori è importate in quanto dire:
+	\[\forall x \in S, \exists y \in G \tc P(x, y)\]
+	è diverso da dire:
+	\[\exists y \in G, \forall x \in S\tc P(x, y)\]
+	che vuol dire "esiste almeno un giorno tale per cui tutti gli studenti vengano a lezione"
+	
+	\subsection{Negazione del predicato}
+	Negare $\forall x \in S, \exists y \in G \tc P(x, y)$ (ogni studenti segue la lezione almeno un giorno), vuol dire:
+	\[\neg(\forall x \in S, \exists y \in G \tc P(x, y)) = \exists x \in S, \forall y \in G : \neg P(x, y)\]
+	quindi esiste almeno uno studente che non segue mai la lezione
+	
+	\subsection{Regole della logica}
+	\begin{itemize}
+		\item se $B \Rightarrow A$ allora A è condizione necessaria per B, quindi:
+		\[B \Rightarrow A \rightarrow \neg A \Rightarrow \neg B\]
+		\item se $A \Rightarrow B$ allora A è condizione sufficiente di B, quindi basta che A sia vera affinché B avvenga.
+		\item se $A \iff B$ allora A è condizione necessaria e sufficente di B.
+		\item $\emptyset \in E, \forall E$ insieme
+		\item Regola del terzo escluso:
+		\[\forall A \text{ insieme}, A \vee \neg A, \text{ quindi succede o non succede}.\]
+		\item Principio di non contraddizione:
+		\[\forall A, \neg(A \wedge \neg A)\]
+		quindi per ogni insieme non è vero che esiste A e non A, in quanto non esisto elementi appartenenti ad A ed anche a non A, quindi non esistono elementi che verificano una proposizione ma allo stesso tempo non la verificano
+		\item Transitività:
+		\[\forall A, B, C, [(A \Rightarrow B) \wedge (B \Rightarrow C)] \Rightarrow (A \Rightarrow C)\]
+	\end{itemize}
+	
+	\section{Insiemi numerici}
+	\subsection{Numeri naturali}
+	\[\mathbb{N} := \{0, 1, 2, ..., n\} \text{, ed } \mathbb{N}^+ := \mathbb{N} \setminus \{0\} \]
+	in $\mathbb{N}$ è possibili ordinare gli elementi quindi per $m,n \in \mathbb{N}$:
+	\[n \leq m \iff \exists p \in \mathbb{N} \tc m = n + p\]
+	
+	\subsubsection{Proprietà di $\mathbb{N}$ (relazione di ordine)}
+	\begin{itemize}
+		\item Riflessiva:
+		\[\forall n \in \mathbb{N}, n \leq n\]
+		\item Antisimmetrica:
+		\[\forall n, m \in \mathbb{N}, (n \leq m \wedge m\leq n) \Rightarrow n = m\]
+		\item Transitiva:
+		\[\forall n, m, p \in \mathbb{N}, (n \leq m \wedge m \leq p) \Rightarrow n \leq p\]
+		\item Ordinamento totale:
+		\[\forall n, m \in \mathbb{N}, n\leq m \vee m \leq n\]
+	\end{itemize}
+	
+	\subsubsection{Assiomi di Peano}
+	Esiste una operazione, \textbf{passaggio al successivo}, $s(n) = n + 1$, tale che:
+	\begin{itemize}
+		\item (P1) esiste un elemento $0 \in \mathbb{N} \tc 0 \not = s(n), \forall n \in \mathbb{N}$
+		\item (P2) se $n,m \in \mathbb{N} \wedge n \not = m \rightarrow s(n) \not = s(m)$
+		\item (P3) se $E \subset \mathbb{N}$ è tale che:
+		\[ (\text{I1})\quad 0 \in E \quad \quad e \quad \quad (\text{I2})\quad \text{se } n \in E \rightarrow s(n) \in E\]
+		allora $E = \mathbb{N}$
+	\end{itemize}
+	
+	\subsubsection{Metodo Induttivo}
+	Il P3 è ciò che definisce il metodo induttivo (PI), ovvero:
+	\[P(n)\]
+	\[E := \{n \in \mathbb{N} \tc P(n)\} \subset \mathbb{N}\]
+	PI dice che:
+	\[
+	\left\{
+	\begin{aligned}
+		0 &\in E \\
+		\forall n &\in E \Rightarrow s(n) \in E
+	\end{aligned}\right. \Rightarrow E = \mathbb{N}\]
+	
+	\begin{proposition}
+		$\displaystyle P(n) = \sum_{k=0}^{n} k = \dfrac{n(n+1)}{2}$
+	\end{proposition}
+	
+	\begin{proof}
+		Dimostro per induzione
+		
+		\textbf{Base induttiva:} per \(n = 0\), la sommatoria equivale a \(\frac{0(1)}{2} = 0\)
+		
+		\textbf{Passo induttivo:} 
+		\[P(n + 1) = \sum_{0}^{n + 1} k = \sum_{0}^{n} k + (n + 1) = \frac{n(n+1)}{2} + (n + 1) =\]
+		\[= \frac{n(n+1) + 2(n+1)}{2} = \frac{(n+1)(n + 2)}{2} = P(n + 1)\] 
+	\end{proof}
+	
+	Per applicare il metodo induttivo, non è valido partire dalla soluzione per arrivare alla dimostrazione, in quanto bisogna partire da P(n) ed arrivare a dimostrare P(n + 1).
+	
+	\subsubsection{Principio di buon ordinamento (P.B.O.)}
+	Teorema equivalente al principio di induzione, perciò se P1 e P2 sono valide allora PI $\iff P.B.O$, e dice che:
+	\[\forall E \subset \mathbb{N} \tc E \not = 0, \exists n_0 \in E \tc \exists n \geq n_0, \forall n \in E\]
+	Il minimo di un insieme E, se esiste è definito come:
+	\[a\in E \tc a \leq b, \forall b \in E\]
+	
+	Il principio di buon ordinamento permette di dimostrare induttivamente anche quando la base induttiva è diversa da 0, e in quel caso:
+	\[P(b) \wedge P(n) \Rightarrow P(n + 1), \forall n \in \mathbb{N}\setminus \{0, ... ,b\}, b \not = 0\]
+	
+	\subsubsection{Fattoriale e coefficiente binomiale}
+	Due funzioni matematiche che si definiscono per induzione sono:
+	\begin{itemize}
+		\item Fattoriale:
+		\[n! = n(n-1)(n-2)(...)(1), \forall n \in \mathbb{N}\]
+		e per definizione il fattoriale di 0 è 1:
+		\[0! = 1\]
+		\item Coefficiente binomiale:
+		\[\binom{n}{k} = \frac{n!}{k!(n-k)!}, \forall n,k \in \mathbb{N}, n \geq k\]
+		partendo dal coefficiente binomiale, è possibile svolgere lo sviluppo di una potenza ennesima di un binomio, definito binomio di Newton:
+		\[(a+b)^n = \sum_{k = 0}^{n} \binom{n}{k} a^{n-k}b^k, n\in \mathbb{N}^+\]
+		in questo binomio il coefficiente binomiale da il coefficiente di $a^{n-k}b^k$, per quel indice specifico di k, che è ottenibile anche dal triangolo di tartaglia
+		\item Triangolo di tartaglia:
+		\[
+		\begin{array}{ccccccccccc}
+			&&&&1&&&\\
+			&&&1&&1&&\\
+			&&1&&2&&1&\\
+			&1&&3&&3&&1\\
+			1&&4&&6&&4&&1&
+		\end{array}
+		\]
+		e così via, costruito dalla somma dei due elementi alla righe precedente, in cui partendo dall'alto dalla riga 0, fino alla riga n si ha da sinistra a destra l'indice k della riga n.
+	\end{itemize}
+	
+	\subsection{Numeri interi}
+	I numeri interi sono definiti come:
+	\[\mathbb{Z} := \{..., -2, -1, 0, 1, 2, ...\}\]
+	è possibile osservare che:
+	\begin{itemize}
+		\item $\mathbb{N} \subset \mathbb{Z}$
+		\item $\mathbb{Z}$ non da un minimo, al contrario di $\mathbb{N}$
+		\item $\forall n \in \mathbb{N}, n \not = 0, \exists! -n \in \mathbb{Z} \tc n + (-n) = 0$
+	\end{itemize}
+	Quindi $(\mathbb{Z}, +)$, ovvero l'insieme dei numeri interi in cui è definita la somma, è detto un gruppo commutativo/abeliano.
+	Si dice abeliano, quando:
+	\[\forall z_1,z_2 \in \mathbb{Z}, \quad z_1 + z_2 = z_2 + z_1\]
+	Invece un insieme si definisce gruppo quando rispetta queste 3 proprietà:
+	\[
+	\left\{\begin{aligned}
+		1 & \text{ la somma è associativa }: (a+b) + c = a + (b + c), \forall a,b,c \in \mathbb{Z}\\
+		2 & \; \, \exists! 0, \text{ detto elemento neutro della somma } \tc 0 + z = z + 0 = z, \forall z \in \mathbb{Z}\\
+		3 & \; \, \forall z \in \mathbb{Z} \exists! -z \in \mathbb{Z}, \text{ detto opposto di z } \tc z + (-z) = - z + z = 0
+	\end{aligned}\right.\]	
 \end{document}
