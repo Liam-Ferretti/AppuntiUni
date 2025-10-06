@@ -652,4 +652,25 @@
 	\subsection{Proprietà di Archimede}
 	$a, b \in \mathbb{R}, a > 0 \implies \exists n \in \mathbb{N}^+ \tc na > b$.
 	
+	Idea:
+	\[A :=  na \tc n \in \mathbb{N}^+\]
+	Supponendo che $\not \exists n \in \mathbb{N}^+ \tc na > b \Rightarrow b \geq an \forall n \in \mathbb{N}^+ \Rightarrow b \text{ è un maggiorante } \mathcal{M}_A \not = \emptyset $ %TO DO
+	
+	Conseguenze:
+	\begin{itemize}
+		\item $\mathbb{N}, \mathbb{Z}, \mathbb{Q}, \mathbb{R}$, non sono limitati superiormente, in quanto tutti contengono il precedente.
+		\item $\forall x > 0, \exists n \in \mathbb{N}^+ \tc \frac{1}{n} < x$, che come corollario ha che negando la disuguaglianza, posso dire che:
+		$x \geq 0 \tc \forall a \in \mathbb{N}^+, x < \frac{1}{n} \Rightarrow x = 0$
+	\end{itemize}
+	
+	\subsection{Funzione modulo}
+	\[|x| := 
+	\left\{
+	\begin{aligned}
+		x & \quad \text{ se } x \geq 0\\
+		-x & \quad \text{ se } x < 0
+	\end{aligned}
+	\right. \equiv |x| = \max\{x, -x\} \in [0, +\infty)
+	\]
+	
 \end{document}
