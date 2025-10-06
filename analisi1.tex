@@ -427,5 +427,229 @@
 		1 & \text{ la somma è associativa }: (a+b) + c = a + (b + c), \forall a,b,c \in \mathbb{Z}\\
 		2 & \; \, \exists! 0, \text{ detto elemento neutro della somma } \tc 0 + z = z + 0 = z, \forall z \in \mathbb{Z}\\
 		3 & \; \, \forall z \in \mathbb{Z} \exists! -z \in \mathbb{Z}, \text{ detto opposto di z } \tc z + (-z) = - z + z = 0
-	\end{aligned}\right.\]	
+	\end{aligned}\right.\]
+	
+	\subsection{Numeri razionali}
+	i numeri razionali sono definiti come:
+	\[\mathbb{Q} := \{\frac{p}{q} : p \in \mathbb{Z}, q \in \mathbb{N}^+\}\]
+	Allora $(\mathbb{Q}, +, \cdot)$, è un campo:
+	\begin{itemize}
+		\item $(\mathbb{Q}, +)$ è un gruppo commutativo.
+		\item $(\mathbb{Q}, \cdot)$ è un gruppo commutativo.
+		\item $\forall a,b,c \in \mathbb{Q}, a(b+c) = ab + ac$, quindi è valida la proprietà distributiva rispetto alla somma.
+		\item Esistenza dell'elemento neutro del prodotto:
+		\[a \cdot 1 = 1 \cdot a = a\]
+		\item elemento inverso del prodotto:
+		\[a^{-1} = \frac{1}{a}: a \cdot a^{-1} = a^{-1} \cdot a = \frac{a}{a} = 1\]
+	\end{itemize}
+	Altre proprietà di $\mathbb{Q}$, dette di ordinamento:
+	\begin{itemize}
+		\item Ordinamento totale: 
+		\[\forall a,b \in \mathbb{Q}, a \leq b \wedge b \leq a\]
+		\item Riflessiva:
+		\[\forall a \in \mathbb{Q}, a \leq a\]
+		\item Antisimmetrica:
+		\[\forall a, b \in \mathbb{Q}, a \leq b \vee b\leq a \Rightarrow a = b\]
+		\item Transitiva:
+		\[\forall a,b,c \in \mathbb{Q}, a \leq b \wedge b \leq c \Rightarrow a \leq c\]
+		\item $\forall a,b \in \mathbb{Q}, a \leq b \Rightarrow a+ c \leq b +c, \forall c \in \mathbb{Q}$
+		\item $\forall a,b \in \mathbb{Q}, a \leq b \Rightarrow a \cdot c \leq b \cdot c, \forall c \in \mathbb{Q}_0^+$
+	\end{itemize}
+	
+	Oss: $\mathbb{Q}$ ha dei buchi, infatti:
+	\[\exists q : q^2 = 2 \Rightarrow q = \pm \sqrt{2} \not \in \mathbb{Q}\]
+	
+	\subsubsection{Dimostrazione irrazionalità di $\sqrt{2}$}
+	\begin{proposition}
+		$\not \exists q \in \mathbb{Q} \tc q^2 = 2 \rightarrow (\frac{p}{q})^2 = 2$, con $p$ e $q$ coprimi, e $q \not = 0$
+	\end{proposition}
+	
+	\begin{proof}
+		Dimostro per assurdo
+		\[\left(\frac{p}{q}\right)^2 = 2 \Rightarrow p^2 = 2q^2\] 
+		dato che $p^2$ è uguale a $2q^2$, p è pari, perciò può essere scritto come $(2k)^2$, svolgendo i calcoli.
+		\[4k^2 = 2q^2 \Rightarrow 2k^2 = q^2\]
+		ora anche $q^2$ è uguale a $2k^2$, quindi anche q è pari, perciò la nostra tesi non è più valida in quanto non è vero che p e q sono coprimi.
+	\end{proof}
+	
+	\subsubsection{Scrittura di $q \in \mathbb{Q}$ forme decimali}
+	$\mathbb{Q}$ corrisponde all'insieme $\{n,n_1n_2n_3...\}$, cioè $n \in \mathbb{Z}, n_i \in \{0, 1, 2, 3, ..., 9\} \tc $ sono finite $(n_i = 0, \forall i > i_0)$ o periodiche (un gruppo di n cifre si ripete all'infinito):
+	\[\mathbb{Q} := \{n + \frac{n_1}{10} + \frac{n_2}{10^2} + ... + \frac{n_k}{10^k}\}, k \in \mathbb{N}\]
+	
+	\subsubsection{Caso interessante}
+	Presi:
+	\[A := \{q \in \mathbb{Q} \tc q^2 < 2\} \quad \quad B := \{q \in \mathbb{Q} \tc q^2 > 2\}\]
+	
+	\begin{center}
+		\begin{tikzpicture}[scale=2]
+			% Retta
+			\draw[->, blue, thick] (-3,0) -- (3,0);			
+			
+			% Parentesi per gli insiemi
+			\node at (0.1,0) {$(\;\;\;$}; % parentesi sinistra (A)
+			\node at (-0.1,0) {$\;\;\;)$};  % parentesi destra (B)
+			
+			% Segmenti che indicano A e B (opzionale, più chiaro)
+			\draw[thick, red] (-3,0) -- (0,0); % A
+			\draw[thick, blue] (0,0) -- (3,0); % B
+			
+			% Punto radice di 2
+			    \draw (0,0.1) -- (0,-0.1) node[below] {$\sqrt{2} = 1.4142135623...$};
+		\end{tikzpicture}
+	\end{center}
+	
+		
+	osserviamo che:
+	\begin{itemize}
+		\item $a \in A, b \in B \Rightarrow a \leq b$
+		\item A, B sono vicino quanto vogliamo:
+		\[\exists a \in A, b \in B \tc a,b \text{ siano vicini}\]
+		\item $\not \exists c \in \mathbb{Q} \tc a \leq c \leq b, \forall a \in A, \forall b \in B$, quindi $\mathbb{Q}$ non soddisfa l'assioma di Dedekind o assioma della completezza.
+	\end{itemize}
+	
+	\subsection{Numeri reali}
+	$(R, +, \cdot)$ è definito assiomaticamente tramite:
+	\begin{itemize}
+		\item $\mathbb{Q} \subset \mathbb{R}$
+		\item $(R, +, \cdot)$ soddisfa le proprietà di $\mathbb{Q}$
+		\item soddisfa l'assioma di Dedekind, quindi $\mathbb{R}$ non ha buchi, ovvero:
+		\[\forall A, B \subset \mathbb{R} \tc A \not = \emptyset, B \not = \emptyset, A \cup B = \mathbb{R} \wedge a \leq b, \forall a \in A, \forall b \in B \Rightarrow \exists! c \in \mathbb{R} \tc a \leq c \leq b\]
+		con c che può appartenere ad A o a B, ma non ad entrambi
+	\end{itemize}
+	
+	\begin{center}
+		\begin{tikzpicture}[scale=2]
+			% Retta
+			\draw[->, blue, thick] (-3,0) -- (3,0);			
+			
+			% Parentesi per gli insiemi
+			\node at (0,0) [font=\large] {$\,($}; % parentesi sinistra (A)
+			\node at (0,0) [font=\large] {$]\,$};  % parentesi destra (B)
+			
+			% Segmenti che indicano A e B (opzionale, più chiaro)
+			\draw[thick, red] (-3,0) -- (0,0); % A
+			\draw[thick, blue] (0,0) -- (3,0); % B
+			
+			% Punto radice di 2
+			\draw (0,0.1) -- (0,-0.1) node[below] {$c$};
+		\end{tikzpicture}
+	\end{center}
+	Importante: se $A \cup B \not = \mathbb{R}$, allora non è detto che c sia unico:
+	\begin{center}
+		\begin{tikzpicture}[scale=2]
+			% Retta
+			\draw[->, black, thick] (-3,0) -- (3,0);			
+			
+			% Parentesi per gli insiemi
+			\node at (0.5,0) [font=\large] {$\,($}; % parentesi sinistra (A)
+			\node at (-0.5,0) [font=\large] {$]\,$};  % parentesi destra (B)
+			
+			% Segmenti che indicano A e B (opzionale, più chiaro)
+			\draw[thick, red] (-3,0) -- (-0.5,0); % A
+			\draw[thick, blue] (0.5,0) -- (3,0); % B
+			
+			% Punto c
+			\draw (0,0.1) -- (0,-0.1) node[below] {$c$};
+			\draw (0.1,0.1) -- (0.1,-0.1) node[below] {$c$};
+			\draw (-0.1,0.1) -- (-0.1,-0.1) node[below] {$c$};
+			\draw (-0.2,0.1) -- (-0.2,-0.1) node[below] {$c$};
+			\draw (0.2,0.1) -- (0.2,-0.1) node[below] {$c$};
+		\end{tikzpicture}
+	\end{center}
+	Se invece l'unione tra i due insiemi non è nulla o unica, quindi $A \cap B \not = \emptyset$
+	
+	\begin{center}
+		\begin{tikzpicture}[scale=2]
+			% Retta
+			\draw[->, black, thick] (-3,0) -- (3,0);			
+			
+			% Parentesi per gli insiemi
+			\node at (0.5,0) [font=\large] {$\,]$}; % parentesi sinistra (A)
+			\node at (-0.5,0) [font=\large] {$(\,$};  % parentesi destra (B)
+			
+			% Segmenti che indicano A e B (opzionale, più chiaro)
+			\draw[thick, red] (-3,0) -- (+0.5,0); % A
+			\draw[thick, blue] (-0.5,0) -- (3,0); % B
+			\draw[thick, violet] (-0.55,0) -- (0.55,0);
+			
+			% Punto c
+			\draw (0,0.1) -- (0,-0.1) node[below] {$c$};
+		\end{tikzpicture}
+	\end{center}
+	in questo caso $\exists b \in B \tc b < c$
+	
+	\subsubsection{Teorema della caratterizzazione di $\mathbb{R}$}	
+	$\mathbb{R}$ è l'unico campo ordinato che può essere rappresentato con l'insieme di tutti i possibili decimali allineati:
+	\[\mathbb{R} := \{m,d_1d_2d_3...d_j \tc m \in \mathbb{Z}, d_j \in \{0, 1, ..., 9\} \tc j \in \mathbb{N}^+\}\}
+	\]
+	\[\setminus \{m,d_1d_2d_3...d_n \tc m \in \mathbb{Z}, d_j \in \{0, ..., 9\} \tc \exists j_0 \in \mathbb{N}^+ \tc d_j = 9,  \forall j \geq j_0 \}\]
+	devono quindi essere esclusi tutti gli allineamenti di decimali in cui dopo un certo indice $j$ si susseguo sono 9, in quanto è lo stesso numero del successivo susseguito da tutti 0.
+	
+	Si dice che $\mathbb{Q}$ è denso in $\mathbb{R}$, quanto $\forall x \in \mathbb{R}\setminus \mathbb{Q}$ può essere approssimato da numeri razionali.
+	
+	\subsection{Intervalli, semirette ed estremi}
+	Definizione:
+	\begin{itemize}
+		\item sia $A \subset \mathbb{R}, A \not = \emptyset$, è detto che $M_A$ è un \textbf{maggiorante} di A, se $m \geq a, \forall a \in A$.
+		\[\mathcal{M}_A := \{ M_A \tc M_A \geq a, \forall a \in A\}\]
+		ovvero l'insieme dei maggioranti
+		\item sia $A \subset \mathbb{R}, A \not = \emptyset$, è detto che $m_A$ è un \textbf{minorante} di A, se $m \leq a, \forall a \in A$.
+		\[\textsl{m}_A := \{ m_A \tc m_A \leq a, \forall a \in A\}\]
+		ovvero l'insieme dei minoranti
+		\item sia $A \subset \mathbb{R}, A \not = \emptyset$, A è \textbf{limitato superiormente} se $\mathcal{M}_A \not = 0$, quindi A ha almeno un maggiorante.
+		
+		N non è limitato superiormente in quanto $\forall n \in \mathbb{N}, \exists m > n \tc m \in \mathbb{N}$
+		\item sia $A \subset \mathbb{R}, A \not = \emptyset$, A è \textbf{limitato inferiormente} se $\textsl{m}_A \not = 0$, quindi A ha almeno un minorante
+		
+		\item sia $A \subset \mathbb{R}, A \not = \emptyset$, allora il numero $M \in \mathbb{R}$, si dice \textbf{massimo di A}, $\max A$, se $M$ è un maggiorante di A e se $M \in A$.
+		
+		\item sia $A \subset \mathbb{R}, A \not = \emptyset$, allora il numero $m \in \mathbb{R}$, si dice \textbf{minimo di A}, $\min A$, se $m$ è un minorante di A e se $m \in A$.		
+		
+		\item sia $A \subset \mathbb{R}, A \not = \emptyset$, allora il minimo dei maggioranti di A, si dice \textbf{estremo superiore} di $A$, $\sup A$ o supremum $A$, nel caso in cui l'estremo superiore non esista, il $\sup A = +\infty$
+		
+		\item sia $A \subset \mathbb{R}, A \not = \emptyset$, allora il massimo dei minoranti di A, si dice \textbf{estremo inferiore} di $A$, $\inf A$ o infumum $A$, nel caso in cui l'estremo inferiore non esista, il $\inf A = -\infty$
+	\end{itemize}
+	
+	\begin{proposition}
+		sia $A \subset \mathbb{R}, A \not = \emptyset$, allora $\exists \sup A$
+	\end{proposition}
+	
+	\begin{proof}
+		$A $ è limitato superiormente $\Rightarrow \mathcal{M}_A \not = \emptyset$, per definizione: $\forall a \in A,\forall b \in \mathcal{M}_A$ si ha $a \leq b$.
+		
+		L'assioma di Dedekind implica che: $\exists c \in \mathbb{R} \tc a \leq c \leq b \Rightarrow c = min \mathcal{M}_A = \sup A$
+	\end{proof}
+	
+	Sia $A$ limitato superiormente, quindi $\exists \sup A \in \mathbb{R}$, allora il $\sup A$ è caratterizzato da:
+	\[\sup A = \min \mathcal{M}_A\]
+	\[
+	\left\{
+	\begin{aligned}
+		\sup A &\in \mathcal{M}_A \\
+		\forall \lambda < &\sup A \Rightarrow \lambda\in \mathcal{M}_A
+	\end{aligned}
+	\right. \iff \left\{
+	\begin{aligned}
+	\sup A &\in \mathcal{M}_A \\
+	\forall \lambda < &\sup A, \exists a \in A \tc \lambda < a
+	\end{aligned}\right.
+	\]
+	Osservazione:
+	sia $A \subset \mathbb{R} \tc \sup A \in \mathbb{R}$:
+	\begin{itemize}
+		\item se $\sup A \in A \Rightarrow \sup A = \max A$
+	\end{itemize}
+	Osservazione: sia $A \subset \mathbb{R} \tc \inf A \in \mathbb{R}$:
+	\begin{itemize}
+	\item se $\inf A \in A \Rightarrow \inf A = \min A$
+	\end{itemize}	
+	Importante:
+	sia $A \subset \mathbb{R}, A \not = \emptyset \Rightarrow \exists \sup A, \exists \inf A $, ma non è detto che esistano il $\max A, \min A$.
+	
+	Osservazione:
+	ogni $S \subset \mathbb{Z}, S \not = \emptyset$, limitato superiormente ha un massimo, mentre se limitato inferiormente ha minimo.
+	
+	\subsection{Proprietà di Archimede}
+	$a, b \in \mathbb{R}, a > 0 \implies \exists n \in \mathbb{N}^+ \tc na > b$.
+	
 \end{document}
