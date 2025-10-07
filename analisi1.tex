@@ -650,11 +650,11 @@
 	ogni $S \subset \mathbb{Z}, S \not = \emptyset$, limitato superiormente ha un massimo, mentre se limitato inferiormente ha minimo.
 	
 	\subsection{Proprietà di Archimede}
-	$a, b \in \mathbb{R}, a > 0 \implies \exists n \in \mathbb{N}^+ \tc na > b$.
+	$\forall a, b \in \mathbb{R}, a > 0 \implies \exists n \in \mathbb{N}^+ \tc na > b$.
 	
 	Idea:
-	\[A :=  na \tc n \in \mathbb{N}^+\]
-	Supponendo che $\not \exists n \in \mathbb{N}^+ \tc na > b \Rightarrow b \geq an \forall n \in \mathbb{N}^+ \Rightarrow b \text{ è un maggiorante } \mathcal{M}_A \not = \emptyset $ %TO DO
+	\[A :=  \{na \tc n \in \mathbb{N}^+\}\]
+	Supponendo che $\not \exists n \in \mathbb{N}^+ \tc na > b \Rightarrow b \geq an, \forall n \in \mathbb{N}^+ \Rightarrow b \text{ è un maggiorante } \mathcal{M}_A \not = \emptyset $ %TO DO
 	
 	Conseguenze:
 	\begin{itemize}
@@ -672,5 +672,277 @@
 	\end{aligned}
 	\right. \equiv |x| = \max\{x, -x\} \in [0, +\infty)
 	\]
+	
+	\subsection{Intervalli}
+	$I \subset \mathbb{R}$, dice intervallo se $\forall x,y \in I, \exists z \in \mathbb{R} \tc x < z < y, z \in I$
+	
+	Un intervallo può essere descritto come uno di questi 4 tipi, avendo, $a \leq b, a,b \in \mathbb{R} \cup \{-\infty, +\infty\}$
+	\begin{itemize}
+		\item $[a, b] := \{x \in \mathbb{R} \tc a \leq x \leq b\}$
+		\item $]a, b] := \{x \in \mathbb{R} \tc a < x \leq b\}$
+		\item $[a, b[ := \{x \in \mathbb{R} \tc a \leq x < b\}$
+		\item $]a, b[ := \{x \in \mathbb{R} \tc a < x < b\}$
+	\end{itemize}
+	se a o b sono uguale a più o meno infinito, allora l'estremo si dice aperto.
+	
+	Definizione:
+	$A \subset \mathbb{R}$ si dice denso in $\mathbb{R}$ se $\forall I \subset \mathbb{R}, \exists a \in A \tc a \in I$
+	
+	\section{Cenni su $\mathbb{R}^n$, cardinalità e numeri complessi}
+	Definizione:
+	\begin{itemize}
+		\item $\mathbb{R} \times \mathbb{R} \equiv \mathbb{R}^2 = \{(x, y) \tc x, y \in \mathbb{R}\} \equiv$ piano cartesiano
+		\item $\mathbb{R} \times \mathbb{R} \times \mathbb{R} \equiv \mathbb{R}^3$
+		\item $\mathbb{R} \times \mathbb{R} \times ... \times \mathbb{R} \equiv \mathbb{R}^n$, e le sue coordinate sono: $(x_1, x_2,x_3, ..., x_ n) \in \mathbb{R}^n$
+	\end{itemize}
+	
+	\subsection{Intorno di un punto}
+	Per intorni si intende:
+	\[J_{x_0} = J(x_0) = \{]a,b[ \tc x \in ]a,b[\}\]
+	è definito come intorno particolare:
+	\[Ir_0(x_0) = (x_0 - r_0, x_0 + r_0) = \{x \in \mathbb{R} \tc |x -x_0| < r_ 0\}\]
+	un intervallo di centro $x_0$ e raggio $r_0$.
+	
+	$|\quad|$ permette di definire una distanza su $\mathbb{R}$, detta distanza euclidea:
+	\[d(x, y) = |x - y|\]
+	
+	Osservazione:
+	$\forall I \in J(x_0), \exists r > 0 \tc Ir(x_0) \subset J(x_0)$
+	
+	Prendendo: $r < \min\{d(x_0, a), d(x_0, b)\}$
+	
+	\begin{center}
+		\begin{tikzpicture}[scale=2]
+			% Retta
+			\draw[->, blue, thick] (-3,0) -- (3,0);			
+			
+			% Parentesi per gli insiemi
+			\node at (-0.6,0) [font=\large] {$\,($}; % parentesi sinistra (A)
+			\node at (1.6,0) [font=\large] {$)\,$};  % parentesi destra (B)
+						
+			\node at (-0.3,0) [font=\large] {$\,($}; % parentesi sinistra (A)
+			\node at (0.3,0) [font=\large] {$)\,$};  % parentesi destra (B)
+			
+			% Punto radice di 2
+			\draw (0,0.1) -- (0,-0.1) node[below] {$X_0$};
+		\end{tikzpicture}
+	\end{center}
+	
+	\subsubsection{Distanza in $\mathbb{R}^n$}
+	In $\mathbb{R}^2$:
+	
+	\begin{center}
+		\begin{tikzpicture}[scale=1]
+			% Assi cartesiani
+			\draw[->] (-1,0) -- (5,0) node[right] {$x$};
+			\draw[->] (0,-1) -- (0,5) node[above] {$y$};
+			
+			% Punto P1
+			\filldraw[blue] (2,3) circle (2pt) node[above right] {$P_1(x_1,y_1)$};
+			
+			% Punto P2
+			\filldraw[red] (1,1) circle (2pt) node[below left] {$P_2(x_2,y_2)$};
+			
+			\draw[thick, dashed] (2,3) -- (1,1) node[midway, above left] {$d$};;
+		\end{tikzpicture}
+	\end{center}
+	
+	$d(P_1, P_2) := \sqrt{(x_2 - x_1)^2 + (y_ 2 - y_2)^2} = |(x_2 - x_1) + (y_ 2 - y_2)| = ||P_2 - P _1||$.
+	
+	Nel caso in cui $x_1 = x_2$, allora è come si ci trovassimo in $\mathbb{R}$, quindi si può usare la formula per la distanza euclidea. \newline
+	In $\mathbb{R}^3$:
+	
+	Presi due punti $P_1, P_2$:
+	\[P_1 = (x^1_1, x^1_2, x^1_3, x^1_4, ..., x^1_n), \in \mathbb{R}^n\]
+	\[P_1 = (x^2_1, x^2_2, x^2_3, x^2_4, ..., x^2_n), \in \mathbb{R}^n\]
+	
+	\[d(P_1, P_1) := ||P_2 - P_1|| = \sqrt{(x^1_1 - x^2_1)^2 + (x^1_2 - x^2_2)^2 + ... + (x^1_n - x^2_n)^2}\]
+	
+	\subsubsection{Intorno in $\mathbb{R}^n$}
+	se $x_0 \in \mathbb{R}^2 \tc I_r(x_0) := \{(x_1,x_2) \in \mathbb{R}^2 \tc ||x - x_0|| < r\}$
+	
+	\begin{center}
+		\begin{tikzpicture}[scale=1]
+			% Assi cartesiani
+			\draw[->] (-1,0) -- (5,0) node[right] {$x$};
+			\draw[->] (0,-1) -- (0,5) node[above] {$y$};
+			
+			% Punto P1
+			\filldraw[blue] (2,2) circle (2pt) node[above] {$P_1(x_1,y_1)$};
+			
+			\draw[thick, blue] (2,2) circle (1.7);
+			
+			\draw[thick, dashed] (2,2) -- (3.7,2) node[midway, below] {$r$};;
+		\end{tikzpicture}
+	\end{center}
+	
+	\subsection{Coordinate polari}
+	preso $P = (x_1, y_1) \in \mathbb{R}^2$, è possibile trovare $\theta, \rho \tc:$
+	\[\left\{\begin{aligned}
+		x &= \rho \cos \theta\\
+		y &= \rho \sin \theta
+	\end{aligned}\right. \rightarrow \rho := d(0, P) = \sqrt{(x - 0)^2 + (y - 0)^2}\]
+	
+	\begin{center}
+		\begin{tikzpicture}[->, thick]
+			% assi
+			\draw[->] (-3,0) -- (3,0) node[above] {$x$};
+			\draw[->] (0,-3) -- (0,3) node[above] {$y$};
+			
+			% punti base
+			\fill (1,0) circle (2pt) node[below] {$(1,0)$};
+			\fill (0,1) circle (2pt) node[left] {$(0,1)$};
+			
+			% vettore z
+			\draw[->, black, thick] (0,0) -- (2,0.8) node[above] {$P$};
+			
+			\draw[black] (0,0) -- (2,0.8) node[midway, above] {$\rho$};
+			
+			% nodi
+			\coordinate (X) at (2,0);
+			\coordinate (O) at (0,0);
+			\coordinate (Z) at (2,0.8);
+			
+			% angolo senza freccia
+			\pic [draw=black, "$\theta$", angle eccentricity=1.5, angle radius=1cm, mark=none]
+			{angle = X--O--Z};
+		\end{tikzpicture}
+	\end{center}
+	
+	La somma tra le componenti al quadrato di un punto equivale a $\rho$ al quadrato, secondo il teorema di Pitagora.
+	\[x^2+y^2 = \rho^2 (\cos^2\theta + \sin^2\theta) = \rho^2\]
+	
+	\subsection{Retta in $\mathbb{R}^2$}
+	Una retta non verticale è definita da una coppia ordinata:
+	\[r := \{(x,y) \in \mathbb{R}^2 \tc y = mx + q\}\]
+	
+	\begin{center}
+		\begin{tikzpicture}[scale=1]
+		% Assi solo nel primo quadrante
+		\draw[->] (-1,0) -- (6,0) node[right] {$x$};
+		\draw[->] (0,-1) -- (0,6) node[above] {$y$};
+		
+		% Punti P1 e P2 nel primo quadrante
+		\coordinate (P1) at (1,2);
+		\coordinate (P2) at (4,3);
+		
+		% Etichetta i punti
+		\filldraw[blue] (P1) circle (2pt) node[below right] {$P_1(x_1,2_2)$};
+		\filldraw[red] (P2) circle (2pt) node[above left] {$P_2(x_2,y_2)$};
+		
+		% Calcolo della retta passante per i due punti
+		% m = (3 - 2)/(4 - 1) = 1/3 → y = (1/3)x + q
+		% Inseriamo P1 per calcolare q:
+		% 2 = (1/3)*1 + q → q = 2 - 1/3 = 5/3
+		
+		% Quindi il punto Q = (0, 5/3)
+		\coordinate (Q) at (0,1.6667); % 5/3 ≈ 1.6667
+		\filldraw[black] (Q) circle (2pt) node[left] {$q$};
+		
+		% Disegna la retta: y = (1/3)x + 5/3
+		\draw[thick, dashed, domain=-1:6] plot (\x,{(1/3)*\x + 5/3});
+		
+	\end{tikzpicture}
+	\end{center}
+	
+	in una retta $m$ è il coefficiente angolare della retta, definito dal rapporto incrementale:
+	\[m := \frac{\Delta y}{\Delta x} = \frac{y_2 - y_1}{x_2 - x_1}\]
+	e per q, si intende la quota del punto  di intersezione con l'asse delle y.
+	
+	Le rette verticali non sono descrivibili con questa equazione, in quanto si dividerebbe per 0 nel rapporto incrementale, perciò si usa una insieme numerico:
+	\[r_v := \{(x,y) \in \mathbb{R}^2 \tc x = x_0\}\]
+	
+	\subsection{Numeri complessi ($\mathbb{C} \equiv \mathbb{R}^2$)}
+	I numeri complessi sono definiti da una parte reale $a$ e da una parte immaginaria $b$, che moltiplica l'unità immaginaria, $i \in \mathbb{C} \tc i^2 = -1$.
+	\[z \in \mathbb{C} \Rightarrow z = a + bi = (a, b), \text{ con } a,b \in \mathbb{R}\] 
+	
+	Preso un numero complesso $z = (a, b)$, è possibile trovare:
+	\begin{itemize}
+		\item l'opposto: $-z = (-a, -b)$
+		\item il coniugato: $\overline{z} = (a, -b)$
+		\item l'opposto del coniugato: $-\overline{z} = (-a, b)$
+	\end{itemize}
+	
+	\begin{center}
+		\begin{tikzpicture}[scale=0.8]
+		% Assi cartesiani
+		\draw[->] (-5,0) -- (5,0) node[right] {$\text{Re}$};
+		\draw[->] (0,-5) -- (0,5) node[above] {$\text{Im}$};
+		
+		% Punti
+		\coordinate (Z) at (2,3);            % z
+		\coordinate (NegZ) at (-2,-3);       % -z
+		\coordinate (ConjZ) at (2,-3);       % conjugate
+		\coordinate (NegConjZ) at (-2,3);    % -conjugate
+		
+		% Disegna i punti
+		\filldraw[blue] (Z) circle (2pt) node[above right] {$z = 2 + 3i$};
+		\filldraw[red] (NegZ) circle (2pt) node[below left] {$-z = -2 - 3i$};
+		\filldraw[green!70!black] (ConjZ) circle (2pt) node[below right] {$\overline{z} = 2 - 3i$};
+		\filldraw[purple] (NegConjZ) circle (2pt) node[above left] {$-\overline{z} = -2 + 3i$};
+		
+		% Opzionale: linee tratteggiate verso gli assi
+		\draw[dashed, gray] (Z) -- (2,0);
+		\draw[dashed, gray] (Z) -- (0,3);
+		
+		\draw[dashed, gray] (NegZ) -- (-2,0);
+		\draw[dashed, gray] (NegZ) -- (0,-3);
+		
+		\draw[dashed, gray] (ConjZ) -- (2,0);
+		\draw[dashed, gray] (ConjZ) -- (0,-3);
+		
+		\draw[dashed, gray] (NegConjZ) -- (-2,0);
+		\draw[dashed, gray] (NegConjZ) -- (0,3);
+		\end{tikzpicture}
+	\end{center}
+		
+	\subsection{Insiemi aperti e chiusi}
+	Un insieme si dice aperto:
+	\[A \subset \mathbb{R}^n \text{ si dice \textbf{aperto} se } \forall x \in A, \exists r>0 \tc Ir(x) \subset A\]
+	Un insieme si dice chiuso:
+	\[A \subset \mathbb{R}^n \text{ si dice \textbf{chiuso} se } A^c = \mathbb{R}^n \setminus A \text{ è aperto}\]
+	Un insieme può essere ne aperto ne chiuso , ad esempio $(a, b]$ \newline
+	Per punto interno si intende:
+	\[A \subset \mathbb{R}^n, x \in \mathbb{R}^n \text{ si dice \textbf{punto interno} ad A se } \exists r>0 \tc Ir(x) \subset A\]
+	l'insieme di tutti i punti interni è definito da:
+	\[\mathring{A} := \{x \in \mathbb{R}^n \tc x \text{ è interno ad A}\}\]
+	Osservazione: 
+	\[\left\{
+	\begin{aligned}
+	\text{ se } & A \text{ è aperto } \mathring{A} = A \\
+	\mathring{A} &\text{ è il più grande insieme aperto } B \tc B \subset A \end{aligned}
+	\right\} \Rightarrow A \text{ è aperto } \iff \mathring{A} = A\]
+	Per punto esterno si intende:
+	\[A \subset \mathbb{R}^n, x \in \mathbb{R}^n, \text{ è esterno ad A se } \exists r>0 \tc Ir(x) \cap A \not = \emptyset\]
+	oppure dicendo che è interno all'insieme complementare di A:
+	\[Ir(x_0) \subset A^c \iff x \text{ è interno ad } A^c\]
+	Per punto di bordo, o frontiera, si intende un punto che non è ne interno ne esterno, quindi che si trova sul bordo dell'insieme.
+	\[\delta A := \{x \in \mathbb{R}^n \tc \text{x sia un punto di bordo di A}\}\]
+	
+	Osservazioni:
+	\begin{itemize}
+		\item $\delta A = \delta A ^c$
+		\item $\overline{A} := A \cup \delta A \equiv \text{ chiusura di A, è sempre un insieme chiuso}$
+		\item $\overline{A} \text{ è il più piccolo insieme B chiuso} \tc A \subset B$
+	\end{itemize}
+	
+	Esempio:
+	
+	\begin{center}
+		\begin{tikzpicture}[scale=2]
+			% Retta
+			\draw[->, black, thick] (-3,0) -- (3,0);			
+			
+			% Parentesi per gli insiemi
+			\node at (0.5,0) [font=\large] {$\,]$}; % parentesi sinistra (A)
+			\node at (-1,0) [font=\large] {$(\,$};  % parentesi destra (B)
+						
+			% Punto c
+			\draw (-1,-0.1) -- (-1,-0.1) node[below] {$0$};
+			\draw (0.5,-0.1) -- (0.5, -0.1) node[below] {$1$};
+		\end{tikzpicture}
+	\end{center}
+	
+	\[A = (0, 1], \mathring{A} = (0,1), \delta A = \{0,1\}, \overline{A} = A \cup \delta A = [0, 1]\]
 	
 \end{document}

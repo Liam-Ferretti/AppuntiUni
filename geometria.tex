@@ -2,11 +2,6 @@
 
 % pacchetti comuni
 \input{preambolo.tex}
-\usetikzlibrary{arrows.meta}
-\usetikzlibrary{angles,quotes, arrows.meta}
-
-\usepackage{verbatim}
-
 \newcommand{\rel}[1][R]{R}
 \newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
 
@@ -453,7 +448,45 @@
 	[19] = \{x \in C \mid eta(x) = 19\}
 	\]
 	
-	\newpage
+	\subsection{Insieme delle parti}
+	Una partizione $P$ di S è un insieme di sottoinsiemi $S_p \subset S \tc$
+	\begin{itemize}
+		\item $S_p \not = \emptyset, p \in P$
+		\item $S_p \not = S_q \Rightarrow S_p \cap S_q = \emptyset$, quindi sono disgiunti.
+		\item $\displaystyle \bigcup_{p \in P} S_p = S$, quindi l'unione di tutti i sotto insiemi coprono S.
+	\end{itemize}
+	
+	Esempio:
+	\[S = \{1,2,3\}\]
+	allora, l'insieme delle parti di S è:
+	\[\{1,2,3\}\]
+	\[\{\{1,2\}, \{3\}\}\]
+	\[\{1,\{2,3\}\}\]
+	\[\{\{1,3\},\{2\}\}\]
+	\[\{\{1\},\{2\},\{3\}\}\]
+	
+	Partendo da una relazione di equivalenza su S, con $x \in S$:
+	\[[x] := \{y \in S \tc x \rel y\}\]
+	allora, una partizione di S è definita come:
+	\[\{[x] \tc x \in S\}\]
+	Dimostrazione:
+	\begin{enumerate}
+		\item $[x] \not = \emptyset, \forall x \in \mathbb{R}, x \rel x \Rightarrow [x]$
+		\item presi $[x], [y]$, si suppone che $z \in [x] \cap [y]$, se:
+		\subitem $z \in [x] \rightarrow x \rel z$
+		\subitem $z \in [y] \rightarrow y \rel z$ \newline
+		allora $x \rel z \wedge y \rel z \iff x \rel y \Rightarrow [x] = [y]$
+		\item $\displaystyle \bigcup_{x \in S} [x] = S \rightarrow \forall x \in S \Rightarrow x \in [x] \Rightarrow x \in \bigcup_{y \in S} [y]$
+	\end{enumerate}
+	
+	Per ogni $\rel$ si può ottenere una partizione, e per ogni partizione si può ottenere la relazione inziale.
+	\[P, Sp \subset S, x \rel y \iff x,y \in S \text{ per lo stesso p}\]
+	
+	\subsubsection{Lemma corrispondenza biunivoca tra relazione e partizione}
+	Esiste una corrispondenza biunivoca tra:
+	\[\{\rel \text{ su } S\} \iff \{\text{ Partizione di } S\}\]
+	\[\rel \rightarrow P_{\rel} = \{[x] \tc x \in S\}\]
+	\[(x \rel_P y \iff x,y \in S_p, p \in S )\leftarrow \rel_P \leftarrow P\]
 	
 	\section{Anello e campo}
 	A è un insieme i cui elementi sono coppie ordinate $(x,y)$, ed ha 2 operazioni:
@@ -507,7 +540,110 @@
 	
 	\subsection{Campo}
 	A (con le operazioni definite) è un campo se valgono le prime 9 proprietà (o assiomi).
-		
+	
+	\subsection{Definizione di $\rel_n$ su $\mathbb{Z}$}
+	\[x \rel_n y \iff n | (y - x) \iff y = x + kn, k\in \mathbb{Z}\]
+	
+	\subsubsection{Lemma}
+	\[\mathbb{Z}/n\mathbb{Z} \text{ è un anello dato che:}\]
+	\[\left\{\begin{aligned}
+		[x] &+ [y] = [x + y] \\
+		[x] &\cdot [y] = [x \cdot y]
+	\end{aligned}\right\} \text{ sono ben definite}\]
+	
+	Dimostrazione:
+	\[[x] = [x^\prime] \leftarrow x^\prime = x + nk\]
+	\[[y] = [y^\prime] \leftarrow y^\prime = y + nk\]
+	Verifichiamo:
+	\[[x + y] = [x^\prime + y^\prime]\]
+	\[x^\prime + y^\prime = x +nk + y + nl = x + y +n(k + l) \Rightarrow [x^\prime + y^\prime] = [x + y]\]
+	\[[xy] = [x^\prime y^\prime]\]
+	\[[x^\prime y^\prime] = (x +nk)(y + nl) = xy + n(xl + yk + nkl) \Rightarrow [x^\prime y^\prime] = [xy]\]
+	Esempio di $\mathbb{Z}/n\mathbb{Z}$:
+	
+	\begin{table}[h!]
+		\centering
+		\begin{minipage}{0.45\textwidth}
+			\centering
+			\caption*{Somma modulo 5}
+			\[
+			\begin{array}{c|ccccc}
+				+_5 & 0 & 1 & 2 & 3 & 4 \\
+				\hline
+				0 & 0 & 1 & 2 & 3 & 4 \\
+				1 & 1 & 2 & 3 & 4 & 0 \\
+				2 & 2 & 3 & 4 & 0 & 1 \\
+				3 & 3 & 4 & 0 & 1 & 2 \\
+				4 & 4 & 0 & 1 & 2 & 3 \\
+			\end{array}
+			\]
+		\end{minipage}
+		\hfill
+		\begin{minipage}{0.45\textwidth}
+			\centering
+			\caption*{Prodotto modulo 5}
+			\[
+			\begin{array}{c|ccccc}
+				\cdot_5 & 0 & 1 & 2 & 3 & 4 \\
+				\hline
+				0 & 0 & 0 & 0 & 0 & 0 \\
+				1 & 0 & 1 & 2 & 3 & 4 \\
+				2 & 0 & 2 & 4 & 1 & 3 \\
+				3 & 0 & 3 & 1 & 4 & 2 \\
+				4 & 0 & 4 & 3 & 2 & 1 \\
+			\end{array}
+			\]
+		\end{minipage}
+	\end{table}
+	
+	\begin{table}[h!]
+		\centering
+		\begin{minipage}{0.45\textwidth}
+			\centering
+			\caption*{Somma modulo 6}
+			\[
+			\begin{array}{c|cccccc}
+				+_6 & 0 & 1 & 2 & 3 & 4 & 5 \\
+				\hline
+				0 & 0 & 1 & 2 & 3 & 4 & 5 \\
+				1 & 1 & 2 & 3 & 4 & 5 & 0 \\
+				2 & 2 & 3 & 4 & 5 & 0 & 1 \\
+				3 & 3 & 4 & 5 & 0 & 1 & 2 \\
+				4 & 4 & 5 & 0 & 1 & 2 & 3 \\
+				5 & 5 & 0 & 1 & 2 & 3 & 4 \\
+			\end{array}
+			\]
+		\end{minipage}
+		\hfill
+		\begin{minipage}{0.45\textwidth}
+			\centering
+			\caption*{Prodotto modulo 6}
+			\[
+			\begin{array}{c|cccccc}
+				\cdot_6 & 0 & 1 & 2 & 3 & 4 & 5 \\
+				\hline
+				0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+				1 & 0 & 1 & 2 & 3 & 4 & 5 \\
+				2 & 0 & 2 & 4 & 0 & 2 & 4 \\
+				3 & 0 & 3 & 0 & 3 & 0 & 3 \\
+				4 & 0 & 4 & 2 & 0 & 4 & 2 \\
+				5 & 0 & 5 & 4 & 3 & 2 & 1 \\
+			\end{array}
+			\]
+		\end{minipage}
+	\end{table}	
+	Mettendo a confronto le tabelle 2 e 4, si può notare che per la tabella 4 non esiste l'inverso moltiplicativo.
+	
+	\subsubsection{Teorema del campo, con n primo}
+	$\mathbb{Z}/n\mathbb{Z}$ è un campo $\iff$ n è primo.
+	Dimostrazione per assurdo:
+	\[n = m*l, 0 < m < n \wedge 0<l<n\]
+	\[m*l = 0 \mod{n}\]
+	se $\exists 1/m \rightarrow 1/m * m *l = 0 \Rightarrow l = 0$, però si ha una contraddizione in quanto  l è maggiore di 0, quindi n deve essere primo.
+	
+	\subsubsection{Lemma di Bezout}
+	se si hanno due numeri $a,b$ con $MCD(a,b) = d$, allora $\exists x,y \in \mathbb{Z} \tc ax + by = d$, quindi applicando il teorema di Bezout ad a e p, in modo che $MCD(a, p) = 1$, allora:
+	\[\exists x,y \tc ax + py = 1 \rightarrow \mathbb{Z}/p\mathbb{Z}, ax = 1 \mod p \rightarrow x = \frac{1}{a}\]
 	\section{Numeri complessi}
 	Definite due operazioni in $\mathbb{R}^2$:
 	\begin{itemize}
