@@ -944,5 +944,101 @@
 	\end{center}
 	
 	\[A = (0, 1], \mathring{A} = (0,1), \delta A = \{0,1\}, \overline{A} = A \cup \delta A = [0, 1]\]
+	Per punto isolato si intende:
+	\[A \subset \mathbb{R}^n, x \in \mathbb{R}^n \text{ si dice isolato se } \exists r > 0 \tc Ir(x) \cap A = \{x\}\]
+	Esempio:
+	\[A = \{0\} \cup (3,4)\]
 	
+	\begin{center}
+		\begin{tikzpicture}[scale=2]
+			% Retta
+			\draw[->, black, thick] (-3,0) -- (3,0);			
+			
+			% Parentesi per gli insiemi
+			\node at (1,0) [font=\large] {$\,]$}; % parentesi sinistra (A)
+			\node at (-0.5,0) [font=\large] {$(\,$};  % parentesi destra (B)
+			\node at (-1.5, 0) [font=\large] {$|\,$};
+			
+			% Punto c
+			\draw (-0.5,-0.1) -- (-0.5,-0.1) node[below] {$3$};
+			\draw (1,-0.1) -- (1, -0.1) node[below] {$4$};
+			\draw (-1.5,-0.1) -- (-1.5, -0.1) node[below] {$0$};
+		\end{tikzpicture}
+	\end{center}
+	
+	 $\Rightarrow p = 0 \text{ è punto isolato di } A$
+	 
+	 
+	 in $\mathbb{N}$ ogni punto $n \in \mathbb{N}$ è isolato. \newline	 
+	 Un insieme tale che ogni punto è isolato si dice ISOLATO.
+	 \[A \subset \mathbb{R}^n, x \in \mathbb{R}^n \text{ si dice punto di accumulazione di A se } \forall Ir(x), (Ir(x) \setminus \{x\}) \cap A \not = \emptyset\]
+	 \[A = (1,3)\setminus \{2\}\]
+	 \begin{center}
+	 	\begin{tikzpicture}[scale=2]
+	 		% Retta
+	 		\draw[->, black, thick] (-3,0) -- (3,0);			
+	 		
+	 		% Parentesi per gli insiemi
+	 		\node at (0.5,0) [font=\large] {$\,)$}; % parentesi sinistra (A)
+	 		\node at (-1,0) [font=\large] {$(\,$};  % parentesi destra (B)
+	 		
+	 		% Punto c
+	 		\draw (-1,-0.1) -- (-1,-0.1) node[below] {$1$};
+	 		\draw (0.5,-0.1) -- (0.5, -0.1) node[below] {$3$};
+	 		
+	 		\coordinate (Acc) at (-0.25,0);    % -conjugate
+	 		
+	 		% Disegna i punti
+	 		\draw[blue] (Acc) circle (2pt) node[below] {$2$};
+	 	\end{tikzpicture}
+	 \end{center}
+	 
+	 Allora $x = 2$ è un punto di accumulazione, e non appartiene ad A, ma potrebbe anche appartenere.
+	 
+	 In $\mathbb{R}$:
+	 \[\overline{\mathbb{R}} := \mathbb{R} \cup \{\pm \infty\}\]
+	 Allora un punto si dice di accumulazione, se $\forall u \subset J(x), (u \setminus \{x\}) \cap A \not = \emptyset$
+	 
+	 osservazione:
+	 \begin{itemize}
+	 	\item se $x \in \mathbb{R} \Rightarrow u = Ir(x)$, come per la definizione precedente
+	 	\item $x = + \infty$, $+ \infty$ è un punto accumulazione di A, se $\forall u \in J(+\infty)$, si ha che $(u \setminus \{+\infty\}) \cap A \not = 0 \rightarrow u = (M, +\infty)$, quindi A non è limitato superiormente.
+	 	\item $x = - \infty$, $- \infty$ è un punto accumulazione di A, se $\forall u \in J(-\infty)$, si ha che $(u \setminus \{-\infty\}) \cap A \not = 0 \rightarrow u = (-\infty, m)$, quindi A non è limitato inferiormente.
+	 \end{itemize}
+	 Caratterizzazione di $\overline{A} = A \cup \delta A$:
+	 \[\overline{A} = \{x \in \mathbb{R}^n \tc \forall r > 0, (Ir(x) \cap A) \not = 0\}, \text{ l'insieme dei punti aderenti ad A}\]
+	 
+	 Osservazione:
+	 \[A \subset \mathbb{R}^n \Rightarrow \overline{A} \subset \overline{\mathbb{R}} = A \subset \mathbb{R} \cup \{\pm \infty\}\]
+	 \[+ \infty \in \overline{A} \iff \text{ $+\infty$ è un punto di accumulazione per $A$}\]
+	 \[\overline{A} := \{x \in \overline{\mathbb{R}} \tc \forall U \subset J(x) \tc \}\]
+	 
+	 Esercitazione:
+	 \[A = \mathbb{Q} \cap [0,1]\]
+	 
+	 \begin{center}
+	 	\begin{tikzpicture}[scale=2]
+	 		% Retta
+	 		\draw[->, black, thick] (-3,0) -- (3,0);			
+	 		
+	 		% Parentesi per gli insiemi
+	 		\node at (0.5,0) [font=\large] {$\,]$}; % parentesi sinistra (A)
+	 		\node at (-1,0) [font=\large] {$[\,$};  % parentesi destra (B)
+	 		
+	 		% Punto c
+	 		\draw (-1,-0.1) -- (-1,-0.1) node[below] {$0$};
+	 		\draw (0.5,-0.1) -- (0.5, -0.1) node[below] {$1$};
+	 	\end{tikzpicture}
+	 \end{center}
+	 
+	 \[\mathring{A} = \overline{\mathbb{Q} \cap [0,1]} = \emptyset\]
+	 
+	 \[\overline{A} = \overline{\mathbb{Q} \cap [0,1]} = [0,1]\]
+	 \[x \in \overline{\mathbb{Q} \cap [0,1]} \iff \exists r > 0 \tc Ir(x) \cap (\mathbb{Q} \setminus [0,1]) \not = 0, \text{ Q è denso in R}\]
+	 
+	 \[\delta A = \delta (\mathbb{Q} \cap [0,1]) = [0,1] \rightarrow \delta A = \overline{A} \setminus \mathring{A} = [0,1] \setminus \emptyset\]
+	 
+	 Dimostrazione che la cardinalità di $\mathbb{N} = \mathbb{Q} < \mathbb{R}$
+	 
+	 
 \end{document}
