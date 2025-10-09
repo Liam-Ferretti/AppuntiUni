@@ -916,6 +916,318 @@
 		
 	\end{itemize}
 	
+	\section{Spazi vettoriali}
+	$\mathbb{K}$ è un campo, $\mathbb{K}^n = \mathbb{K} \times \dots \times \mathbb{K} = \{(x_1, \dots , x_n) \tc x_i \in \mathbb{K}\}$, usato una notazione impropria possiamo definire la n-tupla $(x_1, \dots , x_n)$, come $X$
+	
+	Definiamo l'operazione di somma tra n-uple:
+	\[
+	\begin{array}{c c c}
+		\mathbb{K}^n \times \mathbb{K}^n & \xlongrightarrow{somma} & \mathbb{K}^n \\
+		(X, Y) & \longmapsto & (x_1 + y_1, \dots, x_n + y_n) \\
+	\end{array}
+	\]	
+	ed il prodotto per uno scalare:
+	\[
+	\begin{array}{c c c}
+		\mathbb{K} \times \mathbb{K}^n & \xlongrightarrow{prodotto} & \mathbb{K}^n \\
+		(\lambda, X) & \longmapsto & (\lambda x_1, \dots, \lambda x_n) \\
+	\end{array}
+	\]	
+	
+	$\mathbb{K}^n$ con le proprietà definite è il prototipo di uno spazio vettoriale su $\mathbb{K}$.
+	
+	Uno spazio vettoriale su $\mathbb{K}$ è definito come un insieme $\mathbb{V}$, provvisto di una operazione somma:
+	\[
+	\begin{array}{c c c}
+		\mathbb{V} \times \mathbb{V} & \xlongrightarrow{somma} & \mathbb{V} \\
+		(v, w) & \longmapsto & v + w \\
+	\end{array}
+	\]	
+	e il prodotto per uno scalare:
+	\[
+	\begin{array}{c c c}
+		\mathbb{K} \times \mathbb{V} & \xlongrightarrow{prodotto} & \mathbb{V} \\
+		(\lambda, v) & \longmapsto & \lambda v \\
+	\end{array}
+	\]	
+	
+	tali che:
+	\begin{enumerate}
+		\item $\exists \underline{0} \in \mathbb{V} \tc \underline{0} + v = v, \forall v \in \mathbb{V}$
+		\item Dato $v \in \mathbb{V}, \exists w \in \mathbb{V} \tc v + w = \underline{0}$
+		\item $(v + w) + u = v + (w + u) \forall v,w,u \in \mathbb{V}$
+		\item $u + v = v + u, \forall u,v \in \mathbb{V}$ 
+		\item $1v = v$
+		\item $v(\lambda + \mu) = \lambda v + \mu v, \forall \lambda, \mu \in \mathbb{K}, \forall v \in \mathbb{V}$
+		\item $\lambda (v + w) = \lambda v + \lambda w, \forall \lambda \in \mathbb{K}, \forall v, w \in \mathbb{V}$
+		\item $(\lambda \mu)v = \lambda(\mu v), \forall \lambda, \mu \in \mathbb{K}, \forall u \in \mathbb{V}$
+	\end{enumerate}
+	Osservazione, l'elemento neutro di $\mathbb{K}$ è diverso dall'elemento neutro di $\mathbb{V}$:
+	\[0 \in \mathbb{K} \not = \underline{0} \in \mathbb{V}\]
+	\[0 \not = (0, \dots, 0)\]
+	
+	Proposizione: $\mathbb{V}$ spazio vettoriale:
+	\begin{enumerate}
+		\item Esiste un unico elemento neutro di $\mathbb{V}$, dimostrazione:
+		\[\underline{0}_1 + v = v \quad \wedge \quad \underline{0}_2 + v = v, \forall v \in \mathbb{V}\]
+		\[\underline{0}_2 = \underline{0}_1 + \underline{0_2} = \underline{0}_1 \Rightarrow \underline{0}_1 = \underline{0}_2 = \underline{0}\]
+		\item Dato $v \in \mathbb{V}$ esiste un unico $w \in \mathbb{V} \tc v + w = \underline{0}$
+		\item $0 \cdot v = \underline{0}$ 
+	\end{enumerate}
+	
+	\subsection{Vettori nel piano euclideo}
+	Sia $\mathbb{E}^2$, un piano euclideo, allora un vettore nel piano è una classe di equivalenza di segmenti ordinato nel piano.
+	Se $A \not = B \in \mathbb{E}^2, \overline{AB}$ è l'unica retta passante in $\mathbb{E}^2$ contenente A e B.
+	
+	\begin{center}
+		\begin{tikzpicture}
+		% Coordinate dei punti A e B
+		\coordinate (A) at (1,1);
+		\coordinate (B) at (4,3);
+		
+		% Vettore direzione = (B - A)
+		\coordinate (v) at ($(B)-(A)$);
+		
+		% Fattore di estensione (riducilo per accorciare la retta)
+		\def\k{0.5}
+		
+		% Inizio e fine della retta estesa
+		\coordinate (P1) at ($(A) - \k*(v)$);
+		\coordinate (P2) at ($(B) + \k*(v)$);
+		
+		% Disegno della retta estesa
+		\draw[thick] (P1) -- (P2);
+		
+		% Punti A e B
+		\filldraw (A) circle (2pt) node[below] {$A$};
+		\filldraw (B) circle (2pt) node[above] {$B$};
+		\end{tikzpicture}
+	\end{center}
+	
+	\begin{itemize}
+		\item Due rette $R_1, R_2$ in $\mathbb{E}^2$ sono parallele se:
+		$\left\{\begin{aligned}
+			R_1 & \cap R_2 = \emptyset \\
+			R_1 & = R_2
+		\end{aligned}\right.$
+		
+		\item $A,B,C,D$ in $\mathbb{E}^2$ $\overline{AB} \parallel \overline{CD}$, significa che:
+		\[
+		\left\{\begin{aligned}
+			A &\not = B, C \not = D, \text{ quindi le retta $\overline{AB}$ e $\overline{CD}$ sono parallele}\\
+			A & = B \vee C = D
+		\end{aligned}\right.
+		\]
+	\end{itemize}
+	Un segmento orientato in $\mathbb{E}^2$ è una coppia ordinata $(A, B) = \mathbb{E}^2 \times \mathbb{E}^2$, con $A, B \in \mathbb{E}^2$, si definisce $AB = (A, B)$
+	
+	Due segmenti orientati $AB, CD$ si dicono equipollenti se:
+	\[AB \parallel CB, \overline{AC} \parallel \overline{BD}\]
+	
+	\begin{center}
+		\begin{tikzpicture}[scale=1]
+		
+		% Coordinate dei punti
+		\coordinate (A) at (0,0);
+		\coordinate (B) at (4,2);
+		\coordinate (C) at (1,3);
+		
+		% Vettore AB per parallela
+		\coordinate (v) at ($(B)-(A)$);
+		
+		% Estensione della retta parallela ad AB che passa per C
+		\draw[blue, thick, dashed] ($(C) - 1.2*(v)$) -- ($(C) + 1.2*(v)$) node[right] {retta // \(AB\)};
+		
+		% Segmento AB
+		\draw[thick, ->] (A) -- (B) node[midway, below right] {\(AB\)};
+		
+		% Punti
+		\filldraw (A) circle (2pt) node[below left] {\(A\)};
+		\filldraw (B) circle (2pt) node[below right] {\(B\)};
+		\filldraw (C) circle (2pt) node[above left] {\(C\)};
+		
+	\end{tikzpicture}
+	
+	\begin{tikzpicture}[scale=1]
+		
+		% Coordinate dei punti
+		\coordinate (A) at (0,0);
+		\coordinate (B) at (4,2);
+		\coordinate (C) at (1,3);
+		
+		% Vettori direzione
+		\coordinate (vAB) at ($(B)-(A)$);
+		\coordinate (vAC) at ($(C)-(A)$);
+		
+		% Retta per C parallela ad AB
+		\path[name path=parallelAB] 
+		($(C) - 1.5*(vAB)$) -- ($(C) + 1.5*(vAB)$);
+		\draw[blue, thick, dashed] 
+		($(C) - 1.5*(vAB)$) -- ($(C) + 1.5*(vAB)$)
+		node[above right] {retta // \(AB\)};
+		
+		% Retta per B parallela ad AC
+		\path[name path=parallelAC]
+		($(B) - 1.5*(vAC)$) -- ($(B) + 1.5*(vAC)$);
+		\draw[red, thick, dashed]
+		($(B) - 1.5*(vAC)$) -- ($(B) + 1.5*(vAC)$)
+		node[above right] {retta // \(AC\)};
+		
+		% Retta AC vera e propria
+		\draw[thick, dashed, gray]
+		($(A) - 1.2*(vAC)$) -- ($(C) + 1.2*(vAC)$)
+		node[below left] {retta \(AC\)};
+		
+		% Intersezione delle due rette → punto D
+		\path [name intersections={of=parallelAB and parallelAC, by=D}];
+		
+		% Disegno punto D
+		\filldraw (D) circle (2pt) node[above right] {\(D\)};
+		
+		% Segmento AB
+		\draw[thick, ->] (A) -- (B) node[midway, below right] {\(AB\)};
+		\draw[thick, ->, blue] (C) -- (D) node[midway, below right] {\(CD\)};
+		
+		% Punti noti
+		\filldraw (A) circle (2pt) node[below left] {\(A\)};
+		\filldraw (B) circle (2pt) node[below right] {\(B\)};
+		\filldraw (C) circle (2pt) node[above left] {\(C\)};
+		
+	\end{tikzpicture}
+	\end{center}
+	
+	\begin{itemize}
+		\item ogni segmento orientato è equipollente a se stesso
+		\item se $S_1$ è equipollente a $S_2 \Rightarrow S_2$ è equipollente $S_1$
+		\item se $S_1$ è equipollente a $S_2$ e $S_2$ è equipollente a $S_3$, allora $S_1$ è equipollente a $S_3$
+	\end{itemize}
+	Perciò l'equipollenza è una relazione di equivalenza, definita da: $\sim$.
+	
+	\[V(\mathbb{E}^2) := (\mathbb{E}^2 \times \mathbb{E}^2)/\sim\]
+	\[\vec{AB} := [AB]\]
+	
+	 quindi vuol dire il prodotto cartesiano tra i segmenti ordinati equipollenti, rappresentati dalle coppie ordinate.
+	
+	Definisco la somma:
+	\[
+	\begin{array}{c c c}
+		\mathbb{V}(\mathbb{E}^2) \times \mathbb{V}(\mathbb{E}^2) & \xlongrightarrow{somma} & \mathbb{V}(\mathbb{E}^2) \\
+		(\vec{AB}, \vec{CD}) & \longmapsto & \vec{AP} \\
+	\end{array}
+	\]	
+	
+	Presi due vettori $\vec{AB}, \vec{CD}, \exists P \in \mathbb{E}^2 \tc \vec{BP} \sim \vec{CD}$
+	
+	\begin{center}
+		\begin{tikzpicture}[scale=1.2]
+		
+		% Definizione punti A, B, C, D
+		\coordinate (A) at (0,2);
+		\coordinate (B) at (2,1);
+		\coordinate (C) at (1,3);
+		\coordinate (D) at (4,4);
+		
+		% Calcolo vettore CD
+		\coordinate (vCD) at ($(D)-(C)$);
+		
+		% Calcolo punto P tale che BP = CD
+		\coordinate (P) at ($(B)+(vCD)$);
+		
+		% Vettore AB
+		\draw[->, thick, blue] (A) -- (B) node[midway, below left] {\(\vec{AB}\)};
+		
+		% Vettore CD
+		\draw[->, thick, red] (C) -- (D) node[midway, above] {\(\vec{CD}\)};
+		
+		% Vettore BP (equipollente a CD)
+		\draw[->, thick, green!60!black] (B) -- (P) node[midway, below right] {\(\vec{BP}\)};
+		
+		\draw[->, thick, black] (A) -- (P) node[midway, below right] {\(\vec{AP}\)};
+		
+		% Disegno dei punti
+		\filldraw (A) circle (2pt) node[below left] {\(A\)};
+		\filldraw (B) circle (2pt) node[below right] {\(B\)};
+		\filldraw (C) circle (2pt) node[above left] {\(C\)};
+		\filldraw (D) circle (2pt) node[above right] {\(D\)};
+		\filldraw (P) circle (2pt) node[right] {\(P\)};
+		
+	\end{tikzpicture}
+	\end{center}
+	
+	Definisco il prodotto per uno scalare $\mathbb{R}$:
+		\[
+	\begin{array}{c c c}
+		\mathbb{R} \times \mathbb{V}(\mathbb{E}^2) & \xlongrightarrow{prodotto} & \mathbb{V}(\mathbb{E}^2) \\
+		(\lambda, \mathbb{V}(\mathbb{E}^2)) & \longmapsto & \vec{AP} \\
+	\end{array}
+	\]	
+	
+	\begin{center}
+		\begin{tikzpicture}[scale=1]
+			
+			% Coordinate dei punti
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (3,1);
+			
+			% Vettore AB per direzione
+			\coordinate (v) at ($(B)-(A)$);
+			
+			% Coordinate dei nuovi punti: p dopo B, P prima di A
+			\coordinate (p) at ($(B) + 0.8*(v)$);
+			\coordinate (P) at ($(A) - 0.8*(v)$);
+			
+			% Retta parallela (passante per A, lungo v)
+			\draw[blue, thick, dashed] 
+			($(A) - 1.2*(v)$) -- ($(A) + 1.9*(v)$) 
+			node[right] {retta // \(AB\)};
+			
+			% Segmento AB
+			\draw[thick, ->] (A) -- (B) node[midway, below right] {\(AB\)};
+			
+			% Punti principali
+			\filldraw (A) circle (2pt) node[below left] {\(A\)};
+			\filldraw (B) circle (2pt) node[below right] {\(B\)};
+			
+			% Nuovi punti p e P
+			\filldraw (p) circle (2pt) node[below right] {\(p\)};
+			\filldraw (P) circle (2pt) node[above left] {\(P\)};
+			
+		\end{tikzpicture}
+	\end{center}
+	
+	\[\vec{AP} = \lambda * \vec{AB}, \lambda < 0\]
+	\[\vec{Ap} = \lambda * \vec{AB}, \lambda > 0\]
+	
+	Con queste operazioni $V(\mathbb{E}^2)$ è uno spazio vettoriale/$\mathbb{R}$
+	
+	\section{V sp.vett/$\mathbb{K}$}
+	Un sottoinsieme $\mathbb{W} \subset \mathbb{V}$ è un sottospazio se non è vuote e se:
+	\begin{itemize}
+		\item a) è chiuso per la somma:
+		\[v_1, v_2 \in \mathbb{W} \Rightarrow v_1 + v_2 \in \mathbb{W}\]
+		\item a) è chiuso per il prodotto per scalare:
+		\[w \in \mathbb{W}, \lambda \in \mathbb{K} \Rightarrow \lambda w \in \mathbb{W}\]
+	\end{itemize}
+	
+	Osservazione: Sia $\mathbb{W} \subset \mathbb{V}$ è un sottospazio:
+	\begin{itemize}
+		\item $\underline{0} \in \mathbb{W}$
+		\item $w \in \mathbb{W} \Rightarrow (-1)w \in \mathbb{W}$, per la proposizione b
+		\item $w \in \mathbb{W}, (-1)w \in \mathbb{W} \Rightarrow 1w + (-1)w = w(1 - 1) = 0w = \underline{0}$, per la proposizione a
+	\end{itemize}
+	
+	Sia $\mathbb{W} \subset \mathbb{K}^n$, un sottospazio, dato da:
+	\[\mathbb{W} := \{X \in \mathbb{K}^n \tc x_1 + \dots + x_n = 0\}\]
+	allora:
+	\begin{itemize}
+		\item $\underline{0} \in \mathbb{W}$
+		\item $\mathbb{W}$ è chiuso per la somma
+		\item $\mathbb{W}$ è chiuso per il prodotto per uno scalare
+	\end{itemize}
+	
+	Sia $\mathbb{U} \subset \mathbb{K}^n$, un sottospazio, dato da:
+	\[\mathbb{U} := \{X \in \mathbb{K}^n \tc x_1 + \dots + x_n = 1\}\]
+	allora non è un sottospazio di $\mathbb{K}$, perchè $\underline{0} \not \in \mathbb{V}$
 	
 	
 \end{document}
