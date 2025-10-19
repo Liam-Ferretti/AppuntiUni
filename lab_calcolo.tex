@@ -54,7 +54,8 @@
 	\tableofcontents
 	\clearpage
 	
-	\section{Principi di funzionamento di un computer}
+	\begin{comment}
+		\section{Principi di funzionamento di un computer}
 	Esistono diversi \textbf{sistemi di numerazione}, ovvero delle composizioni di regole con cui vengono rappresentati i numeri, i computer usano il binario, le cui cifre sono: $\{0, 1\}$
 	Nella base decimale, quella che si usa quotidianamente, le cifre sono: $\{0, 1, ..., 8, 9\}$.
 	Sono sistemi posizionali in cui, quindi, la posizione delle cifre.
@@ -78,5 +79,81 @@
 		0 & 2 \; \; \; \; \, \\
 	\end{array}
 	\]
-		
+	
+	\subsection{Hex}
+	Oltre al binari si usa anche l'hex, ovvero l'esadecimale, in cui la base è 16, e come cifre si usano $\{0, 1, \dots, 9, A, B, C, D, E, F\}$
+	
+	\subsection{Rappresentazioni di numeri negativi}
+	\subsubsection{Modulo e segno}
+	Per rappresentare i numeri negativi esistono diversi metodi, il più semplice è quello di usare l'ultima cifra a sinistra o a destra, decidendolo convenzionalmente per tutti i numeri, in cui se è 1 allora il segno è più, se è 0 allora è meno, ciò però rende il numero di cifre uguale a 7, dove il numero massimo è 127, e il numero minimo è -127, avendo però +0 e -0, per un totale di 255 numeri diversi.
+	\subsubsection{Notazione in eccesso}
+	
+	\section{Funzionamento della macchina di Turing}
+	La macchina di Turing venne ipotizzata attorno al 1930 ed è una astrazione matematica di un processo che permette di risolvere attraverso gli algoritmi 
+	
+	\newpage
+	\end{comment}
+	
+	\section{Teoria del C}
+	Si dice
+	\begin{itemize}
+		\item Procedurale, ovvero, è un linguaggio che lavora con una sequenza di istruzione che vengono eseguite in un ordine ben preciso, ed è possibile dividerle in sotto blocchi di codice, procedure/ funzioni, che svolgono una specifica parte del calcolo.
+		\item Non completamente strutturato, usa alcune regole di base, che si basano su altre regole, e nel C si posso "superare" queste regole.
+		\item Tipizzato, si devono dichiarale le variabili, e bisogna specificare il tipo di variabile, ovvero che tipo di valore può assumere la variabile.
+	\end{itemize}
+	I sistemi operativi sono organizzate in cartelle, ovvero directory, divise in una struttura ad albero, dove all'apice si trova la cartella base, ovvero in linux "/", in windows si trova con il nome "C:".
+	Di base in linux è divisa in sottocartelle in cui si trovano i dati principali e più importanti del computer, una tra queste è la home, dove si trovano le sottocartelle degli utenti.
+	Ogni file ha un certo percorso (path), ad esempio:
+	
+	\begin{center}
+		/home/utente/nomefile.estensione
+	\end{center}
+	È importante specificare l'estensione del file, e identifica il tipo di file. \newline
+	
+	\subsection{Scrivere un programma in linguaggio in C}
+	Serve un editor di testo, ovvero un programma che permette di scrivere testo in un file, ed è diverso da un word-processor, come Word, ad esempio EMACS, che produce file testuali con estensioni diverse, che contiene solo i caratteri, senza le informazioni sul tipo di carattere, grandezza, posizione etc etc.
+	
+	Per scrivere un programma si parte dal file, in formato ".c", una volta scritto il codice, si usa il compilatore per generare il file con formato  ".o", poi avviene la fase di linking, che "linka" le librerie, generando il file .x, la fase di compilatore e linker avviene insieme.
+	Prima della fase di compilazione avviene la pre-processione.
+	
+	\begin{code} 
+#HEADER (tra cui #include<math.h>)
+
+int main(){
+	//contiene le istruzioni del programma principale, definito corpo principale del programma
+}
+	\end{code}
+	
+	L'HEADER (direttive per il pre-processore, prende le istruzioni), il pre-processore sostituisce l'header con il codice delle librerie.
+	
+	Il corpo principale del programma inizia sempre con la dichiarazione delle variabili, seguite poi dalle istruzioni effettive del codice, ogni istruzione ha alla fine ";", per specificare che l'istruzione è finita.
+	\subsubsection{Dichiarazione delle variabili}
+	\begin{code}
+int main(){
+	int a;
+	int b;
+	int c;
+	
+	//equivalente a:
+	
+	int a,b,c;
+	a = 2;
+	b = 3;
+	c = a + b;
+	
+	//il segno = è l'operatore di assegnazione, assegna ala variabile a sinistra l'elemento a destra
+	
+	return 0;
+}
+	\end{code}
+	\newpage
+	
+	\section{Istruzioni UNIX}
+	Elenco comandi utili in UNIX
+	\begin{itemize}
+		\item Per creare una cartella: \unix{mkdir nomecartella}
+		\item Per entrare in una cartella: \unix{cd directorydellacartella}
+		\item Per tornare uscire da una cartella: \unix{cd ...}, per tornare alla home directory: \unix{cd}
+		\item Per vedere il contenuto di una directory: \unix{ls}
+	\end{itemize}
 \end{document}

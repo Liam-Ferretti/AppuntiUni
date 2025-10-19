@@ -1040,5 +1040,145 @@
 	 
 	 Dimostrazione che la cardinalità di $\mathbb{N} = \mathbb{Q} < \mathbb{R}$
 	 
+	 \section{Funzioni}
+	 Una funzione/applicazione è una terna di oggetti:
+	 \begin{itemize}
+	 	\item A insieme, detto dominio
+	 	\item B insieme, detto codominio
+	 	\item f, la legge che associa ad ogni elemento uno ed un solo elemento di B
+	 \end{itemize}
+	 si scrive:
+	 \begin{align*}
+	 	f: \mathbb{A} & \longrightarrow \mathbb{B} \\
+	 	a \in \mathbb{A} & \longmapsto f(a) \in \mathbb{B}
+	 \end{align*}
+	 ed è definita da:
+	 \[\forall a \in \mathbb{A}, \exists ! b \in \mathbb{B} \tc f(a) = b\]
+	 La notazione: \[f: \mathbb{A} \longrightarrow \mathbb{B} \text{ è equivalente a } (A, B, f)\]
+	 Una funzione si dice iniettiva se:
+	 \[\forall a,b \in A \tc a \not = b \Rightarrow f(a) \not = f(b)\]
+	 Una funzione si dice suriettiva se:
+	 \[\forall b \in B, \exists a \in A \tc f(a) = b\]
+	 a è detto pre immagine, e non deve per forza essere unico, è accettato che più elementi di A siano pre immagine di un elemento di B.\newline
+	 Una funzione si dice biettiva o biunivoca se:
+	 \[\forall b \in B, \exists ! a \in A \tc f(a) = b\]
+	 Considerata la funzione f biunivoca allora ammette la sua funzione inversa:
+	 \begin{align*}
+	 	f^{-1}: \mathbb{B} & \longrightarrow \mathbb{A} \\
+	 	b & \longmapsto a
+	 \end{align*}
+	 Osservazione: f è una funzione biunivoca, allora $\forall b \in B \exists ! a \in A \tc f(a) = b$, quindi la funzione $(B, A, f^{-1})$ ha senso.
+	 
+	 \subsection{Esempi di definizione}
+	 \begin{itemize}
+	 	\item La funzione $(A, A, Id)$, è definita come la funzione identià, ovvero una funzione che per ogni valore di $a \in A$, restituisce lo stesso valore $a \in A$
+	 	\item Prese due funzioni:
+	 	\[(A, B, f), (B, C, g)\]
+	 	Allora la funzione composta:
+	 	\[g \circ f = (A, C, g \circ f)\]
+	 	in cui l'immagine della funzione f, deve essere uguale al dominio della funzione g.
+	 	Se f è biunivoca e quindi $f^{-1}$ è ben definita, allora:
+	 	\[f \circ f^{-1} = f^{-1} \circ f = Id\]
+	 	\item Sia $(A, B, f)$ una funzione allora si definisce:
+	 	\[f: P(A) \longrightarrow P(B)\]
+	 	la funzione immagine tramite f, che associa ad ogni $E \in P(A)$, l'insieme $f(E) := \{b \in B \tc \exists a \in E, f(a) = b\}$, in cui $P(A), P(B)$ sono definiti come parti di A e parti di B, ovvero l'insieme di tutti i possibili sottoinsiemi di A o B.
+	 	
+	 	In questo caso è possibile avere una funzione inversa, e si definisce come $(P(B), P(A), f^{-1})$ la funzione che associa ad ogni elemento $G \in P(B)$, l'insieme $f^{-1} := \{a \in A \tc f(a) \in G\}$, si usa la notazione $f^{-1}$ anche se non è biunivoca, ma si intende un funzione che restituisce un certo insieme.
+	 \end{itemize}
+	 
+	 \subsection{Funzioni ristrette ad E}
+	 Presa $f : A \longrightarrow B, E \subset A$, allora $F_{|E}$, ovvero f ristretta ad E, è definita come:
+	 \[F_{|E} : E \longrightarrow B\]
+	 se il codominio è l'immagine di E, allora $F_{|E}$ è 
+	 suriettiva, quindi $(E, f(E), f)$
+	 \subsection{Grafico di una funzione reale di variabile reale}
+	 Sia $f: A \subseteq R \longrightarrow B \subseteq R$:
+	 
+	 \begin{center}
+		 \begin{tikzpicture}
+		 	\begin{axis}[
+		 		axis lines=middle,
+		 		xlabel=$x$, ylabel=$f(x)$,
+		 		xmin=-1.5, xmax=1.5,
+		 		ymin=0.5, ymax=4.5,
+		 		xtick={-1,0,1}, ytick={1,2,3,4},
+		 		domain=-0.999:1, % evita -1 incluso
+		 		samples=100
+		 		]
+		 		\addplot[blue, thick] {3/2*x + 5/2};
+		 		
+		 		% punto aperto a x=-1
+		 		\addplot[only marks, mark=o, mark size=2pt, color=red] coordinates {(-1,1)};
+		 		
+		 		% punto chiuso a x=1
+		 		\addplot[only marks, mark=*, mark size=2pt, color=red] coordinates {(1,4)};
+		 	\end{axis}
+		 \end{tikzpicture}
+	 \end{center}
+	 i valori $y \in (1, 4]$ sono i valori dell'insieme immagine di $A$ tramite $f$, e $A$, ovvero il dominio, assume i valori $x \in (-1, 1]$
+	 \[\Gamma(f) := \{(x,y) \in \mathbb{R}^2 \tc x \in D(f) \wedge y = f(x)\}\]
+	 
+	 \subsection{Caratteristiche di una funzione}
+	 Una funzione $f: A \subseteq \mathbb{R} \longrightarrow \mathbb{R}$
+	 
+	 \begin{itemize}
+	 	\item Si dice crescente se:
+	 	\[\forall x,y \in A \tc x < y \Rightarrow f(x) \leq f(y)\]
+	 	\item Si dice decrescente se:
+	 	\[\forall x,y \in A \tc x < y \Rightarrow f(x) \geq f(y)\]
+	 	\item Si dice strettamente crescente se:
+	 	\[\forall x,y \in A \tc x < y \Rightarrow f(x) < f(y)\]
+	 	\item Si dice strettamente decrescente se:
+	 	\[\forall x,y \in A \tc x < y \Rightarrow f(x) > f(y)\]
+	 \end{itemize}
+	 
+	 \subsection{Monotonia di una funzione}
+	 Una funzione f si dice:
+	 \begin{itemize}
+	 	\item monotona se è crescente/decrescente per tutto il dominio
+	 	\item strettamente monotona se è strettamente crescente/decrescente per tutto il dominio
+	 \end{itemize}
+	 
+	 \subsection{Funzione parte intera}
+	 La funzione $f(x) = [x]$ associa ad ogni numero reale $x$ il più grande $n \in \mathbb{N} \leq x$, ed è una funzione monotona crescente.
+	 
+	 \begin{center}
+	 	\begin{tikzpicture}
+	 		\begin{axis}[
+	 			axis lines=middle,
+	 			xlabel=$x$, ylabel={$[x]$},
+	 			xmin=-3.5, xmax=3.5,
+	 			ymin=-3.5, ymax=3.5,
+	 			xtick={-3,-2,-1,0,1,2,3},
+	 			ytick={-3,-2,-1,0,1,2,3},
+	 			width=10cm, height=10cm
+	 			]
+	 			
+	 			% Disegno dei segmenti della funzione [x]
+	 			\foreach \n in {-3,-2,-1,0,1,2} {
+	 				% segmento orizzontale su [n, n+1)
+	 				\addplot[black, thick] coordinates {(\n, \n) (\n+1, \n)};
+	 				% punto aperto a sinistra
+	 				\addplot[only marks, mark=o, mark size=2pt, color=black] coordinates {(\n, \n)};
+	 				% punto pieno a destra
+	 				\addplot[only marks, mark=*, mark size=2pt, color=black] coordinates {(\n+1, \n)};
+	 			}
+	 			
+	 		\end{axis}
+	 	\end{tikzpicture}
+	 \end{center}
+	 
+	 \subsection{Proprietà ed esempi}
+	 \begin{itemize}
+	 	\item $f,g$ sono monotone, allora $f \circ g$ è monotona
+	 	\item $f,g$ sono entrambe crescenti/decrescenti, allora $f \circ g$ è crescente
+	 	\item $f,g$ sono una crescente e l'altra decrescente, allora $f \circ g$ è decrescente
+	 	\item se $f$ è crescente e $c > 0$, allora $c \circ f = c \cdot f(x)$ è crescente
+	 	\item se $f$ è crescente e $c < 0$, allora $c \circ f = c \cdot f(x)$ è decrescente
+	 	%% aggiungere funzine che non capisco
+	 	\item se $f$ è strettamente monotona allora è iniettiva
+	 	\item se $f$ è monotona ed invertibile, allora  è strettamente monotona
+	 	\item se $f$ è monotona ed invertibile allora  $f^{-1}$ è monotona dello stesso tipo.
+	 \end{itemize}
 	 
 \end{document}

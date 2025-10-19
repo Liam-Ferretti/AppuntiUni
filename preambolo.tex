@@ -5,10 +5,29 @@
 \usepackage[T1]{fontenc}
 \usepackage[italian]{babel}
 \usepackage{amsmath, amssymb, amsthm, mathtools, physics}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable} % per box su più righe
+
+% Comando personalizzato per teoremi/enunciati
+\newtcolorbox{teorembox}{
+	colback=gray!10,    % sfondo grigio chiaro
+	colframe=gray!50,   % bordo grigio
+	boxrule=0.5pt,      % spessore bordo
+	sharp corners,      % angoli non arrotondati
+	breakable,          % consente il ritorno a capo nel box
+	left=8pt, right=8pt, top=6pt, bottom=6pt,
+}
+
+% Comando semplificato: \teorem{...}
+\newcommand{\teorem}[1]{\begin{teorembox}#1\end{teorembox}}
+\newcommand{\brackets}[1]{\langle #1 \rangle}
 \usepackage{graphicx}
 \usepackage{tikz}
 \usetikzlibrary{calc}
 \usetikzlibrary{intersections}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
 \usepackage{hyperref}
 \usepackage{geometry}
 \newtheorem{proposition}{Proposizione}
@@ -29,7 +48,7 @@
 
 \lstnewenvironment{code}
 {\lstset{
-		language=C++,
+		language=C,
 		inputencoding=utf8,
 		extendedchars=true,
 		literate={à}{{\`a}}1
@@ -50,6 +69,37 @@
 }}
 {}
 
+\usepackage{lmodern}
+\usepackage{inconsolata} % font monospaziato
+\usepackage{xcolor}
+\usepackage{listings}
+
+% Stile UNIX
+\lstdefinestyle{unixstyle}{
+	language=bash,
+	basicstyle=\ttfamily\small,
+	numbers=left,                     % ✅ numeri di riga
+	numberstyle=\tiny\color{gray!70}, % colore numeri
+	numbersep=6pt,
+	frame=single,
+	backgroundcolor=\color{gray!6},
+	rulecolor=\color{black!60},
+	columns=fullflexible,
+	keepspaces=false,                 % ✅ rimuove tab/spazi iniziali
+	showstringspaces=false,
+	breaklines=true,
+	aboveskip=0pt,
+	belowskip=0pt,
+	xleftmargin=0pt,
+	xrightmargin=0pt,
+	upquote=true,
+	literate={\$}{{\textcolor{black}{\$}}}1
+}
+
+% Definizione del comando \unix{...}
+\newcommand{\unix}[1]{%
+	\lstinline[style=unixstyle]!#1!%
+}
 
 
 

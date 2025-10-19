@@ -112,9 +112,9 @@
 	Preso l'insieme:
 	 
 	\[
-	X_i := \{m \in \mathbb{Z} \mid i | m\}
+	X_i := \{m \in \mathbb{Z} \tc i | m\}
 	\]
-	L'unione degli insiemi $X_i$ è l'insieme $X \mid x\in X \iff \exists i \in I \mid x \in X_i$
+	L'unione degli insiemi $X_i$ è l'insieme $X \tc x\in X \iff \exists i \in I \tc x \in X_i$
 	
 	\[
 	X = \bigcup_{i \in I} X_i
@@ -130,9 +130,9 @@
 	Preso l'insieme:
 	
 	\[
-	X_i := \{m \in \mathbb{Z} \mid i | m\}
+	X_i := \{m \in \mathbb{Z} \tc i | m\}
 	\]
-	L'intersezione degli insiemi $X_i$ è l'insieme $X \mid x\in X \iff \forall i \in I \exists x \in X_i$
+	L'intersezione degli insiemi $X_i$ è l'insieme $X \tc x\in X \iff \forall i \in I, \exists x \in X_i$
 	
 	\[
 	X = \bigcap_{i \in I} X_i
@@ -147,14 +147,14 @@
 	\subsubsection{Prodotto cartesiano}
 	Il prodotto cartesiano di due insiemi $X, Y$, è definito come l'insieme i cui elementi sono le coppie ordinate $(x,y)$, con $x\in X, y\in Y$.
 	\[
-	X = Y = \mathbb{R} \rightarrow \mathbb{R} \times \mathbb{R} := \{(x, y) \mid x,y\in \mathbb{R}\}
+	X = Y = \mathbb{R} \rightarrow \mathbb{R} \times \mathbb{R} := \{(x, y) \tc x,y\in \mathbb{R}\}
 	\]
 	\[
 	\mathbb{R} \times \mathbb{R} \rightarrow \mathbb{R}^2
 	\]
 	Se si hanno più insiemi:
 	\[
-	X_1 \times X_2 \times X_3 \times ... \times X_n := \{(x_1, x_2, x_3, ... ,x_n) \mid x_n \in X_n¨\}
+	X_1 \times X_2 \times X_3 \times ... \times X_n := \{(x_1, x_2, x_3, ... ,x_n) \tc x_n \in X_n¨\}
 	\]
 	
 	\section{Applicazione tra insiemi}
@@ -163,7 +163,7 @@
 	\[
 	X \xlongrightarrow{f} Y
 	\]
-	ovvero, l'applicazione manda l'insieme $X$ nell'insieme $Y$.  
+	ovvero, l'applicazione manda dall'insieme $X$ all'insieme $Y$.  
 	Se si considerano i singoli elementi degli insiemi, si scrive:
 	\[
 	x \mapsto f(x)
@@ -206,7 +206,7 @@
 	
 	$f \circ g$, si legge f composto g, ed è definito come:
 	\[
-	f \circ g := f(g(x)) \forall x\in X
+	f \circ g := f(g(x)), \forall x\in X
 	\]
 	
 	Es: avendo tre insiemi $\mathbb{Z}$, e due applicazioni $f$ e $g$, allora:
@@ -306,12 +306,12 @@
 	\] 
 	
 	\begin{center}
-		$f$ è suriettiva $\iff \forall y \in Y \; \exists x\in X \mid f(x) = y$.
+		$f$ è suriettiva $\iff \forall y \in Y, \exists x\in X \tc f(x) = y$.
 	\end{center}
 	
 	L'immagine di $f$, ovvero, Im $f$ è definito come: 
 	\[
-	\text{Im} f:= \{y \in Y \mid \exists x\in X \mid f(x) = y\}
+	\text{Im} f:= \{y \in Y \tc \exists x\in X \tc f(x) = y\}
 	\]
 	OSS: f è suriettiva $\iff$ Im$f = Y$
 	\subsection{Biettività}
@@ -320,12 +320,8 @@
 	X \xlongrightarrow{f} Y
 	\] 
 	
-	\[
-	f \text{ è biunivoca} \iff \forall y \in Y \; \exists! x \in X \text{ tale che } f(x) = y 
-	\]
-	\[
-	\text{(con } \exists! \text{ si intende esiste ed è unico})
-	\]
+	\[f \text{ è biunivoca} \iff \forall y \in Y, \exists! x \in X \tc f(x) = y \]
+	\[\text{(con } \exists! \text{ si intende esiste ed è unico})\]
 	
 	
 	\subsection{Applicazione inversa}
@@ -338,7 +334,7 @@
 	\[
 	\begin{array}{c c c}
 		Y & \xlongrightarrow{f^{-1}} & X \\
-		y & \longmapsto & x \in X \mid \exists ! x \mid f^{-1}(x) = y
+		y & \longmapsto & x \in X \tc \exists ! x \tc f^{-1}(x) = y
 	\end{array}
 	\]
 	
@@ -374,29 +370,23 @@
 	X \xlongrightarrow{f} Y
  	\]
  	
-	se $y \in Y \rightarrow f^{-1}(y) := \{x \in X | f(x) = y\}$, in questo caso ha senso anche se non si tratta di applicazioni biunivoche in quanto restituisce un insieme e non un singolo elemento, quindi nel caso esistano più $x | f(x) = y$ si otterrà come risultato l'insieme numerico che contiene tutte le $x$
+	se $y \in Y \rightarrow f^{-1}(y) := \{x \in X \tc f(x) = y\}$, in questo caso ha senso anche se non si tratta di applicazioni biunivoche in quanto restituisce un insieme e non un singolo elemento, quindi nel caso esistano più $x \tc f(x) = y$ si otterrà come risultato l'insieme numerico che contiene tutte le $x$
 	
 	\section{Relazioni}
-	Preso $X$ un insieme, una relazione su X è un sottoinsieme $\rel \subset X^2 = X \times X$ 
-	
+	Preso $X$ un insieme, una relazione $\rel$ su X, è un sottoinsieme definito come: \[\rel \subset X^2 = X \times X\]
 	Per $x \rel y$ si intende che $(x, y)\in \rel$
 	
 	Es 1: 
-	\[
-	X = \{\text{cittadini italiani}\}
-	\]
-	\[
-	\rel = \{(x, y) \mid \text{x e y sono coetanei}\}
-	\]
-	\[
-	x\rel y \rightarrow \text{x e y sono coetanei}
-	\]
+	\[X = \{\text{cittadini italiani}\}\]
+	\[\rel = \{(x, y) \tc \text{x e y sono coetanei}\}\]
+	\[x\rel y \rightarrow (x,y) \in \rel \rightarrow \text{x e y sono coetanei}\]
 	Es 2:
 	
 	$X = \mathbb{Z} \text{, scelto } n \in \mathbb{Z}$
 	\[
-	\rel_n = \{(x, y) \mid n|(x - y), x,y \in X\} = x \equiv y \Mod{n}, \text{questa è la relazione di congruenza modulo n}
+	\rel_n = \{(x, y) \tc n|(x - y), x,y \in X\} = x \equiv y \Mod{n}
 	\]
+	questa è la \textbf{relazione di congruenza modulo n}
 	
 	\subsection{Relazioni di equivalenza}
 	Per relazione di equivalenza si intende una relazione $\rel$ su $X$, con $X$ un insieme qualsiasi, in cui valgono 3 proprietà:
@@ -428,10 +418,8 @@
 	
 	\subsubsection{Classe di equivalenza}
 	Sia $x \in X$, allora la classe di equivalenza di x è:
-	\[
-	[x] := \{y \in X \mid x \rel y\}
-	\]
-	fissato x, $[x]$ è l'insieme composta dagli elementi $y$ $t.c.$ $x \rel y$
+	\[[x] := \{y \in X \tc x \rel y\}\]
+	fissato x, $[x]$ è l'insieme composto dagli elementi $y \tc x\rel y$
 	
 	\subsubsection{Quoziente di X modulo R o insieme quoziente}
 	Definiti $X$ un insieme e $\rel$ una relazione, il quoziente di X modulo $\rel$ è l'insieme i cui elementi sono le classi R-equivalenza, ovvero le classi di equivalenza rispetto alla relazione $\rel$ su $X$, quindi l'insieme quoziente è l'insieme composto dalle classi di equivalenza in $X$ generate da $\rel$ ed è rappresentato da: $X/R$
@@ -440,12 +428,12 @@
 	X/R := \{[x] \tc x \in X\}
 	\]
 	
-	In riferimento all'esempio 1:
+	In riferimento all'esempio 2:
 	\[
-	C/R := \{[0], [1], [2], ... , \text{ [età massima] }\} %% check notazione
-	\], e ogni elemento ad esempio [19], ha la proprio classe di equivalenza:
+	X/R_n := \{[0], [1], [2], ... , [n-1]\} %% check notazione
+	\]e ogni elemento ad esempio [1], ha la proprio classe di equivalenza:
 	\[
-	[19] = \{x \in C \mid eta(x) = 19\}
+	[1] = \{y \in X \tc 1\rel y, 1 \equiv y \Mod{n}\}
 	\]
 	
 	\subsection{Insieme delle parti}
@@ -458,17 +446,16 @@
 	
 	Esempio:
 	\[S = \{1,2,3\}\]
-	allora, l'insieme delle parti di S è:
-	\[\{1,2,3\}\]
-	\[\{\{1,2\}, \{3\}\}\]
-	\[\{1,\{2,3\}\}\]
-	\[\{\{1,3\},\{2\}\}\]
-	\[\{\{1\},\{2\},\{3\}\}\]
 	
-	Partendo da una relazione di equivalenza su S, con $x \in S$:
-	\[[x] := \{y \in S \tc x \rel y\}\]
+	allora, l'insieme delle parti di S è:
+	\[P(S) := \{\{1,2,3\},\{\{1,2\}, \{3\}\},\{1,\{2,3\}\}, \{\{1,3\},\{2\}\},\{\{1\},\{2\},\{3\}\}\}\]
+	Partendo da una relazione di equivalenza $\rel$ su X, $S := X/\rel$, con $x \in X$:
+	\[[x] := \{y \in X \tc x \rel y\}\]
+	
 	allora, una partizione di S è definita come:
-	\[\{[x] \tc x \in S\}\]
+	\[P(S) := \{[x] \tc x \in X\}\]
+	
+	quindi una partizione di S, l'insieme quoziente $X/\rel$è l'insieme che contiene tutte le classi di equivalenza disgiunte. \newline
 	Dimostrazione:
 	\begin{enumerate}
 		\item $[x] \not = \emptyset, \forall x \in \mathbb{R}, x \rel x \Rightarrow [x]$
@@ -478,8 +465,8 @@
 		allora $x \rel z \wedge y \rel z \iff x \rel y \Rightarrow [x] = [y]$
 		\item $\displaystyle \bigcup_{x \in S} [x] = S \rightarrow \forall x \in S \Rightarrow x \in [x] \Rightarrow x \in \bigcup_{y \in S} [y]$
 	\end{enumerate}
-	
-	Per ogni $\rel$ si può ottenere una partizione, e per ogni partizione si può ottenere la relazione inziale.
+	Per ogni $\rel \longrightarrow P_{\rel_{\{[x]\}}}$ \newline %% TO ASK
+	Per ogni partizione $P \longrightarrow \rel_P$
 	\[P, Sp \subset S, x \rel y \iff x,y \in S \text{ per lo stesso p}\]
 	
 	\subsubsection{Lemma corrispondenza biunivoca tra relazione e partizione}
@@ -638,12 +625,17 @@
 	$\mathbb{Z}/n\mathbb{Z}$ è un campo $\iff$ n è primo.
 	Dimostrazione per assurdo:
 	\[n = m*l, 0 < m < n \wedge 0<l<n\]
-	\[m*l = 0 \mod{n}\]
-	se $\exists 1/m \rightarrow 1/m * m *l = 0 \Rightarrow l = 0$, però si ha una contraddizione in quanto  l è maggiore di 0, quindi n deve essere primo.
+	\[m*l = 0 \Mod{n}\]
+	se $\exists \frac{1}{m} \rightarrow \frac{1}{m} * m *l = 0 \Rightarrow l = 0$, però si ha una contraddizione in quanto  l è maggiore di 0, quindi n deve essere primo.
 	
 	\subsubsection{Lemma di Bezout}
-	se si hanno due numeri $a,b$ con $MCD(a,b) = d$, allora $\exists x,y \in \mathbb{Z} \tc ax + by = d$, quindi applicando il teorema di Bezout ad a e p, in modo che $MCD(a, p) = 1$, allora:
-	\[\exists x,y \tc ax + py = 1 \rightarrow \mathbb{Z}/p\mathbb{Z}, ax = 1 \mod p \rightarrow x = \frac{1}{a}\]
+	\teorem{
+		Se si hanno due numeri \( a, b \) con \( \mathrm{MCD}(a,b) = d \), allora \( \exists x, y \in \mathbb{Z} \tc ax + by = d \).
+	}
+	
+	Quindi applicando il teorema di Bezout ad a e p, in modo che $MCD(a, p) = 1$, allora:
+	\[\exists x,y \in \mathbb{Z} \tc ax + py = 1 \longrightarrow \mathbb{Z}/p\mathbb{Z}, ax = 1 \Mod p \rightarrow x = \frac{1}{a}\]
+	Il termine $py$ scompare in quanto applicando il modulo p all'insieme, rendendolo un insieme quoziente, $py$, è uguale a 0.
 	\section{Numeri complessi}
 	Definite due operazioni in $\mathbb{R}^2$:
 	\begin{itemize}
@@ -697,7 +689,6 @@
 	
 	Allora abbiamo che un prodotto tra numeri complessi è in questa forma:
 	\[(a + bi) * (c + di) = a * c - bi * c + a * di + b * d * i^2 = (a*c - b*d + (a*d + b*c)i)\]
-	
 	Il prodotto in C, tra coppie, deriva:
 	\[z = a + bi = (a, b) \wedge w = c + di = (c, d)\] 
 	\[z * w = (a, b) * (c, d) = (a + bi) * (c + di)\]
@@ -779,12 +770,12 @@
 			\draw[->, darkgray] (0, 0) -- (2.5, 1.5) node[above] {$w + z$};
 		\end{tikzpicture}
 	\end{center}
-	la somma tra due numeri $w,z \in \mathbb{C}$ equivale alla somma tra vettori. 
-	
+	la somma tra due numeri $w,z \in \mathbb{C}$ equivale alla somma tra vettori, quindi esegui una normale somma tra le componenti:
+	\[z = a+bi = (a,b), w = c+di = (c,d) \Rightarrow z + w = (a,b)+(c,d) = (a+c, b+d)\]
 	Per il prodotto tra $z_1, z_2 \in \mathbb{C}$ bisogna definire il modulo di numero complesso:
 	\[|z| = \rho := \sqrt{a^2 + b^2}\]
-	e l'argomento di z:
-	\[Arg(z) = \theta, \text{ determinato a meno di sommare un multiplo intero di 2$\pi$}, z\not = 0\]
+	e l'argomento di un numero complesso:
+	\[Arg(z) = \theta, \text{ determinato a meno di un multiplo intero di 2$\pi$}, z\not = 0\]
 	
 	\begin{center}
 		\begin{tikzpicture}[->, thick]
@@ -919,7 +910,7 @@
 	\section{Spazi vettoriali}
 	$\mathbb{K}$ è un campo, $\mathbb{K}^n = \mathbb{K} \times \dots \times \mathbb{K} = \{(x_1, \dots , x_n) \tc x_i \in \mathbb{K}\}$, usato una notazione impropria possiamo definire la n-tupla $(x_1, \dots , x_n)$, come $X$
 	
-	Definiamo l'operazione di somma tra n-uple:
+	Definiamo l'operazione di somma tra n-tuple:
 	\[
 	\begin{array}{c c c}
 		\mathbb{K}^n \times \mathbb{K}^n & \xlongrightarrow{somma} & \mathbb{K}^n \\
@@ -933,7 +924,7 @@
 		(\lambda, X) & \longmapsto & (\lambda x_1, \dots, \lambda x_n) \\
 	\end{array}
 	\]	
-	
+
 	$\mathbb{K}^n$ con le proprietà definite è il prototipo di uno spazio vettoriale su $\mathbb{K}$.
 	
 	Uno spazio vettoriale su $\mathbb{K}$ è definito come un insieme $\mathbb{V}$, provvisto di una operazione somma:
@@ -965,8 +956,7 @@
 	Osservazione, l'elemento neutro di $\mathbb{K}$ è diverso dall'elemento neutro di $\mathbb{V}$:
 	\[0 \in \mathbb{K} \not = \underline{0} \in \mathbb{V}\]
 	\[0 \not = (0, \dots, 0)\]
-	
-	Proposizione: $\mathbb{V}$ spazio vettoriale:
+	Proposizione: $\mathbb{V}$ sp. vett/$\mathbb{K}$:
 	\begin{enumerate}
 		\item Esiste un unico elemento neutro di $\mathbb{V}$, dimostrazione:
 		\[\underline{0}_1 + v = v \quad \wedge \quad \underline{0}_2 + v = v, \forall v \in \mathbb{V}\]
@@ -976,14 +966,14 @@
 	\end{enumerate}
 	
 	\subsection{Vettori nel piano euclideo}
-	Sia $\mathbb{E}^2$, un piano euclideo, allora un vettore nel piano è una classe di equivalenza di segmenti ordinato nel piano.
-	Se $A \not = B \in \mathbb{E}^2, \overline{AB}$ è l'unica retta passante in $\mathbb{E}^2$ contenente A e B.
+	Sia $\mathbb{E}^2$, il piano euclideo, allora un vettore nel piano è una classe di equivalenza di segmenti orientati nel piano, indipendenti dalla loro posizione.
+	Presi $A, (x_a, y_a) \not = B, (x_b, y_b) \in \mathbb{E}^2, \overline{AB}$ è l'unica retta in $\mathbb{E}^2$ contenente contemporaneamente A e B.
 	
 	\begin{center}
 		\begin{tikzpicture}
 		% Coordinate dei punti A e B
 		\coordinate (A) at (1,1);
-		\coordinate (B) at (4,3);
+		\coordinate (B) at (4,2);
 		
 		% Vettore direzione = (B - A)
 		\coordinate (v) at ($(B)-(A)$);
@@ -1011,7 +1001,7 @@
 			R_1 & = R_2
 		\end{aligned}\right.$
 		
-		\item $A,B,C,D$ in $\mathbb{E}^2$ $\overline{AB} \parallel \overline{CD}$, significa che:
+		\item Presi i punti: $A,B,C,D \in \mathbb{E}^2, \overline{AB} \parallel \overline{CD}$, significa che:
 		\[
 		\left\{\begin{aligned}
 			A &\not = B, C \not = D, \text{ quindi le retta $\overline{AB}$ e $\overline{CD}$ sono parallele}\\
@@ -1019,13 +1009,14 @@
 		\end{aligned}\right.
 		\]
 	\end{itemize}
-	Un segmento orientato in $\mathbb{E}^2$ è una coppia ordinata $(A, B) = \mathbb{E}^2 \times \mathbb{E}^2$, con $A, B \in \mathbb{E}^2$, si definisce $AB = (A, B)$
+	Un segmento orientato in $\mathbb{E}^2$ è una coppia ordinata $(A, B) = ((x_a, y_a), (x_b, y_b)) = \mathbb{E}^2 \times \mathbb{E}^2$, con $A, B \in \mathbb{E}^2$ e si definisce per semplicità come $AB := (A, B)$
 	
 	Due segmenti orientati $AB, CD$ si dicono equipollenti se:
-	\[AB \parallel CB, \overline{AC} \parallel \overline{BD}\]
+	\[AB \parallel CB \text{ e } \overline{AC} \parallel \overline{BD}\]
 	
 	\begin{center}
-		\begin{tikzpicture}[scale=1]
+		\begin{comment}
+			\begin{tikzpicture}[scale=0.75]
 		
 		% Coordinate dei punti
 		\coordinate (A) at (0,0);
@@ -1047,8 +1038,8 @@
 		\filldraw (C) circle (2pt) node[above left] {\(C\)};
 		
 	\end{tikzpicture}
-	
-	\begin{tikzpicture}[scale=1]
+		\end{comment}
+	\begin{tikzpicture}[scale=0.75]
 		
 		% Coordinate dei punti
 		\coordinate (A) at (0,0);
@@ -1062,21 +1053,21 @@
 		% Retta per C parallela ad AB
 		\path[name path=parallelAB] 
 		($(C) - 1.5*(vAB)$) -- ($(C) + 1.5*(vAB)$);
-		\draw[blue, thick, dashed] 
-		($(C) - 1.5*(vAB)$) -- ($(C) + 1.5*(vAB)$)
-		node[above right] {retta // \(AB\)};
+		%\draw[blue, thick, dashed] 
+		%($(C) - 1.1*(vAB)$) -- ($(C) + 1.5*(vAB)$)
+		%node[below right] {retta // \(AB\)};
 		
 		% Retta per B parallela ad AC
 		\path[name path=parallelAC]
 		($(B) - 1.5*(vAC)$) -- ($(B) + 1.5*(vAC)$);
 		\draw[red, thick, dashed]
 		($(B) - 1.5*(vAC)$) -- ($(B) + 1.5*(vAC)$)
-		node[above right] {retta // \(AC\)};
+		node[above right] {\(\overline{BD}\) // \(\overline{AC}\)};
 		
 		% Retta AC vera e propria
 		\draw[thick, dashed, gray]
-		($(A) - 1.2*(vAC)$) -- ($(C) + 1.2*(vAC)$)
-		node[below left] {retta \(AC\)};
+		($(A) - 1*(vAC)$) -- ($(C) + 1.2*(vAC)$)
+		node[below left] {\(\overline{AC}\)};
 		
 		% Intersezione delle due rette → punto D
 		\path [name intersections={of=parallelAB and parallelAC, by=D}];
@@ -1106,9 +1097,9 @@
 	\[V(\mathbb{E}^2) := (\mathbb{E}^2 \times \mathbb{E}^2)/\sim\]
 	\[\vec{AB} := [AB]\]
 	
-	 quindi vuol dire il prodotto cartesiano tra i segmenti ordinati equipollenti, rappresentati dalle coppie ordinate.
+	quindi $V(\mathbb{E}^2)$ è l'insieme quoziente, definito dalla equipollenza, una relazione di equivalenza, perciò i suoi elementi sono tutte le classi di equivalenza contenenti tutti i possibili vettori con la stessa direzione e lunghezza, perciò l'insieme $V(\mathbb{E}^2)$ contiene tutti i possibili vettori nel piano euclideo, ed ogni classe di equivalenza si rappresenta come un rappresentate scelto con una freccia sopra, per definire la direzione.
 	
-	Definisco la somma:
+	Definisco la somma in $V(\mathbb{E}^2)$:
 	\[
 	\begin{array}{c c c}
 		\mathbb{V}(\mathbb{E}^2) \times \mathbb{V}(\mathbb{E}^2) & \xlongrightarrow{somma} & \mathbb{V}(\mathbb{E}^2) \\
@@ -1179,7 +1170,7 @@
 			% Retta parallela (passante per A, lungo v)
 			\draw[blue, thick, dashed] 
 			($(A) - 1.2*(v)$) -- ($(A) + 1.9*(v)$) 
-			node[right] {retta // \(AB\)};
+			node[right] {\(\overline{AB}\)};
 			
 			% Segmento AB
 			\draw[thick, ->] (A) -- (B) node[midway, below right] {\(AB\)};
@@ -1200,23 +1191,23 @@
 	
 	Con queste operazioni $V(\mathbb{E}^2)$ è uno spazio vettoriale/$\mathbb{R}$
 	
-	\section{V sp.vett/$\mathbb{K}$}
-	Un sottoinsieme $\mathbb{W} \subset \mathbb{V}$ è un sottospazio se non è vuote e se:
+	\subsection{Sottospazi vettoriali}
+	Preso $\mathbb{V}$ un sp.vett./$\mathbb{K}$, allora $\mathbb{W} \subset \mathbb{V}$ è un sottospazio vettoriale se:
 	\begin{itemize}
+		\item non è vuoto, quindi:
+		\[\mathbb{W} \not = \emptyset\]
 		\item a) è chiuso per la somma:
 		\[v_1, v_2 \in \mathbb{W} \Rightarrow v_1 + v_2 \in \mathbb{W}\]
-		\item a) è chiuso per il prodotto per scalare:
+		\item b) è chiuso per il prodotto per scalare:
 		\[w \in \mathbb{W}, \lambda \in \mathbb{K} \Rightarrow \lambda w \in \mathbb{W}\]
 	\end{itemize}
-	
 	Osservazione: Sia $\mathbb{W} \subset \mathbb{V}$ è un sottospazio:
 	\begin{itemize}
 		\item $\underline{0} \in \mathbb{W}$
-		\item $w \in \mathbb{W} \Rightarrow (-1)w \in \mathbb{W}$, per la proposizione b
-		\item $w \in \mathbb{W}, (-1)w \in \mathbb{W} \Rightarrow 1w + (-1)w = w(1 - 1) = 0w = \underline{0}$, per la proposizione a
+		\item $w \in \mathbb{W} \xRightarrow {b} (-1)w \in \mathbb{W}$
+		\item $w \in \mathbb{W}, (-1)w \in \mathbb{W} \Rightarrow 1w + (-1)w = w(1 - 1) = 0w \xlongrightarrow{a} \underline{0} \in \mathbb{W}$
 	\end{itemize}
-	
-	Sia $\mathbb{W} \subset \mathbb{K}^n$, un sottospazio, dato da:
+	Sia $\mathbb{W} \subset \mathbb{K}^n$, un sottoinsieme, dato da:
 	\[\mathbb{W} := \{X \in \mathbb{K}^n \tc x_1 + \dots + x_n = 0\}\]
 	allora:
 	\begin{itemize}
@@ -1224,10 +1215,720 @@
 		\item $\mathbb{W}$ è chiuso per la somma
 		\item $\mathbb{W}$ è chiuso per il prodotto per uno scalare
 	\end{itemize}
-	
-	Sia $\mathbb{U} \subset \mathbb{K}^n$, un sottospazio, dato da:
+	allora $\mathbb{W}$ è un sottospazio. \newline	
+	Sia $\mathbb{U} \subset \mathbb{K}^n$, un sottoinsieme, dato da:
 	\[\mathbb{U} := \{X \in \mathbb{K}^n \tc x_1 + \dots + x_n = 1\}\]
-	allora non è un sottospazio di $\mathbb{K}$, perchè $\underline{0} \not \in \mathbb{V}$
+	allora non è un sottospazio di $\mathbb{K}$, perchè $\underline{0} \not \in \mathbb{U}$
 	
+	\subsection{Polinomi su $\mathbb{K}$}
+	Un polinomio su $\mathbb{K}$ nella variabile x è espresso come:
+	\[a_0x^d + a_1 x^{d -1} + \dots + a_{d -1} x + a_d, a_i \in \mathbb{K}\]
+	\[\mathbb{K}[x] := \{\text{polinomi in x a coefficienti in } \mathbb{K}\}\]
+	La somma tra polinomi in $\mathbb{K}$ si ottiene sommando i coefficienti:
+	\[(x^3 + x +1) + (x^2 - 4x + 3) = x^3 + x^2 -3x + 4\]
+	Il prodotto, moltiplicando i coefficienti e sommando i gradi delle x:
+	\[(x^3 + x +1)(x^2 - 4x + 3) = x^5 -4x^4 + 4x^3 -3x^2 -x + 3\]
+	$\mathbb{K}[x]$ con le operazioni definite è un anello, in cui l'elemento neutro è il polinomio 0, e l'unità moltiplicativa è il polinomio 1.
+	
+	Sia $p \in \mathbb{K}[x]$ un polinomio a coefficienti in $\mathbb{K}[x]$, del tipo $a_0x^d + a_1 x^{d -1} + \dots + a_{d -1} x + a_d, a_i \in \mathbb{K}$, definiamo una applicazione:
+	\[
+	\begin{array}{c c c}
+		\mathbb{K} & \xlongrightarrow{F_p (\text{ funzione polinomiale})} & \mathbb{K} \\
+		c & \longmapsto & p(c) \\
+	\end{array}
+	\]
+	\[p(c) = a_0c^d + a_1 c^{d -1} + \dots + a_{d -1} c + a_d, a_i \in \mathbb{K}\]
+	Dove $F_p := \mathbb{Z}/p$, è un campo. \newline
+	Se $||\mathbb{K}|| = +\infty$ e si hanno due polinomi $p, q \in \mathbb{K}$, allora:
+	\[F_p = F_q \Longrightarrow p = q\]
+	Se $||\mathbb{K}|| < +\infty$ allora non è vero. \newline
+	
+	Esempio: consideriamo $F_2[x]$
+	\[F_2[x] := \{[0], [1]\}\]
+	\[\phi = (x^2 + x) \in F_2[x]\]
+	\[
+	\begin{array}{c | c}
+		F_2 & F_2 \\
+		\hline
+		\\
+		0 & \phi(0) = 0 \\
+		\\
+		1 & \phi(0) = 0
+	\end{array}
+	\]
+	
+	\subsubsection{Anello polinomiale}
+	Considerato l'anello polinomiale di un certo campo, $\mathbb{K}[x]$, con la somma tra polinomi:
+	\[
+	\begin{array}{c c c}
+		\mathbb{K}[x] \times \mathbb{K}[x] & \xlongrightarrow{\text{somma}} & \mathbb{K}[x] \\
+		(p, q)& \longmapsto & p + q \\
+	\end{array}
+	\]
+	e prodotto per costante:
+	\[
+	\begin{array}{c c c}
+		\mathbb{K} \times \mathbb{K}[x] & \xlongrightarrow{\text{prodotto}} & \mathbb{K}[x] \\
+		(\lambda, q)& \longmapsto & \lambda p  \\
+	\end{array}
+	\]
+	con queste operazioni $\mathbb{K}[x]$ è uno sp. vett./$\mathbb{K}$, allora:
+	\[\mathbb{K}[x]_{ \leq d \geq 0} := \{a_0x^d + a_1x^{d - 1} + \dots + a_d \tc a_i \in \mathbb{K}\} \subset \mathbb{K}[x]\]  
+	è un sotto spazio vettoriale di $\mathbb{K}[x]$ in cui la somma tra due polinomi di grado al più d, da come risultato un polinomio di grado al più d, invece il prodotto tra una costante ed un polinomio mantiene il grado massimo.
+	
+	Osservazione:
+	
+	Sia $\{\mathbb{W}_i\}_{i \in I}$ una collezione di sottospazi di $\mathbb{V}$, allora :
+	\[\bigcap_{i \in I} \mathbb{W}_i\]
+	è un sottospazio vettoriale di $\mathbb{V}$ \newline
+	Dimostrazione:
+	\begin{itemize}
+		\item dato che $\underline{0} \in \mathbb{W}_i, \forall i \in I \Rightarrow 0 \in \bigcap_{i \in I} \mathbb{W}_i$
+		\item se $w_1, w_2 \in \bigcap_{i \in I} \mathbb{W}_i \rightarrow w_1, w_2 \in \mathbb{W}_i, \forall i \in I$ quindi $(w_1 + w_2) \in \mathbb{W}_i, \forall i \in I \Rightarrow (w_1 + w_2) \in \bigcap_{i \in I} \mathbb{W}_i$
+	\end{itemize}
+	Esempio: Abbiamo visto che se $a_1, a_2, \dots, a_n \in \mathbb{K}$, allora:
+	\[\{X \in \mathbb{K}^n \tc (a_1x_1 + a_2x_2 + ... a_nx_n) = 0\}\]
+	
+	per la proposizione iniziale, l'insieme delle soluzioni $(x_1, x_2, \dots, x_n)$ del sistema di equazioni lineari omogenee:	
+	\[
+	\left\{
+	\begin{array}{l}
+		a_{11}x_1 + a_{12}x_2 + \dots + a_{1n}x_n = 0 \\
+		a_{21}x_1 + a_{22}x_2 + \dots + a_{2n}x_n = 0 \\
+		\vdots \\
+		a_{m1}x_1 + a_{m2}x_2 + \dots + a_{mn}x_n = 0 \\
+	\end{array}
+	\right.
+	\]
+	è un sottospazio vettoriale di $\mathbb{K}^n$, ed equivale all'intersezione tra le soluzioni delle singole equazioni.
+	
+	\section{Combinazioni lineari}
+	Presi $v_1, v_2, \dots, v_n \in \mathbb{V}$, allora $v \in \mathbb{V}$ è una combinazione lineare di $v_1, \dots, v_n$, se esistono $\lambda_1, \dots, \lambda_n$, tali per cui:
+	\[v = \lambda_1 v_1 + \dots + \lambda_n v_n\]
+	Esempio 1: presi
+	\[\underline{e}_1 := (1, 0, 0, \dots, 0) \in \mathbb{K}^n\]
+	\[\underline{e}_2 := (0, 1, 0, \dots, 0) \in \mathbb{K}^n\]
+	\[\vdots\]
+	\[\underline{e}_n := (0, 0, 0, \dots, n) \in \mathbb{K}^n\]
+	allora ogni vettore $X \in \mathbb{K}^n$ è una combinazione lineare di $\underline{e}_1, \underline{e}_2, \dots, \underline{e}_n$, quindi:
+	\[X = \lambda_1 \underline{e}_1 + \dots + \lambda_n \underline{e}_n = (x_1, \dots, x_n)\]
+	rendendo ogni $x_i = \lambda_i$:
+	\[X = x_1 \underline{e}_1 + \dots + x_n \underline{e}_n\]
+	Esempio 2: Quali vettori in $\mathbb{K}^3$ sono combinazioni lineari di $\underline{e}_1, \underline{e}_2$?
+	\[(x_1,x_2,x_3) = \lambda_1 \underline{e}_1 + \lambda_2 \underline{e}_2 = (\lambda_1, \lambda_2, 0) \Rightarrow x_1 = \lambda_1, x_2 = \lambda_2, x_3 = 0\] 
+	Esempio generale, quali vettori in $\mathbb{K}^3$ sono combinazioni lineari di:
+	\[v := (a_1, a_2, a_3), W := (b_1, b_2, b_3)\]
+	
+	$(c_1, c_2, c_3) = C \in \mathbb{K}^3$ è combinazione lineare di $V$ e $W \iff $ esiste una soluzione $(\lambda_1, \lambda_2)$ del sistema di equazioni lineari:
+	\[
+	\left\{
+	\begin{array}{l}
+		a_1\lambda_1 + b_1\lambda_2 = c_1 \\
+		a_2\lambda_1 + b_2\lambda_2 = c_2 \\
+		a_3\lambda_1 + b_3\lambda_2 = c_3 \\
+	\end{array}
+	\right.
+	\]
+	dove $\lambda_n$ sono le incognite. Posso quindi scrivere che $C = \lambda_1 v + \lambda_2 w$
+	
+	\section{Sottospazi generati}
+	Preso $\mathbb{S} \subset \mathbb{V}$, allora il sottospazio di $\mathbb{V}$ generato da $\mathbb{S}$ è:
+	\[\brackets{\mathbb{S}} := \{\lambda_1 v_1 + \dots \lambda_n v_n \tc v_1, \dots, v_n \in \mathbb{S}, \lambda_1, \dots, \lambda_n \in \mathbb{K}\}\]
+	ovvero, il sottospazio generato da $\mathbb{S}$ è l'insieme di tutte le combinazioni lineari di vettori presi da $\mathbb{S}$, è il più piccolo sottospazio di $\mathbb{V}$ che contiene i vettori da $v_1$ a $v_n$, e se l'insieme $\mathbb{S}$ è vuoto, allora, $\brackets{\emptyset} = \{\underline{0}\}$ \newline
+	Dimostrazione che $\brackets{S}$ sia effettivamente un sottospazio:
+	\begin{itemize}
+		\item $\underline{0} \in \mathbb{S}$ perchè? 
+			\subitem Se $\mathbb{S} = \emptyset \Rightarrow \brackets{\mathbb{S}} = \{\underline{0}\}$
+			\subitem se invece $\mathbb{S} \not = \emptyset$, allora $v \in \mathbb{S} \rightarrow v \in \mathbb{S} \rightarrow 0v = \underline{0} \in \mathbb{S} \Rightarrow \underline{0} \in \brackets{\mathbb{S}}$
+		\item siano $v, w \in \brackets{\mathbb{S}}, v = \lambda_1 v_1 \dots + \lambda_n v_n, w = \mu_1 w_1 + \dots + \mu_n w_n$, con $v_1, \dots, v_n, w_1, \dots, w_n \in \mathbb{S}$
+		\item verificare prodotto rispetto a scalare
+	\end{itemize}
+	Notazione:
+	\begin{itemize}
+		\item $S := \{v_1, v_2, \dots, v_n\}$
+		\item $\brackets{v_1, \dots, v_n} = \brackets{\{v_1, \dots, v_n\}}$
+	\end{itemize}
+	Definito $V = V(\mathbb{E}^2)$, allora:
+	
+	\begin{center}
+		\begin{tikzpicture}[scale=1.3, >=stealth]
+		
+		% Origine
+		\coordinate (O) at (0,0);
+		
+		% Direzioni di r e w
+		\coordinate (rdir) at (1.8,2.5);
+		\coordinate (wdir) at (2.6,1.0);
+		
+		% P e Q = multipli dei vettori r e w
+		\coordinate (P) at ($(O)!0.6!(rdir)$);
+		\coordinate (Q) at ($(O)!0.7!(wdir)$);
+		
+		% Punto finale U = P + Q (somma dei vettori)
+		\coordinate (U) at ($(P)+(Q)$);
+		
+		% Rette direzionali
+		\draw[thin, gray!50] ($(rdir)!-0.5!(O)$) -- ($(rdir)!1.2!(O)$) node[near end, left] {$v$};
+		\draw[thin, gray!50] ($(wdir)!-0.5!(O)$) -- ($(wdir)!1.2!(O)$) node[near end, right] {$w$};
+		
+		% Vettori OP e OQ
+		\draw[->, thick] (O) -- (P) node[midway, left] {$\lambda v$};
+		\draw[->, thick] (O) -- (Q) node[midway, below right] {$\mu w$};
+		
+		% Parallelogramma della somma
+		\draw[dashed] (P) -- (U);
+		\draw[dashed] (Q) -- (U);
+		
+		% Vettore risultante u = OP + OQ
+		\draw[->, very thick, blue] (O) -- (U) node[midway, above right] {$u$};
+		
+		% Punti
+		\fill (O) circle (1.4pt) node[below left] {$O$};
+		\fill (P) circle (1.4pt) node[left] {$P$};
+		\fill (Q) circle (1.4pt) node[below right] {$Q$};
+		\fill (U) circle (1.4pt) node[above right] {$U$};
+		
+		% Angolo tra r e w
+		\draw pic["$\theta$", draw=black, angle radius=10, angle eccentricity=1.4]
+		{angle = wdir--O--rdir};
+		
+		% Formula descrittiva
+		\node[align=left, anchor=west] at (4,2.3) {
+			$\vec{OP}=\lambda v,\quad \vec{OQ}=\mu w$\\[4pt]
+			$u = \vec{OP} + \vec{OQ} = \vec{OU}$
+		};
+		
+	\end{tikzpicture}
+	\end{center}
+	$\brackets{v} = \lambda_1 v$ si intendono tutti i vettori paralleli alla retta r, e con origine in 0 . \newline
+	$\brackets{v,w} = \lambda_1 v + \lambda_2 w = V(\mathbb{E})$, se i due vettori sono linearmente indipendenti, ovvero non paralleli, quindi ogni vettore nel piano euclideo può essere rappresentato come una combinazione lineare tra $v$ e $w$, se invece i due vettori fossero paralleli, il sottospazio generato sarebbe uguale al sottospazio generato da uno solo dei due vettori.
+	
+	Osservazione:
+	\[S \subset T \subset V \Rightarrow \brackets{S} \subset \brackets{T}\]
+	
+	\subsection{Sottospazio finitamente generato}
+	$V$ è finitamente generato se:
+	\[\exists v_1, \dots, v_n \tc \brackets{v_1, \dots, v_n} = V\]
+	quindi si dice che V è finitamente generato se esistono finiti vettori tali per cui il sottospazio generato dalle loro combinazioni lineari genera lo spazio vettoriale V.
+	
+	Ad esempio $\mathbb{K}^n$ è finitamente generato perchè può essere ottenuto attraverso le combinazioni lineari di $\underline{e}_1, \dots,\underline{e}_n$, quindi $\brackets{\underline{e}_1, \dots,\underline{e}_n} = \mathbb{K}^n$
+	
+	Invece $\mathbb{K}[x]$, ovvero l'anello polinomiale, non è finitamente generato, infatti se $p_1, \dots, p_n \in \mathbb{K}^n$, allora ogni $q \in \brackets{p_1, \dots, p_n}$ ha grado al più il massimo del $\deg p_1, \dots, \deg p_n$
+	
+	In quanto:
+	\[\brackets{p_1, \dots, p_n} = \lambda_1 p_1 + \lambda_2 p_2 +\dots + \lambda_n p_n\]
+	
+	sommando dei polinomi moltiplicati per una certa costante, non permette di aumentare il grado del polinomio.
+	
+	Se $V(\mathbb{E}^2)$ è finitamente generato, allora ogni sottospazio di $V(\mathbb{E}^2)$ è finitamente generato.
+	
+	Ad esempio: in sistema di m equazioni lineari omogenee in n incognite, l'insieme delle soluzioni è un sottospazio vettoriale di $\mathbb{K}^n$, allora $W$ è finitamente generato.
+	
+	\[
+	\left\{
+	\begin{array}{l}
+		a_{11}x_1 + a_{12}x_2 + \dots + a_{1n}x_n = 0 \\
+		a_{21}x_1 + a_{22}x_2 + \dots + a_{2n}x_n = 0 \\
+		\vdots \\
+		a_{m1}x_1 + a_{m2}x_2 + \dots + a_{mn}x_n = 0 \\
+	\end{array}
+	\right.
+	\]
+	
+	\section{Lista di vettori}
+	Per lista di vettori di $\mathbb{V}$ si intende un insieme ordinato di elementi univoci, e può essere descritta da una funzione:
+	\[f : \mathbb{I} \longrightarrow \mathbb{V}, \mathbb{I} = [n], n \in N\]
+	\[f : f(i) = \mathbb{V}_i\]
+	\[f : \{V_i\}_{i \in \mathbb{I}}\]
+	
+	\subsection{Lista di generatori}
+	Una lista di vettori, $v_1, \dots, v_n$, si dice generatrice se:
+	\[\forall v \in \mathbb{V}, \exists x_1, \dots, x_n \tc v = \sum_{i = 1}^{n} x_i v_i = x_1 v_1 + x_2 v_2 + \dots + x_n v_n\]
+	Quindi i vettori di una lista si dicono generatori se ogni vettore di $\mathbb{V}$ può essere ottenuto per combinazione lineare dei vettori appartenenti alla lista.
+	
+	Ad esempio, in $\mathbb{R}^2$:
+	\begin{itemize}
+		\item $
+			\begin{pmatrix}
+				1 \\
+				0
+			\end{pmatrix}, \begin{pmatrix}
+			0 \\
+			1
+			\end{pmatrix} 
+			\rightarrow
+			\begin{pmatrix}
+				a \\
+				b
+			\end{pmatrix} = 
+			a
+			\begin{pmatrix}
+			1 \\
+			0
+			\end{pmatrix} + 
+			b
+			\begin{pmatrix}
+			0 \\
+			1
+			\end{pmatrix} 
+			$
+			
+			quindi in questo caso ho solo un modo per scrivere un vettore $\begin{pmatrix}
+				a \\
+				b
+			\end{pmatrix}$, la lista quindi è generatrice e genera i vettori in modo univoco
+			\item $\begin{pmatrix}
+				1 \\
+				0
+			\end{pmatrix}, 
+			\begin{pmatrix}
+				1 \\
+				1
+			\end{pmatrix},
+			\begin{pmatrix}
+				-1 \\
+				1
+			\end{pmatrix} \rightarrow \begin{pmatrix}
+			a \\
+			b
+			\end{pmatrix} = 
+			(a - b) \begin{pmatrix}
+			1 \\
+			0
+			\end{pmatrix} + b \begin{pmatrix}
+			1 \\
+			1
+		\end{pmatrix} = 
+			(a + b) \begin{pmatrix}
+			1 \\
+			0
+		\end{pmatrix} + b \begin{pmatrix}
+			-1 \\
+			1
+		\end{pmatrix}$
+		
+		in questo caso la lista è sempre generatrice, ma ho più modi per scrivere lo stesso vettore, e ciò deriva dal fatto che non sono \textbf{linearmente indipendenti}, infatti:
+		\[\begin{pmatrix}
+			-1 \\
+			1
+		\end{pmatrix} = \begin{pmatrix}
+		1 \\
+		1
+		\end{pmatrix} -2
+		\begin{pmatrix}
+			1 \\
+			0
+		\end{pmatrix}\]
+	\end{itemize}
+	
+	Quindi una lista è generatrice se per ogni vettore $v$, esiste almeno una scelta di $x_1, \dots, x_n$, che soddisfa la relazione di dipendenza lineare di indice v. 
+	
+	\subsection{Lista di vettori linearmente indipendenti}
+	Una lista di vettori, $v_1, \dots, v_n$, si dice \textbf{linearmente indipendente} se l’unica soluzione dell’equazione di dipendenza lineare:
+	\[x_1 v_1 + \dots + x_n v_n = 0\]
+	è la soluzione banale, cioè quella in cui tutti i coefficienti sono nulli:
+	\[x_1 = x_2 = \dots = x_n = 0\]
+	In tal caso:
+	\[0v_1 + 0v_2 + \dots + 0v_n = 0\]
+	che rappresenta l’\textbf{equazione banale}.
+	
+	Se invece esiste una combinazione non banale (cioè con almeno un coefficiente $x_i \not = 0$) che dà lo zero vettoriale, allora la lista si dice linearmente dipendente.
+	
+	Ad esempio, in $\mathbb{R}^3$
+	\begin{itemize}
+		\item $\begin{pmatrix}
+			1 \\
+			0 \\
+			0
+		\end{pmatrix},
+		\begin{pmatrix}
+			0 \\
+			1 \\
+			0
+		\end{pmatrix},
+		\begin{pmatrix}
+			0 \\
+			0 \\
+			1
+		\end{pmatrix} \rightarrow \begin{pmatrix}
+			0 \\
+			0 \\
+			0
+		\end{pmatrix} = x_1 \begin{pmatrix}
+			1 \\
+			0 \\
+			0
+		\end{pmatrix} + x_2 
+		\begin{pmatrix}
+			0 \\
+			1 \\
+			0
+		\end{pmatrix} + x_3
+		\begin{pmatrix}
+			0 \\
+			0 \\
+			1
+		\end{pmatrix} \Rightarrow x_1 = x_2 = x_3 = 0$
+		
+		Sono quindi linearmente indipendenti, ed inoltre sono generatori, in quanto è possibile ottenere ogni vettore di $\mathbb{R}^3$ attraverso una combinazione lineare di questi 3 vettori.
+		
+		Questa lista di vettori è detta la forma canonica/standard di $\mathbb{R}^3$, in quanto è la lista più "semplice" a generare tutto l'insieme. 
+		
+		\item $\begin{pmatrix}
+			1 \\
+			0 \\
+			1
+		\end{pmatrix},
+		\begin{pmatrix}
+			1 \\
+			2 \\
+			1
+		\end{pmatrix},
+		\begin{pmatrix}
+			1 \\
+			1 \\
+			1
+		\end{pmatrix} \rightarrow 
+		\begin{pmatrix}
+			0 \\
+			0 \\
+			0
+		\end{pmatrix} = 
+		2\begin{pmatrix}
+			1 \\
+			1 \\
+			1 
+		\end{pmatrix} - 
+		\begin{pmatrix}
+			1 \\
+			0 \\
+			1
+		\end{pmatrix} - 
+		\begin{pmatrix}
+			1 \\
+			2 \\
+			1
+		\end{pmatrix} \Rightarrow x_1 = 2, x_2 = x_3 = -1$.
+		
+		Quindi questa lista di vettori non è linearmente indipendente, ed inoltre è possibile scrivere il secondo vettore come combinazione lineare degli altri due:
+		\[
+		\begin{pmatrix}
+		1 \\
+		2 \\
+		1
+		\end{pmatrix} = 2\begin{pmatrix}
+		1 \\
+		1 \\
+		1
+		\end{pmatrix} -
+		\begin{pmatrix}
+		1 \\
+		0 \\
+		1
+		\end{pmatrix}\]
+		In questo caso, i vettori $(1,1,1), (1,0,1)$, generano un piano, che contiene il vettore $(1,2,1)$.
+	\end{itemize}
+	
+	
+	Quindi una lista è linearmente indipendente se per ogni vettore $v$, esiste al massimo una scelta di $x_1, \dots, x_n$, che soddisfa la relazione di dipendenza lineare di indice v.
+	
+	Se una lista di vettori è linearmente indipendente, allora ogni sottolista è linearmente indipendente.
+	
+	\subsection{Lista di vettori base}
+	Una lista di vettori, $v_1, \dots, v_n$, è una base se la lista è allora stesso tempo:	
+	\begin{enumerate}
+		\renewcommand{\labelenumi}{\textit{(\roman{enumi})}}
+		\item composta da vettori generatori.
+		\item linearmente indipendente.
+	\end{enumerate}
+	Esempio:
+	\begin{itemize}
+		\item $\begin{pmatrix}
+			1 \\ 0 \\ 1
+		\end{pmatrix}, \begin{pmatrix}
+		1 \\ 1 \\ 1
+		\end{pmatrix}$
+		
+		Controllo che siano linearmente indipendenti:
+		\[\begin{pmatrix} 0 \\ 0\\ 0\end{pmatrix} = 
+		x_1\begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix} + 
+		x_2\begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} =
+		\begin{pmatrix} x_1 + x_2 \\ x_2 \\ x_1 + x_2 \end{pmatrix} \Rightarrow x_2 = 0, x_1 + x_2 = 0 \Rightarrow x_1 = x_2 = 0
+		\]
+		L'unico modo in cui si può ottenere il vettore 0 è se $x_1 = x_2 = 0$, quindi la soluzione all'equazione di dipendenza lineare è l'equazione banale, quindi sono linearmente indipendenti.
+		
+		Controllo che sia una lista generatrice:
+		\[\begin{pmatrix} 1 \\ 0 \\ 0\end{pmatrix} = x_1 \begin{pmatrix} 1\\ 0 \\1 \end{pmatrix} + x_2 \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} = \begin{pmatrix} x_1 + x_2 \\ x_2 \\ x_1 + x_2 \end{pmatrix}\]
+		Da cui deriva:
+		\[\left\{
+		\begin{aligned}
+			x_1 & + x_2 = 1 \\
+			x_2 & = 0 \\
+			x_1 & + x_2 = 0
+		\end{aligned}
+		\right.\]
+		Il sistema è inconsistente in quanto $x_1 + x_2$ deve fare 1 e 0 allo stesso tempo, quindi questo vettore non è ottenibile come combinazione lineare degli elementi nella lista, quindi:
+		\[\begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} \not \in \brackets{\begin{pmatrix} 1 \\ 0 \\ 1\end{pmatrix}, \begin{pmatrix} 1 \\ 1 \\ 1\end{pmatrix}}\]
+		\item $\begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}, \begin{pmatrix} 1 \\ 2 \\ 1 \end{pmatrix}, \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}$
+		
+		Controllo che siano linearmente indipendenti, e non lo sono in quanto posso scrivere il terzo vettore come combinazione lineare dei primi 2:
+		\[\begin{pmatrix} 1 \\ 2 \\ 1\end{pmatrix} = 2\begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} - \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}\]
+		Dato che il vettore $\begin{pmatrix} 1 \\ 2 \\ 1 \end{pmatrix}$ può essere scritto come combinazione lineare, allora lo spazio generato dalla lista iniziale è equivalente a:
+		\[\brackets{\begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}, \begin{pmatrix} 1 \\ 2 \\ 1 \end{pmatrix}, \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}} = \brackets{\begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}, \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}}\]
+		
+		Ora controllo che siano generatori, verificando se un vettore generico possa essere scritto come combinazione lineare degli elementi della lista:
+		\[\begin{pmatrix} b_1 \\ b_2 \\ b_3 \end{pmatrix} = x_1 \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix} + x_2 \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} + x_3 \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} = \begin{pmatrix} x_1 + x_2 + x_3 \\ x_2 \\ x_1 + x_2 \end{pmatrix}\]
+		\[\left\{\begin{aligned}
+			x_1 & + x_2 + x_3 = b_1 \\
+			x_2 & = b_2 \\
+			x_1 & + x_2 = b_3
+ 		\end{aligned}\right. \Rightarrow \left\{\begin{aligned}
+ 		x_3 & = b_1 - b_3 \\
+ 		x_2 & = b_2 \\
+ 		x_1 & = b_3 - b_2
+ 		\end{aligned}\right.\]
+ 		\[\forall b_1, b_2, b_3, \exists x_1, x_2, x_3 \tc \begin{pmatrix} b_1 \\ b_2 \\ b_3 \end{pmatrix} \in \brackets{\begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}, \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}}\]
+ 		Quindi la lista è generatrice ma non linearmente indipendente.
+ 		
+		\item $\begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}, \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}$
+		
+		Ora basta controllare che siano linearmente indipendenti in quanto abbiamo già dimostrato sopra che sono generatori, quindi controllo che l'unica soluzione possibile per l'equazione di dipendenza lineare sia quella in cui tutti i coefficienti sono uguali a 0:
+		\[ \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} = x_1 \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix} + x_2 \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} + x_3 \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} = \begin{pmatrix} x_1 + x_2 + x_3 \\ x_2 \\ x_1 + x_2 \end{pmatrix}\]
+		\[\left\{\begin{aligned}
+			x_1 & + x_2 + x_3 = 0 \\
+			x_2 & = 0 \\
+			x_1 & + x_2 = 0
+		\end{aligned}\right. \Rightarrow x_1 = x_2 = x_3 = 0\]
+		Quindi la lista è linearmente indipendente.
+	\end{itemize}
+	
+	Quindi una lista è base se per ogni vettore $v$, esiste ed è unica la scelta di $x_1, \dots, x_n$, che soddisfa la relazione di dipendenza lineare di indice v.
+	
+	\subsection{Lemma di unicità della rappresentazione}
+	Sia $v_1, \dots, v_n$ una lista di vettori indipendenti, allora:
+	\[v = x_1 v_1 + \dots x_n v_n = y_1 v_1 + \dots y_n v_n\]
+	\[\Rightarrow x_1 = y_1, \dots, x_n = y_n\]
+	Dimostrazione:
+	\[v - v = x_1 v_1 + \dots + x_n v_n - y_1 v_1 - \dots y_n v_n\]
+	\[\Rightarrow 0 = (x_1 - y_1) v_1 + \dots + (x_n - y_n) v_n\]
+	\[\Rightarrow x_1 = y_1, \dots x_n = y_n\]
+	Quindi se si ha una lista indipendente allora ho un solo modo univoco per rappresentare un vettore come combinazione lineare di altri vettori.
+	
+	\subsection{Lista polinomiale}
+	Preso l'insieme dei polinomi in $x$ di grado massimo $d$ a coefficienti in $\mathbb{K}$:
+	\[\mathbb{K}_{\leq d} [x] = \{a_0 + a_1 x + \dots + a_d x^d \tc a_i \in \mathbb{K}\}\]
+	Allora:
+	\[1, x, x^2, \dots, x^d\]
+	è una base, nello specifico la base canonica di $\mathbb{K}_{\leq d} [x]$, preso $v \in \mathbb{K}_{\leq d} [x]$, allora:
+	\[v = a + a_1 x + \dots + a_d x^d = \lambda_0 + \lambda_1 x + \dots + \lambda_d x^d\]
+	L'unica soluzione è che $\lambda_i = a_i$, allora dato che se due polinomi sono uguali, la differenza tra i coefficienti è nulla:
+	\[a_0 + \dots + a_d x^d = b_0 + \dots + b_d x^d \iff a_i = b_i\]
+	\[(a_0 - b_0) + \dots + (a_d - b_d)x^d = 0\]
+	
+	\section{Matrici}
+	Presa una matrice 2x2:
+	\[Mat_{2x2}(\mathbb{K}) := \left\{\begin{pmatrix} a & b \\ c & d\end{pmatrix} \tc a,b,c,d \in \mathbb{K}\right\}\]
+	Con le operazioni di somma e prodotto per scalare:
+	\begin{itemize}
+		\item Somma:
+		\[\begin{pmatrix} a_1 & b_1 \\ c_1 & d_1 \end{pmatrix} + \begin{pmatrix} a_2 & b_2 \\ c_2 & d_2 \end{pmatrix} = 
+		\begin{pmatrix} a_1 + a_2 & b_1 + b_2 \\ c_1 + c_2 & d_1 + d_2 \end{pmatrix}\]
+		\item Prodotto per scalare:
+		\[k\begin{pmatrix} a & b \\ c & d \end{pmatrix} = \begin{pmatrix} ka & kb \\ kc & kd \end{pmatrix}\]
+	\end{itemize}
+	è uno spazio vettoriale in quanto contiene l'elemento neutro della somma, è chiuso per la somma e per il prodotto per uno scalare.
+	
+	La base canonica di una matrice 2x2 è:
+	\[\begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}, \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}, \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}, \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}\]
+	infatti, ogni matrice 2x2 può essere scritta come combinazione lineare della base canonica:
+	\[\begin{pmatrix} a & b \\ c & d \end{pmatrix} = x_1 \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} + x_2 \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} + x_3 \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} + x_4 \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}\]
+	\[\Rightarrow x_1 = a, x_2 = b, x_3 = c, x_4 = d\]
+	
+	\section{Dimensione di uno spazio vettoriale}
+	Per dimensione di un certo spazio vettoriale $\mathbb{V}$, si intende il numero degli elementi di una base di $\mathbb{V}$, e si denota con:
+	\[\dim \mathbb{V}\]
+	Ad esempio:
+	\begin{itemize}
+		\item $\dim \mathbb{R}^3 = 3$
+		\item $\dim \mathbb{R}^n = n \longrightarrow n = \left|\left\{e_1 = \begin{pmatrix} 1 \\ 0 \\ \vdot \\ 0 \end{pmatrix}, e_2 = \begin{pmatrix} 0 \\ 1 \\ \vdot \\ 0 \end{pmatrix}, \dots , e_n = \begin{pmatrix} 0 \\ \vdot  \\ 0 \\ 1 \end{pmatrix}\right\}\right|$, ovvero la base canonica di ogni vettore in $\mathbb{R}^n$
+		\item $\dim (\mathbb{K}_{\leq d} [x]) = d + 1 \longrightarrow (1 + x + x^2 + \dots + x^d)$, ovvero la base canonica di ogni polinomio di grado massimo d
+		\item Presa una matrice 2x2 del tipo:
+		\[M_{2x2} = \{\begin{pmatrix} a & b \\ c & d \end{pmatrix} \tc a,b,c,d \in \mathbb{K}\}\]
+		allora la base canonica di una matrice due per due è:
+		\[\begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}, \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}, \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}, \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}\]
+		quindi:
+		\[\dim M_{2x2} = 4\]
+	\end{itemize}
+	Ogni lista \textbf{linearmente indipendente}, ha al massimo $\dim \mathbb{V}$ elementi, dove $\mathbb{V}$ è uno spazio vettoriale.
+	
+	Invece ogni lista di \textbf{generatori}, ha almeno $\dim \mathbb{V}$ elementi.
+	
+	\section{Teorema di Steinitz / dello scambio}
+	\teorem{Se $v_1, \dots, v_n = (\{v_i\}_{i \in \mathbb{I}})$, è una lista indipendente, e $w_1, \dots, w_m = (\{w_j\}_{j \in \mathbb{G}})$ è una lista di generatori, allora:
+	\begin{itemize}
+		\item $n \leq m \Rightarrow |\mathbb{I}| \leq |\mathbb{G}|$
+		\item Dopo aver riordinato, è possibile cambiare $n$ vettori di $w_j$, con $v_1, \dots, v_n$ e il risultato genera ancora
+	\end{itemize}}
+	
+	Ad esempio:
+	\[\exists \mathbb{G}^\prime \subset \mathbb{G}, |\mathbb{G}^\prime| = n * m \tc \] 
+	\[ \{v_i, w_j\}_{i \in \mathbb{I}, j \in \mathbb{G}}\]
+	\[\mathbb{I} := \left\{\begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \\ 1\end{pmatrix}\right\}\]
+	\[\mathbb{G} := \left\{\begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}\right\}\]
+	Posso mettere $\begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}$ al posto di $\begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}$, e $\begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}$ al posto di $\begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}$, ottenendo:
+	\[\mathbb{G} := \left\{\begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \\ 1\end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}\right\}\]
+	Ma questa cosa non vale sempre, infatti bisogna scegliere con cura i vettori.
+	
+	\subsection{Dimostrazione teorema di Steinitz}
+	INSERIRE DIMOSTRAZIONE PER INDUZIONE DAL MANUALE.
+	
+	\subsection{Conseguenze del teorema}
+	\begin{itemize}
+		\item Ogni base ha lo stesso numero di elementi.
+	
+			Dimostrazione:
+			\[\{v_i\}_{i \in \mathbb{B}} \wedge \{w_j\}_{j \in \mathbb{B}^\prime}\]
+			Supponendo che siano basi, dove $\mathbb{V}_i$ è indipendente e anche generatrice, e $\mathbb{W}_i$ è generatrice e anche indipendente.
+			
+			Quindi la cardinalità di $\mathbb{B}$ è minore o uguale a quella di $\mathbb{B}^\prime$, oppure $\mathbb{B}^\prime$ è minore o uguale a quella di $\mathbb{B}$, ciò implica che le due cardinalità siano uguali.
+			\[\left.
+				\begin{aligned}
+				|\mathbb{B}| \leq |\mathbb{B}^\prime| \\
+				|\mathbb{B}^\prime| \leq |\mathbb{B}|
+				\end{aligned}
+			\right\} \Rightarrow |\mathbb{B}| = |\mathbb{B}^\prime|\]
+		
+		\item Lemma: Ogni lista $\{v_i\}_{i \in \mathbb{I}}$ indipendente massima (quindi con cardinalità uguale alla $\dim \mathbb{V}$) è una base:
+		\[|\mathbb{I}| = \dim \mathbb{V}\]
+		Ogni lista $\{w_j\}_{j \in \mathbb{G}}$ generatori minima, (quindi con cardinalità uguale alla $\dim \mathbb{V}$) è una base:
+		\[|\mathbb{G}| = \dim \mathbb{V}\]
+		
+		La dimensione è il più importante invariante di uno spazio vettoriale. %%TO DO
+		
+		Dimostrazione del primo punto del lemma:
+		\[\brackets{v_i}_{i \in I} \subset \mathbb{V}\]
+		per definizione è un sottospazio.
+		\begin{itemize}
+			\item Se $\brackets{v_i}_{i \in I} = \mathbb{V}$, allora i vettori sono una base.
+			\item Se $\brackets{v_i}_{i \in I} \not = \mathbb{V}$, allora $\exists v \not \in \brackets{v_i}_{i \in I}$
+		\end{itemize}
+		
+		Presa la lista:
+		\[\{v_i, v\}_{i \in \mathbb{I}}\]
+		allora se si vuole dimostrare la seconda definizione:
+		\[\sum_{i \in \mathbb{I}} x_i v_i + x v = 0\]
+		con $x \not = 0$, però:
+		\[v = \frac{1}{x}(- \sum_{i \in \mathbb{I}} x_i v_i)\]
+		Si arriva ad una contraddizione in quanto si era posto che la lista indipendente fosse massima, perciò deve per forza essere indipendente.
+		
+		Dimostrazione del secondo punto del lemma:
+		\begin{itemize}
+			\item $\{w_j\}_{j \in \mathbb{G}}$ è indipendente.
+			\item $\{w_j\}_{j \in \mathbb{G}}$ non è indipendente.
+		\end{itemize}
+		Posso allora scrivere l'equazione di dipendenza lineare:
+		\[\sum_{j \in \mathbb{G}} y_j w_j = 0\]
+		con almeno un $y_j \not = 0$, e lo chiameremo $y_k$
+		\[\Rightarrow w_k = \frac{1}{y_k}(- \sum_{j \in \mathbb{G}} \setminus \{k\}) y_j w_j \Rightarrow w_k \in \brackets{w_j}_{j \in \mathbb{G} \setminus \{k\}}\]
+		e questo contraddice il fatto che la lista $\{w_j\}_{j \in \mathbb{G}}$ sia minima.
+		
+		Conseguenze del lemma:
+		\begin{itemize}
+			\item Ogni lista $\{v_i\}_{i \in \mathbb{I}}$ di vettori indipendenti si può estendere a una base, aggiungendo vettori indipendente finché la lista non diventa massima
+			\item Ogni lista $\{w_j\}_{j \in \mathbb{G}}$ di generatori contiene una base, è sempre presenta una sottolista di generatori minima
+		\end{itemize}
+		\item Corollario: Se $\mathbb{W} \subset \mathbb{V}$, $\dim \mathbb{W} <= \dim \mathbb{V}$ è in realtà $\dim \mathbb{W} = \dim \mathbb{V} \iff \mathbb{V} = \mathbb{W}$
+		
+		Dimostrazione: presa una base di $\mathbb{W}$:
+		\[\brackets{\{v_i\}_{i \in \mathbb{B}_w}} = \mathbb{W}\]
+		quindi $|\mathbb{B}_w| = \dim \mathbb{W}$
+		Allora i $v_i$ sono per definizione indipendenti, quindi:
+		\[|\mathbb{B}_w| \leq \dim \mathbb{V}\]
+		se $\mathbb{W} \subset \mathbb{V}$, allora è possibile estendere $\{v_i\}_{i \in \mathbb{I}}$ ad una base di $\mathbb{V}$ e quindi $|\mathbb{B}_w| < \dim \mathbb{V}$
+	\end{itemize}
+	
+	\section{Formula di Grassman}
+	Sia $\mathbb{V}$ uno spazio vettoriale su $\mathbb{K}$, e $\mathbb{U}, \mathbb{W} \subset \mathbb{V}$ sottospazi finitamente generati, allora:
+	\[\dim (U + W) = \dim U + \dim W - \dim (U \cap W)\] 
+	
+	Ad esempio:
+	\begin{itemize}
+		\item In $\mathbb{R}^3 = V$, allora siano $U, W$ due piano, quindi $\dim U = \dim W = 2$, allora:
+		\[\dim U \cap W = \left\{\begin{aligned}
+			1 & \\
+			2 & \iff U = W
+		\end{aligned}\right.
+		\]
+		\item In $\mathbb{R}^4$, con $U, W$ piani, allora $U, W \leq W + U \leq \mathbb{R}^4$, allora:
+		\[\dim U \cap W = \dim U + \dim W - \dim (U + W) = \left\{\begin{aligned}
+			0 & \iff U + W = \mathbb{R}^4 \\
+			1 & \\
+			2 & \iff U = W
+		\end{aligned}\right.\]
+		Se $U = \brackets{v_1, v_2}$ e $W = \brackets{w_1, w_2}$, allora nel sistema otteniamo:
+		\begin{itemize}
+			\item 0, se $v_1, v_2, w_1, w_2$ sono indipendenti
+			\item 1, se uno dei vettori che genera il piano $W$ appartiene al piano $U$, o viceversa
+			\item 2, se $v_1, v_2$ generano lo stesso piano di $w_1, w_2$, quindi appartengono allo stesso piano
+		\end{itemize} 
+	\end{itemize}
+	
+	\newpage
+	
+	\section{Risoluzione esercizi}
+	\subsection{Settimana due:}
+	\subsection{Esercizio 1}
+	Sia $\mathbb{F}_p := \mathbb{Z}/p$, con $p$ un numero primo:
+	\paragraph{Esercizio 1.1}
+	\[x \in \mathbb{F}_p, x \not = 0\]
+	Dimostrare che:
+	\[\exists a > 0 \tc x^a = 1\]
+	Usare il suggerimento $\exists m \not = n \tc x^m = x^n$
+	\[\mathbb{F}_p := \{[0], [1], \dots, [p -1]\}\]
+	Allora stesso tempo:
+	\[I = \{x^m \tc m \in \mathbb{Z}\} := \{\dots, x^{-2}, x^{-1}, 1, x, x^2, \dots\}\]
+	Dato che $\mathbb{F}_p$ è un insieme finito, mentre l'insieme $I$ è infinito, allora esistono almeno 2 elementi diversi di $I$, che fanno riferimento allo stesso elemento in $\mathbb{F}_p$, per via del \hyperref[sec: Dirichlet]{principio di Dirichlet (teorema dei cassetti )}.
+	
+	\[n \not = m \rightarrow x^n = x^m \xrightarrow{n > m} x^{n - m} = 1 \xrightarrow{a = n - m} x^a = 1\]
+	Questo è possibile solo se $x^m \not = 0, x \not = 0$, lo dimostro per contraddizione, ponendo che esiste $x^k = 0$, con $k = \min(k) \tc x^k = 0$, allora:
+	\[x^{k - 1} \not = 0 \Rightarrow \exists (\frac{1}{x^{k-1}}) \Rightarrow x^k = x^{k - 1} x \Rightarrow x = \frac{x^k}{x^{k -1}} = 0\]
+	Ma questo non è possibile in quanto $x \not = 0$, quindi non esiste $k \tc x^k = 0, x \not = 0$
+	
+	\paragraph{Esercizio 1.2}
+	\[x \in \mathbb{F}_p, x \not = 0, a = \min a > 0 \tc x^a = 1\]
+	Dimostrare che la cardinalità dell'insieme delle potenze di $x$ è uguale ad $a$:
+	\[|\{x^m \tc m \in \mathbb{Z}\}| = a\]
+	Allora affermo che:
+	\[\{x^m \tc m \in \mathbb{Z}\} \subseteq \{1, x, x^2, \dots, x^{a-1}\}\]
+	e bisogna dimostrare che:
+	\[\{x^m \tc m \in \mathbb{Z}\} \supseteq \{1, x, x^2, \dots, x^{a-1}\}\]
+	quindi che:
+	\[\{x^m \tc m \in \mathbb{Z}\} = \{1, x, x^2, \dots, x^{a-1}\}\]
+	per dimostrare questo parto da:
+	\[x^m = x^k, 0\leq k \leq a -1 \Rightarrow m = a * q\]
+	ma se fosse così $x^m$ sarebbe sempre uguale a 1, perciò bisogna aggiungere un termine $r$:
+	\[m = aq + r \Rightarrow x^m = x^{aq} \cdot x^r \Rightarrow x^m = x^r, 0 \leq r \leq a - 1\]
+	quindi:
+	\[\forall x^m, \exists r, 0\leq r \leq a -1 \tc x^m = x^r\]
+	La dimostrazione però non è ancora completa in quanto non ho ancora usato il fatto che a sia il minimo a possibile tale per cui $x^a = 1$, infatti se:
+	\[x^m = x^n, 0 \leq m \leq n \leq a -1 \rightarrow x^{m - n} = 1\]
+	quindi $a = n - m, 0 \leq n - m \leq a - 1$, che va in contraddizione con il fatto che $a$ sia minimo, perciò si è dimostrato che l'insieme delle potenze positive di x, ha cardinalità a.
+	
+	
+	
+	\newpage
+	
+	\section{Teoremi/Principi/Assiomi/Altro usati negli esercizi}
+	\subsection{Principio di Dirichlet}
+	\label{sec: Dirichlet}
+	Afferma che:
+	\begin{center}
+		\teorem{Se $n + 1$ oggetti, vengono distribuiti in $n$ cassetti, allora almeno un cassetto deve contenere due oggetti}
+	\end{center}
+	Esiste anche la versione generalizzata:
+	\begin{center}
+		\teorem{Se si hanno $m$ oggetti da distribuire in $k$ cassetti, allora almeno un cassetto conterrà almeno $\lceil\frac{m}{k}\rceil$ oggetti}
+	\end{center}
+	dove $\lceil \rceil$ rappresenta la parte intera superiore.
 	
 \end{document}
