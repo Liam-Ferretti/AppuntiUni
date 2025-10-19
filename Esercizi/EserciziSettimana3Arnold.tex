@@ -1,0 +1,322 @@
+\documentclass[a4paper,12pt]{article}
+
+% pacchetti comuni
+\input{../preambolo.tex}
+\usetikzlibrary{backgrounds}
+\usepackage{parcolumns}
+
+% info documento
+\title{\textbf{Soluzione esercizi geometria settimana 3}}
+
+\author{Kevin Ferri (2236550), Liam Ferretti (2252865), Giorgio Giglio (2265655), Piergiorgio Fabrizi (2275527), Matteo D'Orsi (2268243)}
+
+\date{\today}
+
+\begin{document}
+	
+	\maketitle
+		
+	\newpage
+	\tableofcontents
+	\clearpage
+	\section{Risoluzione esercizio 1}
+	\subsection{esercizio 1.a}
+	Dimostro il punto a per contraddizione, suppongo che esiste una sottolista $\{v_i\}_{i \in I'}, I' \subset I$ linearmente dipendente, allora:
+		\[\sum_{i \in I'} \lambda_i v_i = 0\]
+	con almeno un $\lambda_i \not = 0$, che chiamerò $\lambda_k, k \in I', \lambda \in \mathbb{K}$, allora è possibile scrivere $v_k$ come combinazione lineare dei vettori della lista $\{v_i\}_{i \in I'\setminus\{k\}}$:
+	\[\Rightarrow v_k = \frac{1}{\lambda_k}(-\sum_{i \in I'\setminus\{k\}}\lambda_i v_i)\]
+	Tuttavia, poiché $I' \subset I$, tutti i vettori della sottolista appartengono anche alla lista originale $\{v_i\}_{i \in I}$. Quindi $v_k$ sarebbe combinazione lineare di altri vettori della lista originale, contraddicendo l’ipotesi di linearità indipendente di $\{v_i\}_{i \in I}$.
+	Pertanto, tutte le sottoliste di una lista di vettori linearmente indipendenti sono anch’esse linearmente indipendenti.
+	
+	\subsection{esercizio 1.b}
+	Dimostro il punto b per contraddizione, quindi suppongo che la lista $\{v_i, v\}_{i \in G}$, ottenuta aggiungendo v alla lista $\{v_i\}_{i \in G}$, NON sia di generatori:
+	\[\Rightarrow \exists w \in V \tc \not \exists \lambda, \mu \in \mathbb{K}\]
+	per cui vale:
+	\[w = \sum_{i \in G} \lambda_i v_i + \mu v\]
+	poiché $w \in V = \brackets{v_i}_{i \in G}$ allora $\exists \alpha \in \mathbb{K} 
+	\tc$:
+	\[w = \sum_{i \in G} \alpha_i v_i\]
+	Ponendo, $\alpha_i = \lambda_i, \mu = 0$, risulta che:
+	\[w = \sum_{i \in G} \alpha_i v_i + 0v\]
+	
+	Abbiamo quindi dimostrato che $w$ può essere scritto come combinazione lineare della lista ampliata, allora:
+	\[\brackets{v_i, v}_{i \in G} = \brackets{v_i}_{i \in G} = V\]
+	Ciò contraddice l'ipotesi per cui la lista ampliata non fosse di generatori, dimostrando quindi che ogni lista di generatori a cui vengono aggiungi altri elementi resta di generatori, e quindi genera.
+	
+	\section{Risoluzione esercizio 2}
+	\subsection{esercizio 2.1}
+	Per trovare la dimensione di una generica matrice $Mat_{mxn}$, trovo la "funzione" generatrice della sua base canonica:
+	\[(e_{i,j})_{mn} = \left\{\begin{aligned}
+		1 &, \text{ se } m =i, m = j\\
+		0 &, \text{ se } m \not =i, m \not = j
+	\end{aligned}\right\}\]
+	La lista della base canonica è quindi costituita da un numero finito di elementi uguale a $m \cdot n$, in quanto sto considerando come base la lista che contiene matrici con un solo elemento diverso da 0, l'uno, nella posizione $ij$, quindi sapendo che $0 \leq i \leq m, 0 \leq j \leq n$, allora la dimensione della matrice $m x n$
+	\[\dim Mat_{mxn} = B_{Mat} = m \cdot n\]
+	\subsection{esercizio 2.2}
+	Affinché $GL_2$ sia un sottospazio deve:
+	\begin{itemize}
+		\item Contenere l'elemento neutro della somma
+		\item Essere chiuso per la somma
+		\item Essere chiuso per il prodotto per scalare
+	\end{itemize}
+	Controllo quindi che contenga l'elemento neutro della somma:
+	\[\begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix} \overset{?}{\in} GL_2\]
+	per verificare che appartenga controllo la condizione di appartenenza ad $GL_2$, ovvero che:
+	\[ab - bc \not = 0\]
+	però:
+	\[0 \cdot 0 - 0 \cdot 0 = 0 \Rightarrow 0 \not \in GL_2\]
+	quindi dato che non è verificata l'appartenenza dell'elemento neutro della somma allora non ha senso verificare le altre proprietà in quanto possiamo già dire che non è un sottospazio.
+	\subsection{esercizio 2.3}
+	Presa la lista di matrici 2x2:
+	\[\left\{\begin{pmatrix} 1 & 2 \\ 1 & 3 \end{pmatrix}, \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}, \begin{pmatrix} 2 & 7 \\ 5 & 12 \end{pmatrix}\right\}\]
+	Controllo che la lista di matrici 2x2 sia linearmente indipendente:
+	\[\begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix} = x_1 \begin{pmatrix} 1 & 2 \\ 1 & 3 \end{pmatrix} + x_2 \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix} + x_3 \begin{pmatrix} 2 & 7 \\ 5 & 12 \end{pmatrix} = \begin{pmatrix} x_1 + x_2 + 2x_3 & 2x_1 + x_2 + 7x_3 \\ x_1 + 5x_3 & 3x_1 + x_2 + 12x_3 \end{pmatrix}\]
+	\[\left\{\begin{aligned}
+		0 & = x_1 + x_2 + 2x_3 \\
+		0 & = 2x_1 + x_2 + 7x_3\\
+		0 & = x_1 + 5x_3\\
+		0 & = 3x_1 + x_2 + 12x_3
+	\end{aligned}\right.
+	\left\{\begin{aligned}
+		0 & = -5x_3 + x_2 + 2x_3 \\
+		0 & = -10x_3 + x_2 + 7x_3\\
+		x_1 & = -5x_3\\
+		0 & = -15x_3 + x_2 + 12x_3
+	\end{aligned}\right.
+	\left\{\begin{aligned}
+	x_2 & = +3x_3 \\
+	0 & = -10x_3 + +3x_3 + 7x_3\\
+	x_1 & = -5x_3\\
+	0 & = -15x_3 + +3x_3 + 12x_3
+	\end{aligned}\right.
+	\left\{\begin{aligned}
+	x_2 & = +3x_3 \\
+	x_1 & = -5x_3
+	\end{aligned}\right.\]
+	Il sistema ha infinite soluzioni quindi la lista non è linearmente indipendente, in quanto la soluzione all'equazione di dipendenza lineare è non banale.
+	
+	Presa la lista di matrici 2x2:
+	\[\left\{\begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}, \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}, \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}, \begin{pmatrix} 1 & 0 \\ 1 & 0 \end{pmatrix}, \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}\right\}\]
+	\[\begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix} = x_1\begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} + x_2 \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} + x_3 \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix} + x_4\begin{pmatrix} 1 & 0 \\ 1 & 0 \end{pmatrix} + x_5 \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}\]
+	\[\begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix} = \begin{pmatrix} x_1 + x_2 + x_3 + x_4 + x_5 & x_3 + x_5 \\ x_4 + x_5 & x_2 + x_3 + x_5\end{pmatrix}\]
+	Portando le entrate a sistema:
+	\[\left\{\begin{aligned}
+		0 & = x_1 + x_2 + x_3 + x_4 + x_5 \\
+		0 & = x_3 + x_5\\
+		0 & = x_4 + x_5\\
+		0 & = x_2 + x_3 + x_5
+	\end{aligned}\right.
+	\left\{\begin{aligned}
+		0 & = x_1 + x_2 -x_5 -x_5 + x_5 \\
+		x_3 & = -x_5\\
+		x_4 & = -x_5\\
+		0 & = x_2 -x_5 + x_5
+	\end{aligned}\right.
+	\left\{\begin{aligned}
+	x_1 & = +x_5 \\
+	x_3 & = -x_5\\
+	x_4 & = -x_5\\
+	x_2 & = 0
+	\end{aligned}\right.\]
+	Le matrici quindi non sono indipendenti, dato che l'equazione non ha soluzione banale.
+	
+	\section{Risoluzione esercizio 3}
+	Presi i vettori $v_1, v_2, v_3 \in \mathbb{R}^3$:
+	\[v_1 = (3, 1, -4), v_2 = (0, 1, -1), v_3 = (3, 2, -5)\]
+	Sia $W \subset \mathbb{R}^3$, definito come:
+	\[W := \{X \in \mathbb{R}^3 \tc x_1 + x_2 + x_3 = 0\}\]
+	Dimostro il punto a:
+	Prendo un generico vettore $w \in W, w = \begin{pmatrix} b_1 \\ b_2 \\ b_3 \end{pmatrix},\tc b_1 + b_2 + b_3 = 0$
+	\[\begin{pmatrix} b_1 \\ b_2 \\ b_3 \end{pmatrix} = x_1 \begin{pmatrix} 3 \\ 1 \\ -4 \end{pmatrix} + x_2 \begin{pmatrix} 0 \\ 1 \\ -1 \end{pmatrix} + x_3\begin{pmatrix} 3 \\ 2 \\ -5 \end{pmatrix} = \begin{pmatrix} 3x_1 + 3x_3 \\ x_1 + x_2 + 2x_3 \\ -4x_1 - x_2 -5x_3 \end{pmatrix}\]
+	\[
+	\left\{\begin{aligned}
+		b_1 & = 3x_1 + 3x_3 \\
+		b_2 & = x_1 + x_2 + 2x_3\\
+		b_3 & = -4x_1 - x_2 -5x_3
+	\end{aligned}\right.
+	\Rightarrow 
+	\left\{\begin{aligned}
+		x_3 & = \frac{b_1 - 3x_1}{3} \\
+		x_2 & = b_2 + x_1 - \frac{2}{3}b_1 \\
+		x_1 & = a, \forall a \in \mathbb{R}^3
+	\end{aligned}\right.
+	\Rightarrow - b_3 = b_1 + b_2 \Rightarrow w \in W, \forall b_i \in W\]
+	Abbiamo quindi dimostrato che i 3 vettori generano W, bisogna dimostrare che siano linearmente indipendenti, affinché siano una base, è facile notare che il vettore 3 possa essere scritto come combinazione lineare dei restanti vettori:
+	\[v_3 = 1 v_1 + 1 v_2\]
+	\[(3, 2, -5) = (3, 1, -4) + (0, 1, -1)\]
+	quindi non sono linearmente indipendenti:
+	\[0 = (3, 2, -5) - (3, 1, -4) - (0, 1, -1), \text{ con } x_1 = 1, x_2 = x_3 = -1\]
+	\section{Risoluzione esercizio 4}
+	Sia $V$ un sottospazio vettoriale di $K$, definito dalle n-uple i cui elementi appartengono a $K$, dato che ogni elemento $V$, è determinato da $n$ coordinate, ciascuna delle quali può assumere q possibili valori, allora se:
+	\[|\mathbb{K}| = q \Rightarrow |V| = |\mathbb{K}^n| = q^n\]
+	\section{Risoluzione esercizio 5}
+	\subsection{esercizio 5.1}
+	Per dimostrare che:
+	\[U + W = V\]
+	sapendo che: $\exists u \in U \tc u \not \in W, \exists w \in W \tc w \not \in U$, quindi che i due insiemi sono disgiunti.
+	
+	Uso la formula di Grassman:
+	\[\dim (U + W) = \dim U + \dim W - \dim U \cap W\]
+	sapendo che la dimensione di U è uguale a quella di W uguale a n -1, allora:
+	\[\dim (U + W) = 2n - 2 - \dim (U \cap W)\]
+	Dato che $U \cap W$ è un sottospazio di U, allora:
+	\[0 \leq \dim(U \cap W) \leq n - 1\]
+	Verifico le diverse possibilità:
+	\begin{itemize}
+		\item se $\dim(U \cap W) = n -1$, allora $(U \cap W) = U$, ma ciò contraddice l'ipotesi
+		\item se $\dim(U \cap W) = n -2$, potrebbe funzionare, in quanto:
+		\[\dim (U + W) = 2m - 2 - n + 2 = n\]
+		\item se $\dim(U \cap W) = n - 3$, allora:
+		\[\dim (U + W) = 2m - 2 - n + 3 = n + 1\]
+		ma ciò non è possibile in quanto la somma tra due sottoinsiemi non può superare l'insieme che li contiene, quindi l'unica possibilità che la loro intersezione abbia come dimensione $n - 2$
+	\end{itemize}
+	
+	\subsection{esercizio 5.2}
+	Siano $U,W \subset \mathbb{R}^{10}$ distinti ed entrambi di dimensione 8.
+	Per dimostrare ciò useremo un controesempio, partendo dalla base canonica di $\mathbb{R}^{10}$, ovvero:
+	\[e_1 = \begin{pmatrix} 1 \\ 0 \\ \vdots \end{pmatrix}, e_n = \begin{pmatrix} 0 \\ \vdots \\ 1 \end{pmatrix}\]
+	definisco $U, W$:
+	\[U := \brackets{e_1, \dots, e_8}\]
+	\[W := \brackets{e_1, \dots, e_7, e_9}\]
+	\[U \cap W = \brackets{e_1, \dots, e_7} \Rightarrow \dim (U \cap W) = 7\]
+	Quindi usando la formula di Grassman: 
+	\[\dim (U + W) = \dim U + \dim W - \dim (U \cap W ) = 8 + 8 - 7 = 9\]
+	Quindi:
+	\[U + W \not = \mathbb{R}^{10}\]
+	\section{Risoluzione esercizio 6}
+	Siano $A, B \subset \mathbb{R}^4$ definiti da:
+	\[A:= \{X \in \mathbb{R}^4 \tc x_1 + x_2 + x_3 + x_4 = 0 = x_1 - x_4\}\]
+	\[B:=\brackets{(1,-2,0,1),(1,2,3,1)}\]
+	Controllo che un vettore generico di A possa essere generato da una combinazione lineare dei vettori di B:
+	\[\begin{pmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \end{pmatrix} = \lambda_1 \begin{pmatrix} 1 \\ -2 \\ 0 \\ 1 \end{pmatrix} + \lambda_2 \begin{pmatrix} 1 \\ 2 \\ 3 \\ 1 \end{pmatrix}\]
+	Dato che $x_4 = x_1$, posso sostituire $x_4$ con $x_1$
+	\[
+	\left\{\begin{aligned}
+		x_1 & = \lambda_1 + \lambda_2 \\
+		x_2 & = -2\lambda_1 + 2\lambda_2 \\
+		x_3 & = 3\lambda_2 \\
+		x_1 & = \lambda_1 + \lambda_2
+	\end{aligned}\right.
+	\]
+	Avendo due righe che definisco $x_1$ posso rimuovere la seconda senza problemi:
+	\[
+	\left\{\begin{aligned}
+		x_1 & = \lambda_1 + \lambda_2 \\
+		x_2 & = -2\lambda_1 + 2\lambda_2 \\
+		x_3 & = 3\lambda_2 
+	\end{aligned}\right. = 
+	\left\{\begin{aligned}
+	\lambda_2 & = x_1 - \lambda_1 \\
+	x_2 & = -2\lambda_1 + 2(x_1 - \lambda_1) \\
+	x_3 & = 3(x_1 - \lambda_1) 
+	\end{aligned}\right. = 
+	\left\{\begin{aligned}
+	\lambda_2 & = x_1 - \lambda_1 \\
+	x_2 & = -4\lambda_1 + 2x_1 \\
+	x_3 & = 3x_1 - 3\lambda_1
+	\end{aligned}\right. = 
+	\left\{\begin{aligned}
+	\lambda_1 & = x_1 - \frac{x_3}{3} \\
+	\lambda_2 & = \frac{x_3}{3} \\
+	x_2 & = -x_1 + x_3
+	\end{aligned}\right.
+	\]
+	\[
+	\left\{\begin{aligned}
+		x_1 = x_1\\
+		x_2 = -2x_1 + \frac{4}{3}x_3\\
+		x_3 & = x_3
+	\end{aligned}\right.
+	\]
+	
+	Deve essere verificato che:
+	\[x_1 + x_2 + x_3 + x_4 = 0 \rightarrow 2x_1 + x_2 + x_3 = 0 \rightarrow 2x_1 + -2x_1 + \frac{4}{3}x_3 + x_3 = 0 \rightarrow x_3 = 0 \]
+	
+	Ora posso trovare i valori di $\lambda_1, \lambda_2$:
+	\[\lambda_1 = \frac{4x_3}{3} = 0\]
+	\[\lambda_2 = - \frac{x_3}{3} + x_1 = x_1\]
+	
+	quindi il vettore generico v diventa:
+	\[v = (x_1, -2x_1, 0, x_1)\]
+	
+	Ora riprendo l'uguaglianza iniziale e sostituendo i valori si ottiene che:
+	\[A \cap B = \brackets{\begin{pmatrix} 1 \\ -2 \\ 0 \\ 1 \end{pmatrix}}\]	
+	
+	\section{Risoluzione esercizio 7}
+	\subsection{esercizio 7.1}
+	Sia $U_1 \subset \mathbb{R}^n$, definito come:
+	\[U_1 :=\{f \in \mathbb{R}^n \tc f(0) = 0\}\]
+	Controllo che contenga l'elemento neutro:
+	\[0(0) = 0 = f(0) \Rightarrow 0(n) \in U_1\]
+	Prese f e g in $U_1$ controllo che sia chiuso per la somma:
+	\[(f + g) n \in U_1?\]
+	\[(f + g) n = f(n) + g(n) \in U_1?\]
+	\[f(0) + g(0) = 0 + 0 = 0 \Rightarrow (f + g) n \in U_1\]
+	Prese f e g in $U_1$ controllo che sia chiuso per il prodotto per scalare:
+	\[(\lambda f) n \in U_1?\]
+	\[(\lambda f) n = \lambda f(n) \in U_1?\]
+	\[\lambda f(0)= \lambda 0 = 0 \Rightarrow (\lambda f) n \in U_1\]
+	Quindi è un sottospazio, ora controllo che sia finitamente generato, e posso dire che la base non è finita in quanto n può assumere infiniti valori:
+	\[e_n (m) = \left\{\begin{aligned}
+		1&, m = n \\
+		0&, m \not = n \\		
+	\end{aligned}\right\}\] 
+	\[f := \sum_{n \geq 1} f(n)e_n\]
+	quindi gli en sono infiniti, ergo $U_1$ non è finitamente generato.
+	\subsection{esercizio 7.2}
+	Sia $U_2 \subset \mathbb{R}^n$, definito come:
+	\[U_2 :=\{f \in \mathbb{R}^n \tc f(0) = 1\}\]
+	Controllo che contenga l'elemento neutro:
+	\[0(0) = 0 \not = f(0) \Rightarrow 0(n) \not \in U_2\]
+	
+	\subsection{esercizio 7.3}
+	Sia $U_3 \subset \mathbb{R}^n$, definito come:
+	\[U_3 :=\{f \in \mathbb{R}^n \tc f(n+2) = f(n+1)+ f(n)\}\]
+	Controllo che contenga l'elemento neutro:
+	\[0(n +2 ) = 0(m+1) + 0(n) = 0 + 0 \Rightarrow 0 \in U_3\]
+	Prese f e g in $U_3$, ed indico la loro somma con s, controllo che sia chiuso per la somma:
+	
+	affinché $s \in U_3$ è necessario che:
+	\[s(n+2) = s(n+1) + s(n)\]
+	\[\iff (f + g)(n + 2) = (f + g)(n + 1) + (f + g)(n)\]
+	\[\iff f(n+2) + g(n+2) = f(n + 1) + g(n + 1) + f(n) + g(n)\]
+	\[\iff s(n+2) = s(n+1) + s(n)\]
+	per definizione di s, quindi s appartiene all'insieme
+	Prese f e g in $U_1$ controllo che sia chiuso per il prodotto per scalare:
+	\[(\lambda f)(n + 2) = (\lambda f)(n+1) + (\lambda f)(n)\]
+	\[\iff \lambda f(n + 2) = \lambda f(n + 1) + \lambda f(n)\]
+	\[\iff \lambda f \in U_3\]
+	
+	Ora che abbiamo definiti che sia un sottospazio, controllo che sia finitamente generato, e si può notare che tutte le successioni di $U_3$ sono determinate a partire da due funzioni:
+	\[f_0(0) = 1, f_0(1) = 0\]
+	\[f_1(0) = 0, f_1(1) = 1\]
+	infatti:
+	\begin{itemize}
+		\item per $n = 0 \Rightarrow f(2) = f_0(0) + f_1(1)$
+		\item per $n = 1 \Rightarrow f(3) = f(2) + f_1(1) = f_0(0) + 2f_1(1)$
+		\item per $n = 2 \Rightarrow f(4) = f(3) + f(2) =  f(2) + f_1(1) + f_0(0) + f_1(1) = f_0(0) + f_1(1) + f_1(1) + f_0(0) + f_1(1) = 3f_1(1) + 2f_0(0)$
+		\item e così via...
+	\end{itemize}
+	Quindi:
+	\[\{f_0(0), f_1(1)\}\]
+	è una base di $U_3$, quindi è finitamente generato
+	
+	\subsection{esercizio 7.4}
+	Sia $U_4 \subset \mathbb{R}^n$, definito come:
+	\[U_4 :=\{f \in \mathbb{R}^n \tc f(2m) = 0, \forall m \in \mathbb{N}\}\]
+	Controllo che contenga l'elemento neutro:
+	\[0(2m) = 0 = f(2m) \Rightarrow 0 \in U_4\]
+	Prese f e g in $U_4$, e chiamo s la loro somma, controllo che sia chiuso per la somma:
+	\[(f + g)(2m) = 0 \iff f(2m) + g(2m) = 0 \iff 0 + 0 = 0 \iff s(2m) = 0 \Rightarrow s \in U_4\]
+	Quindi è chiuso per la somma
+	
+	Controllo che sia chiuso per il prodotto per scalare, quindi che $\forall \lambda \in \mathbb{R} \lambda f(2m) = 0$:
+	\[(\lambda f)(2m) = 0 \iff \lambda f(2m) = 0 \iff \lambda 0 = 0 \Rightarrow \lambda f \in U_4\]
+	quindi $U_4$ è un sottospazio, ma non è finitamente generato in quanto non si hanno condizioni per argomenti dispari, perciò ci sono infinite possibilità che non possono essere rappresentate con un numero finito di generatori, infatti una base di $U_4$ è nella forma:
+	\[e_m (n) = \left\{\begin{aligned}
+		1&, n = 2m + 1\\
+		0&, n \not = 2m + 1\\		
+	\end{aligned}\right\}\] 
+	ma questo insieme ha cardinalità infinita, al variare di n.
+	
+\end{document}
