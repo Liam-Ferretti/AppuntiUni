@@ -47,8 +47,8 @@
 	\subsection{esercizio 2.1}
 	Per trovare la dimensione di una generica matrice $Mat_{mxn}$, trovo la "funzione" generatrice della sua base canonica:
 	\[(e_{i,j})_{mn} = \left\{\begin{aligned}
-		1 &, \text{ se } m =i, m = j\\
-		0 &, \text{ se } m \not =i, m \not = j
+		1 &, \text{ se } m = i, n = j\\
+		0 &, \text{ se } m \not = i, n \not = j
 	\end{aligned}\right\}\]
 	La lista della base canonica è quindi costituita da un numero finito di elementi uguale a $m \cdot n$, in quanto sto considerando come base la lista che contiene matrici con un solo elemento diverso da 0, l'uno, nella posizione $ij$, quindi sapendo che $0 \leq i \leq m, 0 \leq j \leq n$, allora la dimensione della matrice $m x n$
 	\[\dim Mat_{mxn} = B_{Mat} = m \cdot n\]
@@ -62,7 +62,7 @@
 	Controllo quindi che contenga l'elemento neutro della somma:
 	\[\begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix} \overset{?}{\in} GL_2\]
 	per verificare che appartenga controllo la condizione di appartenenza ad $GL_2$, ovvero che:
-	\[ab - bc \not = 0\]
+	\[ad - bc \not = 0\]
 	però:
 	\[0 \cdot 0 - 0 \cdot 0 = 0 \Rightarrow 0 \not \in GL_2\]
 	quindi dato che non è verificata l'appartenenza dell'elemento neutro della somma allora non ha senso verificare le altre proprietà in quanto possiamo già dire che non è un sottospazio.
@@ -153,7 +153,7 @@
 	\subsection{esercizio 5.1}
 	Per dimostrare che:
 	\[U + W = V\]
-	sapendo che: $\exists u \in U \tc u \not \in W, \exists w \in W \tc w \not \in U$, quindi che i due insiemi sono disgiunti.
+	sapendo che: $\exists u \in U \tc u \not \in W, \exists w \in W \tc w \not \in U$, quindi che i due insiemi sono distinti.
 	
 	Uso la formula di Grassman:
 	\[\dim (U + W) = \dim U + \dim W - \dim U \cap W\]
@@ -165,9 +165,9 @@
 	\begin{itemize}
 		\item se $\dim(U \cap W) = n -1$, allora $(U \cap W) = U$, ma ciò contraddice l'ipotesi
 		\item se $\dim(U \cap W) = n -2$, potrebbe funzionare, in quanto:
-		\[\dim (U + W) = 2m - 2 - n + 2 = n\]
+		\[\dim (U + W) = 2n - 2 - n + 2 = n\]
 		\item se $\dim(U \cap W) = n - 3$, allora:
-		\[\dim (U + W) = 2m - 2 - n + 3 = n + 1\]
+		\[\dim (U + W) = 2n - 2 - n + 3 = n + 1\]
 		ma ciò non è possibile in quanto la somma tra due sottoinsiemi non può superare l'insieme che li contiene, quindi l'unica possibilità che la loro intersezione abbia come dimensione $n - 2$
 	\end{itemize}
 	
