@@ -1,0 +1,159 @@
+\documentclass[a4paper,12pt]{article}
+
+% pacchetti comuni
+\input{../preambolo.tex}
+
+\usepackage{listings}
+\lstset{
+	inputencoding=utf8,        % interpretare il codice in UTF-8
+	extendedchars=true,        % permette caratteri accentati nei commenti
+	language=Python,           % linguaggio di default
+	basicstyle=\ttfamily\footnotesize,
+	breaklines=true,
+	frame=single,
+	numbers=left,              % numeri di riga a sinistra
+	numberstyle=\tiny,         % dimensione numeri di riga
+	commentstyle=\color{blue}, % colore commenti
+	keywordstyle=\color{red}   % colore keyword
+}
+
+% info documento
+\title{Appunti di Laboratorio di Calcolo}
+\author{Liam Ferretti}
+\date{\today}
+
+\begin{document}
+	
+	\maketitle
+	
+	\begin{abstract}
+		Affinché si possa svolgere la prova di esonero bisogna aver non più di 3 assenze in laboratorio.
+		È necessario installare sul proprio computer un compilatore C gcc, e un interprete Python 3.x.
+		Per i ricevimenti con Boeri si possono effettuare il mercoledì dalle 11 alle 12 nella stanza 407 al quarto piano dell'edificio "Fermi", per Spagnolo il martedì dalle 12 alle 13 nella stanza 116 al primo piano dell'edificio "Fermi".
+		Si raccomanda l'acquisto del libro di testo: "Programmare la scienza L.Barone", che si potrà portare all'esame.
+		Il laboratorio Pontecorvo si trova in via Tiburtina 205.
+		
+		Esame sarà una prova pratica di 3 ore, ma si potranno avere punti bonus ottenuti per chi frequenta il laboratorio all'esonero, il punteggio bonus è definito dal voto dell'esonero:
+		\begin{itemize}
+			\item 18-23: 1 punti
+			\item 24-25: 2 punti
+			\item 26-27: 3 punti
+			\item 28-29: 4 punti
+			\item 30/30 e lode: si è esonerati dalla prova finale.
+		\end{itemize}
+		Gli argomenti del corso saranno:
+		\begin{itemize}
+			\item Parte 1: Come funziona un computer
+			\item Parte 2: Elementi di base del C
+			\item Parte 3: Elementi avanzati del C
+			\item Parte 4: Applicazioni e algoritmi + Python
+		\end{itemize}
+	\end{abstract}
+	
+	\newpage
+	\tableofcontents
+	\clearpage
+	
+	\begin{comment}
+		\section{Principi di funzionamento di un computer}
+	Esistono diversi \textbf{sistemi di numerazione}, ovvero delle composizioni di regole con cui vengono rappresentati i numeri, i computer usano il binario, le cui cifre sono: $\{0, 1\}$
+	Nella base decimale, quella che si usa quotidianamente, le cifre sono: $\{0, 1, ..., 8, 9\}$.
+	Sono sistemi posizionali in cui, quindi, la posizione delle cifre.
+	
+	Es: $(123)_{10} = 1*10^2 + 2*10^1 + 3*10^0$
+	
+	$(101)_2 = 1*2^2+0*2^1+1*2^0$
+	
+	\subsection{Conversione decimale -> binario}
+	Per convertire un numero da decimale a binario, si usa il metodo dei resti, ovvero si prende il numero, lo si divide per la base, e si scrive il resto, e si ripete, quando il numero sarà minore della base si trascrive quel numero come resto, e poi si scrive il numero in binario prendendo i resti dal basso verso l'alto.
+	
+	Es: n = $(43)_{10} \rightarrow (101011)_2$
+	\[
+	\begin{array}{c | c}
+		43 & 2 : 1\\
+		21 & 2 : 1\\
+		10 & 2 : 0\\
+		5 & 2 : 1\\
+		2 & 2 : 0\\
+		1 & 2 : 1\\
+		0 & 2 \; \; \; \; \, \\
+	\end{array}
+	\]
+	
+	\subsection{Hex}
+	Oltre al binari si usa anche l'hex, ovvero l'esadecimale, in cui la base è 16, e come cifre si usano $\{0, 1, \dots, 9, A, B, C, D, E, F\}$
+	
+	\subsection{Rappresentazioni di numeri negativi}
+	\subsubsection{Modulo e segno}
+	Per rappresentare i numeri negativi esistono diversi metodi, il più semplice è quello di usare l'ultima cifra a sinistra o a destra, decidendolo convenzionalmente per tutti i numeri, in cui se è 1 allora il segno è più, se è 0 allora è meno, ciò però rende il numero di cifre uguale a 7, dove il numero massimo è 127, e il numero minimo è -127, avendo però +0 e -0, per un totale di 255 numeri diversi.
+	\subsubsection{Notazione in eccesso}
+	
+	\section{Funzionamento della macchina di Turing}
+	La macchina di Turing venne ipotizzata attorno al 1930 ed è una astrazione matematica di un processo che permette di risolvere attraverso gli algoritmi 
+	
+	\newpage
+	\end{comment}
+	
+	\section{Teoria del C}
+	Si dice
+	\begin{itemize}
+		\item Procedurale, ovvero, è un linguaggio che lavora con una sequenza di istruzione che vengono eseguite in un ordine ben preciso, ed è possibile dividerle in sotto blocchi di codice, procedure/ funzioni, che svolgono una specifica parte del calcolo.
+		\item Non completamente strutturato, usa alcune regole di base, che si basano su altre regole, e nel C si posso "superare" queste regole.
+		\item Tipizzato, si devono dichiarale le variabili, e bisogna specificare il tipo di variabile, ovvero che tipo di valore può assumere la variabile.
+	\end{itemize}
+	I sistemi operativi sono organizzate in cartelle, ovvero directory, divise in una struttura ad albero, dove all'apice si trova la cartella base, ovvero in linux "/", in windows si trova con il nome "C:".
+	Di base in linux è divisa in sottocartelle in cui si trovano i dati principali e più importanti del computer, una tra queste è la home, dove si trovano le sottocartelle degli utenti.
+	Ogni file ha un certo percorso (path), ad esempio:
+	
+	\begin{center}
+		/home/utente/nomefile.estensione
+	\end{center}
+	È importante specificare l'estensione del file, e identifica il tipo di file. \newline
+	
+	\subsection{Scrivere un programma in linguaggio in C}
+	Serve un editor di testo, ovvero un programma che permette di scrivere testo in un file, ed è diverso da un word-processor, come Word, ad esempio EMACS, che produce file testuali con estensioni diverse, che contiene solo i caratteri, senza le informazioni sul tipo di carattere, grandezza, posizione etc etc.
+	
+	Per scrivere un programma si parte dal file, in formato ".c", una volta scritto il codice, si usa il compilatore per generare il file con formato  ".o", poi avviene la fase di linking, che "linka" le librerie, generando il file .x, la fase di compilatore e linker avviene insieme.
+	Prima della fase di compilazione avviene la pre-processione.
+	
+	\begin{code} 
+#HEADER (tra cui #include<math.h>)
+
+int main(){
+	//contiene le istruzioni del programma principale, definito corpo principale del programma
+}
+	\end{code}
+	
+	L'HEADER (direttive per il pre-processore, prende le istruzioni), il pre-processore sostituisce l'header con il codice delle librerie.
+	
+	Il corpo principale del programma inizia sempre con la dichiarazione delle variabili, seguite poi dalle istruzioni effettive del codice, ogni istruzione ha alla fine ";", per specificare che l'istruzione è finita.
+	\subsubsection{Dichiarazione delle variabili}
+	\begin{code}
+int main(){
+	int a;
+	int b;
+	int c;
+	
+	//equivalente a:
+	
+	int a,b,c;
+	a = 2;
+	b = 3;
+	c = a + b;
+	
+	//il segno = è l'operatore di assegnazione, assegna ala variabile a sinistra l'elemento a destra
+	
+	return 0;
+}
+	\end{code}
+	\newpage
+	
+	\section{Istruzioni UNIX}
+	Elenco comandi utili in UNIX
+	\begin{itemize}
+		\item Per creare una cartella: \unix{mkdir nomecartella}
+		\item Per entrare in una cartella: \unix{cd directorydellacartella}
+		\item Per tornare uscire da una cartella: \unix{cd ...}, per tornare alla home directory: \unix{cd}
+		\item Per vedere il contenuto di una directory: \unix{ls}
+	\end{itemize}
+\end{document}
