@@ -1,0 +1,1330 @@
+\documentclass[a4paper, 12pt, openany]{book}
+
+% pacchetti comuni
+\input{../preambolo.tex}
+\usetikzlibrary{backgrounds}
+\usepackage{parcolumns}
+
+% info documento
+\title{Appunti di Analisi Matematica}
+\author{Liam Ferretti}
+\date{\today}
+
+\begin{document}
+	
+	\maketitle
+	
+	\chapter*{Sommario del corso}
+	Per i ricevimenti bisogna prenotarsi via e-mail, e si svolgeranno nell'edificio 105 dell'edificio Castel Nuovo
+	Si potranno trovare note ed esercizi su e-learning
+	
+	Programma:
+	\begin{itemize}
+	\item Numeri reali  
+	\item Funzioni di variabili reali  
+	\item Successioni e serie
+	\item Limiti e continuità
+	\item Calcolo differenziale ad una variabile  
+	\item Integrali
+	\item Equazioni differenze lineari  
+	\item Funzioni di più variabili (tutti i capitoli precedenti comprendono le funzioni a più variabili)
+	\end{itemize}
+	I libri di testo sono presenti su e-learning, ed è consigliato "Crasta Malusa", da cui assegnerà gli esercizi.
+	
+	L'esame sarà composto da scritto più orale, non ci sarà probabilmente un esonero, e con l'orale si può incrementare o decrementare il voto di fino a 3 punti in positivo o 3 in negativo, tranne nel caso in cui si commettano errori su: limiti, continuità o divisione per 0, che comporta la bocciatura immediata.
+	
+	\newpage
+	\tableofcontents
+	\clearpage
+	
+	\chapter{Numeri reali}
+	La matematica si costruisce su:
+	\begin{itemize}
+		\item elementi di base:
+			\subitem oggetti di base (enti primitivi)
+			\subitem proprietà di basa (assiomi)
+		\item regole di deduzione che sono fissate
+	\end{itemize}
+	
+	\section{Notazione}
+	
+	La notazione si divide in:
+	\begin{itemize}
+		\item Connettiva:
+			\subitem $\neg$ , non
+			\subitem $\vee$ ,  e
+			\subitem $\wedge$ , o
+			\subitem $\Rightarrow$ , implica 
+			\subitem $\iff$ , equivale (se e solo se)
+			\subitem : (t.c.) , tale che / tale per cui
+		\item Quantificativa:
+			\subitem $\exists$ , esiste
+			\subitem $\not \exists$ , non esiste
+			\subitem $\exists!$ , esiste ed è unico
+			\subitem $\forall$ , per ogni
+	\end{itemize}
+	
+	\section{Le proposizioni}
+	Per proposizione Si intende una affermazione.
+	
+	Es:
+		\begin{itemize}
+			\item P = oggi è martedì
+			\item $\neg$P = oggi non è martedì
+			\item Q = c'è il sole
+			\item P $\wedge$ Q = oggi è martedì e c'è il sole
+			\item P $\vee$ Q = oggi è martedì oppure c'è il sole
+			
+			\item $\neg$(P $\wedge$ Q) $\Rightarrow$ P $\vee$ Q può essere vera (P oppure Q), ma P $\wedge$ Q non può essere vera (P e Q), quindi non possono essere vere allo stesso tempo
+		\end{itemize}
+	A $\Rightarrow$ B, vuol dire se A è vero allora B è vero. \newline
+	A $\iff$ B = (A $\Rightarrow$ B) $\wedge$ (B $\Rightarrow$ A), e vuol dire se e solo se A allora B.\newline
+	Partendo dalla proposizione precedente, è vero che:
+	\[
+	A \Rightarrow B \iff \neg B \Rightarrow \neg A
+	\]
+	cioè è utile nelle dimostrazioni per assurdo. Nelle dimostrazioni si parte dagli assiomi e con le regole logiche si fanno ipotesi (affermazioni) che nel caso in cui fosse vera rende la tesi (la validità di una o più proprietà).
+	
+	OSS: è \textbf{sbagliato} dire che:
+	\[
+	A \Rightarrow B \iff \neg A \Rightarrow \neg B
+	\]
+	in quanto il non avvenire di A non implica che B non possa avvenire per altre motivazioni.
+	
+	\section{Insiemi}
+	Un insieme è una collezioni di elementi
+	\subsection{Notazione degli insiemi}
+	\begin{itemize}
+		\item definizione di insieme: G $:= \{e_1, e_2, e_3, ...\}$, è necessario l'uso di $:=$ per definire un insieme, e vuol dire "definito come".
+		\item quando due insiemi hanno gli stessi elementi si dichiara l'uguaglianza tra $I_1$ e $I_2$, con il simbolo =, ad esempio
+		\[
+		F := \{0, 1\}, H := \{1, 0\} \rightarrow F = H
+		\]
+		\item per definire l'appartenenza di un elemento in un insieme si scrive $a \in I$,  se questo elemento non appartiene all'insieme si rappresenta $a \not \in I$ con $a$ un elemento qualsiasi e $I$ un insieme qualsiasi.
+		
+	\end{itemize}
+	\subsection{Relazione di ordine o inclusione}
+	Se $A_1 \subset A_2 \rightarrow A_1$ è contenuto in $A_2$, e $A_1$ è al tal più grande quanto $A_2$, ovvero $A_1$ è un sotto insieme di $A_2$.
+	
+	Se i due insiemi non sono uguali allora si segna $A_1 \not \subseteq A_2$, è quindi strettamente contenuto.
+	
+	Se invece i due insiemi possono essere uguali, si scrive $A_1 \subseteq A_2$.
+	\newpage
+	Es:
+	\[
+	\begin{tikzpicture}
+		% Insieme grande X
+		\draw (0,0) ellipse (3cm and 2cm);
+		\node at (3.5,0) {$A_2$}; % scritta attaccata al bordo destro
+		
+		% Sottoinsieme Y
+		\draw (0,0) ellipse (1.5cm and 1cm);
+		\node at (2,0) {$A_1$}; % scritta vicino al bordo destro
+		
+		\node at (-0.5,0.3) {$a$};
+		\node at (0.4,-0.2) {$b$};
+		\node at (0.5,+0.5) {$c$};
+	\end{tikzpicture}
+	\] 
+	contengono gli stessi elementi quindi: $A_1 = A_2$ 
+	\[
+	\begin{tikzpicture}
+		% Insieme grande X
+		\draw (0,0) ellipse (3cm and 2cm);
+		\node at (3.5,0) {$A_2$}; % scritta attaccata al bordo destro
+		
+		% Sottoinsieme Y
+		\draw (0,0) ellipse (1.5cm and 1cm);
+		\node at (2,0) {$A_1$}; % scritta vicino al bordo destro
+		
+		\node at (-0.5,0.3) {$a$};
+		\node at (0.4,-0.2) {$b$};
+		\node at (0.5,+0.5) {$c$};
+		\node at (-2,-1) {$d$};
+		\node at (-1.8, -0.2) {$e$};
+	\end{tikzpicture}
+	\]
+	in questo caso $A_2$ contiene più elementi di $A_1$, quindi $A_1 \not \subseteq A_2$
+	
+	\subsection{Proprietà degli insiemi}
+	Gli insiemi hanno 3 proprietà principali:
+	\begin{itemize}
+		\item Riflessiva: $A \subseteq A$, per $A$ insieme qualsiasi, quindi l'insieme contiene se stesso
+		\item Antisimmetrica: $(A \subseteq B) \wedge (B \subseteq A) \Rightarrow A = B$, per $A, B$ insiemi qualsiasi
+		\item Transitiva:$(A \subseteq B) \wedge (B \subseteq C) \Rightarrow A \subseteq C$, per $A, B, C$ insiemi qualsiasi
+	\end{itemize}
+	
+	\subsection{Operazioni tra insiemi}	
+	Presi due insiemi $A, B$ allora esistono diverse proprietà:
+	\begin{itemize}
+		\item Unione (o): $A \cup B$ := $\{a : a\in A \vee a \in B\}$
+		\[
+		\begin{tikzpicture}
+			
+			\begin{scope}
+				\clip (0,0) circle (1.5cm);
+				\fill[blue!30] (-2,-2) rectangle (4,2);
+			\end{scope}
+			
+			\begin{scope}
+				\clip (2,0) circle (1.5cm);
+				\fill[blue!30] (-2,-2) rectangle (4,2);
+			\end{scope}
+			
+			\draw (0,0) circle (1.5cm);
+			\node at (-2,0) {$A$};
+			\draw (2,0) circle (1.5cm);
+			\node at (4,0) {$B$};
+		\end{tikzpicture}
+		\]
+		\item Intersezione (e): $A \cap B$ := $\{a : a\in A \wedge a \in B\}$ 
+		\[
+		\begin{tikzpicture}
+			\begin{scope}
+				\clip (0,0) circle (1.5cm);
+				\fill[blue!30] (2,0) circle (1.5cm);
+			\end{scope}
+			
+			\draw (0,0) circle (1.5cm);
+			\node at (-2,0) {$A$};
+			\draw (2,0) circle (1.5cm);
+			\node at (4,0) {$B$};		
+		\end{tikzpicture}
+		\]
+		\item Differenza (-): $A \setminus B $ :=  $\{a : a \in A, a\not \in B\}$
+		\[
+		\begin{tikzpicture}
+			% Coloro A \ B
+			\begin{scope}
+				\clip (0,0) circle (1.5cm);
+				\fill[blue!30] (-2,-2) rectangle (2,2);
+			\end{scope}
+			
+			% Rimuovo l’intersezione con B
+			\begin{scope}
+				\clip (2,0) circle (1.5cm);
+				\fill[white] (-2,-2) rectangle (4,2);
+			\end{scope}
+			
+			
+			\draw (0,0) circle (1.5cm);
+			\node at (-2,0) {$A$};
+			\draw (2,0) circle (1.5cm);
+			\node at (4,0) {$B$};	
+		\end{tikzpicture}
+		\]
+		\item Prodotto cartesiano: $A \times B$ := $\{(a, b) : a \in A \wedge b \in B\}$
+		\[
+		\begin{tikzpicture}
+			% A e B come insiemi puntuali
+			\foreach \x in {1/2,2/2,3/2,4/2,5/2,6/2} {
+				\foreach \y in {1/2,2/2,3/2,4/2,5/2,6/2} {
+					\fill[blue!30] (\x,\y) circle (0.1cm);
+				}
+			}
+			
+			% Etichette
+			\node[left] at (0,2) {$B$};
+			\node[below] at (2,0) {$A$};
+		\end{tikzpicture}
+		\]
+	\end{itemize}
+	
+	\section{Predicato}
+	Una preposizione può dipendere da una o più variabili, ovvero un ente che varia in un gruppo, in quel caso prende il nome di predicato. 
+	Es: 
+	
+	$P$ = oggi è martedì
+	
+	$P(x)$ = $x$ è martedì 
+	
+	allora preso $A := \{lunedì, martedì, ... , domenica\}, x \in A$
+	
+	$B := \{x\in A : P(x)\}$ = $\{martedì\}$, con $P(x)$ si intendono le x che rendono $P(x)$ vera, quindi si cercano le x appartenenti ad $A$ t.c. $P(x)$ sia vera.
+	
+	\subsection{Confronto simbologia logica e insiemistica}
+	La simbologia nella logica e nella insiemistica è diversa, ma i termini sono gli stessi: \newline
+	\begin{center}
+		\begin{tabular}{p{0.45\textwidth} p{0.45\textwidth}}
+			\textbf{Logica} &
+			\textbf{Insiemistica} \\
+			A, ovvero A è vera &
+			$A := \{x \in I : A(x)\}$, con $A \subset I$ \\
+			$\neg A$, ovvero A non è vera &
+			$A^c := \{x \in B : \neg A(x)\}$, con $A^c \not\subset B$ \\
+			$\neg (A \wedge B) = \neg A \vee \neg B$ &
+			$(A \cap B)^c = A^c \cup B^c$ \\
+			$\neg (A \vee B) = \neg A \wedge \neg B$ &
+			$(A \cup B)^c = A^c \cap B^c$ \\
+			$\Rightarrow$, ad esempio $A \Rightarrow B$ &
+			$A \subset B$, perchè A è definito come gli elementi x appartenenti ad un insieme $I$ t.c. $A(x)$ sia vera, allo stesso tempo B è definito come gli elementi x appartenenti ad un insieme $I$ t.c. $B(x)$ sia vera, perciò dire che A implica B, vuol dire che gli elementi x che rendono veri A sono contenuti in B \\
+			$\iff$, ad esempio $A \iff B$ & $A = B$, riprendendo la stessa argomentazione in questo caso B è vera se A è vera, ma allo stesso tempo A è vera se B è vera, perciò i due insiemi coincideranno
+		\end{tabular}
+	\end{center}
+	
+	\subsection{Notazione}
+	\begin{itemize}
+		\item $x\in A \xRightarrow{def}$ x è elemento di A 
+		\item $x\not \in A \xRightarrow{def}$ x non è elemento di A, quindi $x\in A^c$
+		\item $A \cap B := \{a : A(a) \wedge B(a)\} = \{x : x \in A \wedge x \in B\} \}$
+		\item $A \cup B := \{a : A(a) \vee B(a)\} = \{x : x \in A \vee x \in B\}$
+		\item $A \setminus B := \{a : A(a) \vee \neg B(a)\} = \{x : x\in A \vee x \not \in B\} = \{x : x\in A \vee x \in B^c\}$
+		\item $A \Delta B := (A \setminus B ) \cup (B \setminus A) = (A \cap B)^c$
+	\end{itemize}
+	
+	\subsection{Insieme parti di I}
+	L'insieme parti di I, è definito come:
+	\[
+	P(I) := \{X : X \subset I\}, \text{con $X$ insieme}
+	\]
+	Preso $I := \{0, 1\} \Rightarrow P(I) = \{0, 1, \{0, 1\}\}$, $P(I)$ rappresenta l'insieme parti, ovvero l'insieme composto da tutti i possibili sottoinsiemi di $I$.
+	Es:
+	\[A =\{0, 1\} \Rightarrow P(A) = \{0, 1, \{0, 1\}\}\]
+	
+	\subsection{Predicato con più variabili}
+	\[L(x) = x \text{ segue la lezione}, \forall x \in I\]
+	\[P(x, y) = x \text{ segue la lezione il giorno }y, \forall x\in I, y\in G\]
+	
+	preso $x \in \{\text{studenti del canali 2 del corso Analisi}\} = \{Luca, Liam, ...\}$, allora:
+	\begin{itemize}
+		\item $\forall x, L(x) \Rightarrow \text{ Luca segue la lezione $\wedge$ Liam segue la lezione $\wedge$ ... }$
+		\item $\exists x \tc L(x) \Rightarrow \text{ Luca segue la lezione $\vee$ Liam segue la lezione $\vee$ ... }$
+		\item $x = Luca \rightarrow P(Luca, y)$ // Luca segue la lezione il giorno y, se $y = oggi \rightarrow P(Luca, oggi)$ è vero
+	\end{itemize}
+	Come scrivo che ogni studenti segue la lezione almeno un giorno?
+	\[\forall x \in S, \exists y \in G \tc P(x, y)\]
+	l'ordine nei quantificatori è importate in quanto dire:
+	\[\forall x \in S, \exists y \in G \tc P(x, y)\]
+	è diverso da dire:
+	\[\exists y \in G, \forall x \in S\tc P(x, y)\]
+	che vuol dire "esiste almeno un giorno tale per cui tutti gli studenti vengano a lezione"
+	
+	\subsection{Negazione del predicato}
+	Negare $\forall x \in S, \exists y \in G \tc P(x, y)$ (ogni studenti segue la lezione almeno un giorno), vuol dire:
+	\[\neg(\forall x \in S, \exists y \in G \tc P(x, y)) = \exists x \in S, \forall y \in G : \neg P(x, y)\]
+	quindi esiste almeno uno studente che non segue mai la lezione
+	
+	\subsection{Regole della logica}
+	\begin{itemize}
+		\item se $B \Rightarrow A$ allora A è condizione necessaria per B, quindi:
+		\[B \Rightarrow A \rightarrow \neg A \Rightarrow \neg B\]
+		\item se $A \Rightarrow B$ allora A è condizione sufficiente di B, quindi basta che A sia vera affinché B avvenga.
+		\item se $A \iff B$ allora A è condizione necessaria e sufficente di B.
+		\item $\emptyset \in E, \forall E$ insieme
+		\item Regola del terzo escluso:
+		\[\forall A \text{ insieme}, A \vee \neg A, \text{ quindi succede o non succede}.\]
+		\item Principio di non contraddizione:
+		\[\forall A, \neg(A \wedge \neg A)\]
+		quindi per ogni insieme non è vero che esiste A e non A, in quanto non esisto elementi appartenenti ad A ed anche a non A, quindi non esistono elementi che verificano una proposizione ma allo stesso tempo non la verificano
+		\item Transitività:
+		\[\forall A, B, C, [(A \Rightarrow B) \wedge (B \Rightarrow C)] \Rightarrow (A \Rightarrow C)\]
+	\end{itemize}
+	
+	\chapter{Insiemi numerici}
+	\section{Numeri naturali}
+	\[\mathbb{N} := \{0, 1, 2, ..., n\} \text{, ed } \mathbb{N}^+ := \mathbb{N} \setminus \{0\} \]
+	in $\mathbb{N}$ è possibili ordinare gli elementi quindi per $m,n \in \mathbb{N}$:
+	\[n \leq m \iff \exists p \in \mathbb{N} \tc m = n + p\]
+	
+	\subsection{Proprietà di $\mathbb{N}$ (relazione di ordine)}
+	\begin{itemize}
+		\item Riflessiva:
+		\[\forall n \in \mathbb{N}, n \leq n\]
+		\item Antisimmetrica:
+		\[\forall n, m \in \mathbb{N}, (n \leq m \wedge m\leq n) \Rightarrow n = m\]
+		\item Transitiva:
+		\[\forall n, m, p \in \mathbb{N}, (n \leq m \wedge m \leq p) \Rightarrow n \leq p\]
+		\item Ordinamento totale:
+		\[\forall n, m \in \mathbb{N}, n\leq m \vee m \leq n\]
+	\end{itemize}
+	
+	\subsection{Assiomi di Peano}
+	Esiste una operazione, \textbf{passaggio al successivo}, $s(n) = n + 1$, tale che:
+	\begin{itemize}
+		\item (P1) esiste un elemento $0 \in \mathbb{N} \tc 0 \not = s(n), \forall n \in \mathbb{N}$
+		\item (P2) se $n,m \in \mathbb{N} \wedge n \not = m \rightarrow s(n) \not = s(m)$
+		\item (P3) se $E \subset \mathbb{N}$ è tale che:
+		\[ (\text{I1})\quad 0 \in E \quad \quad e \quad \quad (\text{I2})\quad \text{se } n \in E \rightarrow s(n) \in E\]
+		allora $E = \mathbb{N}$
+	\end{itemize}
+	
+	\subsection{Metodo Induttivo}
+	Il P3 è ciò che definisce il metodo induttivo (PI), ovvero:
+	\[P(n)\]
+	\[E := \{n \in \mathbb{N} \tc P(n)\} \subset \mathbb{N}\]
+	PI dice che:
+	\[
+	\left\{
+	\begin{aligned}
+		0 &\in E \\
+		\forall n &\in E \Rightarrow s(n) \in E
+	\end{aligned}\right. \Rightarrow E = \mathbb{N}\]
+	
+	\begin{proposition}
+		$\displaystyle P(n) = \sum_{k=0}^{n} k = \dfrac{n(n+1)}{2}$
+	\end{proposition}
+	
+	\begin{proof}
+		Dimostro per induzione
+		
+		\textbf{Base induttiva:} per \(n = 0\), la sommatoria equivale a \(\frac{0(1)}{2} = 0\)
+		
+		\textbf{Passo induttivo:} 
+		\[P(n + 1) = \sum_{0}^{n + 1} k = \sum_{0}^{n} k + (n + 1) = \frac{n(n+1)}{2} + (n + 1) =\]
+		\[= \frac{n(n+1) + 2(n+1)}{2} = \frac{(n+1)(n + 2)}{2} = P(n + 1)\] 
+	\end{proof}
+	
+	Per applicare il metodo induttivo, non è valido partire dalla soluzione per arrivare alla dimostrazione, in quanto bisogna partire da P(n) ed arrivare a dimostrare P(n + 1).
+	
+	\subsection{Principio di buon ordinamento (P.B.O.)}
+	Teorema equivalente al principio di induzione, perciò se P1 e P2 sono valide allora PI $\iff P.B.O$, e dice che:
+	\[\forall E \subset \mathbb{N} \tc E \not = 0, \exists n_0 \in E \tc \exists n \geq n_0, \forall n \in E\]
+	Il minimo di un insieme E, se esiste è definito come:
+	\[a\in E \tc a \leq b, \forall b \in E\]
+	
+	Il principio di buon ordinamento permette di dimostrare induttivamente anche quando la base induttiva è diversa da 0, e in quel caso:
+	\[P(b) \wedge P(n) \Rightarrow P(n + 1), \forall n \in \mathbb{N}\setminus \{0, ... ,b\}, b \not = 0\]
+	
+	\subsection{Fattoriale e coefficiente binomiale}
+	Due funzioni matematiche che si definiscono per induzione sono:
+	\begin{itemize}
+		\item Fattoriale:
+		\[n! = n(n-1)(n-2)(...)(1), \forall n \in \mathbb{N}\]
+		e per definizione il fattoriale di 0 è 1:
+		\[0! = 1\]
+		\item Coefficiente binomiale:
+		\[\binom{n}{k} = \frac{n!}{k!(n-k)!}, \forall n,k \in \mathbb{N}, n \geq k\]
+		partendo dal coefficiente binomiale, è possibile svolgere lo sviluppo di una potenza ennesima di un binomio, definito binomio di Newton:
+		\[(a+b)^n = \sum_{k = 0}^{n} \binom{n}{k} a^{n-k}b^k, n\in \mathbb{N}^+\]
+		in questo binomio il coefficiente binomiale da il coefficiente di $a^{n-k}b^k$, per quel indice specifico di k, che è ottenibile anche dal triangolo di tartaglia
+		\item Triangolo di tartaglia:
+		\[
+		\begin{array}{ccccccccccc}
+			&&&&1&&&\\
+			&&&1&&1&&\\
+			&&1&&2&&1&\\
+			&1&&3&&3&&1\\
+			1&&4&&6&&4&&1&
+		\end{array}
+		\]
+		e così via, costruito dalla somma dei due elementi alla righe precedente, in cui partendo dall'alto dalla riga 0, fino alla riga n si ha da sinistra a destra l'indice k della riga n.
+	\end{itemize}
+	
+	\section{Numeri interi}
+	I numeri interi sono definiti come:
+	\[\mathbb{Z} := \{..., -2, -1, 0, 1, 2, ...\}\]
+	è possibile osservare che:
+	\begin{itemize}
+		\item $\mathbb{N} \subset \mathbb{Z}$
+		\item $\mathbb{Z}$ non da un minimo, al contrario di $\mathbb{N}$
+		\item $\forall n \in \mathbb{N}, n \not = 0, \exists! -n \in \mathbb{Z} \tc n + (-n) = 0$
+	\end{itemize}
+	Quindi $(\mathbb{Z}, +)$, ovvero l'insieme dei numeri interi in cui è definita la somma, è detto un gruppo commutativo/abeliano.
+	Si dice abeliano, quando:
+	\[\forall z_1,z_2 \in \mathbb{Z}, \quad z_1 + z_2 = z_2 + z_1\]
+	Invece un insieme si definisce gruppo quando rispetta queste 3 proprietà:
+	\[
+	\left\{\begin{aligned}
+		1 & \text{ la somma è associativa }: (a+b) + c = a + (b + c), \forall a,b,c \in \mathbb{Z}\\
+		2 & \; \, \exists! 0, \text{ detto elemento neutro della somma } \tc 0 + z = z + 0 = z, \forall z \in \mathbb{Z}\\
+		3 & \; \, \forall z \in \mathbb{Z} \exists! -z \in \mathbb{Z}, \text{ detto opposto di z } \tc z + (-z) = - z + z = 0
+	\end{aligned}\right.\]
+	
+	\section{Numeri razionali}
+	i numeri razionali sono definiti come:
+	\[\mathbb{Q} := \{\frac{p}{q} : p \in \mathbb{Z}, q \in \mathbb{N}^+\}\]
+	Allora $(\mathbb{Q}, +, \cdot)$, è un campo:
+	\begin{itemize}
+		\item $(\mathbb{Q}, +)$ è un gruppo commutativo.
+		\item $(\mathbb{Q}, \cdot)$ è un gruppo commutativo.
+		\item $\forall a,b,c \in \mathbb{Q}, a(b+c) = ab + ac$, quindi è valida la proprietà distributiva rispetto alla somma.
+		\item Esistenza dell'elemento neutro del prodotto:
+		\[a \cdot 1 = 1 \cdot a = a\]
+		\item elemento inverso del prodotto:
+		\[a^{-1} = \frac{1}{a}: a \cdot a^{-1} = a^{-1} \cdot a = \frac{a}{a} = 1\]
+	\end{itemize}
+	Altre proprietà di $\mathbb{Q}$, dette di ordinamento:
+	\begin{itemize}
+		\item Ordinamento totale: 
+		\[\forall a,b \in \mathbb{Q}, a \leq b \wedge b \leq a\]
+		\item Riflessiva:
+		\[\forall a \in \mathbb{Q}, a \leq a\]
+		\item Antisimmetrica:
+		\[\forall a, b \in \mathbb{Q}, a \leq b \vee b\leq a \Rightarrow a = b\]
+		\item Transitiva:
+		\[\forall a,b,c \in \mathbb{Q}, a \leq b \wedge b \leq c \Rightarrow a \leq c\]
+		\item $\forall a,b \in \mathbb{Q}, a \leq b \Rightarrow a+ c \leq b +c, \forall c \in \mathbb{Q}$
+		\item $\forall a,b \in \mathbb{Q}, a \leq b \Rightarrow a \cdot c \leq b \cdot c, \forall c \in \mathbb{Q}_0^+$
+	\end{itemize}
+	
+	Oss: $\mathbb{Q}$ ha dei buchi, infatti:
+	\[\exists q : q^2 = 2 \Rightarrow q = \pm \sqrt{2} \not \in \mathbb{Q}\]
+	
+	\subsection{Dimostrazione irrazionalità di $\sqrt{2}$}
+	\begin{proposition}
+		$\not \exists q \in \mathbb{Q} \tc q^2 = 2 \rightarrow (\frac{p}{q})^2 = 2$, con $p$ e $q$ coprimi, e $q \not = 0$
+	\end{proposition}
+	
+	\begin{proof}
+		Dimostro per assurdo
+		\[\left(\frac{p}{q}\right)^2 = 2 \Rightarrow p^2 = 2q^2\] 
+		dato che $p^2$ è uguale a $2q^2$, p è pari, perciò può essere scritto come $(2k)^2$, svolgendo i calcoli.
+		\[4k^2 = 2q^2 \Rightarrow 2k^2 = q^2\]
+		ora anche $q^2$ è uguale a $2k^2$, quindi anche q è pari, perciò la nostra tesi non è più valida in quanto non è vero che p e q sono coprimi.
+	\end{proof}
+	
+	\subsection{Scrittura di $q \in \mathbb{Q}$ forme decimali}
+	$\mathbb{Q}$ corrisponde all'insieme $\{n,n_1n_2n_3...\}$, cioè $n \in \mathbb{Z}, n_i \in \{0, 1, 2, 3, ..., 9\} \tc $ sono finite $(n_i = 0, \forall i > i_0)$ o periodiche (un gruppo di n cifre si ripete all'infinito):
+	\[\mathbb{Q} := \{n + \frac{n_1}{10} + \frac{n_2}{10^2} + ... + \frac{n_k}{10^k}\}, k \in \mathbb{N}\]
+	
+	\subsection{Caso interessante}
+	Presi:
+	\[A := \{q \in \mathbb{Q} \tc q^2 < 2\} \quad \quad B := \{q \in \mathbb{Q} \tc q^2 > 2\}\]
+	
+	\begin{center}
+		\begin{tikzpicture}[scale=2]
+			% Retta
+			\draw[->, blue, thick] (-3,0) -- (3,0);			
+			
+			% Parentesi per gli insiemi
+			\node at (0.1,0) {$(\;\;\;$}; % parentesi sinistra (A)
+			\node at (-0.1,0) {$\;\;\;)$};  % parentesi destra (B)
+			
+			% Segmenti che indicano A e B (opzionale, più chiaro)
+			\draw[thick, red] (-3,0) -- (0,0); % A
+			\draw[thick, blue] (0,0) -- (3,0); % B
+			
+			% Punto radice di 2
+			    \draw (0,0.1) -- (0,-0.1) node[below] {$\sqrt{2} = 1.4142135623...$};
+		\end{tikzpicture}
+	\end{center}
+	
+		
+	osserviamo che:
+	\begin{itemize}
+		\item $a \in A, b \in B \Rightarrow a \leq b$
+		\item A, B sono vicino quanto vogliamo:
+		\[\exists a \in A, b \in B \tc a,b \text{ siano vicini}\]
+		\item $\not \exists c \in \mathbb{Q} \tc a \leq c \leq b, \forall a \in A, \forall b \in B$, quindi $\mathbb{Q}$ non soddisfa l'assioma di Dedekind o assioma della completezza.
+	\end{itemize}
+	
+	\section{Numeri reali}
+	$(R, +, \cdot)$ è definito assiomaticamente tramite:
+	\begin{itemize}
+		\item $\mathbb{Q} \subset \mathbb{R}$
+		\item $(R, +, \cdot)$ soddisfa le proprietà di $\mathbb{Q}$
+		\item soddisfa l'assioma di Dedekind, quindi $\mathbb{R}$ non ha buchi, ovvero:
+		\[\forall A, B \subset \mathbb{R} \tc A \not = \emptyset, B \not = \emptyset, A \cup B = \mathbb{R} \wedge a \leq b, \forall a \in A, \forall b \in B \Rightarrow \exists! c \in \mathbb{R} \tc a \leq c \leq b\]
+		con c che può appartenere ad A o a B, ma non ad entrambi
+	\end{itemize}
+	
+	\begin{center}
+		\begin{tikzpicture}[scale=2]
+			% Retta
+			\draw[->, blue, thick] (-3,0) -- (3,0);			
+			
+			% Parentesi per gli insiemi
+			\node at (0,0) [font=\large] {$\,($}; % parentesi sinistra (A)
+			\node at (0,0) [font=\large] {$]\,$};  % parentesi destra (B)
+			
+			% Segmenti che indicano A e B (opzionale, più chiaro)
+			\draw[thick, red] (-3,0) -- (0,0); % A
+			\draw[thick, blue] (0,0) -- (3,0); % B
+			
+			% Punto radice di 2
+			\draw (0,0.1) -- (0,-0.1) node[below] {$c$};
+		\end{tikzpicture}
+	\end{center}
+	Importante: se $A \cup B \not = \mathbb{R}$, allora non è detto che c sia unico:
+	\begin{center}
+		\begin{tikzpicture}[scale=2]
+			% Retta
+			\draw[->, black, thick] (-3,0) -- (3,0);			
+			
+			% Parentesi per gli insiemi
+			\node at (0.5,0) [font=\large] {$\,($}; % parentesi sinistra (A)
+			\node at (-0.5,0) [font=\large] {$]\,$};  % parentesi destra (B)
+			
+			% Segmenti che indicano A e B (opzionale, più chiaro)
+			\draw[thick, red] (-3,0) -- (-0.5,0); % A
+			\draw[thick, blue] (0.5,0) -- (3,0); % B
+			
+			% Punto c
+			\draw (0,0.1) -- (0,-0.1) node[below] {$c$};
+			\draw (0.1,0.1) -- (0.1,-0.1) node[below] {$c$};
+			\draw (-0.1,0.1) -- (-0.1,-0.1) node[below] {$c$};
+			\draw (-0.2,0.1) -- (-0.2,-0.1) node[below] {$c$};
+			\draw (0.2,0.1) -- (0.2,-0.1) node[below] {$c$};
+		\end{tikzpicture}
+	\end{center}
+	Se invece l'unione tra i due insiemi non è nulla o unica, quindi $A \cap B \not = \emptyset$
+	
+	\begin{center}
+		\begin{tikzpicture}[scale=2]
+			% Retta
+			\draw[->, black, thick] (-3,0) -- (3,0);			
+			
+			% Parentesi per gli insiemi
+			\node at (0.5,0) [font=\large] {$\,]$}; % parentesi sinistra (A)
+			\node at (-0.5,0) [font=\large] {$(\,$};  % parentesi destra (B)
+			
+			% Segmenti che indicano A e B (opzionale, più chiaro)
+			\draw[thick, red] (-3,0) -- (+0.5,0); % A
+			\draw[thick, blue] (-0.5,0) -- (3,0); % B
+			\draw[thick, violet] (-0.55,0) -- (0.55,0);
+			
+			% Punto c
+			\draw (0,0.1) -- (0,-0.1) node[below] {$c$};
+		\end{tikzpicture}
+	\end{center}
+	in questo caso $\exists b \in B \tc b < c$
+	
+	\subsection{Teorema della caratterizzazione di $\mathbb{R}$}	
+	$\mathbb{R}$ è l'unico campo ordinato che può essere rappresentato con l'insieme di tutti i possibili decimali allineati:
+	\[\mathbb{R} := \{m,d_1d_2d_3...d_j \tc m \in \mathbb{Z}, d_j \in \{0, 1, ..., 9\} \tc j \in \mathbb{N}^+\}\}
+	\]
+	\[\setminus \{m,d_1d_2d_3...d_n \tc m \in \mathbb{Z}, d_j \in \{0, ..., 9\} \tc \exists j_0 \in \mathbb{N}^+ \tc d_j = 9,  \forall j \geq j_0 \}\]
+	devono quindi essere esclusi tutti gli allineamenti di decimali in cui dopo un certo indice $j$ si susseguo sono 9, in quanto è lo stesso numero del successivo susseguito da tutti 0.
+	
+	Si dice che $\mathbb{Q}$ è denso in $\mathbb{R}$, quanto $\forall x \in \mathbb{R}\setminus \mathbb{Q}$ può essere approssimato da numeri razionali.
+	
+	\section{Intervalli, semirette ed estremi}
+	Definizione:
+	\begin{itemize}
+		\item sia $A \subset \mathbb{R}, A \not = \emptyset$, è detto che $M_A$ è un \textbf{maggiorante} di A, se $m \geq a, \forall a \in A$.
+		\[\mathcal{M}_A := \{ M_A \tc M_A \geq a, \forall a \in A\}\]
+		ovvero l'insieme dei maggioranti
+		\item sia $A \subset \mathbb{R}, A \not = \emptyset$, è detto che $m_A$ è un \textbf{minorante} di A, se $m \leq a, \forall a \in A$.
+		\[\textsl{m}_A := \{ m_A \tc m_A \leq a, \forall a \in A\}\]
+		ovvero l'insieme dei minoranti
+		\item sia $A \subset \mathbb{R}, A \not = \emptyset$, A è \textbf{limitato superiormente} se $\mathcal{M}_A \not = \emptyset$, quindi A ha almeno un maggiorante.
+		
+		N non è limitato superiormente in quanto $\forall n \in \mathbb{N}, \exists m > n \tc m \in \mathbb{N}$
+		\item sia $A \subset \mathbb{R}, A \not = \emptyset$, A è \textbf{limitato inferiormente} se $\textsl{m}_A \not = \emptyset$, quindi A ha almeno un minorante
+		
+		\item sia $A \subset \mathbb{R}, A \not = \emptyset$, allora il numero $M \in \mathbb{R}$, si dice \textbf{massimo di A}, $\max A$, se $M$ è un maggiorante di A e se $M \in A$.
+		
+		\item sia $A \subset \mathbb{R}, A \not = \emptyset$, allora il numero $m \in \mathbb{R}$, si dice \textbf{minimo di A}, $\min A$, se $m$ è un minorante di A e se $m \in A$.		
+		
+		\item sia $A \subset \mathbb{R}, A \not = \emptyset$, allora il minimo dei maggioranti di A, si dice \textbf{estremo superiore} di $A$, $\sup A$ o supremum $A$, nel caso in cui l'estremo superiore non esiste, il $\sup A = +\infty$
+		
+		\item sia $A \subset \mathbb{R}, A \not = \emptyset$, allora il massimo dei minoranti di A, si dice \textbf{estremo inferiore} di $A$, $\inf A$ o infumum $A$, nel caso in cui l'estremo inferiore non esiste, l ' $\inf A = -\infty$
+	\end{itemize}
+	
+	\newpage
+	
+	\begin{proposition}
+		sia $A \subset \mathbb{R}, A \not = \emptyset$\text{ e limitato superiormente, allora} $\exists \sup A$
+	\end{proposition}
+	
+	\begin{proof}
+		$A $ è limitato superiormente $\Rightarrow \mathcal{M}_A \not = \emptyset$, per definizione: $\forall a \in A,\forall b \in \mathcal{M}_A$ si ha $a \leq b$.
+		
+		L'assioma di Dedekind implica che: $\exists c \in \mathbb{R} \tc a \leq c \leq b \Rightarrow c = min \mathcal{M}_A = \sup A$
+	\end{proof}
+	Sia $A$ limitato superiormente, quindi $\exists \sup A \in \mathbb{R}$, allora il $\sup A$ è caratterizzato da:
+	\[\sup A = \min \mathcal{M}_A\]
+	\[
+	\left\{
+	\begin{aligned}
+		\sup A &\in \mathcal{M}_A \\
+		\forall \lambda < &\sup A \Rightarrow \lambda\in \mathcal{M}_A
+	\end{aligned}
+	\right. \iff \left\{
+	\begin{aligned}
+	\sup A &\in \mathcal{M}_A \\
+	\forall \lambda < &\sup A, \exists a \in A \tc \lambda < a
+	\end{aligned}\right.
+	\]
+	Osservazione:
+	sia $A \subset \mathbb{R} \tc \sup A \in \mathbb{R}$:
+	\begin{itemize}
+		\item se $\sup A \in A \Rightarrow \sup A = \max A$
+	\end{itemize}
+	Osservazione: sia $A \subset \mathbb{R} \tc \inf A \in \mathbb{R}$:
+	\begin{itemize}
+	\item se $\inf A \in A \Rightarrow \inf A = \min A$
+	\end{itemize}	
+	Importante:
+	sia $A \subset \mathbb{R}, A \not = \emptyset \Rightarrow \exists \sup A, \exists \inf A $, ma non è detto che esistano il $\max A, \min A$.
+	
+	Osservazione:
+	ogni $S \subset \mathbb{Z}, S \not = \emptyset$, limitato superiormente ha un massimo, mentre se limitato inferiormente ha minimo.
+	
+	\section{Proprietà di Archimede}
+	$\forall a, b \in \mathbb{R}, a > 0 \implies \exists n \in \mathbb{N}^+ \tc na > b$.
+	
+	Idea:
+	\[A :=  \{na \tc n \in \mathbb{N}^+\}\]
+	Supponendo che $\not \exists n \in \mathbb{N}^+ \tc na > b \Rightarrow b \geq an, \forall n \in \mathbb{N}^+ \Rightarrow b \text{ è un maggiorante } \mathcal{M}_A \not = \emptyset $ %TO DO
+	
+	Conseguenze:
+	\begin{itemize}
+		\item $\mathbb{N}, \mathbb{Z}, \mathbb{Q}, \mathbb{R}$, non sono limitati superiormente, in quanto tutti contengono il precedente.
+		\item $\forall x > 0, \exists n \in \mathbb{N}^+ \tc \frac{1}{n} < x$, che come corollario ha che negando la disuguaglianza, posso dire che:
+		$x \geq 0 \tc \forall a \in \mathbb{N}^+, x < \frac{1}{n} \Rightarrow x = 0$
+	\end{itemize}
+	
+	\section{Funzione modulo}
+	\[|x| := 
+	\left\{
+	\begin{aligned}
+		x & \quad \text{ se } x \geq 0\\
+		-x & \quad \text{ se } x < 0
+	\end{aligned}
+	\right. \equiv |x| = \max\{x, -x\} \in [0, +\infty)
+	\]
+	
+	\section{Intervalli}
+	$I \subset \mathbb{R}$, dice intervallo se $\forall x,y \in I, \exists z \in \mathbb{R} \tc x < z < y, z \in I$
+	
+	Un intervallo può essere descritto come uno di questi 4 tipi, avendo, $a \leq b, a,b \in \mathbb{R} \cup \{-\infty, +\infty\}$
+	\begin{itemize}
+		\item $[a, b] := \{x \in \mathbb{R} \tc a \leq x \leq b\}$
+		\item $]a, b] := \{x \in \mathbb{R} \tc a < x \leq b\}$
+		\item $[a, b[ := \{x \in \mathbb{R} \tc a \leq x < b\}$
+		\item $]a, b[ := \{x \in \mathbb{R} \tc a < x < b\}$
+	\end{itemize}
+	se a o b sono uguale a più o meno infinito, allora l'estremo è per forza aperto, in quanto a e b appartengono a $\mathbb{R}$.
+	
+	Definizione:
+	$A \subset \mathbb{R}$ si dice denso in $\mathbb{R}$ se $\forall I \subset \mathbb{R}, \exists a \in A \tc a \in I$
+	
+	\chapter{Cenni su $\mathbb{R}^n$, cardinalità e numeri complessi}
+	Definizione:
+	\begin{itemize}
+		\item $\mathbb{R} \times \mathbb{R} \equiv \mathbb{R}^2 = \{(x, y) \tc x, y \in \mathbb{R}\} \equiv$ piano cartesiano
+		\item $\mathbb{R} \times \mathbb{R} \times \mathbb{R} \equiv \mathbb{R}^3$
+		\item $\mathbb{R} \times \mathbb{R} \times ... \times \mathbb{R} \equiv \mathbb{R}^n$, e le sue coordinate sono: $(x_1, x_2,x_3, ..., x_ n) \in \mathbb{R}^n$
+	\end{itemize}
+	
+	\section{Intorno di un punto}
+	Per intorni si intende:
+	\[J_{x_0} = J(x_0) = \{]a,b[ \tc x \in ]a,b[\}\]
+	è definito come intorno particolare:
+	\[Ir_0(x_0) = (x_0 - r_0, x_0 + r_0) = \{x \in \mathbb{R} \tc |x -x_0| < r_ 0\}\]
+	un intervallo di centro $x_0$ e raggio $r_0$.
+	
+	$|\quad|$ permette di definire una distanza su $\mathbb{R}$, detta distanza euclidea:
+	\[d(x, y) = |x - y|\]
+	
+	Osservazione:
+	$\forall I \in J(x_0), \exists r > 0 \tc Ir(x_0) \subset J(x_0)$
+	
+	Prendendo: $r < \min\{d(x_0, a), d(x_0, b)\}$
+	
+	\begin{center}
+		\begin{tikzpicture}[scale=2]
+			% Retta
+			\draw[->, blue, thick] (-3,0) -- (3,0);			
+			
+			% Parentesi per gli insiemi
+			\node at (-0.6,0) [font=\large] {$\,($}; % parentesi sinistra (A)
+			\node at (1.6,0) [font=\large] {$)\,$};  % parentesi destra (B)
+						
+			\node at (-0.3,0) [font=\large] {$\,($}; % parentesi sinistra (A)
+			\node at (0.3,0) [font=\large] {$)\,$};  % parentesi destra (B)
+			
+			% Punto radice di 2
+			\draw (0,0.1) -- (0,-0.1) node[below] {$X_0$};
+		\end{tikzpicture}
+	\end{center}
+	
+	\subsection{Distanza in $\mathbb{R}^n$}
+	In $\mathbb{R}^2$:
+	
+	\begin{center}
+		\begin{tikzpicture}[scale=1]
+			% Assi cartesiani
+			\draw[->] (-1,0) -- (5,0) node[right] {$x$};
+			\draw[->] (0,-1) -- (0,5) node[above] {$y$};
+			
+			% Punto P1
+			\filldraw[blue] (2,3) circle (2pt) node[above right] {$P_1(x_1,y_1)$};
+			
+			% Punto P2
+			\filldraw[red] (1,1) circle (2pt) node[below left] {$P_2(x_2,y_2)$};
+			
+			\draw[thick, dashed] (2,3) -- (1,1) node[midway, above left] {$d$};;
+		\end{tikzpicture}
+	\end{center}
+	
+	$d(P_1, P_2) := \sqrt{(x_2 - x_1)^2 + (y_ 2 - y_2)^2} = |(x_2 - x_1) + (y_ 2 - y_2)| = ||P_2 - P _1||$.
+	
+	Nel caso in cui $x_1 = x_2$, allora è come si ci trovassimo in $\mathbb{R}$, quindi si può usare la formula per la distanza euclidea. \newline
+	In $\mathbb{R}^3$:
+	
+	Presi due punti $P_1, P_2$:
+	\[P_1 = (x^1_1, x^1_2, x^1_3, x^1_4, ..., x^1_n), \in \mathbb{R}^n\]
+	\[P_1 = (x^2_1, x^2_2, x^2_3, x^2_4, ..., x^2_n), \in \mathbb{R}^n\]
+	
+	\[d(P_1, P_1) := ||P_2 - P_1|| = \sqrt{(x^1_1 - x^2_1)^2 + (x^1_2 - x^2_2)^2 + ... + (x^1_n - x^2_n)^2}\]
+	
+	\subsection{Intorno in $\mathbb{R}^n$}
+	se $x_0 \in \mathbb{R}^2 \tc I_r(x_0) := \{(x_1,x_2) \in \mathbb{R}^2 \tc ||x - x_0|| < r\}$
+	
+	\begin{center}
+		\begin{tikzpicture}[scale=1]
+			% Assi cartesiani
+			\draw[->] (-1,0) -- (5,0) node[right] {$x$};
+			\draw[->] (0,-1) -- (0,5) node[above] {$y$};
+			
+			% Punto P1
+			\filldraw[blue] (2,2) circle (2pt) node[above] {$P_1(x_1,y_1)$};
+			
+			\draw[thick, blue] (2,2) circle (1.7);
+			
+			\draw[thick, dashed] (2,2) -- (3.7,2) node[midway, below] {$r$};;
+		\end{tikzpicture}
+	\end{center}
+	
+	\section{Coordinate polari}
+	preso $P = (x_1, y_1) \in \mathbb{R}^2$, è possibile trovare $\theta, \rho \tc:$
+	\[\left\{\begin{aligned}
+		x &= \rho \cos \theta\\
+		y &= \rho \sin \theta
+	\end{aligned}\right. \rightarrow \rho := d(0, P) = \sqrt{(x - 0)^2 + (y - 0)^2}\]
+	
+	\begin{center}
+		\begin{tikzpicture}[->, thick]
+			% assi
+			\draw[->] (-3,0) -- (3,0) node[above] {$x$};
+			\draw[->] (0,-3) -- (0,3) node[above] {$y$};
+			
+			% punti base
+			\fill (1,0) circle (2pt) node[below] {$(1,0)$};
+			\fill (0,1) circle (2pt) node[left] {$(0,1)$};
+			
+			% vettore z
+			\draw[->, black, thick] (0,0) -- (2,0.8) node[above] {$P$};
+			
+			\draw[black] (0,0) -- (2,0.8) node[midway, above] {$\rho$};
+			
+			% nodi
+			\coordinate (X) at (2,0);
+			\coordinate (O) at (0,0);
+			\coordinate (Z) at (2,0.8);
+			
+			% angolo senza freccia
+			\pic [draw=black, "$\theta$", angle eccentricity=1.5, angle radius=1cm, mark=none]
+			{angle = X--O--Z};
+		\end{tikzpicture}
+	\end{center}
+	
+	La somma tra le componenti al quadrato di un punto equivale a $\rho$ al quadrato, secondo il teorema di Pitagora.
+	\[x^2+y^2 = \rho^2 (\cos^2\theta + \sin^2\theta) = \rho^2\]
+	
+	\section{Retta in $\mathbb{R}^2$}
+	Una retta non verticale è definita da una coppia ordinata:
+	\[r := \{(x,y) \in \mathbb{R}^2 \tc y = mx + q\}\]
+	
+	\begin{center}
+		\begin{tikzpicture}[scale=1]
+		% Assi solo nel primo quadrante
+		\draw[->] (-1,0) -- (6,0) node[right] {$x$};
+		\draw[->] (0,-1) -- (0,6) node[above] {$y$};
+		
+		% Punti P1 e P2 nel primo quadrante
+		\coordinate (P1) at (1,2);
+		\coordinate (P2) at (4,3);
+		
+		% Etichetta i punti
+		\filldraw[blue] (P1) circle (2pt) node[below right] {$P_1(x_1,2_2)$};
+		\filldraw[red] (P2) circle (2pt) node[above left] {$P_2(x_2,y_2)$};
+		
+		% Calcolo della retta passante per i due punti
+		% m = (3 - 2)/(4 - 1) = 1/3 → y = (1/3)x + q
+		% Inseriamo P1 per calcolare q:
+		% 2 = (1/3)*1 + q → q = 2 - 1/3 = 5/3
+		
+		% Quindi il punto Q = (0, 5/3)
+		\coordinate (Q) at (0,1.6667); % 5/3 ≈ 1.6667
+		\filldraw[black] (Q) circle (2pt) node[left] {$q$};
+		
+		% Disegna la retta: y = (1/3)x + 5/3
+		\draw[thick, dashed, domain=-1:6] plot (\x,{(1/3)*\x + 5/3});
+		
+	\end{tikzpicture}
+	\end{center}
+	
+	in una retta $m$ è il coefficiente angolare della retta, definito dal rapporto incrementale:
+	\[m := \frac{\Delta y}{\Delta x} = \frac{y_2 - y_1}{x_2 - x_1}\]
+	e per q, si intende la quota del punto  di intersezione con l'asse delle y.
+	
+	Le rette verticali non sono descrivibili con questa equazione, in quanto si dividerebbe per 0 nel rapporto incrementale, perciò si usa una insieme numerico:
+	\[r_v := \{(x,y) \in \mathbb{R}^2 \tc x = x_0\}\]
+	
+	\section{Numeri complessi ($\mathbb{C} \equiv \mathbb{R}^2$)}
+	I numeri complessi sono definiti da una parte reale $a$ e da una parte immaginaria $b$, che moltiplica l'unità immaginaria, $i \in \mathbb{C} \tc i^2 = -1$.
+	\[z \in \mathbb{C} \Rightarrow z = a + bi = (a, b), \text{ con } a,b \in \mathbb{R}\] 
+	
+	Preso un numero complesso $z = (a, b)$, è possibile trovare:
+	\begin{itemize}
+		\item l'opposto: $-z = (-a, -b)$
+		\item il coniugato: $\overline{z} = (a, -b)$
+		\item l'opposto del coniugato: $-\overline{z} = (-a, b)$
+	\end{itemize}
+	
+	\begin{center}
+		\begin{tikzpicture}[scale=0.8]
+		% Assi cartesiani
+		\draw[->] (-5,0) -- (5,0) node[right] {$\text{Re}$};
+		\draw[->] (0,-5) -- (0,5) node[above] {$\text{Im}$};
+		
+		% Punti
+		\coordinate (Z) at (2,3);            % z
+		\coordinate (NegZ) at (-2,-3);       % -z
+		\coordinate (ConjZ) at (2,-3);       % conjugate
+		\coordinate (NegConjZ) at (-2,3);    % -conjugate
+		
+		% Disegna i punti
+		\filldraw[blue] (Z) circle (2pt) node[above right] {$z = 2 + 3i$};
+		\filldraw[red] (NegZ) circle (2pt) node[below left] {$-z = -2 - 3i$};
+		\filldraw[green!70!black] (ConjZ) circle (2pt) node[below right] {$\overline{z} = 2 - 3i$};
+		\filldraw[purple] (NegConjZ) circle (2pt) node[above left] {$-\overline{z} = -2 + 3i$};
+		
+		% Opzionale: linee tratteggiate verso gli assi
+		\draw[dashed, gray] (Z) -- (2,0);
+		\draw[dashed, gray] (Z) -- (0,3);
+		
+		\draw[dashed, gray] (NegZ) -- (-2,0);
+		\draw[dashed, gray] (NegZ) -- (0,-3);
+		
+		\draw[dashed, gray] (ConjZ) -- (2,0);
+		\draw[dashed, gray] (ConjZ) -- (0,-3);
+		
+		\draw[dashed, gray] (NegConjZ) -- (-2,0);
+		\draw[dashed, gray] (NegConjZ) -- (0,3);
+		\end{tikzpicture}
+	\end{center}
+		
+	\section{Insiemi aperti e chiusi}
+	Un insieme si dice aperto:
+	\[A \subset \mathbb{R}^n \text{ si dice \textbf{aperto} se } \forall x \in A, \exists r>0 \tc Ir(x) \subset A\]
+	Un insieme si dice chiuso:
+	\[A \subset \mathbb{R}^n \text{ si dice \textbf{chiuso} se } A^c = \mathbb{R}^n \setminus A^c \text{ è aperto}\]
+	Un insieme può essere ne aperto ne chiuso , ad esempio $(a, b]$ \newline
+	Per punto interno si intende:
+	\[A \subset \mathbb{R}^n, x \in \mathbb{R}^n \text{ si dice \textbf{punto interno} ad A se } \exists r>0 \tc Ir(x) \subset A\]
+	l'insieme di tutti i punti interni è definito da:
+	\[\mathring{A} := \{x \in \mathbb{R}^n \tc x \text{ è interno ad A}\}\]
+	Osservazione: 
+	\[\left\{
+	\begin{aligned}
+	\text{ se } & A \text{ è aperto } \mathring{A} = A \\
+	\mathring{A} &\text{ è il più grande insieme aperto } B \tc B \subset A \end{aligned}
+	\right\} \Rightarrow A \text{ è aperto } \iff \mathring{A} = A\]
+	Per punto esterno si intende:
+	\[A \subset \mathbb{R}^n, x \in \mathbb{R}^n, \text{ è esterno ad A se } \exists r>0 \tc Ir(x) \cap A \not = \emptyset\]
+	oppure dicendo che è interno all'insieme complementare di A:
+	\[Ir(x_0) \subset A^c \iff x \text{ è interno ad } A^c\]
+	Per punto di bordo, o frontiera, si intende un punto che non è ne interno ne esterno, quindi che si trova sul bordo dell'insieme.
+	\[\delta A := \{x \in \mathbb{R}^n \tc \text{x sia un punto di bordo di A}\}\]
+	
+	Osservazioni:
+	\begin{itemize}
+		\item $\delta A = \delta A ^c$
+		\item $\overline{A} := A \cup \delta A \equiv \text{ chiusura di A, è sempre un insieme chiuso}$
+		\item $\overline{A} \text{ è il più piccolo insieme B chiuso} \tc A \subset B$
+	\end{itemize}
+	
+	Esempio:
+	
+	\begin{center}
+		\begin{tikzpicture}[scale=2]
+			% Retta
+			\draw[->, black, thick] (-3,0) -- (3,0);			
+			
+			% Parentesi per gli insiemi
+			\node at (0.5,0) [font=\large] {$\,]$}; % parentesi sinistra (A)
+			\node at (-1,0) [font=\large] {$(\,$};  % parentesi destra (B)
+						
+			% Punto c
+			\draw (-1,-0.1) -- (-1,-0.1) node[below] {$0$};
+			\draw (0.5,-0.1) -- (0.5, -0.1) node[below] {$1$};
+		\end{tikzpicture}
+	\end{center}
+	
+	\[A = (0, 1], \mathring{A} = (0,1), \delta A = \{0,1\}, \overline{A} = A \cup \delta A = [0, 1]\]
+	Per punto isolato si intende:
+	\[A \subset \mathbb{R}^n, x \in \mathbb{R}^n \text{ si dice isolato se } \exists r > 0 \tc Ir(x) \cap A = \{x\}\]
+	Esempio:
+	\[A = \{0\} \cup (3,4)\]
+	
+	\begin{center}
+		\begin{tikzpicture}[scale=2]
+			% Retta
+			\draw[->, black, thick] (-3,0) -- (3,0);			
+			
+			% Parentesi per gli insiemi
+			\node at (1,0) [font=\large] {$\,]$}; % parentesi sinistra (A)
+			\node at (-0.5,0) [font=\large] {$(\,$};  % parentesi destra (B)
+			\node at (-1.5, 0) [font=\large] {$|\,$};
+			
+			% Punto c
+			\draw (-0.5,-0.1) -- (-0.5,-0.1) node[below] {$3$};
+			\draw (1,-0.1) -- (1, -0.1) node[below] {$4$};
+			\draw (-1.5,-0.1) -- (-1.5, -0.1) node[below] {$0$};
+		\end{tikzpicture}
+	\end{center}
+	
+	 $\Rightarrow p = 0 \text{ è punto isolato di } A$
+	 
+	 
+	 in $\mathbb{N}$ ogni punto $n \in \mathbb{N}$ è isolato. \newline	 
+	 Un insieme tale che ogni punto è isolato si dice ISOLATO.
+	 
+	 \newpage
+	 
+	 Per punto di accumulazione si intende:
+	 \[A \subset \mathbb{R}^n, x \in \mathbb{R}^n \text{ si dice punto di accumulazione di A se } \forall Ir(x), (Ir(x) \setminus \{x\}) \cap A \not = \emptyset\]
+	 \[A = (1,3)\setminus \{2\}\]
+	 \begin{center}
+	 	\begin{tikzpicture}[scale=2]
+	 		% Retta
+	 		\draw[->, black, thick] (-3,0) -- (3,0);			
+	 		
+	 		% Parentesi per gli insiemi
+	 		\node at (0.5,0) [font=\large] {$\,)$}; % parentesi sinistra (A)
+	 		\node at (-1,0) [font=\large] {$(\,$};  % parentesi destra (B)
+	 		
+	 		% Punto c
+	 		\draw (-1,-0.1) -- (-1,-0.1) node[below] {$1$};
+	 		\draw (0.5,-0.1) -- (0.5, -0.1) node[below] {$3$};
+	 		
+	 		\coordinate (Acc) at (-0.25,0);    % -conjugate
+	 		
+	 		% Disegna i punti
+	 		\draw[blue] (Acc) circle (2pt) node[below] {$2$};
+	 	\end{tikzpicture}
+	 \end{center}
+	 
+	 Allora $x = 2$ è un punto di accumulazione, e non appartiene ad A, ma potrebbe anche appartenere.
+	 
+	 In $\mathbb{R}$:
+	 \[\overline{\mathbb{R}} := \mathbb{R} \cup \{\pm \infty\}\]
+	 Allora un punto si dice di accumulazione, se $\forall U \subset J(x), (U \setminus \{x\}) \cap A \not = \emptyset$
+	 
+	 osservazione:
+	 \begin{itemize}
+	 	\item se $x \in \mathbb{R} \Rightarrow U = Ir(x)$, come per la definizione precedente
+	 	\item $x = + \infty$, $+ \infty$ è un punto accumulazione di A, se $\forall U \in J(+\infty)$, si ha che $(U \setminus \{+\infty\}) \cap A \not = 0 \rightarrow U = (M, +\infty)$, quindi A non è limitato superiormente.
+	 	\item $x = - \infty$, $- \infty$ è un punto accumulazione di A, se $\forall U \in J(-\infty)$, si ha che $(U \setminus \{-\infty\}) \cap A \not = 0 \rightarrow U = (-\infty, m)$, quindi A non è limitato inferiormente.
+	 \end{itemize}
+	 Caratterizzazione di $\overline{A} = A \cup \delta A$:
+	 \[\overline{A} = \{x \in \mathbb{R}^n \tc \forall r > 0, (Ir(x) \cap A) \not = \emptyset\}, \text{ l'insieme dei punti aderenti ad A}\]
+	 
+	 Osservazione:
+	 \[A \subset \mathbb{R}^n \Rightarrow \overline{A} \subset \overline{\mathbb{R}} = A \subset \mathbb{R} \cup \{\pm \infty\}\]
+	 \[+ \infty \in \overline{A} \iff \text{ $+\infty$ è un punto di accumulazione per $A$}\]
+	 \[\overline{A} := \{x \in \overline{\mathbb{R}} \tc \forall U \subset J(x) \tc \}\]
+	 
+	 Esercitazione:
+	 \[A = \mathbb{Q} \cap [0,1]\]
+	 
+	 \begin{center}
+	 	\begin{tikzpicture}[scale=2]
+	 		% Retta
+	 		\draw[->, black, thick] (-3,0) -- (3,0);			
+	 		
+	 		% Parentesi per gli insiemi
+	 		\node at (0.5,0) [font=\large] {$\,]$}; % parentesi sinistra (A)
+	 		\node at (-1,0) [font=\large] {$[\,$};  % parentesi destra (B)
+	 		
+	 		% Punto c
+	 		\draw (-1,-0.1) -- (-1,-0.1) node[below] {$0$};
+	 		\draw (0.5,-0.1) -- (0.5, -0.1) node[below] {$1$};
+	 	\end{tikzpicture}
+	 \end{center}
+	 
+	 \[\mathring{A} = \overline{\mathbb{Q} \cap [0,1]} = \emptyset\]
+	 
+	 \[\overline{A} = \overline{\mathbb{Q} \cap [0,1]} = [0,1]\]
+	 \[x \in \overline{\mathbb{Q} \cap [0,1]} \iff \exists r > 0 \tc Ir(x) \cap (\mathbb{Q} \setminus [0,1]) \not = 0, \text{ Q è denso in R}\]
+	 
+	 \[\delta A = \delta (\mathbb{Q} \cap [0,1]) = [0,1] \rightarrow \delta A = \overline{A} \setminus \mathring{A} = [0,1] \setminus \emptyset\]
+	 
+	 Dimostrazione che la cardinalità di $\mathbb{N} = \mathbb{Q} < \mathbb{R}$
+	 
+	 \chapter{Funzioni}
+	 Una funzione/applicazione è una terna di oggetti:
+	 \begin{itemize}
+	 	\item A insieme, detto dominio
+	 	\item B insieme, detto codominio
+	 	\item f, la legge che associa ad ogni elemento di A uno ed un solo elemento di B
+	 \end{itemize}
+	 si scrive:
+	 \begin{align*}
+	 	f: \mathbb{A} & \longrightarrow \mathbb{B} \\
+	 	a \in \mathbb{A} & \longmapsto f(a) \in \mathbb{B}
+	 \end{align*}
+	 ed è definita da:
+	 \[\forall a \in \mathbb{A}, \exists ! b \in \mathbb{B} \tc f(a) = b\]
+	 La notazione: \[f: \mathbb{A} \longrightarrow \mathbb{B} \text{ è equivalente a } (A, B, f)\]
+	 Una funzione si dice iniettiva se:
+	 \[\forall a,b \in A \tc a \not = b \Rightarrow f(a) \not = f(b)\]
+	 Una funzione si dice suriettiva se:
+	 \[\forall b \in B, \exists a \in A \tc f(a) = b\]
+	 a è detto pre-immagine, e non deve per forza essere unico, affinché sia suriettiva la pre- immagine di B possono essere più elementi di A.\newline
+	 Una funzione si dice biettiva o biunivoca se:
+	 \[\forall b \in B, \exists ! a \in A \tc f(a) = b\]
+	 Considerata la funzione f biunivoca allora ammette la sua funzione inversa:
+	 \begin{align*}
+	 	f^{-1}: \mathbb{B} & \longrightarrow \mathbb{A} \\
+	 	b & \longmapsto a = f^{-1}(b)
+	 \end{align*}
+	 Osservazione: f è una funzione biunivoca, allora $\forall b \in B, \exists ! a \in A \tc f(a) = b$, quindi la funzione $(B, A, f^{-1})$ ha senso.
+	 
+	 \section{Esempi di definizione}
+	 \begin{itemize}
+	 	\item La funzione $(A, A, Id)$, è definita come la funzione identià, ovvero una funzione che per ogni valore di $a \in A$, restituisce lo stesso valore $a \in A$
+	 	\item Prese due funzioni:
+	 	\[(A, B, f), (B, C, g)\]
+	 	Allora la funzione composta:
+	 	\[g \circ f = (A, C, g \circ f)\]
+	 	in cui l'immagine della funzione f, deve essere uguale al dominio della funzione g.
+	 	Se f è biunivoca e quindi $f^{-1}$ è ben definita, allora:
+	 	\[f \circ f^{-1} = f^{-1} \circ f = Id\]
+	 	\item Sia $(A, B, f)$ una funzione allora si definisce:
+	 	\[f: P(A) \longrightarrow P(B)\]
+	 	la funzione immagine tramite f, che associa ad ogni $E \in P(A)$, l'insieme $f(E) := \{b \in B \tc \exists a \in E, f(a) = b\}$, in cui $P(A), P(B)$ sono definiti come parti di A e parti di B, ovvero l'insieme di tutti i possibili sottoinsiemi di A o B.
+	 	
+	 	In questo caso è possibile avere una funzione inversa, e si definisce come $(P(B), P(A), f^{-1})$ la funzione che associa ad ogni elemento $G \in P(B)$, l'insieme $f^{-1} := \{a \in A \tc f(a) \in G\}$, si usa la notazione $f^{-1}$ anche se non è biunivoca, ma si intende un funzione che restituisce un certo insieme.
+	 \end{itemize}
+	 
+	 \section{Funzioni ristrette ad E}
+	 Presa $f : A \longrightarrow B, E \subset A$, allora $F_{|E}$, ovvero f ristretta ad E, è definita come:
+	 \[F_{|E} : E \longrightarrow B\]
+	 se il codominio è l'immagine di E, allora $F_{|E}$ è 
+	 suriettiva, quindi $(E, f(E), f)$
+	 \subsection{Grafico di una funzione reale di variabile reale}
+	 Sia $f: A \subseteq R \longrightarrow B \subseteq R$:
+	 
+	 \begin{center}
+		 \begin{tikzpicture}
+		 	\begin{axis}[
+		 		axis lines=middle,
+		 		xlabel=$x$, ylabel=$f(x)$,
+		 		xmin=-1.5, xmax=1.5,
+		 		ymin=0.5, ymax=4.5,
+		 		xtick={-1,0,1}, ytick={1,2,3,4},
+		 		domain=-0.999:1, % evita -1 incluso
+		 		samples=100
+		 		]
+		 		\addplot[blue, thick] {3/2*x + 5/2};
+		 		
+		 		% punto aperto a x=-1
+		 		\addplot[only marks, mark=o, mark size=2pt, color=red] coordinates {(-1,1)};
+		 		
+		 		% punto chiuso a x=1
+		 		\addplot[only marks, mark=*, mark size=2pt, color=red] coordinates {(1,4)};
+		 	\end{axis}
+		 \end{tikzpicture}
+	 \end{center}
+	 i valori $y \in (1, 4]$ sono i valori dell'insieme immagine di $A$ tramite $f$, e $A$, ovvero il dominio, assume i valori $x \in (-1, 1]$
+	 \[\Gamma(f) := \{(x,y) \in \mathbb{R}^2 \tc x \in D(f) \wedge y = f(x)\}\]
+	 
+	 \section{Caratteristiche di una funzione}
+	 Una funzione $f: A \subseteq \mathbb{R} \longrightarrow \mathbb{R}$
+	 
+	 \begin{itemize}
+	 	\item Si dice crescente se:
+	 	\[\forall x,y \in A \tc x < y \Rightarrow f(x) \leq f(y)\]
+	 	\item Si dice decrescente se:
+	 	\[\forall x,y \in A \tc x < y \Rightarrow f(x) \geq f(y)\]
+	 	\item Si dice strettamente crescente se:
+	 	\[\forall x,y \in A \tc x < y \Rightarrow f(x) < f(y)\]
+	 	\item Si dice strettamente decrescente se:
+	 	\[\forall x,y \in A \tc x < y \Rightarrow f(x) > f(y)\]
+	 \end{itemize}
+	 
+	 \section{Monotonia di una funzione}
+	 Una funzione f si dice:
+	 \begin{itemize}
+	 	\item monotona se è crescente/decrescente per tutto il dominio
+	 	\item strettamente monotona se è strettamente crescente/decrescente per tutto il dominio
+	 \end{itemize}
+	 
+	 \section{Funzione parte intera}
+	 La funzione $f(x) = [x]$ associa ad ogni numero reale $x$ il più grande $n \in \mathbb{N} \leq x$, ed è una funzione monotona crescente.
+	 
+	 \begin{center}
+	 	\begin{tikzpicture}
+	 		\begin{axis}[
+	 			axis lines=middle,
+	 			xlabel=$x$, ylabel={$[x]$},
+	 			xmin=-3.5, xmax=3.5,
+	 			ymin=-3.5, ymax=3.5,
+	 			xtick={-3,-2,-1,0,1,2,3},
+	 			ytick={-3,-2,-1,0,1,2,3},
+	 			width=10cm, height=10cm
+	 			]
+	 			
+	 			% Disegno dei segmenti della funzione [x]
+	 			\foreach \n in {-3,-2,-1,0,1,2} {
+	 				% segmento orizzontale su [n, n+1)
+	 				\addplot[black, thick] coordinates {(\n, \n) (\n+1, \n)};
+	 				% punto aperto a sinistra
+	 				\addplot[only marks, mark=o, mark size=2pt, color=black] coordinates {(\n, \n)};
+	 				% punto pieno a destra
+	 				\addplot[only marks, mark=*, mark size=2pt, color=black] coordinates {(\n+1, \n)};
+	 			}
+	 			
+	 		\end{axis}
+	 	\end{tikzpicture}
+	 \end{center}
+	 
+	 \section{Proprietà ed esempi}
+	 \begin{itemize}
+	 	\item $f,g$ sono monotone, allora $f \circ g$ è monotona
+	 	\item $f,g$ sono entrambe crescenti/decrescenti, allora $f \circ g$ è crescente
+	 	\item $f,g$ sono una crescente e l'altra decrescente, allora $f \circ g$ è decrescente
+	 	\item se $f$ è crescente e $c > 0$, allora $c \circ f = c \cdot f(x)$ è crescente
+	 	\item se $f$ è crescente e $c < 0$, allora $c \circ f = c \cdot f(x)$ è decrescente
+	 	\item se $f$ è decrescente e $c > 0$, allora $c \circ f = c \cdot f(x)$ è decrescente
+	 	\item se $f$ è decrescente e $c < 0$, allora $c \circ f = c \cdot f(x)$ è crescente
+	 	%% aggiungere funzine che non capisco
+	 	\item se $f$ è strettamente monotona allora è iniettiva
+	 	\item se $f$ è monotona ed invertibile, allora  è strettamente monotona
+	 	\item se $f$ è monotona ed invertibile allora  $f^{-1}$ è monotona dello stesso tipo.
+	 \end{itemize}
+	 
+	 \chapter{Limiti}
+	 si dice che $l$ è il limite di $f$ per $x$ che tende a $x_0$, se e solo se $x_0$ è un limite di accumulazione, la definizione generale è:
+	 \[\forall U \in J_l, \exists V \in J_{x_0} : f(V\ \{x_0\}\cap Dom(f)) \in U\]
+	 dove $l$ è:
+	 \[\lim_{x \rightarrow x_0} f(x)\]
+	 e non è necessario che:
+	 \[x_0 \in Dom(f()\]
+	 in quanto può essere un punto di accumulazione anche se non è contenuto nel dominio, nei limiti:
+	 \[x_0, l \in \overline{\mathbb{R}}\]
+	 e la definizione di limite usato intorni simmetrici è valida anche in dimensioni superiori.
+	 \section{Definizioni di limite}
+	 \subsection{Limite finito di una funzione in un punto finito}
+	 Ovvero:
+	 \[\lim_{x \rightarrow x_0} f(x) = l\]
+	 
+	 e la definizione formale è:
+	 \[\forall \epsilon > 0, \exists \delta > 0 \tc 0 < |x - x_0| < \delta \Rightarrow |f(x) - l| < \epsilon\]
+	 \subsection{Limite finito di una funzione per x che tende a $\pm$ infinito}
+	 Con $x \rightarrow + \infty$:
+	 \[\lim_{x \rightarrow + \infty} f(x) = l\]
+	 
+	 e la definizione formale è:
+	 \[\forall \epsilon > 0, \exists M > 0 \tc x > M \Rightarrow |f(x) - l| < \epsilon\]
+	 Con $x \rightarrow - \infty$:
+	 \[\lim_{x \rightarrow - \infty} f(x) = l\]
+	 
+	 e la definizione formale è:
+	 \[\forall \epsilon > 0, \exists M > 0 \tc x < -M \Rightarrow |f(x) - l| < \epsilon\]
+	 \subsection{Limite infinito di una funzione in un punto finito}
+	 Con $l = +\infty$:
+	 \[\lim_{x \rightarrow x_0} f(x) = + \infty\]
+	 
+	 e la definizione formale è:
+	 \[\forall M > 0, \exists \delta > 0 \tc 0 < |x - x_0| < \delta \Rightarrow f(x) > M\]
+	 Con $l = -\infty$:
+	 \[\lim_{x \rightarrow x_0} f(x) = - \infty\]
+	 
+	 e la definizione formale è:
+	 \[\forall M > 0, \exists \delta > 0 \tc 0 < |x - x_0| < \delta \Rightarrow f(x) < -M\]
+	 \subsection{Limite infinito di una funzione per x che tende a $\pm$ infinito}
+	 Con $x \rightarrow +\infty$:
+	 \begin{itemize}
+	 	\item Con $l = +\infty$:
+	 \[\lim_{x \rightarrow + \infty} f(x) = + \infty\]
+	 
+	 e la definizione formale è:
+	 \[\forall M > 0, \exists R > 0 \tc x > R \Rightarrow f(x) > M\]
+	 \item Con $l = -\infty$:
+	 \[\lim_{x \rightarrow + \infty} f(x) = - \infty\]
+	 
+	 e la definizione formale è:
+	 \[\forall M > 0, \exists \delta > 0 \tc x > R \Rightarrow f(x) < -M\]
+	 \end{itemize}
+	 Con $x \rightarrow -\infty$:
+	 \begin{itemize}
+	 	\item Con $l = +\infty$:
+	 	\[\lim_{x \rightarrow - \infty} f(x) = + \infty\]
+	 	
+	 	e la definizione formale è:
+	 	\[\forall M > 0, \exists R > 0 \tc x < -R \Rightarrow f(x) > M\]
+	 	\item Con $l = -\infty$:
+	 	\[\lim_{x \rightarrow - \infty} f(x) = - \infty\]
+	 	
+	 	e la definizione formale è:
+	 	\[\forall M > 0, \exists \delta > 0 \tc x < -R \Rightarrow f(x) < -M\]
+	 \end{itemize}
+	 \subsection{Limite finito di una funzione da $\mathbb{N}$ a $\mathbb{R}$}
+	 Ovvero:
+	 \[f: \mathbb{N} \rightarrow \mathbb{R}\]
+	 si ha:
+	 \[\lim_{n \rightarrow +\infty} f(n) = l \iff \forall U \in J_l, \exists \overline{n} \in \mathbb{N} \tc \forall n \geq \overline{n}, f(n) \in U\]
+	 n deve per forza tendere a più infinito in quanto è l'unico punto di accumulazione.
+	 
+	 La funzione $f: \mathbb{N} \rightarrow \mathbb{R}$ è chiamata successione ed ha una notazione particolare.
+	 \subsection{Limite sinistro e destro}
+	 \subsubsection{Limite sinistro}
+	 $f: A \subset \mathbb{R} \longrightarrow \mathbb{R}, x_0 \in \mathbb{R}$ punto di accumulazione di $ A \cap(-\infty, x_0)$, l è il limite sinistro di f per x che tende a $x_0$:
+	 \[\lim_{x \rightarrow x_0^-} f(x) = l \text{ se } \forall V_l, \exists \delta > 0 \tc f((x_0 - \delta, x_0) \cap A) \subset V_l\]
+	 \subsubsection{Limite destro}
+	 $f: A \subset \mathbb{R} \longrightarrow \mathbb{R}, x_0 \in \mathbb{R}$ punto di accumulazione di $ A \cap(x_0, +\infty)$, l è il limite destro di f per x che tende a $x_0$:
+	 \[\lim_{x \rightarrow x_0^+} f(x) = l \text{ se } \forall V_l, \exists \delta > 0 \tc f((x_0, x_0 + \delta) \cap A) \subset V_l\]
+	 
+	 \section{Teorema dell'esistenza del limite}
+	 Sia $f: A \subset \mathbb{R} \rightarrow \mathbb{R}, x_0 \in \overline{\mathbb{R}}$ punto di accumulazione di $A$, allora se:
+	 \[\lim_{x \rightarrow x_0} f(x) = l_1 \wedge \lim_{x \rightarrow x_0} f(x) = l_1 \Rightarrow l_1 = l_2\]
+	 Dimostrazione:
+	 \[\lim_{x \rightarrow x_0} f(x) = l_1 \iff \forall U \in Jl_1, \exists V_1 \in J_{x_0} \tc f((V_1 \setminus \{x_0\}) \cap Dom(f)) \subset U\]
+	 \[\lim_{x \rightarrow x_0} f(x) = l_2 \iff \forall W \in Jl_2, \exists V_2 \in J_{x_0} \tc f((V_2 \setminus \{x_0\}) \cap Dom(f)) \subset W\]
+	 Supponendo che $l_1 \not = l_2$, si possono prendere $U, W$:
+	 \[U \cap W = \emptyset\]
+	 Prendiamo $A = V_1 \cap V_2 \not = \emptyset, J_{x_0} = V_1 \cap V_2 \Rightarrow f((A \setminus \{x_0\}) \cap Dom(f)) \subset U, \subset W$ 
+	 Si arriva quindi alla contraddizione in quanto l'intersezione di U e W è nulla, però abbiamo trovato un'immagine che appartiene a entrambe, quindi:
+	 \[l_1 = l_2 \Rightarrow \]
+	 se:
+	 \[\exists \lim_{x \rightarrow x_0} f(x) = l \in \overline{\mathbb{R}} \Rightarrow l \text{ è unico}\]
+	 
+	 \teorem{$f: A \rightarrow \mathbb{R}, x_0 \in \mathbb{R}$ punto di accumulazione per $A \cap (-\infty, x_0) \wedge (x_0, +\infty) \cap A$, allora:
+	 	\[\exists \lim_{x \rightarrow x_0} f(x) \iff \begin{cases}
+	 		\exists \lim_{x \rightarrow x_0^-} f(x) \\
+	 		\exists \lim_{x \rightarrow x_0^+} f(x) \\
+	 		\lim_{x \rightarrow x_0^-} f(x) = \lim_{x \rightarrow x_0^+} f(x)
+	 	\end{cases}\]}
+ 	
+ 	\section{Teorema della permanenza del segno}
+ 	\[\text{Se } \exists \lim_{x \rightarrow x_0} f(x) = l > 0 (\vee l < 0) \Rightarrow \exists V \in J(x_0) \tc f(x) > 0 (\vee f(x) < 0 ), \forall x \in (V \setminus \{x_0\}) \cap Dom(f)\]
+ 	Dimostrazione:
+ 	def limite: $\Rightarrow \forall U \in J_l, \exists V \in J_{x_o} \tc f(V \setminus \{x_0\}\cap Dom(f)) \subset U$
+ 	
+ 	siccome $l > 0$, allora: $\begin{cases}
+ 		l \in \mathbb{R}^+ \Rightarrow l/2 > 0 \Rightarrow U = (\frac{1}{2}, \frac{3l}{2}) \in J_l \\
+ 		l = +\infty
+ 	\end{cases}$ 
+ 	\[\Rightarrow f(V \setminus \{x_0\}\cap Dom(f)) \subset U = \left(\frac{1}{2}, \frac{3l}{2}\right) \Rightarrow f(x) > 0 \forall x \in V \setminus \{x_0\}\cap Dom(f)\]
+ 	
+ 	\subsection{Teorema corollario}
+ 	\[\lim_{x \rightarrow x_0} f(x) < \lim_{x \rightarrow x_0} g(x) \Rightarrow \exists V \in J_{x_0} \tc \forall x \in (V \setminus \{x_0\})\cap Dom(f) \Rightarrow f(x) < g(x)\]
+ 	equivalente con il maggiore.
+ 	
+ 	Dimostrazione con teorema della permanenza del segno su:
+ 	\[h(x) := g(x) - f(x)\]
+ 	
+ 	
+	 
+	 \chapter{Successioni}
+	 Una successione, è definita da:
+	 \[\begin{aligned}
+	 	a : \mathbb{N} & \rightarrow \mathbb{R} \\
+	 	n & \mapsto a(n) := a_n
+	 \end{aligned}\]
+	 dove, $\{a_n\}_{n \in \mathbb{N}}$ indica l'insieme immagine di a, queste sono tutte notazioni equivalenti:
+	 \[\{a_n\}_{n \in \mathbb{N}} \equiv \{a_n\} \equiv \{a_n\}_n \equiv a(\mathbb{N}) \equiv \{a(n) \tc n \in \mathbb{N}\}\]
+	 Le successioni si usano anche per dimostrare proprietà sui limiti del continuo.
+	 
+	 \section{Teorema ponte}
+	 \[\lim_{x\rightarrow x_o} f(x) = l \Rightarrow \forall \{a_n\} \tc \lim_{n \rightarrow +\infty} a_n = x_o\]
+	 si ha che:
+	 \[\lim_{n \rightarrow +\infty} f(a_n) = l\]
+	 si passa quindi da un limite sequenziale, ovvero: $\lim_{n \rightarrow +\infty} a_n = x_o$ a un limite nel continuo, ovvero: $\lim_{n \rightarrow +\infty} f(a_n) = l$
+\end{document}
