@@ -127,25 +127,110 @@ int main(){
 	L'HEADER (direttive per il pre-processore, prende le istruzioni), il pre-processore sostituisce l'header con il codice delle librerie.
 	
 	Il corpo principale del programma inizia sempre con la dichiarazione delle variabili, seguite poi dalle istruzioni effettive del codice, ogni istruzione ha alla fine ";", per specificare che l'istruzione è finita.
+	
+	Un programma è composto da:
+	\begin{itemize}
+		\item Header: inclusione delle direttive, come le librerie ad esempio include<stdio.h>, o il DEFINE per definire le costanti simboliche, in questo modo ogni volta che nel programma si incontra la costante, verrà sostituita con il suo valore.
+		
+		Nell'header si dichiarano anche le funzioni che verranno poi usate nel file.
+		\item Body: ovvero la parte del programma compresa tra le graffe dell'int main
+		\item Funzioni
+	\end{itemize}
+	
+	Si possono compilare più file, concatenandoli in successione prima di "-o" all'interno del comando per compilare, e produce un singolo eseguibile.
 	\subsubsection{Dichiarazione delle variabili}
 	\begin{code}
 int main(){
-	int a;
-	int b;
-	int c;
 	
-	//equivalente a:
+	int a= 0,b,c;
+	float f1, f2, f3;
+	double d1, d2, d3, d4;
+}
+	\end{code}
+	Bisogna specificare il tipo ed il nome della variabile, esistono diverse tipologie di variabili:
+	\begin{itemize}
+		\item \textbf{int}: intero (16bit)
+		\item \textbf{float}, \textbf{double}: numero razionale, in virgola mobile (32bit, 64bit)
+		\item \textbf{char}, singolo carattere (8bit)
+		\item Classificatori:
+		\subitem short
+		\subitem long
+	\end{itemize}
 	
-	int a,b,c;
-	a = 2;
-	b = 3;
-	c = a + b;
+	\subsection{Assegnazione delle variabili}
+	\begin{code}
+int main(){
 	
-	//il segno = è l'operatore di assegnazione, assegna ala variabile a sinistra l'elemento a destra
+	int a = 0,b = 0,c = 0;
+	float f1 = 0, f2 = 0, f3 = 0;
+	double d1 = 0, d2 = 0, d3 = 0, d4 = 0;
+	
+	//il segno = è l'operatore di assegnazione, assegna ala variabile a sinistra l'elemento a destra, è comune assegnare 0 alla variabile in quanto gli spazi di memoria potrebbero essere già stati usati
 	
 	return 0;
 }
 	\end{code}
+	
+	\newpage
+	
+	\section{Operatori}
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{|c|c|}
+			\hline
+			\textbf{Operazione} & \textbf{Simbolo} \\
+			\hline
+			Assegnazione & = \\
+			\hline
+			Somma & + \\
+			\hline
+			Sottrazione & - \\
+			\hline
+			Moltiplicazione & * \\
+			\hline
+			Divisione & / \\
+			\hline
+			Modulo & \% \\
+			\hline
+			Incremento & ++ \\
+			\hline
+			Decremento & -- \\
+			\hline
+			Assegnazione con somma & += \\
+			\hline
+			Assegnazione con sottrazione & -= \\
+			\hline
+			Confronto & == \\
+			\hline
+			Maggiore uguale & >= \\
+			\hline
+			Minore uguale & >= \\
+			\hline
+		\end{tabular}
+		\caption{Operatori aritmetici e di assegnazione}
+	\end{table}
+	
+	\section{Stringhe di formato}
+	\begin{itemize}
+		\item \textbf{\%d}, \textbf{\%i}, \textbf{\%x} — Interi (\texttt{int})  
+		Esempio: \texttt{printf("Valore: \%d", 10);}
+		
+		\item \textbf{\%f}, \textbf{\%lf}, \textbf{\%g}, \textbf{\%e} — Numeri reali (\texttt{float} / \texttt{double})  
+		Esempio: \texttt{printf("Pi: \%f", 3.14);}
+		
+		\item \textbf{\%c} — Caratteri (\texttt{char})  
+		Esempio: \texttt{printf("Lettera: \%c", 'A');}
+		
+		\item \textbf{\%s} — Stringhe (\texttt{string})  
+		Esempio: \texttt{printf("Stringa: \%s", "Ciao");}
+		
+		\item  \ n: nuova linea 
+		\item  \ t: tab
+		\item  \ v: vertical tab
+		\item  \ b: backspace
+	\end{itemize}
+		
+	
 	\newpage
 	
 	\section{Istruzioni UNIX}

@@ -1,0 +1,252 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\lstset{
+	basicstyle=\ttfamily\small,
+	breaklines=true,
+	backgroundcolor=\color{gray!5},
+	frame=single,
+	keywordstyle=\color{blue},
+	commentstyle=\color{teal},
+	numberstyle=\tiny,
+	numbers=left,
+	xleftmargin=1em,
+	showstringspaces=false
+}
+
+\title{Spiegazione del programma in Assembly x86}
+\author{Liam Ferretti}
+\date{}
+
+\begin{document}
+	
+	\maketitle
+	
+	\section*{Sezione \texttt{.data}}
+	\begin{lstlisting}[language={[x86masm]Assembler}]
+section .data
+	msg1    db "Inserisci il primo numero (max 10 cifre): ", 0
+	len1    equ $ - msg1
+	msg2    db "Inserisci il secondo numero (max 10 cifre): ", 0
+	len2    equ $ - msg2
+	msgRes  db "La somma e': ", 0
+	lenRes  equ $ - msgRes
+	newline db 0Ah 
+	\end{lstlisting}
+	
+	Questa sezione contiene i dati costanti del programma:
+	\begin{itemize}
+		\item Le stringhe da stampare sullo schermo.
+		\item Le variabili \texttt{len1}, \texttt{len2}, \texttt{lenRes} che contengono la lunghezza delle rispettive stringhe, calcolata come \texttt{\$ - msgX}.
+		\item \texttt{newline} è il carattere di nuova linea (codice ASCII 0Ah).
+		\item lo zero dopo i db è il null terminator e serve a indicare la fine della stringa.
+	
+	\end{itemize}
+	\section*{Sezione \texttt{.bss}}
+	\begin{lstlisting}[language={[x86masm]Assembler}]
+section .bss 
+	buffer resd 10 
+	n1 resd 1
+	n2 resd 1
+	\end{lstlisting}
+	
+	La sezione \texttt{.bss} serve per riservare spazio in memoria per dati variabili:
+	\begin{itemize}
+		\item \texttt{buffer} sarà usato per la conversione del risultato in ASCII.
+		\item \texttt{n1} e \texttt{n2} conterranno i numeri interi letti da input.  
+	\end{itemize}
+	Il direttivo \texttt{resd} riserva "doublewords" (4 byte ciascuna), il \texttt{resw} riserva "words" (2 byte ciascuna), il \texttt{resb} riserva "byte" (1 byte ciascuna), il \texttt{resq} riserva "quadwords" ovvero 8 byte.
+	
+	\section*{Sezione \texttt{.text} e inizio del programma}
+	\begin{lstlisting}[language={[x86masm]Assembler}]
+section .text 
+global _start
+
+start:
+	\end{lstlisting}
+	
+	Qui inizia il codice eseguibile.  
+	L’etichetta \texttt{\_start} indica il punto d’ingresso del programma (usato da Linux per sapere da dove iniziare l’esecuzione).
+	
+	\section*{Stampa del primo messaggio e lettura del primo numero}
+	\begin{lstlisting}[language={[x86masm]Assembler}]
+mov eax, 4
+mov ebx, 1
+mov ecx, msg1
+mov edx, len1
+int 0x80
+	\end{lstlisting}
+	
+	Queste istruzioni invocano la \textbf{system call write} (numero 4) per stampare \texttt{msg1} sullo schermo.  
+	I registri significano:
+	\begin{itemize}
+		\item \texttt{eax = 4} → numero della syscall \texttt{write}.
+		\item \texttt{ebx = 1} → file descriptor dello standard output.
+		\item \texttt{ecx = msg1} → indirizzo del messaggio.
+		\item \texttt{edx = len1} → lunghezza della stringa.
+	\end{itemize}
+	
+	\begin{lstlisting}[language={[x86masm]Assembler}]
+mov eax, 3
+mov ebx, 0
+mov ecx, n1
+mov edx, 10
+int 0x80
+	\end{lstlisting}
+	
+	Questa volta la syscall è \texttt{read}:
+	\begin{itemize}
+		\item \texttt{eax = 3} → numero della syscall \texttt{read}.
+		\item \texttt{ebx = 0} → file descriptor dello standard input.
+		\item \texttt{ecx = n1} → indirizzo su cui verranno salvati i dati.
+		\item \texttt{edx = 10} → lunghezza dell'input.
+	\end{itemize} 
+	
+	\newpage
+	
+	\section*{Conversione del primo numero da ASCII a intero}
+	\begin{lstlisting}[language={[x86masm]Assembler}]
+	xor eax, eax
+	xor ebx, ebx
+	mov esi, n1
+.loop1:
+	mov bl, [esi]
+	cmp bl, 0x0A
+	je .done1
+	sub bl, '0'
+	imul eax, eax, 10
+	add eax, ebx
+	inc esi
+	jmp .loop1
+	.done1:
+	mov [n1], eax
+	\end{lstlisting}
+	
+	Questo ciclo:
+\begin{enumerate}
+	\item Le prime due righe servono a resettare i valori in eax e ebx, mettendo in entrambi 0.
+	\item muoviamo in esi l'indirizzo in memoria di n1, rendonolo quindi un puntatore che scorre i byte dell'input.
+	\item .loop, segno l'inizio del ciclo.
+	\item \texttt{mov bl, [esi]}, carica in bl (gli ultimi 8 bit di ebx) il byte puntato da esi, infatti con [  ] si rappresenta il valore dell'indice in memoria, e contiene un carattere ASCII.
+	\item \texttt{cmp bl, 10} confronta il valore di bl con 10, ovvero 0x0A in hex, che corrisponde al carattere newline ($\backslash$n).
+	\item Ora \texttt{je .done1} nel caso in cui \texttt{cmp bl, 10} abbia restituito che bl è uguale a 10, allora salta a \texttt{.done1}
+	\item Sottraggo da bl il carattere 0, \texttt{sub bl, '0'} dato che 0 in hex è 0x30, e i numeri da 0 a 9 sono rappresentati da 0x30 a 0x39, si ottiene quindi il numero intero.
+	\item \texttt{imul eax, eax, 10} moltiplica eax per 10, e salva il risultato in eax, per spostare in avanti le cifre, per poter sommare la cifra delle unità
+	\item \texttt{add eax, ebx} somma la cifra corrente, in bl, su eax, ma essendo una operazione a 32 bit, bisogna usare ebx.
+	\item \texttt{inc esi} incremento il puntatore al byte successivo.
+	\item \texttt{jmp .loop1} torno al punto 3.
+	\item \texttt{.done1} etichetta di uscita dal ciclo 
+	\item \texttt{mov [n1], eax}, scrive il valore intero del risultato in memoria all'indirizzo n1
+\end{enumerate}
+	
+	\section*{Lettura e conversione del secondo numero}
+	\begin{lstlisting}[language={[x86masm]Assembler}]
+	mov eax, 4
+	mov ebx, 1
+	mov ecx, msg2
+	mov edx, len2
+	int 0x80
+	
+	mov eax, 3
+	mov ebx, 0
+	mov ecx, n2
+	mov edx, 10
+	int 0x80
+	
+	xor eax, eax
+	xor ebx, ebx
+	mov esi, n2
+.loop2:
+	mov bl, [esi]
+	cmp bl, 0x0A
+	je .done2
+	sub bl, '0'
+	imul eax, eax, 10
+	add eax, ebx
+	inc esi
+	jmp .loop2
+.done2:
+	\end{lstlisting}
+	
+	È lo stesso procedimento del primo numero:  
+	si legge la stringa da tastiera, poi si converte in valore numerico.
+	
+	\section*{Somma dei due numeri}
+	\begin{lstlisting}[language={[x86masm]Assembler}]
+add eax, [n1]
+	\end{lstlisting}
+	
+	Dopo la conversione del secondo numero, \texttt{eax} lo contiene.  
+	Qui si aggiunge \texttt{n1} (che contiene il primo numero).  
+	Il risultato rimane in \texttt{eax}.
+	
+	\newpage
+	
+	\section*{Conversione del risultato in ASCII}
+	\begin{lstlisting}[language={[x86masm]Assembler}]
+	mov edi, buffer + 10
+	mov ecx, 10
+.conv_loop:
+	dec edi
+	xor edx, edx
+	div ecx
+	add dl, '0'
+	mov [edi], dl
+	test eax, eax
+	jnz .conv_loop
+	\end{lstlisting}
+	
+	Questo ciclo esegue la conversione da numero binario ad ASCII:
+	\begin{enumerate}
+		\item \texttt{mov edi,  buffer + 10}, metti nel registro edi, l'indirizzo alla fine del buffer, ovvero 10 byte.
+		\item \texttt{mov ecx, 10}, carico in ecx il valore 10, per eseguire la divisione.
+		\item \texttt{.conv\_loop:} etichetta per l'inizio del ciclo.
+		\item \texttt{dec edi} sposto il puntatore di edi indietro di un byte verso sinistra
+		\item azzero edx con xor
+		\item \texttt{div ecx} divide il valore a 64 bit in edx:eax per 10 (ecx), e il quoziente finisce in eax, il resto in edx
+		\item \texttt{add dl, '0'} converte la cifra in ASCII
+		\item \texttt{mov [edi], dl} scrive la cifra ASCII in memoria puntata da edi
+		\item \texttt{test eax, eax} verifica che il contenuto di eax sia 0 quindi abbiamo finito di dividere il numero.
+		\item \texttt{jnz .conv\_loop} se eax è diverso da 0, quindi quando non abbiamo ancora diviso tutte le cifre.
+	\end{enumerate}
+	
+	\newpage
+	
+	\section*{Stampa del risultato e terminazione}
+	\begin{lstlisting}[language={[x86masm]Assembler}]
+mov eax, 4
+mov ebx, 1
+mov ecx, msgRes
+mov edx, lenRes
+int 0x80
+
+mov eax, 4
+mov ebx, 1
+mov ecx, edi
+mov edx, buffer + 10
+sub edx, edi
+int 0x80
+
+mov eax, 4
+mov ebx, 1
+mov ecx, newline
+mov edx, 1
+int 0x80
+
+mov eax, 1
+xor ebx, ebx
+int 0x80
+	\end{lstlisting}
+	
+	Infine:
+	1. Stampa la stringa “La somma è:”.
+	2. Stampa il numero convertito.
+	3. Va a capo.
+	4. Termina il programma con la syscall \texttt{exit (1)}. 
+	
+\end{document}

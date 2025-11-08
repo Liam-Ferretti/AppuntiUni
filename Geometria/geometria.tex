@@ -1,10 +1,11 @@
-\documentclass[a4paper,12pt]{article}
+\documentclass[a4paper, 12pt, openany]{book}
 
 % pacchetti comuni
 \input{../preambolo.tex}
 \newcommand{\rel}[1][R]{R}
 \newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
 
+\numberwithin{equation}{chapter}
 
 % info documento
 \title{Appunti di Geometria}
@@ -16,7 +17,7 @@
 	
 	\maketitle
 	
-	\begin{abstract}
+	\chapter*{Sommario del corso}
 		Le informazioni sul corso si trovano sul \hyperlink{https://sites.google.com/uniroma1.it/kieranogrady}{sito del docente}.
 		
 		Di regola il lunedì verranno svolti esercizi o chiariti dubbi, e le lezioni saranno svolte da S. Molcho.
@@ -26,13 +27,11 @@
 		Il ricevimento avrà luogo nello studio 137 nell'edificio CU006 il martedì dalle 11:15 alle 12:45.
 		
 		Le dispense sono disponibili sul sito, il libro non è necessario.
-	\end{abstract}
 		
-	\newpage
 	\tableofcontents
 	\clearpage
 	
-	\section{Insiemi}
+	\chapter{Insiemi}
 	Per insieme si intende una collezione di oggetti, detti elementi.
 	Preso l'insieme $X$ e $a$ un elemento, allora:
 	\[
@@ -89,7 +88,7 @@
 		\mathbb{C} = \{ \text{numeri complessi} \}
 	\]
 	
-	\subsection{Sotto insieme}
+	\section{Sotto insieme}
 	Presi due insiemi $X, Y$, $X$ è sotto insieme di $Y$, se ogni elemento di X è elemento di Y, formalmente si esprime con:
 	\[
 	X \subset Y \iff \forall x \in X, x \in Y
@@ -100,7 +99,7 @@
 	X \subset X
 	\]
 	
-	\subsection{Operazioni tra insiemi}
+	\section{Operazioni tra insiemi}
 	Le operazioni che si possono effettuare tra insiemi sono diverse:
 	\begin{itemize}
 		\item Unione, rappresentata da $\cup$
@@ -108,7 +107,7 @@
 		\item Prodotto cartesiano, rappresentata da $\times$
 	\end{itemize}
 	
-	\subsubsection{Unione}
+	\subsection{Unione}
 	Preso l'insieme:
 	 
 	\[
@@ -126,7 +125,7 @@
 		
 	Se $\displaystyle I = \mathbb{Z} \rightarrow \bigcup_{i \in I} X_i = \mathbb{Z}$
 	
-	\subsubsection{Intersezione}
+	\subsection{Intersezione}
 	Preso l'insieme:
 	
 	\[
@@ -144,7 +143,7 @@
 	
 	Se $\displaystyle I = \mathbb{Z} \rightarrow \bigcap_{i \in I} X_i = \{0\}$	
 	
-	\subsubsection{Prodotto cartesiano}
+	\subsection{Prodotto cartesiano}
 	Il prodotto cartesiano di due insiemi $X, Y$, è definito come l'insieme i cui elementi sono le coppie ordinate $(x,y)$, con $x\in X, y\in Y$.
 	\[
 	X = Y = \mathbb{R} \rightarrow \mathbb{R} \times \mathbb{R} := \{(x, y) \tc x,y\in \mathbb{R}\}
@@ -157,7 +156,7 @@
 	X_1 \times X_2 \times X_3 \times ... \times X_n := \{(x_1, x_2, x_3, ... ,x_n) \tc x_n \in X_n¨\}
 	\]
 	
-	\section{Applicazione tra insiemi}
+	\chapter{Applicazione tra insiemi}
 	
 	Presi gli insiemi $X, Y$, si definisce un'applicazione $f$ da $X$ (insieme di input o \textbf{dominio}) a $Y$ (insieme di output o \textbf{codominio}) come una legge che associa a ogni elemento $x \in X$ un elemento $f(x) \in Y$. La notazione è:
 	\[
@@ -177,7 +176,7 @@
 	
 	Affinché 2 applicazioni sono uguali devono coincidere: \textbf{dominio}, \textbf{codominio} e \textbf{funzione}.
 	
-	\subsection{Composizione di applicazioni}
+	\section{Composizione di applicazioni}
 	Presi gli insiemi $X$, $Y$, $Z$ e le applicazioni $f$ e $g$ allora:
 	
 	\[
@@ -240,7 +239,7 @@
 	\end{center}
 	Se $f \circ g = g \circ f$, allora $X = Y$, ma se $X = Y$ non è certo che $f \circ g = g \circ f$
 	
-	\subsection{Proprietà associativa della composizione}
+	\section{Proprietà associativa della composizione}
 	
 	Avendo 4 insiemi $X, Y, W, Z$ e applicazioni $f, g, h$
 	\[
@@ -258,7 +257,7 @@
 	
 	Perciò $\forall x \in X: (h \circ (g \circ f))(x) = ((h \circ g) \circ f))(x)$, quindi la composizione di applicazioni è una proprietà associativa, in cui il modo in cui si raggruppano le parentesi non cambia il risultato finale
 	
-	\subsection{Insieme identità di una applicazione}
+	\section{Insieme identità di una applicazione}
 	L'insieme identità di $X$ è l'applicazione:
 	\[
 	\begin{array}{c c c}
@@ -275,7 +274,7 @@
 	\end{align}
 	Nel caso (1) l'applicazione composta $(f \circ 1_x) = f$ e nel caso (2) l'applicazione $(1_y \circ f) = f$.
 	
-	\subsection{Iniettività}
+	\section{Iniettività}
 	Presi due insiemi $X, Y$ e una applicazione $f$:
 	\[
 	X \xlongrightarrow{f} Y
@@ -299,7 +298,7 @@
 	f(x_1) = f(x_2) \iff 3x_1 + 1 = 3x_2 + 1 \iff 3(x_1 - x_2) = 0 \iff x_1 = x_2
 	\]
 	
-	\subsection{Suriettività}
+	\section{Suriettività}
 	Presi due insiemi $X, Y$ e una applicazione $f$:
 	\[
 	X \xlongrightarrow{f} Y
@@ -314,7 +313,7 @@
 	\text{Im} f:= \{y \in Y \tc \exists x\in X \tc f(x) = y\}
 	\]
 	OSS: f è suriettiva $\iff$ Im$f = Y$
-	\subsection{Biettività}
+	\section{Biettività}
 	Presi due insiemi $X, Y$ e una applicazione $f$:
 	\[
 	X \xlongrightarrow{f} Y
@@ -324,7 +323,7 @@
 	\[\text{(con } \exists! \text{ si intende esiste ed è unico})\]
 	
 	
-	\subsection{Applicazione inversa}
+	\section{Applicazione inversa}
 	Presi due insiemi $X, Y$ e una applicazione $f$ biunivoca:
 	\[
 	X \xlongrightarrow{f} Y
@@ -372,7 +371,7 @@
  	
 	se $y \in Y \rightarrow f^{-1}(y) := \{x \in X \tc f(x) = y\}$, in questo caso ha senso anche se non si tratta di applicazioni biunivoche in quanto restituisce un insieme e non un singolo elemento, quindi nel caso esistano più $x \tc f(x) = y$ si otterrà come risultato l'insieme numerico che contiene tutte le $x$
 	
-	\section{Relazioni}
+	\chapter{Relazioni}
 	Preso $X$ un insieme, una relazione $\rel$ su X, è un sottoinsieme definito come: \[\rel \subset X^2 = X \times X\]
 	Per $x \rel y$ si intende che $(x, y)\in \rel$
 	
@@ -388,7 +387,7 @@
 	\]
 	questa è la \textbf{relazione di congruenza modulo n}
 	
-	\subsection{Relazioni di equivalenza}
+	\section{Relazioni di equivalenza}
 	Per relazione di equivalenza si intende una relazione $\rel$ su $X$, con $X$ un insieme qualsiasi, in cui valgono 3 proprietà:
 	\begin{itemize}
 		\item Riflessiva: $x \rel x, \text{ con } x \in X$
@@ -416,12 +415,12 @@
 		quindi è verificata la proprietà transitiva
 	\end{itemize}
 	
-	\subsubsection{Classe di equivalenza}
+	\subsection{Classe di equivalenza}
 	Sia $x \in X$, allora la classe di equivalenza di x è:
 	\[[x] := \{y \in X \tc x \rel y\}\]
 	fissato x, $[x]$ è l'insieme composto dagli elementi $y \tc x\rel y$
 	
-	\subsubsection{Quoziente di X modulo R o insieme quoziente}
+	\subsection{Quoziente di X modulo R o insieme quoziente}
 	Definiti $X$ un insieme e $\rel$ una relazione, il quoziente di X modulo $\rel$ è l'insieme i cui elementi sono le classi R-equivalenza, ovvero le classi di equivalenza rispetto alla relazione $\rel$ su $X$, quindi l'insieme quoziente è l'insieme composto dalle classi di equivalenza in $X$ generate da $\rel$ ed è rappresentato da: $X/R$
 	
 	\[
@@ -436,7 +435,7 @@
 	[1] = \{y \in X \tc 1\rel y, 1 \equiv y \Mod{n}\}
 	\]
 	
-	\subsection{Insieme delle parti}
+	\section{Insieme delle parti}
 	Una partizione $P$ di S è un insieme di sottoinsiemi $S_p \subset S \tc$
 	\begin{itemize}
 		\item $S_p \not = \emptyset, p \in P$
@@ -469,13 +468,13 @@
 	Per ogni partizione $P \longrightarrow \rel_P$
 	\[P, Sp \subset S, x \rel y \iff x,y \in S \text{ per lo stesso p}\]
 	
-	\subsubsection{Lemma corrispondenza biunivoca tra relazione e partizione}
+	\subsection{Lemma corrispondenza biunivoca tra relazione e partizione}
 	Esiste una corrispondenza biunivoca tra:
 	\[\{\rel \text{ su } S\} \iff \{\text{ Partizione di } S\}\]
 	\[\rel \rightarrow P_{\rel} = \{[x] \tc x \in S\}\]
 	\[(x \rel_P y \iff x,y \in S_p, p \in S )\leftarrow \rel_P \leftarrow P\]
 	
-	\section{Anello e campo}
+	\chapter{Anello e campo}
 	A è un insieme i cui elementi sono coppie ordinate $(x,y)$, ed ha 2 operazioni:
 	\begin{itemize}
 		\item somma: 
@@ -520,18 +519,18 @@
 		\[\forall x\not = 0 \in A, \exists! w\in A \tc x * w = 1 \rightarrow w = x^{-1}\]
 	\end{enumerate}
 	
-	\subsection{Anello}
+	\section{Anello}
 	A (con le operazioni definite) è un anello se valgono le prime 6 proprietà (o assiomi).
 	
 	D'ora in avanti per completezza e facilità in diverse situazioni, per anello si intende un anello commutativo rispetto al prodotto e che presenta l'unità moltiplicativa, quindi in cui valgono anche le proprietà 7 e 8.
 	
-	\subsection{Campo}
+	\section{Campo}
 	A (con le operazioni definite) è un campo se valgono le prime 9 proprietà (o assiomi).
 	
-	\subsection{Definizione di $\rel_n$ su $\mathbb{Z}$}
+	\section{Definizione di $\rel_n$ su $\mathbb{Z}$}
 	\[x \rel_n y \iff n | (y - x) \iff y = x + kn, k\in \mathbb{Z}\]
 	
-	\subsubsection{Lemma}
+	\subsection{Lemma}
 	\[\mathbb{Z}/n\mathbb{Z} \text{ è un anello dato che:}\]
 	\[\left\{\begin{aligned}
 		[x] &+ [y] = [x + y] \\
@@ -621,14 +620,14 @@
 	\end{table}	
 	Mettendo a confronto le tabelle 2 e 4, si può notare che per la tabella 4 non esiste l'inverso moltiplicativo.
 	
-	\subsubsection{Teorema del campo, con n primo}
+	\subsection{Teorema del campo, con n primo}
 	$\mathbb{Z}/n\mathbb{Z}$ è un campo $\iff$ n è primo.
 	Dimostrazione per assurdo:
 	\[n = m*l, 0 < m < n \wedge 0<l<n\]
 	\[m*l = 0 \Mod{n}\]
 	se $\exists \frac{1}{m} \rightarrow \frac{1}{m} * m *l = 0 \Rightarrow l = 0$, però si ha una contraddizione in quanto  l è maggiore di 0, quindi n deve essere primo.
 	
-	\subsubsection{Lemma di Bezout}
+	\subsection{Lemma di Bezout}
 	\teorem{
 		Se si hanno due numeri \( a, b \) con \( \mathrm{MCD}(a,b) = d \), allora \( \exists x, y \in \mathbb{Z} \tc ax + by = d \).
 	}
@@ -636,7 +635,7 @@
 	Quindi applicando il teorema di Bezout ad a e p, in modo che $MCD(a, p) = 1$, allora:
 	\[\exists x,y \in \mathbb{Z} \tc ax + py = 1 \longrightarrow \mathbb{Z}/p\mathbb{Z}, ax = 1 \Mod p \rightarrow x = \frac{1}{a}\]
 	Il termine $py$ scompare in quanto applicando il modulo p all'insieme, rendendolo un insieme quoziente, $py$, è uguale a 0.
-	\section{Numeri complessi}
+	\chapter{Numeri complessi}
 	Definite due operazioni in $\mathbb{R}^2$:
 	\begin{itemize}
 		\item Somma:
@@ -648,7 +647,7 @@
 	\end{itemize}
 	il prodotto è così perchè se fosse definito come$(x_1 * x_2 , y_1 * y_2)$ allora $\mathbb{R}^2$ non sarebbe un anello (commutativo ed unitario)
 	
-	\subsection{Verifica $\mathbb{R}^2$}
+	\section{Verifica $\mathbb{R}^2$}
 	Verifichiamo che $\mathbb{R}^2$ con le proprietà definite è un campo:
 	\begin{enumerate}
 		\item Unicità dell'elemento neutro della somma:
@@ -675,7 +674,7 @@
 	\[(1, 0) * (x, y) = (1 * x - 0 * y, 1 * y + 0 * x) = (x, y)\]
 	quindi la coppia $(1, 0)$ è l'elemento neutro del prodotto
 	
-	\subsection{Notazione}
+	\section{Notazione}
 	\[
 	\left\{
 	\begin{aligned}
@@ -695,7 +694,7 @@
 	A questo punto svolgo le normali moltiplicazioni tra parentesi in R, perché non sono più coppie, ma sono numeri,  da questo ottengo una somma tra una parte reale e una parte immaginaria, da cui deriva il prodotto in $\mathbb{C}$.
 	\[(a*c - b*d + (a*d + b*c)i) = ((a*c - b*d), (a*d + b*c))\]
 	
-	\subsection{Continuo verifica $\mathbb{R}$}
+	\section{Continuo verifica $\mathbb{R}$}
 	continuo con la verifica delle proprietà dalla 5 alla 9
 	\begin{enumerate}
 		\setcounter{enumi}{4} % parte da 3 perché LaTeX aggiunge +1
@@ -745,11 +744,11 @@
 		\[(a, b) * \left(\dfrac{a}{a^2 + b^2}, \dfrac{b}{a^2 + b^2}\right) = (1, 0)\] 
 	\end{enumerate}
 	
-	\subsection{Caratteristiche}
+	\section{Caratteristiche}
 	Un numero $z \in \mathbb{C} = a + bi, a,b \in \mathbb{R}$, e con $\mathbb{R}$ in intende $\mathbb{R}^2$ con le operazioni di somma e prodotto definite.
 	La parte reale dei numeri complessi è definita da $Re(z) := a$ e la parte immaginaria $Im(z) := b$
 	
-	\subsection{Rappresentazione grafica}
+	\section{Rappresentazione grafica}
 	Scelto un sistema di coordinate cartesiano del piano, allora ad $a + bi \in C$, corrisponde un punto/vettore $P(a,b)$. Presi $z = a+bi, w = c+ di$
 	\begin{center}
 		\begin{tikzpicture}[->, thick]
@@ -871,7 +870,7 @@
 	
 	moltiplicare un numero complesso per $i$, vuol dire ruotarlo di 90 gradi verso sinistra
 	
-	\subsection{Teorema fondamentale dell'algebra}
+	\section{Teorema fondamentale dell'algebra}
 	Sia $P(z) = a_0z^n + a_1z^{n-1} + a_2z^{n-2} + ... + a_n$, polinomio in $z$ a coefficienti in $\mathbb{C}$ di grado $n > 0$ con $a_0 \not = 0$, allora:
 	\[\exists \xi \in \mathbb{C} \tc P(\xi) = 0\]
 	($\xi$ è una "radice di $P(z) = 0$")
@@ -907,7 +906,7 @@
 		
 	\end{itemize}
 	
-	\section{Spazi vettoriali}
+	\chapter{Spazi vettoriali}
 	$\mathbb{K}$ è un campo, $\mathbb{K}^n = \mathbb{K} \times \dots \times \mathbb{K} = \{(x_1, \dots , x_n) \tc x_i \in \mathbb{K}\}$, usato una notazione impropria possiamo definire la n-tupla $(x_1, \dots , x_n)$, come $X$
 	
 	Definiamo l'operazione di somma tra n-tuple:
@@ -965,7 +964,7 @@
 		\item $0 \cdot v = \underline{0}$ 
 	\end{enumerate}
 	
-	\subsection{Vettori nel piano euclideo}
+	\section{Vettori nel piano euclideo}
 	Sia $\mathbb{E}^2$, il piano euclideo, allora un vettore nel piano è una classe di equivalenza di segmenti orientati nel piano, indipendenti dalla loro posizione.
 	Presi $A, (x_a, y_a) \not = B, (x_b, y_b) \in \mathbb{E}^2, \overline{AB}$ è l'unica retta in $\mathbb{E}^2$ contenente contemporaneamente A e B.
 	
@@ -1191,7 +1190,7 @@
 	
 	Con queste operazioni $V(\mathbb{E}^2)$ è uno spazio vettoriale/$\mathbb{R}$
 	
-	\subsection{Sottospazi vettoriali}
+	\section{Sottospazi vettoriali}
 	Preso $\mathbb{V}$ un sp.vett./$\mathbb{K}$, allora $\mathbb{W} \subset \mathbb{V}$ è un sottospazio vettoriale se:
 	\begin{itemize}
 		\item non è vuoto, quindi:
@@ -1220,7 +1219,7 @@
 	\[\mathbb{U} := \{X \in \mathbb{K}^n \tc x_1 + \dots + x_n = 1\}\]
 	allora non è un sottospazio di $\mathbb{K}$, perchè $\underline{0} \not \in \mathbb{U}$
 	
-	\subsection{Polinomi su $\mathbb{K}$}
+	\section{Polinomi su $\mathbb{K}$}
 	Un polinomio su $\mathbb{K}$ nella variabile x è espresso come:
 	\[a_0x^d + a_1 x^{d -1} + \dots + a_{d -1} x + a_d, a_i \in \mathbb{K}\]
 	\[\mathbb{K}[x] := \{\text{polinomi in x a coefficienti in } \mathbb{K}\}\]
@@ -1257,7 +1256,7 @@
 	\end{array}
 	\]
 	
-	\subsubsection{Anello polinomiale}
+	\subsection{Anello polinomiale}
 	Considerato l'anello polinomiale di un certo campo, $\mathbb{K}[x]$, con la somma tra polinomi:
 	\[
 	\begin{array}{c c c}
@@ -1763,6 +1762,9 @@
 	
 	Invece ogni lista di \textbf{generatori}, ha almeno $\dim \mathbb{V}$ elementi.
 	
+	Si dice sottospazio proprio finitamente generato un sottospazio diverso dall'intero spazio vettoriale e dal vettore nullo, che ha quindi come dimensione massima, la dimensione dell'intero spazio vettoriale meno uno, ad esempio:
+	\[V \subseteq \mathbb{K}^n \Rightarrow \dim \mathbb{K}^n = n \rightarrow \dim V < \dim \mathbb{K}^n \Rightarrow \dim V \leq n - 1\]
+	
 	\section{Teorema di Steinitz / dello scambio}
 	\teorem{Se $v_1, \dots, v_n = (\{v_i\}_{i \in \mathbb{I}})$, è una lista indipendente, e $w_1, \dots, w_m = (\{w_j\}_{j \in \mathbb{G}})$ è una lista di generatori, allora:
 	\begin{itemize}
@@ -1873,53 +1875,497 @@
 		\end{itemize} 
 	\end{itemize}
 	
-	\newpage
-	
-	\section{Risoluzione esercizi}
-	\subsection{Settimana due:}
-	\subsection{Esercizio 1}
-	Sia $\mathbb{F}_p := \mathbb{Z}/p$, con $p$ un numero primo:
-	\paragraph{Esercizio 1.1}
-	\[x \in \mathbb{F}_p, x \not = 0\]
-	Dimostrare che:
-	\[\exists a > 0 \tc x^a = 1\]
-	Usare il suggerimento $\exists m \not = n \tc x^m = x^n$
-	\[\mathbb{F}_p := \{[0], [1], \dots, [p -1]\}\]
-	Allora stesso tempo:
-	\[I = \{x^m \tc m \in \mathbb{Z}\} := \{\dots, x^{-2}, x^{-1}, 1, x, x^2, \dots\}\]
-	Dato che $\mathbb{F}_p$ è un insieme finito, mentre l'insieme $I$ è infinito, allora esistono almeno 2 elementi diversi di $I$, che fanno riferimento allo stesso elemento in $\mathbb{F}_p$, per via del \hyperref[sec: Dirichlet]{principio di Dirichlet (teorema dei cassetti )}.
-	
-	\[n \not = m \rightarrow x^n = x^m \xrightarrow{n > m} x^{n - m} = 1 \xrightarrow{a = n - m} x^a = 1\]
-	Questo è possibile solo se $x^m \not = 0, x \not = 0$, lo dimostro per contraddizione, ponendo che esiste $x^k = 0$, con $k = \min(k) \tc x^k = 0$, allora:
-	\[x^{k - 1} \not = 0 \Rightarrow \exists (\frac{1}{x^{k-1}}) \Rightarrow x^k = x^{k - 1} x \Rightarrow x = \frac{x^k}{x^{k -1}} = 0\]
-	Ma questo non è possibile in quanto $x \not = 0$, quindi non esiste $k \tc x^k = 0, x \not = 0$
-	
-	\paragraph{Esercizio 1.2}
-	\[x \in \mathbb{F}_p, x \not = 0, a = \min a > 0 \tc x^a = 1\]
-	Dimostrare che la cardinalità dell'insieme delle potenze di $x$ è uguale ad $a$:
-	\[|\{x^m \tc m \in \mathbb{Z}\}| = a\]
-	Allora affermo che:
-	\[\{x^m \tc m \in \mathbb{Z}\} \subseteq \{1, x, x^2, \dots, x^{a-1}\}\]
-	e bisogna dimostrare che:
-	\[\{x^m \tc m \in \mathbb{Z}\} \supseteq \{1, x, x^2, \dots, x^{a-1}\}\]
-	quindi che:
-	\[\{x^m \tc m \in \mathbb{Z}\} = \{1, x, x^2, \dots, x^{a-1}\}\]
-	per dimostrare questo parto da:
-	\[x^m = x^k, 0\leq k \leq a -1 \Rightarrow m = a * q\]
-	ma se fosse così $x^m$ sarebbe sempre uguale a 1, perciò bisogna aggiungere un termine $r$:
-	\[m = aq + r \Rightarrow x^m = x^{aq} \cdot x^r \Rightarrow x^m = x^r, 0 \leq r \leq a - 1\]
+	\subsection{Dimostrazione}
+	Sia la lista $v_1, \dots, v_k$ una base di $U \cap W$, allora la lista ad una  base per $U$, $W$:
+	\begin{itemize}
+		\item $v_1, \dots, v_k, v_{k+1}, \dots, v_n$, base di $U$
+		\item $v_1, \dots, v_k, w_{k+1}, \dots, w_m$, base di $W$
+	\end{itemize}
+	Affermazione:$v_1, \dots, v_k, v_{k+1}, \dots, v_n, w_{k+1}, \dots, w_m$, è una base per $U + W$, bisogna però dimostrarlo, controllo quindi che siano generatori:
+	\[U + W := \{u + w \tc u \in U, w \in W\}\]
 	quindi:
-	\[\forall x^m, \exists r, 0\leq r \leq a -1 \tc x^m = x^r\]
-	La dimostrazione però non è ancora completa in quanto non ho ancora usato il fatto che a sia il minimo a possibile tale per cui $x^a = 1$, infatti se:
-	\[x^m = x^n, 0 \leq m \leq n \leq a -1 \rightarrow x^{m - n} = 1\]
-	quindi $a = n - m, 0 \leq n - m \leq a - 1$, che va in contraddizione con il fatto che $a$ sia minimo, perciò si è dimostrato che l'insieme delle potenze positive di x, ha cardinalità a.
+	\[u = \sum_{i = 1}^{k} x_i v_i + \sum_{i = k + 1}^{n} y_i u_i\]
+	\[w = \sum_{i = 1}^{k} x^1_i v_i + \sum_{i = k + 1}^{m} z_i w_i\]
+	\[\Rightarrow u + w = \sum_{i = 1}^{k} x_i v_i + \sum_{i = k + 1}^{n} y_i u_i + \sum_{i = 1}^{k} x^1_i v_i + \sum_{i = k + 1}^{m} z_i w_i\] 
+	\[\Rightarrow u + w = \sum_{i = 1}^{k} (x_i + x^1_i)v_i + \sum_{i = k + 1}^{n} y_i u_i + \sum_{i = k + 1}^{m} z_i w_i\]
+	Quindi è la lista è generatrice.
+	
+	Ora controllo l'indipendenza lineare:
+	\begin{align}
+		\sum_{i = 1}^{k} x_i v_i + \sum_{i = k + 1}^{n} y_i u_i + \sum_{i = k + 1}^{m} z_i w_i = 0 \label{eq:indip1}
+	\end{align}
+	\[\sum_{i = k + 1}^{m} z_i w_i = - \sum_{i = 1}^{k} x_i v_i - \sum_{i = k + 1}^{n} y_i u_i\]
+	Dove:
+	\[\sum_{i = k + 1}^{m} z_i w_i \in W\]
+	ed anche: 
+	\[ - \sum_{i = 1}^{k} x_i v_i - \sum_{i = k + 1}^{n} y_i u_i \in U\]
+	quindi:
+	\begin{align}
+		\sum_{i = 1}^{k} x^1_i v_i = \sum_{i = k + 1}^{n} y_i u_i = - \sum_{i = k + 1}^{m} z_i w_i -\sum_{i = 1}^{k} x_i v_i \label{eq:indip2}
+	\end{align}
+	\[\Rightarrow \sum_{i = 1}^{k} (x^1_i + x_i) v_i + \sum_{i = k +1 }^{n} y_i u_i\]
+	\[\Rightarrow y_{k + 1} = \dots = y_n = 0\]
+	
+	Quindi \eqref{eq:indip1} diventa:
+	\[\sum_{i = 1}^{k} x_i v_i + \sum_{i = k+ 1}^{m} z_i w_i = 0\]
+	\[\Rightarrow x_1 = x_2 = \dots = x_k = z_{k-1} = \dots = z_m = 0\]
+	perchè: \[\Rightarrow v_1 = \dots = v_k = w_{k+1} = w_m\]
+	essendo una base di W allora tutti i vettori sono tutti uguali a 0.
+	
+	quindi:
+	\[v_i, \dots, v_k, w_{k+1} = \dots = w_m\]
+	Allora dimensione:
+	\[\dim U + W = \text{ num elementi in } v_i, \dots, v_k, w_{k + 1}, \dots, w_m, u_{k + 1}, \dots, u_n\]
+	\[\dim U + W = n + m - k = \dim U + \dim W - \dim U \cap W\]
+	
+	\section{Coordinate associate alla base}
+	Perso $V$ un sotto spazio vettoriale su $K$, presi $v_1, \dots, v_n \in V$
+	
+	Considero l'applicazione:
+	\[
+	\begin{array}{c c c}
+		\mathbb{K}^n & \xlongrightarrow{f} & V \\
+		X & \longmapsto & x_1 v_1 + \dots + x_n v_n \\
+	\end{array}
+	\]
+	Allora l'applicazione $f$ è: 
+	\begin{itemize}
+		\item iniettiva se e solo se $v_1, \dots, v_n$ sono linearmente indipendenti
+		\item suriettiva se e solo se $v_1, \dots, v_n$ sono generatori di V
+	\end{itemize}
+	Quindi se $\mathcal{B}= \{v_i, \dots, v_n\}$ è una base di $V$, allora:
+	\[
+	\begin{array}{c c c}
+		\mathbb{K}^n & \xlongrightarrow{f} & V \\
+		X & \longmapsto & \sum_{i = 1}^{n} x_i v_i \\
+	\end{array}
+	\]
+	è biunivoca, perciò ho l'inverso:
+	\[
+	\begin{array}{c c c}
+		V & \xlongrightarrow{f} & \mathbb{K}^n \\
+		v & \longmapsto & X_\mathcal{B}(V) = (x_1, \dots, x_n) \\
+	\end{array}
+	\]
+	dove $x_1, v_1 + \dots + x_n v_n = v$ \newline
+	Allora si definisce come coordinate di $v$ nella base $\mathcal{B}$ la n-upla dei coefficienti $x_i$ ottenuto come combinazione lineare della base quando la si pone uguale a $v$, quindi $(x_i, \dots, x_n)$
+	
+	esempio:
+	\begin{itemize}
+		\item $V = \mathbb{K}^n$, allora $\mathcal{S} = \{e_1, \dots, e_n\}$, dove $e_1 = (1, 0, \dots), \dots, e_n = (0, \dots, 1)$
+		\[X = (x_1, \dots, x_n) = x_1 e_1 + \dots + x_n e_n\]
+		quindi le coordinate di $X$ nella base standard sono le sue entrare
+		\item Presi $v_1 = (1, 1), v_2 = (1, -1)$ entrambi in $ \mathbb{K}^n$ \newline Controllare che: $\{v_1, v_2\}$ sia una base di $\mathbb{K}^n$, controllo che siano linearmente indipendenti, e lo sono se e solo se $2 \not = 0$, perchè: \newline
+		\[\lambda_1, \lambda_2 \in \mathbb{K}\]
+		Allora:
+		\[(0,0) = \lambda_1 v_1 + \lambda_2 v_2 = (\lambda_1 + \lambda_2, \lambda_1 - \lambda_2)\]
+		\[\left\{\begin{aligned}
+			0 & = \lambda_1 + \lambda_2 \\
+			0 & = \lambda_1 - \lambda_2
+		\end{aligned}\right. \Rightarrow
+		\left\{\begin{aligned}
+		0 & = 2\lambda_1 \\
+		0 & = 2\lambda_2
+		\end{aligned}\right.  \]
+		Quindi se e solo se $2 \not = 0$, posso moltiplicare per l'inverso di 2, ovvero $2^{-1}$, ottenendo:
+		\[
+		\left\{\begin{aligned}
+			0 & = \lambda_1 \\
+			0 & = \lambda_2
+		\end{aligned}\right.  
+		\]
+		Invece se: $2 = 0$, allora $1 = -1$, e quindi $v_1 = v_2$, rendendoli quindi linearmente dipendenti.
+		
+		Un campo in cui $n \not = 0$ si dice di caratterizzazione n.
+		
+		Inoltre la lista di vettori è anche generatrice, ed è banale la dimostrazione, quindi la lista è una base.	
+		
+		Dato un certo vettore $v = (a,b)$, quali sono le coordinate di v nella base $\mathcal{B}$, ovvero $X_\mathcal{B}(V)$?
+		Come già detto le coordinate di un vettore in una carta base sono i coefficienti di vettori della base quando si scrive $v$ come combinazione lineare della base:
+		\[(a,b) = x_1 (1,1) + x_2 (1,-1)\]
+		\[(a,b) = (x_1 + x_2, x_1 - x_2)\]
+		\[\left\{\begin{aligned}
+			a & = x_1 + x_2 \\
+			b & = x_1 - x_2 
+		\end{aligned}\right. \Rightarrow
+		\left\{\begin{aligned}
+			2x_1 & = a + b \\
+			2x_2 & = a - b 
+		\end{aligned}\right. \Rightarrow 
+		\left\{\begin{aligned}
+		x_1 & = 2^{-1}(a + b) \\
+		x_2 & = 2^{-1}(a - b) 
+		\end{aligned}\right. \iff 2 \not = 0\]
+		Quindi le coordinate di v sono:
+		\[X_\mathcal{B}(v) = (2^{-1}(a + b), 2^{-1}(a - b))\]
+		
+		\item Sia $V \subset \mathbb{K}$, definito da:
+		\[V := \{X \tc x_1 + \dots + x_n = 0\}\]
+		Allora $V$ è un sottospazio vettoriale di $\mathbb{K}^n$, quindi è un sp. vett/$\mathbb{K}$. Si possono trovare le basi di V, ad esempio:
+		\begin{itemize}
+			\item $\mathcal{B} = \{(1, -1, 0, \dots, 0), (0, 1, -1, 0 , \dots, 0), \dots, (0, \dots, 0, 1, -1)\}$
+			\item $\mathcal{C} = \{(1, -1, 0, \dots, 0), (1, 0, -1, 0, \dots, 0), \dots, (1, 0, \dots, 0, -1)\}$
+		\end{itemize}
+		essendo $V$ un sottospazio proprio di $\mathbb{K}^n$, allora le il numero di vettori, w, nella base sarà n-1, ma ogni vettori avrà n entrate.
+		
+		Quindi $v = (x_1, \dots, x_n)$, con $\sum_{i = 1}^{n} x_i = 0 \Rightarrow x_1 = - x_2 - x_3 \dots - x_n$
+		
+		Allora:
+		\[(x_1, \dots, x_n) = \lambda_1 w_1 + \dots + \lambda_{n-1} w_{n-1} = (\lambda_1 + \dots + \lambda_{n-1}, -\lambda_1, \dots, \lambda_{n-1})\]
+		Questo implica che $(x_1, \dots, x_n) = \lambda_1 w_1 + \dots + \lambda_{n-1} w_{n-1}$ è uguale a:
+		\[\left\{\begin{aligned}
+			-x_2 & - \dots - x_n = \lambda_1 + \dots + \lambda_{n-1} \\
+			x_2 & = -\lambda_1 \\
+			x_3 & = -\lambda_2 \\
+			\vdots & = \vdots \\
+			x_n & = - \lambda_{n-1}
+		\end{aligned}\right. \Rightarrow
+		\left\{\begin{aligned}
+			-x_2 & - \dots - x_n = \lambda_1 + \dots + \lambda_{n-1} \\
+			\lambda_1 &  = - x_2 \\
+			\lambda_2 &  = - x_3 \\
+			\vdots & = \vdots \\
+			\lambda_{n-1} &  = - x_n 
+		\end{aligned}\right. 
+		\]
+		Quindi $\mathcal{C}$ è una base di $V$, e le coordinate nella base e di v sono:
+		\[X_\mathcal{C}(v) = X_\mathcal{C}((x_1, x_2, \dots, x_n)) = (-x_2, -x_3, \dots, -x_n)\]
+	\end{itemize}
+	
+	\chapter{Applicazioni Lineari}
+	Siano $V, W$ sp. vettoriali su $\mathbb{K}$, allora si definisce una applicazione lineare:
+	\[
+		V \xlongrightarrow{f} W
+	\]
+	se:
+	\begin{itemize}
+		\item $\forall v_1, v_2 \in V \Rightarrow f(v_1 + v_2) = f(v_1) + f(v_2)$
+		\item $\forall v \in V, \lambda \in \mathbb{K} \Rightarrow f(\lambda v) = \lambda f(v)$
+	\end{itemize}
+	Ad esempio:
+	\[
+	\begin{array}{c c c c}
+		\mathbb{R} & \xlongrightarrow{f} & \mathbb{R} \\
+		x & \longmapsto & a_n x^n + \dots + a_0 & a_n \not = 0, n_{n - 1} \dots, a_0 \in \mathbb{R}
+	\end{array}
+	\]
+	è lineare se e solo se:
+	\begin{itemize}
+		\item $n = 1, a_0 = 0$
+		\item $n = 0, a_0 = 0$
+	\end{itemize}
+	
+	Quindi visto graficamente è una applicazione lineare se e solo se è una retta non verticale che passa per l'origine, o la retta dell'asse x.
+	
+	Verifico quindi che $f: \mathbb{R} \longrightarrow \mathbb{R}, f(x) = \mu x$ sia lineare:
+	\begin{itemize}
+		\item $f(x + y) \overset{?}{=} f(x) + f(y), x, y \in \mathbb{R}$
+		\[\mu (x+y) \overset{?}{=} \mu x + \mu y\]
+		\[\mu (x+y) = \mu x + \mu y\]
+		per la proprietà distributiva del prodotto rispetto alla somma.
+		\item $f(\lambda x) \overset{?}{=} \lambda f(x), x \, \lambda in \mathbb{R}$
+		\[\mu (\lambda x) = \lambda (\mu x)\]
+		per la proprietà associativa del prodotto
+	\end{itemize}
+	
+	\teorem{Presi $V, W$ sp.vettori su $\mathbb{K}$, sia f una applicazione lineare:
+	\[V \xlongrightarrow{f} W\]
+	allora:
+	\begin{enumerate}
+		\item $f(0_v) = 0_w$
+		\item $f(-v) = -f(v)$
+		\item $f(\lambda_1 v_1 + \dots + \lambda_n v_n) = \lambda_1 f(v_1) + \dots + \lambda_n f(v_n)$
+	\end{enumerate}
+	}
+	
+	Dimostrazione:
+	\begin{enumerate}
+		\item $f(0_v) = f(0_v + 0_v) \overset{\text{f lin.}}{=} f(0_v) + f(0_v)$
+		\[\Rightarrow 0_w = f(0_v) + (-f(0_v)) = f(0_v) + f(0_v) + (-f(0_v)) = f(0_v) + 0_w = f(0_v)\]
+		\item $f(-v) = f((-1)v) \overset{\text{f lin.}}{=} f(-1) * f(v) = -f(v)$
+		\item Si dimostra per induzione su n, la base induttiva è già verificata per induzione, allora dimostro il passo induttivo assumendo n vera, dimostrando quindi n + 1:
+		\[f(\lambda_1 v_1 + \dots + \lambda_n v_n) \overset{\text{f lin.}}{=} f(\lambda_1 f(v_1) + \dots + \lambda_n f(v_n)) + f(\lambda_{n+1} f(v_{n+1}))\]
+		sostituendo l'ipotesi induttiva e sfruttando f lineare allora:
+		\[\Rightarrow \sum_{i = 1}^{n} \lambda_i f(v_i) + \lambda_{n+1} f(v_{n+1}) = \sum_{i = 1}^{n +1} \lambda_i f(v_i)\]
+	\end{enumerate}
+	
+	\teorem{Siano $V, W$ sp.vettoriali su $\mathbb{K}$, e sia $\{v_i\}_{i \in I}$ una lista di generatori di V, siano:
+	\[V \xlongrightarrow{f} W, V \xlongrightarrow{g} W\]
+	due applicazioni lineari, e sia:
+	\[f(v_i) = g(v_i), \forall i \in I \Rightarrow f = g\]
+	}
+	
+	Dimostrazione, sia $v \in V$, allora esiste $\lambda_i \in \mathbb{K}, i \in I \tc v = \sum_{i \in I} \lambda_i v_i$, allora:
+	\[f(v) = \sum_{i \in I} \lambda_i f(v_i)\]
+	\[g(v) = \sum_{i \in I} \lambda_i f(g_i)\]
+	per la proposizione precedente, ma quindi:
+	\[f(v_i) = g(v_i), \forall i \in I\]
+	allora per ipotesi si ha che:
+	\[f(v) = g(v)\]
+	
+	\teorem{Siano $v_1, \dots, v_n \in V$ linearmente indipendenti, allora dati $w_1, \dots, w_n \in W$, esiste una applicazione lineare:
+	\[V \xlongrightarrow{f} W, \tc f(v_i) = w_i \forall i \in \{1, \dots , n\}\]
+	}
+	
+	Dimostrazione, assumendo che $\mathcal{B} = \{v_1, \dots, v_n\}$ sia una base di $V$, allora $V = \brackets{v_1, \dots, v_n}$, quindi dato $v \in V$ si ha $X_\mathcal{B}(v) = (x_1, \dots, x_n), v = \sum_{i = 1}^{n} x_i v_i$, si definisce allora una applicazione da $V$ a $W$:
+	\[\begin{aligned}
+		V & \xlongrightarrow{f} W \\
+		v & \xlongrightarrow{f} \sum_{i = 1}^{n} x_i w_i
+	\end{aligned}\]
+	Si verifica quindi che $f$ è lineare in quanto $f(v_i) = w_i$
+	
+	\teorem{Sia $V \xlongrightarrow{f} W$ una applicazione lineare, allora:\[\Im{f} \subseteq W\]
+	dato da:
+	\[\Im(f) := \{f(v) \tc v \in V\}\]
+	$\Im{f}$ è un sottospazio di W}
+	Dimostrazione:
+	\[\Im(f) \not = \emptyset, V \not = \emptyset\]
+	
+	Siano $w_1, w_2 \in \Im(f), w_1 = f(v_1), w_2 = f(v_2), v_1, v_2 \in V$, allora:
+	\[w_1 + w_2 = f(v_1) + f(v_2) = f(v_1 + v_2) \in \Im(f)\]
+	
+	$w \in \Im(f), \lambda \in \mathbb{K}$, allora:
+	\[w = f(v), v \in V\]
+	\[\lambda w = \lambda f(v) \overset{\text{f. lin}}{=} f(\lambda v) \in \Im(f)\]
+	
+	\teorem{Sia $V \xlongrightarrow{f} W$ una applicazione lineare, allora:\[\ker(f) \subseteq f\]
+	dato da:
+	\[\ker(f) := \{v \in V \tc f(v) = 0_w\}\]
+	$\ker(f)$ è un sottospazio di V}
+	
+	\teorem{Sia $V \xlongrightarrow{f} W$ una applicazione lineare, e che $V$ sia finitamente generato, allora:
+	\[\dim V = \dim \ker(f) + \dim(\Im(f))\]
+	Supponendo che $\dim V = \dim W$, allora $f$ è biunivoca se e solo se $\ker(f) = \{0_v\}$}
+	Dimostrazione:
+	
+	se $f$ è biunivoca, è anche iniettiva, quindi il suo kernel avrà al massimo un solo elemento, in quanto non esistono due valori diversi che diano la stessa immagine, nello specifico lo zero di $W$.
+	
+	Sapendo che vale $\ker(f) = \{0_v\}$, allora per la proposizione precendente si ha che:
+	\[\dim V = \dim \Im(f) \leq \dim W\]
+	ma per ipotesi:
+	\[\dim V = \dim W\]
+	quindi:
+	\[\dim \Im(f) = \dim W\]
+	quindi $\Im(f) = W$, quindi f è sia suriettiva sia iniettiva, quindi biunivoca.
 	
 	
 	
-	\newpage
+	\chapter{Matrici}
+	Sia $R$ un anello, allora una matrice mxn a entrate in $R$ è una applicazione:
+	\[\{1, \dots, m\} x \{1, \dots, n\} \xlongrightarrow{f} R\]
+	equivalente a:
+	\[\{(i, j) \tc 1 \leq i \leq m, 1 \leq j \leq n\}\]
+	equivalente a:
+	\[M_{mxn} (R) := \{A \text{ matrice m x n a entrare in } R\}\]
+	Notazione:
+	\[f(i, j) = a_{ij}\]
+	denotando $f$ con $A$ e scrivendola in forma estesa, allora:
+	\[A = \begin{bmatrix} a_{1, 1} \dots a_{1, n} \\
+	\vdots \ddots \vdots \\
+	a_{m, 1} \dots a_{m, n} \end{bmatrix}\]
+	allora si rappresenta con $A^i$ la i-esa riga della matrice:
+	\[A^i = \begin{bmatrix} a_{i1}, a_{i2}, \dots, a_{in} \end{bmatrix}\]
+	e si rappresenta con $A_j$ la j-esa colonna della matrice:
+	\[A_j = \begin{bmatrix} a_{1j} \\ a_{2j} \\ \vdots \\ a_{mj} \end{bmatrix}\]
 	
-	\section{Teoremi/Principi/Assiomi/Altro usati negli esercizi}
-	\subsection{Principio di Dirichlet}
+	\section{Operazioni sulle matrici}
+	Ricordando che $R$ è un anello, è possibile svolgere diverse operazioni sulle matrici:
+	\begin{itemize}
+		\item Somma tra matrici, se hanno lo stesso numero di righe e colonne:
+		\[\begin{aligned}
+			M_{mxn}(R) \times M_{mxn}(R) & \longrightarrow M_{mxn}(R) \\
+			(A, B) & \longrightarrow C = A + B = c_{ij}
+		\end{aligned}\]
+		dove:
+		\[c_{ij} = c_{ij} + b_{ij}\]
+		
+		\item Prodotto per scalare
+		\[\begin{aligned}
+			R \times M_{mxn}(R) & \longrightarrow M_{mxn}(R) \\
+			(\lambda, B) & \longrightarrow C = \lambda A = c_{ij}
+		\end{aligned}\]
+		dove:
+		\[c_{ij} = \lambda a_{ij}\]	
+	\end{itemize}
+	Le proprietà che definiscono uno spazio vettoriale sono soddisfatte d queste operazioni, la dimostrazione delle proprietà è analoga a quella degli spazi vettoriali.
+	
+	Se $R$ è un campo, quindi $R = \mathbb{K}$, allora $M_{mxn}(\mathbb{K})$ è uno spazio vettoriale su $\mathbb{K}$, in cui:
+	\[\dim M_{mxn}(\mathbb{K}) = m x n\]
+	e la base standard è:
+	\[
+	E_{11} =
+	\begin{bmatrix}
+		1 & 0 & 0 & \cdots & 0 \\
+		0 & 0 & 0 & \cdots & 0 \\
+		\vdots & \vdots & \vdots & \ddots & \vdots \\
+		0 & 0 & 0 & \cdots & 0
+	\end{bmatrix}, \quad
+	E_{12} =
+	\begin{bmatrix}
+		0 & 1 & 0 & \cdots & 0 \\
+		0 & 0 & 0 & \cdots & 0 \\
+		\vdots & \vdots & \vdots & \ddots & \vdots \\
+		0 & 0 & 0 & \cdots & 0
+	\end{bmatrix}, \cdots, 
+	\]
+	\[
+	E_{ij} =
+	\begin{bmatrix}
+		0 & \cdots & 0 & \cdots & 0 \\
+		\vdots & \ddots & \vdots & & \vdots \\
+		0 & \cdots & 1 & \cdots & 0 \\
+		\vdots & & \vdots & \ddots & \vdots \\
+		0 & \cdots & 0 & \cdots & 0
+	\end{bmatrix}, \cdots ,  \quad
+	E_{mn} =
+	\begin{bmatrix}
+		0 & 0 & 0 & \cdots & 0 \\
+		\vdots & \vdots & \ddots & \vdots & \vdots \\
+		1 & 0 & \cdots & 0 & 0 \\
+		0 & 0 & \cdots & 0 & 1
+	\end{bmatrix}
+	\]
+	
+	\begin{itemize}
+		\item Prodotto, se la prima matrice ha il numero di colonne uguale al numero di righe delle seconda matrice:
+		\[\begin{aligned}
+			M_{mxn}(R) \times M_{nxp}(R) & \longrightarrow M_{mxp}(R) \\
+			(A, B) & \longrightarrow C
+		\end{aligned}\]
+		dove:
+		\[c_{ij} = \sum_{t = 1}^{n} a_{it} \cdot b_{tj}\]
+		ad esempio:
+		\[
+		A =
+		\begin{bmatrix}
+			2 & -1 \\
+			2 & 3
+		\end{bmatrix},
+		\qquad
+		B =
+		\begin{bmatrix}
+			1 & 1 & 3 \\
+			2 & 0 & -1
+		\end{bmatrix}.
+		\]
+		
+		\[
+		A B =
+		\begin{bmatrix}
+			2 & -1 \\
+			2 & 3
+		\end{bmatrix}
+		\begin{bmatrix}
+			1 & 1 & 3 \\
+			2 & 0 & -1
+		\end{bmatrix} = \]\[
+		=
+		\begin{bmatrix}
+			(2)(1) + (-1)(2) & (2)(1) + (-1)(0) & (2)(3) + (-1)(-1) \\
+			(2)(1) + (3)(2) & (2)(1) + (3)(0) & (2)(3) + (3)(-1)
+		\end{bmatrix}
+		=
+		\begin{bmatrix}
+			0 & 2 & 7 \\
+			8 & 2 & 3
+		\end{bmatrix}.
+		\]
+		Il prodotto tra matrici non è commutativo, in quanto frequentemente se si può fare $A \cdot B$, non si può fare $B \cdot A$, a meno che non siano matrici quadrate, e anche se si potesse fare non darebbero lo stesso risultato tranne in casi particolari.	
+	\end{itemize}
+	
+	\subsection{Tipologie di matrici}
+	\begin{itemize}
+		\item Matrice unitaria, ovvero la matrice che ha come entrate nella diagonale tutti 1, ed il resto tutti 0:
+		\[
+		M_{n,n} = (\delta_{ij})_{1 \leq i \leq n, 1 \leq j \leq n} = 1_n
+		\begin{bmatrix}
+			1 & 0 & 0 & \cdots & 0 \\
+			0 & 1 & 0 & \cdots & 0 \\
+			0 & 0 & 1 & \ddots & 0 \\
+			\vdots & \vdots & \ddots & \ddots & \vdots \\
+			0 & 0 & 0 & \cdots & 1
+		\end{bmatrix}
+		\]
+		Dove:
+		\[(\delta_{ij})_{1 \leq i \leq n, 1 \leq j \leq n}\]
+		è definito come il simbolo di Kronecker:
+		\[(\delta_{ij})_{1 \leq i \leq n, 1 \leq j \leq n} = \left\{\begin{aligned}
+			1, & i = j \\
+			0, & i \not = j
+		\end{aligned}\right.\]
+		\item Una matrice $A \in M_{n,n}(R)$ è scalare se:
+		\[A = \lambda \delta_{ij} =
+		\begin{bmatrix}
+			\lambda & 0 & 0 & \cdots & 0 \\
+			0 & \lambda & 0 & \cdots & 0 \\
+			0 & 0 & \lambda & \ddots & 0 \\
+			\vdots & \vdots & \ddots & \ddots & \vdots \\
+			0 & 0 & 0 & \cdots & \lambda
+		\end{bmatrix}
+		\]
+		\item Una matrice $A \in M_{n,n}(R)$ è diagonale se: 
+		\[A = \lambda_{ij} \delta_{ij} =
+		\begin{bmatrix}
+			\lambda_1 & 0 & 0 & \cdots & 0 \\
+			0 & \lambda_2 & 0 & \cdots & 0 \\
+			0 & 0 & \lambda_3 & \ddots & 0 \\
+			\vdots & \vdots & \ddots & \ddots & \vdots \\
+			0 & 0 & 0 & \cdots & \lambda_n
+		\end{bmatrix}
+		\]
+	\end{itemize}
+	
+	\teorem{
+		\begin{enumerate}
+			\item $(\lambda 1_m) \cdot A = \lambda A = A\cdot(\lambda 1_n), \forall A \in M_{m,n}(R)$
+			\item $(A \cdot B ) \cdot C = A \cdot (B \cdot C)$ se $A$ è $mxn$, $B$ è $nxp$, $C$ è $pxq$
+			\item $A(B \cdot B^{'}) = A \cdot B + A \cdot B^{'}$, e $(B + B^{'})C = BC + B^{'}C$, se A è mxn, B e B' sono nxp, C è pxq 
+		\end{enumerate}
+	}
+	
+	Preso $\mathbb{K}$ un campo, ed una matrice $A \in M_{m,n}(\mathbb{K})$
+	\[\begin{aligned}
+		M_{n,1}(\mathbb{K}) = \mathbb{K}^n & \xlongrightarrow{L_A} \mathbb{K}^m M_{1,m}(\mathbb{K}) \\
+		X & \longrightarrow (A \cdot X)_{m,1} 
+	\end{aligned}\]
+	ad esempio, presa la matrice:
+	\[A = \begin{bmatrix} 2 & 1 & 1 \\ 0 & -1 & 3 \end{bmatrix} \in M_{2,3}\]
+	Allora:
+	\[\begin{aligned}
+		\mathbb{K}^3 & \xlongrightarrow{L_A} \mathbb{K}^2\\
+		X & \longrightarrow A \cdot X
+	\end{aligned}\]
+	Si ha che:
+	\[L_A(1,1,2) = \begin{bmatrix} 2 & 1 & 1 \\ 0 & -1 & 3 \end{bmatrix} \cdot \begin{bmatrix} 1 \\ 1 \\ 2 \end{bmatrix} = \begin{bmatrix} 5 & 5 \end{bmatrix} = (5, 5)\]
+	In generale:	
+	\[L_A(x_1,x_2,x_3) = \begin{bmatrix} 2 & 1 & 1 \\ 0 & -1 & 3 \end{bmatrix} \cdot \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} = \begin{bmatrix} 2x_1 + x_2 + x_3 & -x_2 + x_3 \end{bmatrix} = (2x_1 + x_2 + x_3, -x_2 + x_3)\]
+	
+	Ora verifico che:
+	\[L_A(X + Y) \overset{?}{=} L_A(X) + L_A(Y)\]
+	\[\Rightarrow A(X + Y) = AX + AY\]
+	ed è vero per la proprietà associativa del prodotto.
+	Controllo che sia verificato anche il prodotto per scalare:
+	\[L_A(\lambda Y) \overset{?}{=} \lambda L_A(Y)\]
+	\[\Rightarrow A \cdot \lambda Y = \lambda A Y\]
+	per la proprietà commutativa del prodotto, perchè ci troviamo in un campo
+	
+	\teorem{Sia $\mathbb{K}^n \xlongrightarrow{f} \mathbb{K}^m$ una applicazione lineare, allora:
+	\[\exists A \in M_{m,n}(\mathbb{K}) \tc f = L_A\]
+	e tale matrice è unica.}
+	Per la dimostrazione bisogna sapere che presa la base standard di $\mathbb{K}^n$, allora:
+	\[L_A(e_j) = A_j\]
+	Dimostrazione della proposizione precedente:
+	\[f = L_A = L_B\]
+	allora:
+	\[f(e_j) = L_A(e_j) = L_B(e_j) \Rightarrow A_j = B_j, \Rightarrow \forall 1 \leq j \leq n \rightarrow A = B\]
+	quindi se esiste $A$ è unica.
+	
+	Esistenza di $A$: sia $A \in M_{m,n}(\mathbb{K}) \tc$
+	\[A_j = f(e_j), \forall j \in \{1, \cdots, n\}\]
+	poiché $f$ e $L_A$, assumono gli stessi valori su $\{e_1, \cdots, e_n\}$, ed entrambe generano $\mathbb{K}$ sono uguali.
+		
+	\chapter{Teoremi/Principi/Assiomi/Altro usati negli esercizi}
+	\section{Principio di Dirichlet}
 	\label{sec: Dirichlet}
 	Afferma che:
 	\begin{center}

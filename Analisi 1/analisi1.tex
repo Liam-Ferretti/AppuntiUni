@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{article}
+\documentclass[a4paper, 12pt, openany]{book}
 
 % pacchetti comuni
 \input{../preambolo.tex}
@@ -14,29 +14,30 @@
 	
 	\maketitle
 	
-	\begin{abstract}
-		Per i ricevimenti bisogna prenotarsi via e-mail, e si svolgeranno nell'edificio 105 dell'edificio Castel Nuovo
-		Si potranno trovare note ed esercizi su e-learning
-		
-		Programma:
-		\begin{itemize}
-		\item Numeri reali  
-		\item Funzioni di variabili reali  
-		\item Successioni e serie
-		\item Limiti e continuità
-		\item Calcolo differenziale ad una variabile  
-		\item Integrali
-		\item Equazioni differenze lineari  
-		\item Funzioni di più variabili (tutti i capitoli precedenti comprendono le funzioni a più variabili)
-		\end{itemize}
-		I libri di testo sono presenti su e-learning, ed è consigliato "Crasta Malusa", da cui assegnerà gli esercizi.
-		
-		L'esame sarà composto da scritto più orale, non ci sarà probabilmente un esonero, e con l'orale si può incrementare o decrementare il voto di fino a 3 punti in positivo o 3 in negativo, tranne nel caso in cui si commettano errori su: limiti, continuità o divisione per 0, che comporta la bocciatura immediata.
-	\end{abstract}
+	\chapter*{Sommario del corso}
+	Per i ricevimenti bisogna prenotarsi via e-mail, e si svolgeranno nell'edificio 105 dell'edificio Castel Nuovo
+	Si potranno trovare note ed esercizi su e-learning
+	
+	Programma:
+	\begin{itemize}
+	\item Numeri reali  
+	\item Funzioni di variabili reali  
+	\item Successioni e serie
+	\item Limiti e continuità
+	\item Calcolo differenziale ad una variabile  
+	\item Integrali
+	\item Equazioni differenze lineari  
+	\item Funzioni di più variabili (tutti i capitoli precedenti comprendono le funzioni a più variabili)
+	\end{itemize}
+	I libri di testo sono presenti su e-learning, ed è consigliato "Crasta Malusa", da cui assegnerà gli esercizi.
+	
+	L'esame sarà composto da scritto più orale, non ci sarà probabilmente un esonero, e con l'orale si può incrementare o decrementare il voto di fino a 3 punti in positivo o 3 in negativo, tranne nel caso in cui si commettano errori su: limiti, continuità o divisione per 0, che comporta la bocciatura immediata.
 	
 	\newpage
 	\tableofcontents
 	\clearpage
+	
+	\chapter{Numeri reali}
 	La matematica si costruisce su:
 	\begin{itemize}
 		\item elementi di base:
@@ -319,13 +320,13 @@
 		\[\forall A, B, C, [(A \Rightarrow B) \wedge (B \Rightarrow C)] \Rightarrow (A \Rightarrow C)\]
 	\end{itemize}
 	
-	\section{Insiemi numerici}
-	\subsection{Numeri naturali}
+	\chapter{Insiemi numerici}
+	\section{Numeri naturali}
 	\[\mathbb{N} := \{0, 1, 2, ..., n\} \text{, ed } \mathbb{N}^+ := \mathbb{N} \setminus \{0\} \]
 	in $\mathbb{N}$ è possibili ordinare gli elementi quindi per $m,n \in \mathbb{N}$:
 	\[n \leq m \iff \exists p \in \mathbb{N} \tc m = n + p\]
 	
-	\subsubsection{Proprietà di $\mathbb{N}$ (relazione di ordine)}
+	\subsection{Proprietà di $\mathbb{N}$ (relazione di ordine)}
 	\begin{itemize}
 		\item Riflessiva:
 		\[\forall n \in \mathbb{N}, n \leq n\]
@@ -337,7 +338,7 @@
 		\[\forall n, m \in \mathbb{N}, n\leq m \vee m \leq n\]
 	\end{itemize}
 	
-	\subsubsection{Assiomi di Peano}
+	\subsection{Assiomi di Peano}
 	Esiste una operazione, \textbf{passaggio al successivo}, $s(n) = n + 1$, tale che:
 	\begin{itemize}
 		\item (P1) esiste un elemento $0 \in \mathbb{N} \tc 0 \not = s(n), \forall n \in \mathbb{N}$
@@ -347,7 +348,7 @@
 		allora $E = \mathbb{N}$
 	\end{itemize}
 	
-	\subsubsection{Metodo Induttivo}
+	\subsection{Metodo Induttivo}
 	Il P3 è ciò che definisce il metodo induttivo (PI), ovvero:
 	\[P(n)\]
 	\[E := \{n \in \mathbb{N} \tc P(n)\} \subset \mathbb{N}\]
@@ -375,7 +376,7 @@
 	
 	Per applicare il metodo induttivo, non è valido partire dalla soluzione per arrivare alla dimostrazione, in quanto bisogna partire da P(n) ed arrivare a dimostrare P(n + 1).
 	
-	\subsubsection{Principio di buon ordinamento (P.B.O.)}
+	\subsection{Principio di buon ordinamento (P.B.O.)}
 	Teorema equivalente al principio di induzione, perciò se P1 e P2 sono valide allora PI $\iff P.B.O$, e dice che:
 	\[\forall E \subset \mathbb{N} \tc E \not = 0, \exists n_0 \in E \tc \exists n \geq n_0, \forall n \in E\]
 	Il minimo di un insieme E, se esiste è definito come:
@@ -384,7 +385,7 @@
 	Il principio di buon ordinamento permette di dimostrare induttivamente anche quando la base induttiva è diversa da 0, e in quel caso:
 	\[P(b) \wedge P(n) \Rightarrow P(n + 1), \forall n \in \mathbb{N}\setminus \{0, ... ,b\}, b \not = 0\]
 	
-	\subsubsection{Fattoriale e coefficiente binomiale}
+	\subsection{Fattoriale e coefficiente binomiale}
 	Due funzioni matematiche che si definiscono per induzione sono:
 	\begin{itemize}
 		\item Fattoriale:
@@ -409,7 +410,7 @@
 		e così via, costruito dalla somma dei due elementi alla righe precedente, in cui partendo dall'alto dalla riga 0, fino alla riga n si ha da sinistra a destra l'indice k della riga n.
 	\end{itemize}
 	
-	\subsection{Numeri interi}
+	\section{Numeri interi}
 	I numeri interi sono definiti come:
 	\[\mathbb{Z} := \{..., -2, -1, 0, 1, 2, ...\}\]
 	è possibile osservare che:
@@ -429,7 +430,7 @@
 		3 & \; \, \forall z \in \mathbb{Z} \exists! -z \in \mathbb{Z}, \text{ detto opposto di z } \tc z + (-z) = - z + z = 0
 	\end{aligned}\right.\]
 	
-	\subsection{Numeri razionali}
+	\section{Numeri razionali}
 	i numeri razionali sono definiti come:
 	\[\mathbb{Q} := \{\frac{p}{q} : p \in \mathbb{Z}, q \in \mathbb{N}^+\}\]
 	Allora $(\mathbb{Q}, +, \cdot)$, è un campo:
@@ -459,7 +460,7 @@
 	Oss: $\mathbb{Q}$ ha dei buchi, infatti:
 	\[\exists q : q^2 = 2 \Rightarrow q = \pm \sqrt{2} \not \in \mathbb{Q}\]
 	
-	\subsubsection{Dimostrazione irrazionalità di $\sqrt{2}$}
+	\subsection{Dimostrazione irrazionalità di $\sqrt{2}$}
 	\begin{proposition}
 		$\not \exists q \in \mathbb{Q} \tc q^2 = 2 \rightarrow (\frac{p}{q})^2 = 2$, con $p$ e $q$ coprimi, e $q \not = 0$
 	\end{proposition}
@@ -472,11 +473,11 @@
 		ora anche $q^2$ è uguale a $2k^2$, quindi anche q è pari, perciò la nostra tesi non è più valida in quanto non è vero che p e q sono coprimi.
 	\end{proof}
 	
-	\subsubsection{Scrittura di $q \in \mathbb{Q}$ forme decimali}
+	\subsection{Scrittura di $q \in \mathbb{Q}$ forme decimali}
 	$\mathbb{Q}$ corrisponde all'insieme $\{n,n_1n_2n_3...\}$, cioè $n \in \mathbb{Z}, n_i \in \{0, 1, 2, 3, ..., 9\} \tc $ sono finite $(n_i = 0, \forall i > i_0)$ o periodiche (un gruppo di n cifre si ripete all'infinito):
 	\[\mathbb{Q} := \{n + \frac{n_1}{10} + \frac{n_2}{10^2} + ... + \frac{n_k}{10^k}\}, k \in \mathbb{N}\]
 	
-	\subsubsection{Caso interessante}
+	\subsection{Caso interessante}
 	Presi:
 	\[A := \{q \in \mathbb{Q} \tc q^2 < 2\} \quad \quad B := \{q \in \mathbb{Q} \tc q^2 > 2\}\]
 	
@@ -507,7 +508,7 @@
 		\item $\not \exists c \in \mathbb{Q} \tc a \leq c \leq b, \forall a \in A, \forall b \in B$, quindi $\mathbb{Q}$ non soddisfa l'assioma di Dedekind o assioma della completezza.
 	\end{itemize}
 	
-	\subsection{Numeri reali}
+	\section{Numeri reali}
 	$(R, +, \cdot)$ è definito assiomaticamente tramite:
 	\begin{itemize}
 		\item $\mathbb{Q} \subset \mathbb{R}$
@@ -578,7 +579,7 @@
 	\end{center}
 	in questo caso $\exists b \in B \tc b < c$
 	
-	\subsubsection{Teorema della caratterizzazione di $\mathbb{R}$}	
+	\subsection{Teorema della caratterizzazione di $\mathbb{R}$}	
 	$\mathbb{R}$ è l'unico campo ordinato che può essere rappresentato con l'insieme di tutti i possibili decimali allineati:
 	\[\mathbb{R} := \{m,d_1d_2d_3...d_j \tc m \in \mathbb{Z}, d_j \in \{0, 1, ..., 9\} \tc j \in \mathbb{N}^+\}\}
 	\]
@@ -587,7 +588,7 @@
 	
 	Si dice che $\mathbb{Q}$ è denso in $\mathbb{R}$, quanto $\forall x \in \mathbb{R}\setminus \mathbb{Q}$ può essere approssimato da numeri razionali.
 	
-	\subsection{Intervalli, semirette ed estremi}
+	\section{Intervalli, semirette ed estremi}
 	Definizione:
 	\begin{itemize}
 		\item sia $A \subset \mathbb{R}, A \not = \emptyset$, è detto che $M_A$ è un \textbf{maggiorante} di A, se $m \geq a, \forall a \in A$.
@@ -596,22 +597,24 @@
 		\item sia $A \subset \mathbb{R}, A \not = \emptyset$, è detto che $m_A$ è un \textbf{minorante} di A, se $m \leq a, \forall a \in A$.
 		\[\textsl{m}_A := \{ m_A \tc m_A \leq a, \forall a \in A\}\]
 		ovvero l'insieme dei minoranti
-		\item sia $A \subset \mathbb{R}, A \not = \emptyset$, A è \textbf{limitato superiormente} se $\mathcal{M}_A \not = 0$, quindi A ha almeno un maggiorante.
+		\item sia $A \subset \mathbb{R}, A \not = \emptyset$, A è \textbf{limitato superiormente} se $\mathcal{M}_A \not = \emptyset$, quindi A ha almeno un maggiorante.
 		
 		N non è limitato superiormente in quanto $\forall n \in \mathbb{N}, \exists m > n \tc m \in \mathbb{N}$
-		\item sia $A \subset \mathbb{R}, A \not = \emptyset$, A è \textbf{limitato inferiormente} se $\textsl{m}_A \not = 0$, quindi A ha almeno un minorante
+		\item sia $A \subset \mathbb{R}, A \not = \emptyset$, A è \textbf{limitato inferiormente} se $\textsl{m}_A \not = \emptyset$, quindi A ha almeno un minorante
 		
 		\item sia $A \subset \mathbb{R}, A \not = \emptyset$, allora il numero $M \in \mathbb{R}$, si dice \textbf{massimo di A}, $\max A$, se $M$ è un maggiorante di A e se $M \in A$.
 		
 		\item sia $A \subset \mathbb{R}, A \not = \emptyset$, allora il numero $m \in \mathbb{R}$, si dice \textbf{minimo di A}, $\min A$, se $m$ è un minorante di A e se $m \in A$.		
 		
-		\item sia $A \subset \mathbb{R}, A \not = \emptyset$, allora il minimo dei maggioranti di A, si dice \textbf{estremo superiore} di $A$, $\sup A$ o supremum $A$, nel caso in cui l'estremo superiore non esista, il $\sup A = +\infty$
+		\item sia $A \subset \mathbb{R}, A \not = \emptyset$, allora il minimo dei maggioranti di A, si dice \textbf{estremo superiore} di $A$, $\sup A$ o supremum $A$, nel caso in cui l'estremo superiore non esiste, il $\sup A = +\infty$
 		
-		\item sia $A \subset \mathbb{R}, A \not = \emptyset$, allora il massimo dei minoranti di A, si dice \textbf{estremo inferiore} di $A$, $\inf A$ o infumum $A$, nel caso in cui l'estremo inferiore non esista, il $\inf A = -\infty$
+		\item sia $A \subset \mathbb{R}, A \not = \emptyset$, allora il massimo dei minoranti di A, si dice \textbf{estremo inferiore} di $A$, $\inf A$ o infumum $A$, nel caso in cui l'estremo inferiore non esiste, l ' $\inf A = -\infty$
 	\end{itemize}
 	
+	\newpage
+	
 	\begin{proposition}
-		sia $A \subset \mathbb{R}, A \not = \emptyset$, allora $\exists \sup A$
+		sia $A \subset \mathbb{R}, A \not = \emptyset$\text{ e limitato superiormente, allora} $\exists \sup A$
 	\end{proposition}
 	
 	\begin{proof}
@@ -619,7 +622,6 @@
 		
 		L'assioma di Dedekind implica che: $\exists c \in \mathbb{R} \tc a \leq c \leq b \Rightarrow c = min \mathcal{M}_A = \sup A$
 	\end{proof}
-	
 	Sia $A$ limitato superiormente, quindi $\exists \sup A \in \mathbb{R}$, allora il $\sup A$ è caratterizzato da:
 	\[\sup A = \min \mathcal{M}_A\]
 	\[
@@ -649,7 +651,7 @@
 	Osservazione:
 	ogni $S \subset \mathbb{Z}, S \not = \emptyset$, limitato superiormente ha un massimo, mentre se limitato inferiormente ha minimo.
 	
-	\subsection{Proprietà di Archimede}
+	\section{Proprietà di Archimede}
 	$\forall a, b \in \mathbb{R}, a > 0 \implies \exists n \in \mathbb{N}^+ \tc na > b$.
 	
 	Idea:
@@ -663,7 +665,7 @@
 		$x \geq 0 \tc \forall a \in \mathbb{N}^+, x < \frac{1}{n} \Rightarrow x = 0$
 	\end{itemize}
 	
-	\subsection{Funzione modulo}
+	\section{Funzione modulo}
 	\[|x| := 
 	\left\{
 	\begin{aligned}
@@ -673,7 +675,7 @@
 	\right. \equiv |x| = \max\{x, -x\} \in [0, +\infty)
 	\]
 	
-	\subsection{Intervalli}
+	\section{Intervalli}
 	$I \subset \mathbb{R}$, dice intervallo se $\forall x,y \in I, \exists z \in \mathbb{R} \tc x < z < y, z \in I$
 	
 	Un intervallo può essere descritto come uno di questi 4 tipi, avendo, $a \leq b, a,b \in \mathbb{R} \cup \{-\infty, +\infty\}$
@@ -683,12 +685,12 @@
 		\item $[a, b[ := \{x \in \mathbb{R} \tc a \leq x < b\}$
 		\item $]a, b[ := \{x \in \mathbb{R} \tc a < x < b\}$
 	\end{itemize}
-	se a o b sono uguale a più o meno infinito, allora l'estremo si dice aperto.
+	se a o b sono uguale a più o meno infinito, allora l'estremo è per forza aperto, in quanto a e b appartengono a $\mathbb{R}$.
 	
 	Definizione:
 	$A \subset \mathbb{R}$ si dice denso in $\mathbb{R}$ se $\forall I \subset \mathbb{R}, \exists a \in A \tc a \in I$
 	
-	\section{Cenni su $\mathbb{R}^n$, cardinalità e numeri complessi}
+	\chapter{Cenni su $\mathbb{R}^n$, cardinalità e numeri complessi}
 	Definizione:
 	\begin{itemize}
 		\item $\mathbb{R} \times \mathbb{R} \equiv \mathbb{R}^2 = \{(x, y) \tc x, y \in \mathbb{R}\} \equiv$ piano cartesiano
@@ -696,7 +698,7 @@
 		\item $\mathbb{R} \times \mathbb{R} \times ... \times \mathbb{R} \equiv \mathbb{R}^n$, e le sue coordinate sono: $(x_1, x_2,x_3, ..., x_ n) \in \mathbb{R}^n$
 	\end{itemize}
 	
-	\subsection{Intorno di un punto}
+	\section{Intorno di un punto}
 	Per intorni si intende:
 	\[J_{x_0} = J(x_0) = \{]a,b[ \tc x \in ]a,b[\}\]
 	è definito come intorno particolare:
@@ -728,7 +730,7 @@
 		\end{tikzpicture}
 	\end{center}
 	
-	\subsubsection{Distanza in $\mathbb{R}^n$}
+	\subsection{Distanza in $\mathbb{R}^n$}
 	In $\mathbb{R}^2$:
 	
 	\begin{center}
@@ -758,7 +760,7 @@
 	
 	\[d(P_1, P_1) := ||P_2 - P_1|| = \sqrt{(x^1_1 - x^2_1)^2 + (x^1_2 - x^2_2)^2 + ... + (x^1_n - x^2_n)^2}\]
 	
-	\subsubsection{Intorno in $\mathbb{R}^n$}
+	\subsection{Intorno in $\mathbb{R}^n$}
 	se $x_0 \in \mathbb{R}^2 \tc I_r(x_0) := \{(x_1,x_2) \in \mathbb{R}^2 \tc ||x - x_0|| < r\}$
 	
 	\begin{center}
@@ -776,7 +778,7 @@
 		\end{tikzpicture}
 	\end{center}
 	
-	\subsection{Coordinate polari}
+	\section{Coordinate polari}
 	preso $P = (x_1, y_1) \in \mathbb{R}^2$, è possibile trovare $\theta, \rho \tc:$
 	\[\left\{\begin{aligned}
 		x &= \rho \cos \theta\\
@@ -812,7 +814,7 @@
 	La somma tra le componenti al quadrato di un punto equivale a $\rho$ al quadrato, secondo il teorema di Pitagora.
 	\[x^2+y^2 = \rho^2 (\cos^2\theta + \sin^2\theta) = \rho^2\]
 	
-	\subsection{Retta in $\mathbb{R}^2$}
+	\section{Retta in $\mathbb{R}^2$}
 	Una retta non verticale è definita da una coppia ordinata:
 	\[r := \{(x,y) \in \mathbb{R}^2 \tc y = mx + q\}\]
 	
@@ -852,7 +854,7 @@
 	Le rette verticali non sono descrivibili con questa equazione, in quanto si dividerebbe per 0 nel rapporto incrementale, perciò si usa una insieme numerico:
 	\[r_v := \{(x,y) \in \mathbb{R}^2 \tc x = x_0\}\]
 	
-	\subsection{Numeri complessi ($\mathbb{C} \equiv \mathbb{R}^2$)}
+	\section{Numeri complessi ($\mathbb{C} \equiv \mathbb{R}^2$)}
 	I numeri complessi sono definiti da una parte reale $a$ e da una parte immaginaria $b$, che moltiplica l'unità immaginaria, $i \in \mathbb{C} \tc i^2 = -1$.
 	\[z \in \mathbb{C} \Rightarrow z = a + bi = (a, b), \text{ con } a,b \in \mathbb{R}\] 
 	
@@ -896,11 +898,11 @@
 		\end{tikzpicture}
 	\end{center}
 		
-	\subsection{Insiemi aperti e chiusi}
+	\section{Insiemi aperti e chiusi}
 	Un insieme si dice aperto:
 	\[A \subset \mathbb{R}^n \text{ si dice \textbf{aperto} se } \forall x \in A, \exists r>0 \tc Ir(x) \subset A\]
 	Un insieme si dice chiuso:
-	\[A \subset \mathbb{R}^n \text{ si dice \textbf{chiuso} se } A^c = \mathbb{R}^n \setminus A \text{ è aperto}\]
+	\[A \subset \mathbb{R}^n \text{ si dice \textbf{chiuso} se } A^c = \mathbb{R}^n \setminus A^c \text{ è aperto}\]
 	Un insieme può essere ne aperto ne chiuso , ad esempio $(a, b]$ \newline
 	Per punto interno si intende:
 	\[A \subset \mathbb{R}^n, x \in \mathbb{R}^n \text{ si dice \textbf{punto interno} ad A se } \exists r>0 \tc Ir(x) \subset A\]
@@ -971,6 +973,10 @@
 	 
 	 in $\mathbb{N}$ ogni punto $n \in \mathbb{N}$ è isolato. \newline	 
 	 Un insieme tale che ogni punto è isolato si dice ISOLATO.
+	 
+	 \newpage
+	 
+	 Per punto di accumulazione si intende:
 	 \[A \subset \mathbb{R}^n, x \in \mathbb{R}^n \text{ si dice punto di accumulazione di A se } \forall Ir(x), (Ir(x) \setminus \{x\}) \cap A \not = \emptyset\]
 	 \[A = (1,3)\setminus \{2\}\]
 	 \begin{center}
@@ -997,16 +1003,16 @@
 	 
 	 In $\mathbb{R}$:
 	 \[\overline{\mathbb{R}} := \mathbb{R} \cup \{\pm \infty\}\]
-	 Allora un punto si dice di accumulazione, se $\forall u \subset J(x), (u \setminus \{x\}) \cap A \not = \emptyset$
+	 Allora un punto si dice di accumulazione, se $\forall U \subset J(x), (U \setminus \{x\}) \cap A \not = \emptyset$
 	 
 	 osservazione:
 	 \begin{itemize}
-	 	\item se $x \in \mathbb{R} \Rightarrow u = Ir(x)$, come per la definizione precedente
-	 	\item $x = + \infty$, $+ \infty$ è un punto accumulazione di A, se $\forall u \in J(+\infty)$, si ha che $(u \setminus \{+\infty\}) \cap A \not = 0 \rightarrow u = (M, +\infty)$, quindi A non è limitato superiormente.
-	 	\item $x = - \infty$, $- \infty$ è un punto accumulazione di A, se $\forall u \in J(-\infty)$, si ha che $(u \setminus \{-\infty\}) \cap A \not = 0 \rightarrow u = (-\infty, m)$, quindi A non è limitato inferiormente.
+	 	\item se $x \in \mathbb{R} \Rightarrow U = Ir(x)$, come per la definizione precedente
+	 	\item $x = + \infty$, $+ \infty$ è un punto accumulazione di A, se $\forall U \in J(+\infty)$, si ha che $(U \setminus \{+\infty\}) \cap A \not = 0 \rightarrow U = (M, +\infty)$, quindi A non è limitato superiormente.
+	 	\item $x = - \infty$, $- \infty$ è un punto accumulazione di A, se $\forall U \in J(-\infty)$, si ha che $(U \setminus \{-\infty\}) \cap A \not = 0 \rightarrow U = (-\infty, m)$, quindi A non è limitato inferiormente.
 	 \end{itemize}
 	 Caratterizzazione di $\overline{A} = A \cup \delta A$:
-	 \[\overline{A} = \{x \in \mathbb{R}^n \tc \forall r > 0, (Ir(x) \cap A) \not = 0\}, \text{ l'insieme dei punti aderenti ad A}\]
+	 \[\overline{A} = \{x \in \mathbb{R}^n \tc \forall r > 0, (Ir(x) \cap A) \not = \emptyset\}, \text{ l'insieme dei punti aderenti ad A}\]
 	 
 	 Osservazione:
 	 \[A \subset \mathbb{R}^n \Rightarrow \overline{A} \subset \overline{\mathbb{R}} = A \subset \mathbb{R} \cup \{\pm \infty\}\]
@@ -1040,12 +1046,12 @@
 	 
 	 Dimostrazione che la cardinalità di $\mathbb{N} = \mathbb{Q} < \mathbb{R}$
 	 
-	 \section{Funzioni}
+	 \chapter{Funzioni}
 	 Una funzione/applicazione è una terna di oggetti:
 	 \begin{itemize}
 	 	\item A insieme, detto dominio
 	 	\item B insieme, detto codominio
-	 	\item f, la legge che associa ad ogni elemento uno ed un solo elemento di B
+	 	\item f, la legge che associa ad ogni elemento di A uno ed un solo elemento di B
 	 \end{itemize}
 	 si scrive:
 	 \begin{align*}
@@ -1059,17 +1065,17 @@
 	 \[\forall a,b \in A \tc a \not = b \Rightarrow f(a) \not = f(b)\]
 	 Una funzione si dice suriettiva se:
 	 \[\forall b \in B, \exists a \in A \tc f(a) = b\]
-	 a è detto pre immagine, e non deve per forza essere unico, è accettato che più elementi di A siano pre immagine di un elemento di B.\newline
+	 a è detto pre-immagine, e non deve per forza essere unico, affinché sia suriettiva la pre- immagine di B possono essere più elementi di A.\newline
 	 Una funzione si dice biettiva o biunivoca se:
 	 \[\forall b \in B, \exists ! a \in A \tc f(a) = b\]
 	 Considerata la funzione f biunivoca allora ammette la sua funzione inversa:
 	 \begin{align*}
 	 	f^{-1}: \mathbb{B} & \longrightarrow \mathbb{A} \\
-	 	b & \longmapsto a
+	 	b & \longmapsto a = f^{-1}(b)
 	 \end{align*}
-	 Osservazione: f è una funzione biunivoca, allora $\forall b \in B \exists ! a \in A \tc f(a) = b$, quindi la funzione $(B, A, f^{-1})$ ha senso.
+	 Osservazione: f è una funzione biunivoca, allora $\forall b \in B, \exists ! a \in A \tc f(a) = b$, quindi la funzione $(B, A, f^{-1})$ ha senso.
 	 
-	 \subsection{Esempi di definizione}
+	 \section{Esempi di definizione}
 	 \begin{itemize}
 	 	\item La funzione $(A, A, Id)$, è definita come la funzione identià, ovvero una funzione che per ogni valore di $a \in A$, restituisce lo stesso valore $a \in A$
 	 	\item Prese due funzioni:
@@ -1086,7 +1092,7 @@
 	 	In questo caso è possibile avere una funzione inversa, e si definisce come $(P(B), P(A), f^{-1})$ la funzione che associa ad ogni elemento $G \in P(B)$, l'insieme $f^{-1} := \{a \in A \tc f(a) \in G\}$, si usa la notazione $f^{-1}$ anche se non è biunivoca, ma si intende un funzione che restituisce un certo insieme.
 	 \end{itemize}
 	 
-	 \subsection{Funzioni ristrette ad E}
+	 \section{Funzioni ristrette ad E}
 	 Presa $f : A \longrightarrow B, E \subset A$, allora $F_{|E}$, ovvero f ristretta ad E, è definita come:
 	 \[F_{|E} : E \longrightarrow B\]
 	 se il codominio è l'immagine di E, allora $F_{|E}$ è 
@@ -1118,7 +1124,7 @@
 	 i valori $y \in (1, 4]$ sono i valori dell'insieme immagine di $A$ tramite $f$, e $A$, ovvero il dominio, assume i valori $x \in (-1, 1]$
 	 \[\Gamma(f) := \{(x,y) \in \mathbb{R}^2 \tc x \in D(f) \wedge y = f(x)\}\]
 	 
-	 \subsection{Caratteristiche di una funzione}
+	 \section{Caratteristiche di una funzione}
 	 Una funzione $f: A \subseteq \mathbb{R} \longrightarrow \mathbb{R}$
 	 
 	 \begin{itemize}
@@ -1132,14 +1138,14 @@
 	 	\[\forall x,y \in A \tc x < y \Rightarrow f(x) > f(y)\]
 	 \end{itemize}
 	 
-	 \subsection{Monotonia di una funzione}
+	 \section{Monotonia di una funzione}
 	 Una funzione f si dice:
 	 \begin{itemize}
 	 	\item monotona se è crescente/decrescente per tutto il dominio
 	 	\item strettamente monotona se è strettamente crescente/decrescente per tutto il dominio
 	 \end{itemize}
 	 
-	 \subsection{Funzione parte intera}
+	 \section{Funzione parte intera}
 	 La funzione $f(x) = [x]$ associa ad ogni numero reale $x$ il più grande $n \in \mathbb{N} \leq x$, ed è una funzione monotona crescente.
 	 
 	 \begin{center}
@@ -1168,17 +1174,157 @@
 	 	\end{tikzpicture}
 	 \end{center}
 	 
-	 \subsection{Proprietà ed esempi}
+	 \section{Proprietà ed esempi}
 	 \begin{itemize}
 	 	\item $f,g$ sono monotone, allora $f \circ g$ è monotona
 	 	\item $f,g$ sono entrambe crescenti/decrescenti, allora $f \circ g$ è crescente
 	 	\item $f,g$ sono una crescente e l'altra decrescente, allora $f \circ g$ è decrescente
 	 	\item se $f$ è crescente e $c > 0$, allora $c \circ f = c \cdot f(x)$ è crescente
 	 	\item se $f$ è crescente e $c < 0$, allora $c \circ f = c \cdot f(x)$ è decrescente
+	 	\item se $f$ è decrescente e $c > 0$, allora $c \circ f = c \cdot f(x)$ è decrescente
+	 	\item se $f$ è decrescente e $c < 0$, allora $c \circ f = c \cdot f(x)$ è crescente
 	 	%% aggiungere funzine che non capisco
 	 	\item se $f$ è strettamente monotona allora è iniettiva
 	 	\item se $f$ è monotona ed invertibile, allora  è strettamente monotona
 	 	\item se $f$ è monotona ed invertibile allora  $f^{-1}$ è monotona dello stesso tipo.
 	 \end{itemize}
 	 
+	 \chapter{Limiti}
+	 si dice che $l$ è il limite di $f$ per $x$ che tende a $x_0$, se e solo se $x_0$ è un limite di accumulazione, la definizione generale è:
+	 \[\forall U \in J_l, \exists V \in J_{x_0} : f(V\ \{x_0\}\cap Dom(f)) \in U\]
+	 dove $l$ è:
+	 \[\lim_{x \rightarrow x_0} f(x)\]
+	 e non è necessario che:
+	 \[x_0 \in Dom(f()\]
+	 in quanto può essere un punto di accumulazione anche se non è contenuto nel dominio, nei limiti:
+	 \[x_0, l \in \overline{\mathbb{R}}\]
+	 e la definizione di limite usato intorni simmetrici è valida anche in dimensioni superiori.
+	 \section{Definizioni di limite}
+	 \subsection{Limite finito di una funzione in un punto finito}
+	 Ovvero:
+	 \[\lim_{x \rightarrow x_0} f(x) = l\]
+	 
+	 e la definizione formale è:
+	 \[\forall \epsilon > 0, \exists \delta > 0 \tc 0 < |x - x_0| < \delta \Rightarrow |f(x) - l| < \epsilon\]
+	 \subsection{Limite finito di una funzione per x che tende a $\pm$ infinito}
+	 Con $x \rightarrow + \infty$:
+	 \[\lim_{x \rightarrow + \infty} f(x) = l\]
+	 
+	 e la definizione formale è:
+	 \[\forall \epsilon > 0, \exists M > 0 \tc x > M \Rightarrow |f(x) - l| < \epsilon\]
+	 Con $x \rightarrow - \infty$:
+	 \[\lim_{x \rightarrow - \infty} f(x) = l\]
+	 
+	 e la definizione formale è:
+	 \[\forall \epsilon > 0, \exists M > 0 \tc x < -M \Rightarrow |f(x) - l| < \epsilon\]
+	 \subsection{Limite infinito di una funzione in un punto finito}
+	 Con $l = +\infty$:
+	 \[\lim_{x \rightarrow x_0} f(x) = + \infty\]
+	 
+	 e la definizione formale è:
+	 \[\forall M > 0, \exists \delta > 0 \tc 0 < |x - x_0| < \delta \Rightarrow f(x) > M\]
+	 Con $l = -\infty$:
+	 \[\lim_{x \rightarrow x_0} f(x) = - \infty\]
+	 
+	 e la definizione formale è:
+	 \[\forall M > 0, \exists \delta > 0 \tc 0 < |x - x_0| < \delta \Rightarrow f(x) < -M\]
+	 \subsection{Limite infinito di una funzione per x che tende a $\pm$ infinito}
+	 Con $x \rightarrow +\infty$:
+	 \begin{itemize}
+	 	\item Con $l = +\infty$:
+	 \[\lim_{x \rightarrow + \infty} f(x) = + \infty\]
+	 
+	 e la definizione formale è:
+	 \[\forall M > 0, \exists R > 0 \tc x > R \Rightarrow f(x) > M\]
+	 \item Con $l = -\infty$:
+	 \[\lim_{x \rightarrow + \infty} f(x) = - \infty\]
+	 
+	 e la definizione formale è:
+	 \[\forall M > 0, \exists \delta > 0 \tc x > R \Rightarrow f(x) < -M\]
+	 \end{itemize}
+	 Con $x \rightarrow -\infty$:
+	 \begin{itemize}
+	 	\item Con $l = +\infty$:
+	 	\[\lim_{x \rightarrow - \infty} f(x) = + \infty\]
+	 	
+	 	e la definizione formale è:
+	 	\[\forall M > 0, \exists R > 0 \tc x < -R \Rightarrow f(x) > M\]
+	 	\item Con $l = -\infty$:
+	 	\[\lim_{x \rightarrow - \infty} f(x) = - \infty\]
+	 	
+	 	e la definizione formale è:
+	 	\[\forall M > 0, \exists \delta > 0 \tc x < -R \Rightarrow f(x) < -M\]
+	 \end{itemize}
+	 \subsection{Limite finito di una funzione da $\mathbb{N}$ a $\mathbb{R}$}
+	 Ovvero:
+	 \[f: \mathbb{N} \rightarrow \mathbb{R}\]
+	 si ha:
+	 \[\lim_{n \rightarrow +\infty} f(n) = l \iff \forall U \in J_l, \exists \overline{n} \in \mathbb{N} \tc \forall n \geq \overline{n}, f(n) \in U\]
+	 n deve per forza tendere a più infinito in quanto è l'unico punto di accumulazione.
+	 
+	 La funzione $f: \mathbb{N} \rightarrow \mathbb{R}$ è chiamata successione ed ha una notazione particolare.
+	 \subsection{Limite sinistro e destro}
+	 \subsubsection{Limite sinistro}
+	 $f: A \subset \mathbb{R} \longrightarrow \mathbb{R}, x_0 \in \mathbb{R}$ punto di accumulazione di $ A \cap(-\infty, x_0)$, l è il limite sinistro di f per x che tende a $x_0$:
+	 \[\lim_{x \rightarrow x_0^-} f(x) = l \text{ se } \forall V_l, \exists \delta > 0 \tc f((x_0 - \delta, x_0) \cap A) \subset V_l\]
+	 \subsubsection{Limite destro}
+	 $f: A \subset \mathbb{R} \longrightarrow \mathbb{R}, x_0 \in \mathbb{R}$ punto di accumulazione di $ A \cap(x_0, +\infty)$, l è il limite destro di f per x che tende a $x_0$:
+	 \[\lim_{x \rightarrow x_0^+} f(x) = l \text{ se } \forall V_l, \exists \delta > 0 \tc f((x_0, x_0 + \delta) \cap A) \subset V_l\]
+	 
+	 \section{Teorema dell'esistenza del limite}
+	 Sia $f: A \subset \mathbb{R} \rightarrow \mathbb{R}, x_0 \in \overline{\mathbb{R}}$ punto di accumulazione di $A$, allora se:
+	 \[\lim_{x \rightarrow x_0} f(x) = l_1 \wedge \lim_{x \rightarrow x_0} f(x) = l_1 \Rightarrow l_1 = l_2\]
+	 Dimostrazione:
+	 \[\lim_{x \rightarrow x_0} f(x) = l_1 \iff \forall U \in Jl_1, \exists V_1 \in J_{x_0} \tc f((V_1 \setminus \{x_0\}) \cap Dom(f)) \subset U\]
+	 \[\lim_{x \rightarrow x_0} f(x) = l_2 \iff \forall W \in Jl_2, \exists V_2 \in J_{x_0} \tc f((V_2 \setminus \{x_0\}) \cap Dom(f)) \subset W\]
+	 Supponendo che $l_1 \not = l_2$, si possono prendere $U, W$:
+	 \[U \cap W = \emptyset\]
+	 Prendiamo $A = V_1 \cap V_2 \not = \emptyset, J_{x_0} = V_1 \cap V_2 \Rightarrow f((A \setminus \{x_0\}) \cap Dom(f)) \subset U, \subset W$ 
+	 Si arriva quindi alla contraddizione in quanto l'intersezione di U e W è nulla, però abbiamo trovato un'immagine che appartiene a entrambe, quindi:
+	 \[l_1 = l_2 \Rightarrow \]
+	 se:
+	 \[\exists \lim_{x \rightarrow x_0} f(x) = l \in \overline{\mathbb{R}} \Rightarrow l \text{ è unico}\]
+	 
+	 \teorem{$f: A \rightarrow \mathbb{R}, x_0 \in \mathbb{R}$ punto di accumulazione per $A \cap (-\infty, x_0) \wedge (x_0, +\infty) \cap A$, allora:
+	 	\[\exists \lim_{x \rightarrow x_0} f(x) \iff \begin{cases}
+	 		\exists \lim_{x \rightarrow x_0^-} f(x) \\
+	 		\exists \lim_{x \rightarrow x_0^+} f(x) \\
+	 		\lim_{x \rightarrow x_0^-} f(x) = \lim_{x \rightarrow x_0^+} f(x)
+	 	\end{cases}\]}
+ 	
+ 	\section{Teorema della permanenza del segno}
+ 	\[\text{Se } \exists \lim_{x \rightarrow x_0} f(x) = l > 0 (\vee l < 0) \Rightarrow \exists V \in J(x_0) \tc f(x) > 0 (\vee f(x) < 0 ), \forall x \in (V \setminus \{x_0\}) \cap Dom(f)\]
+ 	Dimostrazione:
+ 	def limite: $\Rightarrow \forall U \in J_l, \exists V \in J_{x_o} \tc f(V \setminus \{x_0\}\cap Dom(f)) \subset U$
+ 	
+ 	siccome $l > 0$, allora: $\begin{cases}
+ 		l \in \mathbb{R}^+ \Rightarrow l/2 > 0 \Rightarrow U = (\frac{1}{2}, \frac{3l}{2}) \in J_l \\
+ 		l = +\infty
+ 	\end{cases}$ 
+ 	\[\Rightarrow f(V \setminus \{x_0\}\cap Dom(f)) \subset U = \left(\frac{1}{2}, \frac{3l}{2}\right) \Rightarrow f(x) > 0 \forall x \in V \setminus \{x_0\}\cap Dom(f)\]
+ 	
+ 	\subsection{Teorema corollario}
+ 	\[\lim_{x \rightarrow x_0} f(x) < \lim_{x \rightarrow x_0} g(x) \Rightarrow \exists V \in J_{x_0} \tc \forall x \in (V \setminus \{x_0\})\cap Dom(f) \Rightarrow f(x) < g(x)\]
+ 	equivalente con il maggiore.
+ 	
+ 	Dimostrazione con teorema della permanenza del segno su:
+ 	\[h(x) := g(x) - f(x)\]
+ 	
+ 	
+	 
+	 \chapter{Successioni}
+	 Una successione, è definita da:
+	 \[\begin{aligned}
+	 	a : \mathbb{N} & \rightarrow \mathbb{R} \\
+	 	n & \mapsto a(n) := a_n
+	 \end{aligned}\]
+	 dove, $\{a_n\}_{n \in \mathbb{N}}$ indica l'insieme immagine di a, queste sono tutte notazioni equivalenti:
+	 \[\{a_n\}_{n \in \mathbb{N}} \equiv \{a_n\} \equiv \{a_n\}_n \equiv a(\mathbb{N}) \equiv \{a(n) \tc n \in \mathbb{N}\}\]
+	 Le successioni si usano anche per dimostrare proprietà sui limiti del continuo.
+	 
+	 \section{Teorema ponte}
+	 \[\lim_{x\rightarrow x_o} f(x) = l \Rightarrow \forall \{a_n\} \tc \lim_{n \rightarrow +\infty} a_n = x_o\]
+	 si ha che:
+	 \[\lim_{n \rightarrow +\infty} f(a_n) = l\]
+	 si passa quindi da un limite sequenziale, ovvero: $\lim_{n \rightarrow +\infty} a_n = x_o$ a un limite nel continuo, ovvero: $\lim_{n \rightarrow +\infty} f(a_n) = l$
 \end{document}
