@@ -1273,7 +1273,7 @@
 	 
 	 \section{Teorema dell'esistenza del limite}
 	 Sia $f: A \subset \mathbb{R} \rightarrow \mathbb{R}, x_0 \in \overline{\mathbb{R}}$ punto di accumulazione di $A$, allora se:
-	 \[\lim_{x \rightarrow x_0} f(x) = l_1 \wedge \lim_{x \rightarrow x_0} f(x) = l_1 \Rightarrow l_1 = l_2\]
+	 \[\lim_{x \rightarrow x_0} f(x) = l_1 \wedge \lim_{x \rightarrow x_0} f(x) = l_2 \Rightarrow l_1 = l_2\]
 	 Dimostrazione:
 	 \[\lim_{x \rightarrow x_0} f(x) = l_1 \iff \forall U \in Jl_1, \exists V_1 \in J_{x_0} \tc f((V_1 \setminus \{x_0\}) \cap Dom(f)) \subset U\]
 	 \[\lim_{x \rightarrow x_0} f(x) = l_2 \iff \forall W \in Jl_2, \exists V_2 \in J_{x_0} \tc f((V_2 \setminus \{x_0\}) \cap Dom(f)) \subset W\]
@@ -1289,27 +1289,66 @@
 	 	\[\exists \lim_{x \rightarrow x_0} f(x) \iff \begin{cases}
 	 		\exists \lim_{x \rightarrow x_0^-} f(x) \\
 	 		\exists \lim_{x \rightarrow x_0^+} f(x) \\
-	 		\lim_{x \rightarrow x_0^-} f(x) = \lim_{x \rightarrow x_0^+} f(x)
+	 		\lim_{x \rightarrow x_0^-} f(x) = \lim_{x \rightarrow x_0^+} f(x) = f(x_0)
 	 	\end{cases}\]}
  	
  	\section{Teorema della permanenza del segno}
  	\[\text{Se } \exists \lim_{x \rightarrow x_0} f(x) = l > 0 (\vee l < 0) \Rightarrow \exists V \in J(x_0) \tc f(x) > 0 (\vee f(x) < 0 ), \forall x \in (V \setminus \{x_0\}) \cap Dom(f)\]
  	Dimostrazione:
- 	def limite: $\Rightarrow \forall U \in J_l, \exists V \in J_{x_o} \tc f(V \setminus \{x_0\}\cap Dom(f)) \subset U$
+ 	Secondo la definizione di limite: \[\Rightarrow \forall U \in J_l, \exists V \in J_{x_o} \tc f(V \setminus \{x_0\}\cap Dom(f)) \subset U\]
  	
  	siccome $l > 0$, allora: $\begin{cases}
- 		l \in \mathbb{R}^+ \Rightarrow l/2 > 0 \Rightarrow U = (\frac{1}{2}, \frac{3l}{2}) \in J_l \\
+ 		l \in \mathbb{R}^+ \Rightarrow l/2 > 0 \Rightarrow U = (\frac{l}{2}, \frac{3l}{2}) \in J_l \\
  		l = +\infty
  	\end{cases}$ 
- 	\[\Rightarrow f(V \setminus \{x_0\}\cap Dom(f)) \subset U = \left(\frac{1}{2}, \frac{3l}{2}\right) \Rightarrow f(x) > 0 \forall x \in V \setminus \{x_0\}\cap Dom(f)\]
+ 	\[\Rightarrow f(V \setminus \{x_0\}\cap Dom(f)) \subset U = \left(\frac{1}{2}, \frac{3l}{2}\right) \Rightarrow f(x) > 0, \forall x \in (V \setminus \{x_0\}\cap Dom(f))\]
  	
- 	\subsection{Teorema corollario}
- 	\[\lim_{x \rightarrow x_0} f(x) < \lim_{x \rightarrow x_0} g(x) \Rightarrow \exists V \in J_{x_0} \tc \forall x \in (V \setminus \{x_0\})\cap Dom(f) \Rightarrow f(x) < g(x)\]
+ 	\subsection{Teorema}
+ 	\[\lim_{x \rightarrow x_0} f(x) < \lim_{x \rightarrow x_0} g(x) \Rightarrow \exists V \in J_{x_0} \tc \forall x \in ((V \setminus \{x_0\})\cap Dom(f)) \Rightarrow f(x) < g(x)\]
  	equivalente con il maggiore.
  	
  	Dimostrazione con teorema della permanenza del segno su:
  	\[h(x) := g(x) - f(x)\]
  	
+ 	\subsection{Corollario teorema della permanenza del segno}
+ 	Se:
+ 	\[\exists V \in J(x_0) \tc f(x) \geq 0 / f(x) \leq 0, \forall x \in ((V \setminus \{x_0\}) \cap Dom(f)) \wedge \exists \lim_{x \rightarrow x_0} f(x) = 0 \Rightarrow f(x) \geq 0 / f(x) \leq 0\]
+ 	
+ 	Dimostrazione, supponiamo che $l < 0$, allora:
+ 	\[l < 0 \xRightarrow{\text{teo permanenza del segno}} \exists U \in J(x_0) \tc f(x) < 0\]
+ 	Contraddizione, in quanto per ipotesi si ha che f(x) è maggiore di 0 per tutto l'intorno di $x_0$.
+ 	
+ 	\newpage
+ 	
+ 	\section{Operazioni sui limiti}
+ 	Sia $x_0$ punto di accumulazione per f e g, se:
+ 	\[\exists \lim_{x \rightarrow x_0} f(x) = l_f \wedge \exists \lim_{x \rightarrow x_0} g(x) =  l_g\]
+ 	allora:
+ 	\[
+ 	\begin{cases}
+ 		\exists \lim_{x \rightarrow x_0} [f(x) + g(x)] = l_f + l_g, \text{ tranne se è $\infty -\infty$} \\
+ 		\exists \lim_{x \rightarrow x_0} [f(x) \cdot g(x)] = l_f \cdot l_g, \text{ tranne se è $0 \cdot \infty$} \\
+ 		\exists \lim_{x \rightarrow x_0} [\frac{f(x)}{g(x)}] = \frac{l_f}{l_g}, \text{ tranne se è $\frac{0}{0} \vee \frac{\infty}{\infty}$} \rightarrow \begin{cases}
+ 		l_f \not = 0 \\
+ 		l_g = 0
+ 		\end{cases} \Rightarrow \lim_{x \rightarrow x_0} \frac{f(x)}{g(x} = segno f \cdot \infty\\ 		
+ 	\end{cases}
+ 	\]
+ 	Dimostrazione, supponendo che $l_g \wedge l_f \in \mathbb{R}$:
+ 	
+ 	fisso $\epsilon > 0, \overline{\epsilon} = \epsilon / 2$, allora:
+ 	\[\exists V_f \in J(x_0), \forall x \in (V_f \setminus \{x_0\} \cap Dom(f)) \tc |f(x) - l_f| < \overline{\epsilon}\]
+ 	\[\exists V_h \in J(x_0), \forall x \in (V_g \setminus \{x_0\} \cap Dom(f)) \tc |g(x) - l_g| < \overline{\epsilon}\]
+ 	Pongo $V := V_f \cap V_g \in J(x_0)$:
+ 	\[\Rightarrow \forall x \in (V \setminus \{x_0\} \cap Dom(f \cap g)) \tc |f(x) + g(x) - |l_f + l_g|| \leq |f(x) - l_f|+|g(x) - l_g| < \epsilon\]
+ 	
+ 	\section{Teorema dei carabinieri (del confronto)}
+ 	Sia $f, g, h : A \rightarrow \mathbb{R}$, $x_0$ punto di accumulazione, allora:
+ 	\[\begin{cases}
+ 		\exists U \in J(x_0) \tc f(x) \leq g(x) \leq h(x), \forall x \in (U \{x_0\} \cap A) \\
+ 		\exists \lim_{x \rightarrow x_0} f(x) = l_f, \exists \lim_{x \rightarrow x_0} h(x) = l_h \\
+ 		l_f = l_h
+ 	\end{cases}	\Rightarrow \exists \lim_{x \rightarrow x_0} g(x) = l_g = l_f = l_h\]
  	
 	 
 	 \chapter{Successioni}
