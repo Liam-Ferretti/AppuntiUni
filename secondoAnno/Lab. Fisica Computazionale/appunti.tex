@@ -1,0 +1,492 @@
+\documentclass[11pt, a4paper, openright]{book}
+
+\usepackage{bm}
+\usepackage[italian]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{geometry}
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+\usepackage{caption}
+\captionsetup{justification=centering}
+\usepackage{float}
+\usepackage[hidelinks]{hyperref}
+\usepackage{subcaption}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{yhmath}
+\usepackage{derivative}
+\usepackage{tikz}
+
+
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+% =================================================================
+% DEFINIZIONE DEGLI AMBIENTI MATEMATICI (amsthm)
+% =================================================================
+
+\theoremstyle{plain}
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{lemma}[teorema]{Lemma}
+\newtheorem{corollario}[teorema]{Corollario}
+\newtheorem{proposizione}[teorema]{Proposizione}
+\newtheorem{postulato}[teorema]{Postulato}
+
+\theoremstyle{definition}
+\newtheorem{definizione}[teorema]{Definizione}
+\newtheorem{esempio}[teorema]{Esempio}
+\newtheorem{esercizio}[teorema]{Esercizio}
+
+\theoremstyle{remark}
+\newtheorem{osservazione}[teorema]{Osservazione}
+
+\newcommand{\innerprod}[2]{\langle #1, #2 \rangle}
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \vspace*{4cm}
+
+    \Huge
+    \textbf{Corso di Laboratorio di Fisica Computazionale 1}
+
+    \vspace{0.5cm}
+    \LARGE
+    Appunti ed Esempi
+
+    \vspace{1.5cm}
+
+    \textit{Basato sulle lezioni di} \\
+    \Large \textbf{Prof. Carlo Mancini Terracciano}
+
+    \vfill
+
+    \rule{\linewidth}{0.5pt}
+    \vspace{0.5cm}
+
+    \large
+    Autore: \textbf{Liam Ferretti} \\
+    \today
+
+\end{titlepage}
+
+\tableofcontents
+
+\chapter{Informazioni sul Corso}
+\begin{itemize}
+    \item Contatto: \texttt{carlo.mancini-terracciano@uniroma1.it}.
+    \item \textbf{Modalità d'esame}:
+    \begin{itemize}
+        \item fino a 3 punti bonus in funzione della presenza in laboratorio e alle esercitazioni;
+        \item 2 prove individuali al computer: 1) integrazione numerica di EDO; 2) processi stocastici.
+    \end{itemize}
+    \item Libro di testo: \emph{Programmazione Scientifica} (da leggere con atteggiamento critico!).
+\end{itemize}
+
+\section{Comandi UNIX / Bash}
+\begin{itemize}
+    \item \texttt{ls}: elenca il contenuto della directory;
+    \item \texttt{cd}: cambia directory (\texttt{cd ..} torna al livello superiore);
+    \item \texttt{mkdir}: crea una directory;
+    \item \texttt{pwd}: restituisce il path assoluto della directory corrente;
+    \item \texttt{man <cmd>}: restituisce il manuale del comando;
+    \item \texttt{less file}: visualizza un file un pezzo alla volta;
+    \item \texttt{fg}: riporta in primo piano un processo sospeso o in background.
+\end{itemize}
+
+\section{Git}
+\begin{itemize}
+    \item \texttt{git config --global core.editor "emacs -nw"}: imposta l'editor;
+    \item \texttt{git init}: inizializza un repository (crea la cartella \texttt{.git});
+    \item \texttt{git add .} aggiunge tutta la directory, \texttt{git add nomefile} solo quel file;
+    \item \texttt{git commit -m "msg"}: registra le modifiche con un messaggio;
+    \item \texttt{.gitignore}: file con l'elenco dei file da non tracciare.
+\end{itemize}
+
+\section{Il \texttt{main} in C}
+\begin{verbatim}
+int main(int argc, char *argv[]) {
+    ...
+}
+\end{verbatim}
+\begin{itemize}
+    \item Si usa \texttt{void} come argomento se non si vogliono fornire input da riga di comando.
+    \item Si usa \texttt{int argc, char *argv[]} per leggere gli argomenti: \texttt{argv} è un array di stringhe (array di array di \texttt{char}) e \texttt{argc} è il numero di stringhe, cioè la lunghezza di \texttt{argv} (il primo elemento è il nome del programma).
+\end{itemize}
+Un'alternativa a \texttt{fprintf} per scrivere su file è l'\textbf{operatore di redirezione} della shell: \texttt{./codice > file\_output}.
+
+\chapter{Metodi Numerici}
+I metodi numerici permettono di approssimare edo che non siamo in grado di risolvere analiticamente, come ad esempio quella del pendolo:
+\begin{equation}
+    \ddot{\theta} + \frac{g}{L}\sin\theta = 0
+\end{equation}
+che sappiamo risolvere solo nell'approssimazione $\sin\theta \simeq \theta$. Tale edo non ha una soluzione elementare, e quindi è necessario approssimarla tramite metodi numerici; in generale si scrive $\ddot{\theta} = f(\theta, t)$.
+
+Per l'uso di metodi numerici è necessario passare dal continuo al discreto, quindi discretizzare il tempo, introducendo il passo temporale:
+\begin{equation}
+    \Delta t \implies t_n = \Delta t \cdot n + t_0
+\end{equation}
+La derivata, definita come limite del rapporto incrementale per $h \to 0$, viene approssimata con un incremento finito:
+\begin{equation}
+    f'(x) = \lim_{h \to 0}\frac{f(x + h) - f(x)}{h} \quad\longrightarrow\quad \dot{y}(t) \approx \frac{y(t + \Delta t) - y(t)}{\Delta t}
+\end{equation}
+
+\section{Metodo di Eulero}
+Il metodo di approssimazione numerica più semplice è quello di Eulero, considerando un problema di Cauchy di un EDO al primo ordine, del tipo:
+\begin{equation}
+    \dot{y} = f(y(t), t), \quad y(t = 0) = y_0
+\end{equation}
+Definendo la discretizzazione del tempo tramite un passo $\Delta t$, allora vale che:
+\begin{align}
+    \dot{y}(t_n) & \approx \frac{y(t_n + \Delta t) - y(t_n)}{\Delta t} = \frac{y(t_{n + 1}) - y(t_n)}{\Delta t} \\
+    \frac{y(t_{n + 1}) - y(t_n)}{\Delta t} & \approx f(y(t_n), t_n) \\
+    y(t_{n + 1}) & \approx y(t_n) + f(y(t_n), t_n)\,\Delta t
+\end{align}
+cioè, ad ogni passo, si usa la derivata calcolata all'\emph{estremo sinistro} dell'intervallo:
+\begin{equation}
+    \boxed{x_{n + 1} = x_n + \dot{x}_n\,\Delta t}
+\end{equation}
+
+\subsection{Interpretazione integrale}
+Integrando esattamente l'edo $\dot{x} = f(x, t)$ tra $t_n$ e $t_{n + 1}$:
+\begin{align}
+    x_{n + 1} - x_n &= \int_{t_n}^{t_{n + 1}} f(x, t)\,dt \\
+    x_{n + 1} &= x_n + \frac{\Delta t}{\Delta t}\int_{t_n}^{t_{n + 1}} f(x, t)\,dt = x_n + \Delta t\,\langle f(x, t)\rangle
+\end{align}
+dove $\langle f\rangle$ è il \textbf{valor medio} di $f$ sull'intervallo. Questa relazione è \emph{esatta}: se sapessimo calcolare il valor medio di $f$ sull'intervallo avremmo risolto l'edo. Tutti i metodi numerici sono quindi diversi modi di \emph{stimare} $\langle f\rangle$. Eulero lo approssima con il valore all'estremo sinistro:
+\begin{equation}
+    \langle f\rangle \simeq f(x_n, t_n) \implies x_{n + 1} = x_n + \dot{x}_n\,\Delta t
+\end{equation}
+
+\subsection{EDO del secondo ordine}
+Se il problema di Cauchy è del secondo ordine, $\ddot{x} = \varphi(x, \dot{x}, t)$, lo si riscrive come sistema di due edo del primo ordine:
+\begin{equation}
+    \ddot{x} = \varphi \implies \begin{cases}
+        \dot{x} = v \\
+        \dot{v} = \varphi
+    \end{cases}
+\end{equation}
+Sviluppando in serie di Taylor:
+\begin{align}
+    v(t + \Delta t) &= v(t) + \dot{v}(t)\Delta t + O(\Delta t^2) = v(t) + \varphi(t)\Delta t + O(\Delta t^2) \\
+    x(t + \Delta t) &= x(t) + v(t)\Delta t + O(\Delta t^2)
+\end{align}
+da cui il \textbf{metodo di Eulero}:
+\begin{equation}
+    \begin{cases}
+        x_{n + 1} = x_n + v_n\,\Delta t \\
+        v_{n + 1} = v_n + \varphi_n\,\Delta t
+    \end{cases}
+\end{equation}
+
+\subsection{Errore}
+\begin{itemize}
+    \item Errore locale (per passo): $\varepsilon \propto \Delta t^2$.
+    \item Errore globale (totale): il numero di passi è $\propto \frac{1}{\Delta t}$, quindi $\varepsilon \propto \Delta t^2 \cdot \frac{1}{\Delta t} = \Delta t$.
+\end{itemize}
+Eulero è quindi un metodo del \emph{primo ordine}.
+
+\subsection{Verifiche della bontà dell'integrazione}
+\begin{itemize}
+    \item \textbf{Conservazione dell'energia}: se il sistema è conservativo si può stimare l'errore relativo sull'energia:
+    \begin{equation}
+        \varepsilon = \frac{|E_i - E_f|}{E_i}
+    \end{equation}
+    \item \textbf{Stabilità in funzione di $\Delta t$}: si riduce $\Delta t$ e si calcola la differenza tra le soluzioni ottenute con passi successivi, $\varepsilon = |f_i - f_{i + 1}|$. Al diminuire di $\Delta t$ l'errore diminuisce, fino a un passo $\Delta t_c$ sotto il quale l'errore smette di decrescere e oscilla, dominato dagli errori di arrotondamento.
+    \item \textbf{Spazio delle fasi}: se si sa a priori che il moto è periodico, la traiettoria nello spazio delle fasi deve essere una curva chiusa.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        \draw[->] (0,0) -- (6,0) node[below] {$\Delta t$};
+        \draw[->] (0,0) -- (0,3.5) node[left] {$\varepsilon$};
+        \draw[thick] (0.2,0.8) -- (0.3,1.1) -- (0.4,0.7) -- (0.5,1.05) -- (0.6,0.75) -- (0.7,1.1) -- (0.8,0.8) -- (0.9,1.05) -- (1,0.9) .. controls (2,1.6) and (3.5,2.6) .. (5.5,3.1);
+        \draw (1,0.08) -- (1,-0.08) node[below] {$\Delta t_c$};
+    \end{tikzpicture}
+    \caption{Andamento qualitativo dell'errore al variare del passo d'integrazione.}
+\end{figure}
+
+\subsection{Come trovare l'andamento dell'errore in funzione di $\Delta t$}
+Se $\varepsilon \propto \Delta t^n$, cioè $\varepsilon = K\Delta t^n$, passando ai logaritmi:
+\begin{equation}
+    \ln\varepsilon = \ln K + n\ln\Delta t
+\end{equation}
+che è una retta $y = q + mx$ con $y = \ln\varepsilon$, $x = \ln\Delta t$, pendenza $m = n$ e intercetta $q = \ln K$. Un fit lineare in scala log-log fornisce quindi l'ordine $n$ del metodo.
+
+\subsection{Esempio: oscillatore armonico}
+\begin{equation}
+    \ddot{x} + \omega^2x = 0 \implies \begin{cases}
+        \dot{x} = v \\
+        \dot{v} = -\omega^2x
+    \end{cases}
+\end{equation}
+con energia (per $m = 1$):
+\begin{equation}
+    E = \frac{1}{2}mv^2 + \frac{1}{2}m\omega^2x^2
+\end{equation}
+La soluzione analitica è:
+\begin{equation}
+    x(t) = A_0\cos(\omega t + \varphi_0), \qquad v(t) = -\omega A_0\sin(\omega t + \varphi_0)
+\end{equation}
+Imponendo le condizioni iniziali:
+\begin{equation}
+    x_0 = A_0\cos\varphi_0, \qquad v_0 = -\omega A_0\sin\varphi_0
+\end{equation}
+\begin{equation}
+    \frac{x_0}{\cos\varphi_0} = \frac{v_0}{-\omega\sin\varphi_0} \implies \tan\varphi_0 = -\frac{v_0}{\omega x_0} \implies \varphi_0 = \arctan\left(-\frac{v_0}{\omega x_0}\right)
+\end{equation}
+\begin{equation}
+    A_0 = \frac{x_0}{\cos\varphi_0} = \sqrt{x_0^2 + \frac{v_0^2}{\omega^2}}
+\end{equation}
+\begin{osservazione}
+    Negli appunti a mano compare $\varphi_0 = \arctan\left(\frac{v_0}{x_0}\right)$: il risultato corretto ha il segno meno e il fattore $\omega$ (per $\omega = 1$ resta $\varphi_0 = -\arctan\frac{v_0}{x_0}$). Inoltre l'$\arctan$ restituisce valori in $\left(-\frac{\pi}{2}, \frac{\pi}{2}\right)$: nel codice conviene usare \texttt{atan2(-v0/omega, x0)} per ottenere il quadrante corretto.
+\end{osservazione}
+
+\begin{esempio}[Primo passo di Eulero]
+    Con $x_0 = 2$, $v_0 = 1$, $\omega^2 = 1$, $\Delta t = 0.1$:
+    \begin{align}
+        v_1 &= v_0 + \varphi_0(x_0)\Delta t = 1 - 0.2 = 0.8 \\
+        x_1 &= x_0 + v_0\Delta t = 2 + 0.1 = 2.1
+    \end{align}
+\end{esempio}
+
+\paragraph{Non conservazione dell'energia.} Per l'oscillatore armonico con Eulero si trova:
+\begin{equation}
+    E_{n + 1} = E_n\left(1 + \omega^2\Delta t^2\right) \implies E_n = E_0\left(1 + \omega^2\Delta t^2\right)^{n} = E_0\left(1 + \omega^2\Delta t^2\right)^{\frac{t_n}{\Delta t}}
+\end{equation}
+cioè l'energia cresce esponenzialmente: il metodo di Eulero è instabile per l'oscillatore armonico.
+
+\subsection{Forma matriciale}
+Per l'oscillatore armonico ($a_n = -\omega^2x_n$) Eulero si scrive come:
+\begin{equation}
+    \begin{pmatrix} x_{n + 1} \\ v_{n + 1}\end{pmatrix} = \begin{pmatrix} 1 & \Delta t \\ -\omega^2\Delta t & 1\end{pmatrix}\begin{pmatrix} x_n \\ v_n\end{pmatrix}
+\end{equation}
+Il determinante della matrice è $1 + \omega^2\Delta t^2 > 1$: l'area nello spazio delle fasi cresce ad ogni passo (coerentemente con la crescita dell'energia).
+
+\section{Metodo di Eulero-Cromer}
+Una piccola modifica di Eulero consiste nell'aggiornare prima la velocità e usare la velocità \emph{aggiornata} per la posizione:
+\begin{equation}
+    \begin{cases}
+        v_{n + 1} = v_n + \varphi_n\,\Delta t \\
+        x_{n + 1} = x_n + v_{n + 1}\,\Delta t
+    \end{cases}
+\end{equation}
+Per l'oscillatore armonico la matrice di evoluzione ha determinante 1, e l'energia oscilla invece di divergere.
+
+\section{Metodo di Verlet}
+Sviluppando in serie di Taylor in avanti e all'indietro:
+\begin{align}
+    x_{n + 1} &= x_n + \dot{x}_n\Delta t + \frac{1}{2}\ddot{x}_n\Delta t^2 + O(\Delta t^3) \\
+    x_{n - 1} &= x_n - \dot{x}_n\Delta t + \frac{1}{2}\ddot{x}_n\Delta t^2 + O(\Delta t^3)
+\end{align}
+Sommando, i termini dispari si cancellano:
+\begin{equation}
+    x_{n + 1} + x_{n - 1} = 2x_n + \ddot{x}_n\Delta t^2 + O(\Delta t^4) \implies \boxed{x_{n + 1} = 2x_n - x_{n - 1} + a_n\Delta t^2}
+\end{equation}
+Sottraendo invece:
+\begin{equation}
+    x_{n + 1} - x_{n - 1} = 2\dot{x}_n\Delta t + O(\Delta t^3) \implies v_n = \frac{x_{n + 1} - x_{n - 1}}{2\Delta t} + O(\Delta t^2)
+\end{equation}
+Se la forza non dipende dalla velocità, la posizione ha un errore piccolo (i termini del terzo ordine si cancellano, l'errore locale è $O(\Delta t^4)$), mentre la velocità ha un errore del secondo ordine. L'energia in ogni caso ha errore $\propto \Delta t^2$.
+
+\section{Metodo Velocity Verlet}
+Partendo dallo sviluppo di Taylor della posizione:
+\begin{equation}
+    x(t + \Delta t) = x(t) + v(t)\Delta t + \frac{1}{2}a(t)\Delta t^2 + O(\Delta t^3) \implies x_{n + 1} = x_n + v_n\Delta t + \frac{1}{2}\varphi_n\Delta t^2
+\end{equation}
+Per la velocità vale $\dot{v} = a$:
+\begin{equation}
+    \int_t^{t + \Delta t}\frac{dv}{dt'}\,dt' = \int_t^{t + \Delta t}a(t')\,dt'
+\end{equation}
+e stimando l'integrale a destra con il \textbf{metodo dei trapezi}:
+\begin{equation}
+    v_{n + 1} - v_n = \frac{a_{n + 1} + a_n}{2}\Delta t \implies v_{n + 1} = v_n + \frac{1}{2}\left(a_{n + 1} + a_n\right)\Delta t
+\end{equation}
+Il metodo \textbf{Velocity Verlet} è quindi:
+\begin{equation}
+    \boxed{\begin{cases}
+        x_{n + 1} = x_n + v_n\Delta t + \frac{1}{2}a_n\Delta t^2 \\
+        v_{n + 1} = v_n + \frac{1}{2}\left(a_{n + 1} + a_n\right)\Delta t
+    \end{cases}}
+\end{equation}
+dove $a_{n + 1} = \varphi(x_{n + 1})$: la forza \textbf{non deve dipendere dalla velocità}, perché per calcolare $a_{n + 1}$ servirebbe $v_{n + 1}$, che non è ancora noto.
+
+\subsection{Forma matriciale}
+Per l'oscillatore armonico $\varphi = -\omega^2x$:
+\begin{align}
+    x_{n + 1} &= x_n + v_n\Delta t - \frac{1}{2}\omega^2x_n\Delta t^2 \\
+    v_{n + 1} &= v_n - \frac{1}{2}\omega^2\Delta t\left(x_n + v_n\Delta t - \frac{1}{2}\omega^2x_n\Delta t^2 + x_n\right) \\
+    &= v_n\left(1 - \frac{1}{2}\omega^2\Delta t^2\right) + x_n\left(\frac{1}{4}\omega^4\Delta t^3 - \omega^2\Delta t\right)
+\end{align}
+\begin{equation}
+    \begin{pmatrix} x_{n + 1} \\ v_{n + 1}\end{pmatrix} = \begin{pmatrix} 1 - \frac{1}{2}\omega^2\Delta t^2 & \Delta t \\ \frac{1}{4}\omega^4\Delta t^3 - \omega^2\Delta t & 1 - \frac{1}{2}\omega^2\Delta t^2\end{pmatrix}\begin{pmatrix} x_n \\ v_n\end{pmatrix}
+\end{equation}
+Il determinante è:
+\begin{align}
+    \det M &= \left(1 - \frac{1}{2}\omega^2\Delta t^2\right)^2 - \frac{1}{4}\omega^4\Delta t^4 + \omega^2\Delta t^2 \\
+    &= 1 + \frac{1}{4}\omega^4\Delta t^4 - \omega^2\Delta t^2 - \frac{1}{4}\omega^4\Delta t^4 + \omega^2\Delta t^2 = 1
+\end{align}
+Quindi l'area nello spazio $(x, v)$ si conserva: l'algoritmo è \textbf{simplettico}.
+
+\subsection{Stabilità}
+Scrivendo $W_n = (x_n, v_n)^T$ come combinazione degli autovettori $U_1, U_2$ di $M$:
+\begin{equation}
+    W_{n + 1} = MW_n = M\left(c_1U_1 + c_2U_2\right) = \lambda_1c_1U_1 + \lambda_2c_2U_2
+\end{equation}
+Se $\lambda_1$ o $\lambda_2$ hanno modulo $> 1$ la soluzione esplode. Il polinomio caratteristico è:
+\begin{equation}
+    \lambda^2 - \left(2 - \omega^2\Delta t^2\right)\lambda + 1 = 0
+\end{equation}
+Poiché $\lambda_1\lambda_2 = 1$, gli autovalori hanno modulo unitario (complessi coniugati) se il discriminante è negativo, cioè $|2 - \omega^2\Delta t^2| < 2$. Quindi:
+\begin{equation}
+    \Delta t < \frac{2}{\omega} \implies \text{l'algoritmo è stabile}
+\end{equation}
+
+\subsection{Perché Velocity Verlet è molto meglio di Eulero-Cromer}
+Sviluppando l'accelerazione:
+\begin{equation}
+    a_{n + 1} = a_n + \dot{a}_n\Delta t + \frac{\ddot{a}_n}{2}\Delta t^2 + O(\Delta t^3)
+\end{equation}
+e sostituendo nella velocità di Velocity Verlet:
+\begin{equation}
+    v_{n + 1} = v_n + a_n\Delta t + \frac{1}{2}\dot{a}_n\Delta t^2 + \frac{1}{4}\ddot{a}_n\Delta t^3
+\end{equation}
+mentre lo sviluppo esatto è:
+\begin{equation}
+    v(t_{n + 1}) = v(t_n) + a(t_n)\Delta t + \frac{1}{2}\dot{a}(t_n)\Delta t^2 + \frac{1}{6}\ddot{a}(t_n)\Delta t^3
+\end{equation}
+quindi:
+\begin{equation}
+    v_{n + 1} - v(t_{n + 1}) = \frac{1}{4}\ddot{a}_n\Delta t^3 - \frac{1}{6}\ddot{a}_n\Delta t^3 + O(\Delta t^4) = \frac{1}{12}\ddot{a}_n\Delta t^3 + O(\Delta t^4)
+\end{equation}
+L'errore locale è $O(\Delta t^3)$, quindi l'errore globale è $O(\Delta t^2)$: Velocity Verlet è un metodo del \emph{secondo ordine}.
+
+\begin{osservazione}
+    Velocity Verlet (VV) è pensato per equazioni differenziali del \textbf{secondo ordine}: posizione e velocità vengono aggiornate in modo diverso. Eulero ed Eulero-Cromer sono invece metodi per equazioni del \textbf{primo ordine}, applicati due volte al sistema equivalente (posizione e velocità trattate allo stesso modo).
+\end{osservazione}
+
+\subsection{Forma con il mezzo passo}
+Raccogliendo i termini:
+\begin{align}
+    x_{n + 1} &= x_n + \left(v_n + \frac{1}{2}a_n\Delta t\right)\Delta t \\
+    v_{n + 1} &= \left(v_n + \frac{1}{2}a_n\Delta t\right) + \frac{1}{2}a_{n + 1}\Delta t
+\end{align}
+e definendo la velocità al mezzo passo $v_{n + \frac{1}{2}} \equiv v_n + a_n\frac{\Delta t}{2}$:
+\begin{equation}
+    \begin{cases}
+        v_{n + \frac{1}{2}} = v_n + a_n\frac{\Delta t}{2} \\
+        x_{n + 1} = x_n + v_{n + \frac{1}{2}}\Delta t \\
+        v_{n + 1} = v_{n + \frac{1}{2}} + \frac{1}{2}a_{n + 1}\Delta t
+    \end{cases}
+\end{equation}
+In questa forma basta calcolare la forza una sola volta per passo ($a_{n + 1}$ viene riutilizzata come $a_n$ al passo successivo).
+
+\section{Metodi di Runge-Kutta}
+Come si procede se l'accelerazione dipende dalla velocità, $a = a(v)$? Ad esempio per l'oscillatore smorzato:
+\begin{equation}
+    \ddot{x} = -\omega^2x - \frac{\gamma}{m}\dot{x}
+\end{equation}
+Velocity Verlet non è applicabile, perché per aggiornare $v$ servirebbe l'accelerazione alla fine del passo, che dipende dalla velocità ancora incognita. Si possono invece usare i metodi di \textbf{Runge-Kutta}, una classe di algoritmi numerici per edo del primo ordine che usano \emph{solo} l'informazione disponibile all'inizio del passo (come Eulero), ma la combinano in modo da stimare meglio il valor medio della derivata sull'intervallo.
+
+\subsection{Runge-Kutta del secondo ordine (RK2)}
+L'idea è, invece di fare tutto il passo seguendo la derivata nel punto iniziale (Eulero):
+\begin{enumerate}
+    \item si usa la derivata nel punto iniziale per muoversi di \emph{mezzo passo};
+    \item si calcola la derivata in questo punto intermedio (stimato);
+    \item si torna al punto iniziale e si usa la derivata a metà per fare l'intero passo.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.1]
+        \draw[->] (0,0) -- (7,0) node[below] {$t$};
+        \draw[->] (0,0) -- (0,4) node[left] {$x(t)$};
+        \draw (1.5,0.08) -- (1.5,-0.08) node[below] {$t_n$};
+        \draw (3.5,0.08) -- (3.5,-0.08) node[below] {$t_{n + \frac{1}{2}}$};
+        \draw (5.5,0.08) -- (5.5,-0.08) node[below] {$t_{n + 1}$};
+        \draw[thick, gray] (1,1.2) .. controls (3,1.7) and (4.5,2.4) .. (6.2,3.6) node[right] {soluzione esatta};
+        \fill (1.5,1.31) circle (1.5pt) node[above left] {$x_n$};
+        % Eulero
+        \draw[dashed] (1.5,1.31) -- (5.5,2.31);
+        \fill (5.5,2.31) circle (1.5pt) node[right] {Eulero};
+        % mezzo passo
+        \draw[->, orange, thick] (1.5,1.31) -- (3.5,1.81);
+        \fill[orange] (3.5,1.81) circle (1.5pt);
+        \node[orange, below right] at (3.5,1.81) {$k_2$};
+        % passo completo con k2
+        \draw[->, orange, thick] (1.5,1.31) -- (5.5,3.11);
+        \fill[orange] (5.5,3.11) circle (1.5pt) node[right] {RK2};
+    \end{tikzpicture}
+    \caption{Schema di RK2: la derivata stimata a metà passo viene usata per l'intero passo.}
+\end{figure}
+
+Data l'edo $\dot{x} = \varphi(x, t)$:
+\begin{align}
+    k_1 &= \varphi(x_n, t_n) \\
+    k_2 &= \varphi\left(x_n + k_1\frac{\Delta t}{2}, t_n + \frac{\Delta t}{2}\right) = \varphi\left(x_n + \dot{x}_n\frac{\Delta t}{2}, t_n + \frac{\Delta t}{2}\right)
+\end{align}
+\begin{equation}
+    \boxed{x_{n + 1} = x_n + k_2\Delta t}
+\end{equation}
+\begin{itemize}
+    \item $k_1$ è la derivata all'inizio dell'intervallo;
+    \item $x_n + k_1\frac{\Delta t}{2}$ è la stima (fatta con Eulero) della posizione a metà passo;
+    \item $k_2$ è quindi la stima della derivata a metà intervallo, cioè la stima di $\langle\varphi\rangle$ (non si fa la media tra derivate: si prende la derivata a metà).
+\end{itemize}
+Ricordando che $x_{n + 1} = x_n + \Delta t\,\langle\varphi\rangle$ è esatta, Eulero approssima $\langle\varphi\rangle$ con il valore all'inizio dell'intervallo, mentre RK2 lo approssima con il valore (stimato) a metà intervallo, che è statisticamente più vicino al valor medio vero.
+
+\begin{osservazione}
+    Il punto intermedio non è ``calcolato'' ma \emph{stimato} usando solo informazioni all'istante $t_n$. Per questo Runge-Kutta, a differenza di Velocity Verlet, funziona anche se la forza dipende dalla velocità.
+\end{osservazione}
+
+\paragraph{EDO del secondo ordine.} Si riscrive l'edo come sistema di due edo del primo ordine:
+\begin{equation}
+    \begin{cases}
+        \dot{x} = v \\
+        \dot{v} = \xi(x, v, t)
+    \end{cases}
+\end{equation}
+e si applica RK2 a entrambe (``si usa due volte RK2''), una per la posizione e una per la velocità, calcolando i coefficienti $k$ di entrambe le equazioni in parallelo: quando lo si applica all'equazione per $v$, il ruolo di $k_1$ è svolto dall'accelerazione all'inizio del passo.
+
+\subsection{Runge-Kutta del quarto ordine (RK4)}
+\begin{align}
+    k_1 &= \varphi(x_n, t_n) \\
+    k_2 &= \varphi\left(x_n + k_1\frac{\Delta t}{2}, t_n + \frac{\Delta t}{2}\right) \\
+    k_3 &= \varphi\left(x_n + k_2\frac{\Delta t}{2}, t_n + \frac{\Delta t}{2}\right) \\
+    k_4 &= \varphi\left(x_n + k_3\Delta t, t_n + \Delta t\right)
+\end{align}
+\begin{equation}
+    \boxed{x_{n + 1} = x_n + \left(\frac{1}{6}k_1 + \frac{1}{3}k_2 + \frac{1}{3}k_3 + \frac{1}{6}k_4\right)\Delta t}
+\end{equation}
+dove la combinazione lineare tra parentesi è la stima di $\langle\varphi\rangle$. Tutti i $k$ sono stime della derivata nell'intervallo:
+\begin{itemize}
+    \item $k_1$: derivata all'inizio dell'intervallo;
+    \item $k_2$: stima della derivata a metà intervallo, arrivando a metà con Eulero (cioè con la derivata iniziale $k_1$);
+    \item $k_3$: di nuovo una stima della derivata a metà intervallo, ma arrivando a metà partendo da $x_n$ con la derivata $k_2$;
+    \item $k_4$: stima della derivata alla \emph{fine} del passo, arrivando a $t_n + \Delta t$ con la derivata $k_3$ (per questo compare $\Delta t$ e non $\frac{\Delta t}{2}$).
+\end{itemize}
+\begin{osservazione}
+    Negli appunti a mano il titolo riporta ``RK3'' e in $k_4$ compare $k_3\frac{\Delta t}{2}$: lo schema scritto è RK4, e in $k_4$ il passo è intero, $x_n + k_3\Delta t$, coerentemente con $t_n + \Delta t$.
+\end{osservazione}
+
+I coefficienti della combinazione lineare derivano da (lunghi) conti con lo sviluppo di Taylor: si scrive la combinazione lineare con coefficienti incogniti e si impone che coincida con lo sviluppo in serie di Taylor di $x(t_n + \Delta t)$ fino al quarto ordine incluso. La simmetria dei coefficienti viene fuori dallo sviluppo di Taylor. In linea di principio si possono costruire Runge-Kutta di ordine superiore, ma raramente si va oltre il quarto ordine.
+
+\subsection{Costo computazionale e scelta dell'integratore}
+Il costo di un passo si misura in numero di valutazioni della funzione $\varphi$ (la forza):
+\begin{itemize}
+    \item RK4 richiede 4 valutazioni per la posizione e 4 per la velocità: è più preciso ma più costoso;
+    \item Velocity Verlet, implementato nella forma con mezzo passo, richiede una sola nuova valutazione della forza per passo.
+\end{itemize}
+Una domanda utile per le esercitazioni: quanto deve essere più piccolo il passo d'integrazione di Eulero rispetto a RK2 (o RK4) per avere lo stesso errore globale, e quale metodo risulta quindi computazionalmente più conveniente?
+
+Ci sono sostanzialmente due famiglie di uso:
+\begin{itemize}
+    \item se si simula un sistema in cui l'energia si conserva e la forza non dipende dalla velocità (ad esempio in dinamica molecolare), si usa tipicamente \textbf{Velocity Verlet}, che è simplettico;
+    \item se la forza dipende dalla velocità (attrito, particelle cariche in campo magnetico) o non lo si sa a priori, si usa \textbf{Runge-Kutta} (tipicamente RK4).
+\end{itemize}
+
+\end{document}
