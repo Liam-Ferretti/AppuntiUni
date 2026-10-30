@@ -1,15 +1,8 @@
-*.aux
-*.log
-*.out
-*.toc
-*.synctex.gz
-*.txss2
-*.bbl
-*.blg
-**/.tmp.driveupload/
-*.m4a
-venv/
-.venv/
+cd ~/Desktop/SHARED/Università/Appunti
+git reset origin/main
+cp .gitignore .gitignore.bak
+
+cat > .gitignore <<'EOF'
 # --- Ambienti, temporanei, file generati ---
 venv/
 .venv/
@@ -26,7 +19,7 @@ desktop.ini
 *.toc
 *.synctex.gz
 
-# --- Audio e modelli (le trascrizioni .txt restano) ---
+# --- Audio e modelli ---
 *.mp3
 *.m4a
 *.wav
@@ -41,3 +34,18 @@ desktop.ini
 secondoAnno/Lab. Fisica Computazionale/Esercitazioni/lfc-2627-esercitazione-2-group-66/
 secondoAnno/Lab. Fisica Computazionale/Esercitazioni/lfc-2627-esercitazione-3-group-53/
 secondoAnno/Termodinamica e Laboratorio/
+
+# --- Materiale scaricato ---
+**/Libri/*
+!**/Libri/*.tex
+**/LibriDispense/
+**/Libri di Testo e Eserciziari/
+**/Esoneri ed Esami/
+**/Esami Passati/
+**/Materiale del corso/
+**/Moodle Sapienza/
+**/Manuali e Dispense/
+primoAnno/Lab. Meccanica/Teoria/
+secondoAnno/*.pdf
+secondoAnno/Modelli e Metodo Matematici/*.pdf
+
