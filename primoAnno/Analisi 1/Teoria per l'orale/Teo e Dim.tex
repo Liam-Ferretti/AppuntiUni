@@ -1,0 +1,1912 @@
+\documentclass[a4paper,12pt,openright]{book}
+
+% pacchetti comuni
+\input{../../preambolo.tex}
+\usetikzlibrary{backgrounds}
+\usepackage{parcolumns}
+
+% info documento
+\title{Preparazione per Orale}
+\author{Liam Ferretti}
+\date{\today}
+
+\begin{document}
+	
+	\maketitle
+
+	\tableofcontents
+	
+	\chapter{Funzioni}
+	\section{Definizione: funzione}
+	Una funzione è una terna $(A, B, f)$, dove $A$ e $B$ sono due insiemi ed f è la regola.
+	\section{Funzione Limitata}
+	Una funzione:
+	\[f: Dom(f) \subseteq \mathbb{R} \longrightarrow \mathbb{R}\]
+	si dice \textbf{limitata} nell'insieme $A \subseteq Dom(f)$ se e solo se $\exists M > 0 \tc$
+	\[-M \leq f(x) \leq M, \forall x \in A\]
+	si dice \textbf{limitata superiormente} nell'insieme $A \subseteq Dom(f)$ se e solo se $\exists M \in \mathbb{R} \tc$
+	\[f(x) \leq M, \forall x \in A\]
+	si dice \textbf{limitata inferiormente} nell'insieme $A \subseteq Dom(f)$ se e solo se $\exists m \in \mathbb{R} \tc$
+	\[m \leq f(x), \forall x \in A\]
+	\section{Funzione Monotona}
+	Sia $f: Dom(f) \subseteq \mathbb{R} \longrightarrow \mathbb{R}$ e sia $E \subseteq Dom(f)$, allora:
+	\begin{itemize}
+		\item \textbf{crescente} in $E$ se $f(x_1) \leq f(x_2) \forall x_1 < x_2 \in E$
+		\item \textbf{strettamente crescente} in $E$ se $f(x_1) < f(x_2) \forall x_1 < x_2 \in E$
+		\item \textbf{decrescente} in $E$ se $f(x_1) \geq f(x_2) \forall x_1 < x_2 \in E$
+		\item \textbf{strettamente decrescente} in $E$ se $f(x_1) > f(x_2) \forall x_1 < x_2 \in E$
+	\end{itemize}
+	\section{Proprietà per la monotonia}
+	\subsection{$f, g$ funzioni monotone, implicano composta monotona}
+	Siano $f, g$ funzioni monotone, definite come segue:
+	\[g: E_1 \longrightarrow E_2\]
+	\[f: E_2 \longrightarrow \mathbb{R}\]
+	monotone rispettivamente in $I \subseteq E_1$ e in $E_2$, allora:
+	\[(f \circ g)(x)\]
+	è monotona in $I$ \newline
+	Dimostrazione generale:
+	Siano $x_1, x_2 \in I \tc x_1 < x_2$, allora per monotonia di g si ha che:
+	\begin{itemize}
+		\item se $g$ è crescente:
+		\[g(x_1) \leq g(x_2)\]
+		
+		\item se $g$ è decrescente:
+		\[g(x_2) \leq g(x_1)\]
+	\end{itemize}
+	Allora per monotonia di f si ha che:
+	\begin{itemize}
+		\item se $f$ crescente e g crescente:
+		\[f(g(x_1)) \leq f(g(x_2))\]
+		\item se $f$ decrescente e g crescente:
+		\[f(g(x_2)) \leq f(g(x_1))\] 
+		\item se $f$ crescente e g decrescente:
+		\[f(g(x_2)) \leq f(g(x_1))\]
+		\item se $f$ decrescente e g decrescente:
+		\[f(g(x_1)) \leq f(g(x_2))\] 
+	\end{itemize}
+	\newpage
+	\subsection{$f, g$ monotone crescenti/decrescenti, implica composta crescente}
+	Siano $f, g$ funzioni monotone, definite come segue:
+	\[g: E_1 \longrightarrow E_2\]
+	\[f: E_2 \longrightarrow \mathbb{R}\]
+	monotone rispettivamente in $I \subseteq E_1$ e in $E_2$, e siano $x_1, x_2 \in I \tc x_1 < x_2$, allora per monotonia di g:
+	\begin{itemize}
+		\item se $g$ è crescente:
+		\[g(x_1) \leq g(x_2)\]
+		
+		\item se $g$ è decrescente:
+		\[g(x_2) \leq g(x_1)\]
+	\end{itemize}
+	allora per monotonia di f:
+	\begin{itemize}
+		\item se $f, g$ crescenti:
+		\[f(g(x_1)) \leq f(g(x_2))\]
+		
+		\item se $f, g$ decrescenti:
+		\[f(g(x_1)) \leq f(g(x_2))\]
+	\end{itemize}
+	
+	\subsection{$f$ monotona e invertibile, $f$ strettamente monotona}
+	Sia $f: Dom(f) \subseteq \mathbb{R} \longrightarrow f(Dom(f)) = Im(f) \subseteq \mathbb{R}$, invertibile nel suo dominio, implica $f$ biettiva, quindi:
+	\[\forall y \in Im(f),\exists! x \in Dom(f) \tc f(x) = y\]
+	Presi $x_1, x_2 \in Dom(f) \tc x_1 < x_2$, allora per monotonia di f:
+	\begin{itemize}
+		\item se $f$ crescente:
+		\[f(x_1) \leq f(x_2)\]
+		\item se $f$ decrescente:
+		\[f(x_2) \leq f(x_1)\]
+	\end{itemize}
+	ma $\exists f^{-1}(x)$, quindi $f$ è iniettiva quindi:
+	\[\forall x_1,x_2 \in Dom(f) \tc x_1 \not = x_2 \Rightarrow f(x_1) \not = f(x_2)\]
+	allora per iniettività di $f$, l'uguaglianza della monotonia viene persa, in quanto due $x$ distinte non possono fornire immagini uguali.
+	
+	\chapter{Limiti}
+	\section{Punto di accumulazione}
+	Sia $A \subseteq \mathbb{R}$, e $x_0 \in \mathbb{R}$, allora $x_0$ è un punto accumulazione di $\mathbb{R}$ se e soltanto se:
+	\[\forall \delta > 0, [(x_0 - \delta, x_0 + \delta)\setminus \{x_0\}] \cap A \not = \emptyset\]
+	
+	\section{Definizione: limite}
+	si dice che $l$ è il limite di $f$ per $x$ che tende a $x_0$, se e solo se $x_0$ è un punto di accumulazione, la definizione generale è:
+	\[\forall U \in J_l, \exists V \in J_{x_0} \tc f([V \setminus \{x_0\} \cap Dom(f)]) \in U\]
+	dove $l$ è definito come:
+	\[\lim_{x \rightarrow x_0} f(x) = l\]
+	e non è necessario che:
+	\[x_0 \in Dom(f()\]
+	in quanto può essere un punto di accumulazione anche se non è contenuto nel dominio.
+	
+	\subsection{Limite finito di una funzione in $x_0 \in \mathbb{R}$}
+	Quindi:
+	\[\lim_{x \rightarrow x_0} f(x) = l\]
+	e la definizione formale è:
+	\[\forall \varepsilon > 0, \exists \delta > 0 \tc 0 < |x - x_0| < \delta \Rightarrow |f(x) - l| < \varepsilon\]
+	
+	\subsection{Limite finito di una funzione per x che tende a $\pm$ infinito}
+	Con $x \rightarrow + \infty$:
+	\[\lim_{x \rightarrow + \infty} f(x) = l\]
+	e la definizione formale è:
+	\[\forall \varepsilon > 0, \exists M > 0 \tc x > M \Rightarrow |f(x) - l| < \varepsilon\]
+	Con $x \rightarrow - \infty$:
+	\[\lim_{x \rightarrow - \infty} f(x) = l\]
+	e la definizione formale è:
+	\[\forall \varepsilon > 0, \exists M > 0 \tc x < -M \Rightarrow |f(x) - l| < \varepsilon\]
+	
+	\subsection{Limite infinito di una funzione in $x_0 \in \mathbb{R}$}
+	Con $l = +\infty$:
+	\[\lim_{x \rightarrow x_0} f(x) = + \infty\]
+	e la definizione formale è:
+	\[\forall M > 0, \exists \delta > 0 \tc 0 < |x - x_0| < \delta \Rightarrow f(x) > M\]
+	Con $l = -\infty$:
+	\[\lim_{x \rightarrow x_0} f(x) = - \infty\]
+	e la definizione formale è:
+	\[\forall M > 0, \exists \delta > 0 \tc 0 < |x - x_0| < \delta \Rightarrow f(x) < -M\]
+	
+	\subsection{Limite infinito di una funzione per x che tende a $\pm$ infinito}
+	Con $x \rightarrow +\infty$:
+	\begin{itemize}
+		\item Con $l = +\infty$:
+		\[\lim_{x \rightarrow + \infty} f(x) = + \infty\]
+		e la definizione formale è:
+		\[\forall M > 0, \exists R > 0 \tc x > R \Rightarrow f(x) > M\]
+		\item Con $l = -\infty$:
+		\[\lim_{x \rightarrow + \infty} f(x) = - \infty\]
+		e la definizione formale è:
+		\[\forall M > 0, \exists \delta > 0 \tc x > R \Rightarrow f(x) < -M\]
+	\end{itemize}
+	Con $x \rightarrow -\infty$:
+	\begin{itemize}
+		\item Con $l = +\infty$:
+		\[\lim_{x \rightarrow - \infty} f(x) = + \infty\]
+		e la definizione formale è:
+		\[\forall M > 0, \exists R > 0 \tc x < -R \Rightarrow f(x) > M\]
+		\item Con $l = -\infty$:
+		\[\lim_{x \rightarrow - \infty} f(x) = - \infty\]
+		e la definizione formale è:
+		\[\forall M > 0, \exists \delta > 0 \tc x < -R \Rightarrow f(x) < -M\]
+	\end{itemize}
+	
+	\subsection{Limite sinistro e destro}
+	\subsubsection{Limite sinistro}
+	$f: A \subset \mathbb{R} \longrightarrow \mathbb{R}, x_0 \in \mathbb{R}$ punto di accumulazione di $ A \cap(-\infty, x_0)$, allora $l$ è il limite sinistro di $f$ per $x$ che tende a $x_0$:
+	\[\lim_{x \rightarrow x_0^-} f(x) = l \text{ se } \forall V_l, \exists \delta > 0 \tc f((x_0 - \delta, x_0) \cap A) \subset V_l\]
+	\subsubsection{Limite destro}
+	$f: A \subset \mathbb{R} \longrightarrow \mathbb{R}, x_0 \in \mathbb{R}$ punto di accumulazione di $ A \cap(x_0, +\infty)$, allora $l$ è il limite destro di $f$ per $x$ che tende a $x_0$:
+	\[\lim_{x \rightarrow x_0^+} f(x) = l \text{ se } \forall V_l, \exists \delta > 0 \tc f((x_0, x_0 + \delta) \cap A) \subset V_l\]
+	
+	\section{Teorema: Criterio dell'esistenza del limite}
+	Sia $f: A \subseteq \mathbb{R} \longrightarrow \mathbb{R}$, e sia $x_0 \in \mathbb{R}$ un \textbf{punto di accumulazione} per $A \cap (x_0, +\infty)$ e per $A \cap (-\infty, x_0)$. Allora:
+	\[\exists \lim_{x \rightarrow x_0} f(x)\]
+	se e soltanto se:
+	\begin{itemize}
+		\item $\exists \lim_{x \rightarrow x_0^-} f(x) = l_-$
+		\item $\exists \lim_{x \rightarrow x_0^+} f(x) = l_+$
+		\item $l_- = l_+$
+	\end{itemize}
+	
+	\newpage
+	
+	\section{Teorema dell'unicità del limite}
+	Sia $f: A \subseteq \mathbb{R} \longrightarrow \mathbb{R}$ e sia $x_0 \in \overline{\mathbb{R}}$ un punto di accumulazione per $A$.  
+	Se esistono:
+	\[\lim_{x \rightarrow x_0} f(x) = l_1 \quad \text{e} \quad \lim_{x \rightarrow x_0} f(x) = l_2\]
+	allora:
+	\[l_1 = l_2\]
+	
+	\begin{proof}
+		Procediamo per assurdo. Supponiamo che:
+		\[l_1 \neq l_2\]
+		Allora, suppongo $l_1 < l_2$ e scegliamo:
+		\[\varepsilon = \frac{l_2 - l_1}{2} > 0\]		
+		Per la definizione di limite, esistono due intorni $U_1, U_2 \in J_{x_0}$ tali che:
+		\[x \in (U_1 \setminus \{x_0\}) \cap A \implies |f(x) - l_1| < \varepsilon\]
+		\[x \in (U_2 \setminus \{x_0\}) \cap A \implies |f(x) - l_2| < \varepsilon\]
+		Da cui segue:
+		\[l_1 - \varepsilon < f(x) < l_1 + \varepsilon \quad \text{e} \quad l_2 - \varepsilon < f(x) < l_2 + \varepsilon\]
+		Consideriamo ora l’intorno:
+		\[U = U_1 \cap U_2\]
+		Per ogni $x \in (U \setminus \{x_0\}) \cap A$ deve valere contemporaneamente:
+		\[f(x) < l_1 + \varepsilon = \frac{l_1 + l_2}{2} \quad \text{e} \quad f(x) > l_2 - \varepsilon = \frac{l_1 + l_2}{2}\]
+		il che è impossibile.
+		Si ottiene quindi una contraddizione, perciò deve essere:
+		\[l_1 = l_2\]
+	\end{proof}
+	
+	\newpage
+	
+	\section{Teorema della permanenza del segno}
+	Sia $f: A \subseteq \mathbb{R} \longrightarrow \mathbb{R}$, e $x_0 \in \overline{\mathbb{R}}$ punto di accumulazione per $A$, allora:
+	\begin{enumerate}[label=\alph*)]
+		\item Se $\lim_{x \rightarrow x_0} f(x) = l > 0 \quad (< 0)$, allora:
+		\[\exists U \in J_{x_0} \tc f(x) > 0 \quad (< 0), \forall x \in (U \setminus \{x_0\}) \cap A\]
+		\item Se $\exists U \in J_{x_0} \tc f(x) \geq 0 \quad (\leq 0), \forall x \in (U \setminus \{x_0\}) \cap A$ e $\exists \lim_{x \rightarrow x_0} f(x) = l$, allora:
+		\[l \geq 0 \quad (\leq 0)\]
+	\end{enumerate}
+	\begin{proof}[Dimostrazione punto a).]
+		Se $l = +\infty$ o $l = -\infty$, allora per definizione di limite:
+		\[\forall M > 0, \exists U \in J_{x_0} \tc x \in (U \setminus \{x_0\}) \cap A \implies f(x) > M \; (\text{oppure } f(x) < -M)\]
+		Scelgo quindi $M$ piccolo quanto voglio, ad esempio $M = 1$. Allora esiste un intorno $U$ di $x_0$ tale per cui
+		\[f(x) > 1 > 0 \quad (\text{oppure } f(x) < -1 < 0), \quad \forall x \in (U \setminus \{x_0\}) \cap A.\]
+		
+		Se $l \in \mathbb{R}, l > 0 \quad (< 0)$, allora:
+		\[\forall \varepsilon > 0, \exists U \in J_{x_0} \tc x \in (U \setminus \{x_0\}) \cap A \implies |f(x) - l| < \varepsilon\]
+		allora basta prendere $0 < \varepsilon < |l|$:
+		\[|f(x) - l| < \varepsilon \implies l - \varepsilon < f(x) < l + \varepsilon\]
+		quindi $\varepsilon$ è strettamente minore di $|l|$, quindi:
+		\begin{itemize}
+			\item se $l > 0$, allora $l - \varepsilon > 0$ e quindi $f(x) > 0$.  
+			\item se $l < 0$, allora $l + \varepsilon < 0$ e quindi $f(x) < 0$.
+		\end{itemize}
+		quindi:
+		\[\exists U \in J_\delta(x_0) \tc f(x) > 0 \; (< 0), \; \forall x \in (U \setminus \{x_0\}) \cap A\]
+	\end{proof}
+	
+	\newpage
+	
+	\begin{proof}[Dimostrazione punto b)]
+		Suppongo che:
+		\[\exists U \in J_\delta(x_0) \tc f(x) \geq 0, \; \forall x \in (U \setminus \{x_0\}) \cap A\] 
+		e che esista:
+		\[\lim_{x \rightarrow x_0} f(x) = l\]
+		e voglio dimostrare che $l \geq 0$, quindi per contraddizione verifico che non è possibile il contrario.
+		
+		Suppongo $l < 0$ allora scelgo: $\varepsilon = -\frac{l}{2} > 0$ e per la definizione di limite esiste un intorno $V \in J_{x_0} \tc$
+		\[x \in (V \setminus \{x_0\}) \cap A \implies |f(x) - l| < \varepsilon\]
+		quindi che:
+		\[f(x) < l + \varepsilon = l - \frac{l}{2} = \frac{l}{2} < 0\; \forall x \in (V \setminus \{x_0\}) \cap A\]
+		ciò contraddice l'ipotesi, quindi $l$ deve essere maggiore di 0.
+		
+		Caso analogo:
+		\[\exists U \in J_\delta(x_0) \tc f(x) \leq 0, \; \forall x \in (U \setminus \{x_0\}) \cap A\] 
+		e che esista:
+		\[\lim_{x \rightarrow x_0} f(x) = l\]
+		e voglio dimostrare che $l \leq 0$, quindi per contraddizione verifico che non è possibile il contrario.
+		
+		Suppongo che $l > 0$, allora scelgo: $\varepsilon = \frac{l}{2} > 0$ e per la definizione di limite esiste un intorno $V \in J_{x_0} \tc$
+		\[x \in (V \setminus \{x_0\}) \cap A \implies |f(x) - l| < \varepsilon\]
+		quindi che:
+		\[l - \varepsilon < f(x) \iff l - \frac{l}{2} < f(x) \iff f(x) > \frac{l}{2} > 0\; \forall x \in (V \setminus \{x_0\}) \cap A\]
+		ciò contraddice le ipotesi, quindi $l$ deve essere minore di 0.		
+		
+	\end{proof}
+	
+	\newpage
+	
+	\section{Teorema del confronto}
+	Siano date 3 funzioni $f, g, h: A \subseteq \mathbb{R} \longrightarrow \mathbb{R}$, e sia $x_0 \in \overline{\mathbb{R}}$ un punto di accumulazione di $A$. Supponiamo che esista $U \in J_{x_0} \tc$:
+	\[f(x) \leq g(x) \leq h(x), \quad \forall x \in (U \setminus \{x_0\} \cap A)\]
+	Allora se esistono i limiti di $f, h$, e hanno lo stesso valore $l$, allora:
+	\[\lim_{x \rightarrow x_0} g(x) = l\]
+	\begin{proof}
+		Per definizione di limite, sia $\varepsilon > 0$:
+		\[\lim_{x \rightarrow x_0} f(x) = l \iff l - \varepsilon < f(x) < l + \varepsilon, \quad \forall x \in (U_1 \setminus \{x_0\} \cap A)\]
+		analogamente:
+		 \[\lim_{x \rightarrow x_0} h(x) = l \iff l - \varepsilon < h(x) < l + \varepsilon, \quad \forall x \in (U_2 \setminus \{x_0\} \cap A)\]
+		 per ipotesi $(f(x) \leq g(x) \leq h(x))$, si ha che:
+		 \[l - \varepsilon < f(x) \leq g(x) \leq h(x) < l + \varepsilon, \quad \forall x \in (U_2 \setminus \{x_0\} \cap A)\]
+		 allora si ha che:
+		 \[\exists \lim_{x \rightarrow x_0} g(x) = l \iff l - \varepsilon < g(x) < l + \varepsilon, \quad \forall x \in (U_3 \setminus \{x_0\} \cap A)\]
+		 dove $U_3$ è definito come segue:
+		 \[U_3 = U_1 \cap U_2 \cap U\]
+		 per via dell'arbitrarietà di $\varepsilon$ segue la tesi, e quindi è dimostrato.
+	\end{proof}
+	
+	\newpage
+	
+	\section{Teorema del confronto per i limiti infiniti}
+	Siano due funzioni $f, g; A \longrightarrow \mathbb{R}$, e sia $x_0 \in \overline{\mathbb{R}}$ un punto di accumulazione di $A$. Supponiamo che esista $U \in J_{x_0} \tc$:
+	\[f(x) \leq g(x), \quad \forall x \in (U_0 \setminus \{x_0\}) \cap A\]allora:
+	\begin{itemize}
+		\item se $\lim_{x \rightarrow x_0} f(x) = + \infty$, allora anche $\lim_{x \rightarrow x_0} g(x) = + \infty$
+		\item se $\lim_{x \rightarrow x_0} g(x) = - \infty$, allora anche $\lim_{x \rightarrow x_0} f(x) = - \infty$
+	\end{itemize}
+	
+	\begin{proof}[Dimostrazione del punto 1]
+		Supponiamo che
+		\[\lim_{x \to x_0} f(x) = +\infty\]
+		Per definizione di limite infinito, si ha:
+		\[\forall M > 0, \; \exists U_M \in J_{x_0} \tc x \in (U_M \setminus \{x_0\}) \cap A \implies f(x) > M.\]
+		
+		Poiché per ipotesi esiste un intorno $U_0 \in J_{x_0}$ tale per cui:
+		\[f(x) \le g(x), \quad \forall x \in (U_0 \setminus \{x_0\}) \cap A\]
+		considero l’intorno $U = U_M \cap U_0$, che è ancora un intorno di $x_0$.
+		
+		Allora, per ogni $x \in (U \setminus \{x_0\}) \cap A$ si ha:
+		\[g(x) \geq f(x) > M\]
+		da cui segue che $g(x) > M$.
+		
+		Essendo $M > 0$ arbitrario, per definizione concludiamo che
+		\[\lim_{x \to x_0} g(x) = +\infty\]
+	\end{proof}
+	
+	
+	\begin{proof}[Dimostrazione del punto 2]
+		Supponiamo che
+		\[\lim_{x \to x_0} g(x) = -\infty\]
+		Per definizione di limite infinito, si ha:
+		\[\forall M > 0, \; \exists U_M \in J_{x_0} \tc	x \in (U_M \setminus \{x_0\}) \cap A \implies g(x) < -M.\]
+		
+		Poiché per ipotesi esiste un intorno $U_0 \in J_{x_0}$ tale per cui:
+		\[f(x) \le g(x), \quad \forall x \in (U_0 \setminus \{x_0\}) \cap A\]
+		considero l’intorno $U = U_M \cap U_0$, che è ancora un intorno di $x_0$.
+		
+		Allora, per ogni $x \in (U \setminus \{x_0\}) \cap A$ si ha:
+		\[f(x) \leq g(x) < - M\]
+		da cui segue che $f(x) < -M$.
+		
+		Essendo $M > 0$ arbitrario, per definizione concludiamo che
+		\[\lim_{x \to x_0} f(x) = -\infty\]
+	\end{proof}
+	
+	\section{Proprietà delle operazioni sui limiti}
+	Siano $f, g: A \longrightarrow \mathbb{R}$, $x_0 \in \overline{\mathbb{R}}$ punto di accumulazione di A, supponiamo che:
+	\[\exists \lim_{x \rightarrow x_0} f(x) = \alpha \wedge \exists \lim_{x \rightarrow x_0} g(x) = \beta\]
+	Allora:
+	\begin{enumerate}
+		\item $\exists \lim_{x \rightarrow x_0} f(x) + g(x) = \alpha + \beta$
+		\item $\exists \lim_{x \rightarrow x_0} f(x) \cdot g(x) = \alpha \cdot \beta$
+		\item $\exists \lim_{x \rightarrow x_0} \frac{f(x)}{g(x)} = \frac{\alpha}{\beta}$, se $\beta \not = 0$ 
+	\end{enumerate}
+	
+	\begin{proof}[Dimostrazione del punto 1.]
+		Fisso $\varepsilon > 0$, e $\overline{\varepsilon} = \varepsilon/2$, e per ipotesi:
+		\[\exists U_1, U_2 \in J_{x_0} \tc \]
+		sono verificate le due seguenti disequazioni:
+		\[|f(x) - \alpha| < \overline{\varepsilon}, \; \forall x \in (U_1 \setminus \{x_0\}) \cap A\]
+		\[|g(x) - \beta| < \overline{\varepsilon}, \; \forall x \in (U_2 \setminus \{x_0\}) \cap A\]
+		Allora definisco $U$ come segue:
+		\[U = U_1 \cap U_2\]
+		quindi segue che:
+		\[|f(x) - \alpha| + |g(x) - \beta| < \varepsilon = 2 \cdot \overline{\varepsilon}, \; \forall x \in (U \setminus \{x_0\}) \cap A\]
+		allora usando la disuguaglianza triangolare:
+		\[|f(x) - \alpha + g(x) - \beta| = |f(x) + g(x) - (\alpha + \beta)| \leq |f(x) - \alpha| + |g(x) - \beta| < \varepsilon\]
+		segue quindi che:
+		\[|f(x) + g(x) - (\alpha + \beta)| < \varepsilon, \; \forall x \in (U_1 \setminus \{x_0\}) \cap A\]
+		allora per definizione di limite:
+		\[\exists \lim_{x \rightarrow x_0} f(x) + g(x) = \alpha + \beta\]
+	\end{proof}
+	
+	\newpage
+	
+	\begin{proof}[Dimostrazione del punto 2.]
+		Fisso $\varepsilon > 0$, e per ipotesi:
+		\[\exists U_1, U_2 \in J_{x_0} \tc \]
+		sono verificate le due seguenti disequazioni:
+		\[|f(x) - \alpha| < \overline{\varepsilon}, \; \forall x \in (U_1 \setminus \{x_0\}) \cap A\]
+		\[|g(x) - \beta| < \overline{\varepsilon}, \; \forall x \in (U_2 \setminus \{x_0\}) \cap A\]
+		Allora per definizione:
+		\[f(x)g(x) - \alpha\beta = f(x)g(x) - \beta f(x) + \beta f(x)- \alpha \beta = f(x)(g(x) - \beta) + \beta(f(x) - \alpha)\]
+		Segue applicando il modulo che:
+		\[|f(x)g(x) - \alpha\beta| = |f(x)(g(x) - \beta) + \beta(f(x) - \alpha)| \leq |f(x)||g(x) - \beta| + |\beta||f(x) - \alpha|\]
+		Quindi:
+		\[|f(x) - \alpha| < \varepsilon \Rightarrow \alpha - \varepsilon < f(x) < \alpha + \varepsilon \Rightarrow |f(x)| < |\alpha + \varepsilon| \leq |\alpha| + |\varepsilon| = |\alpha| + \varepsilon\]
+		\begin{comment}
+			\[|g(x) - \beta| < \varepsilon \Rightarrow \beta - \varepsilon < g(x) < \beta + \varepsilon \Rightarrow |g(x)| < |\beta + \varepsilon| \leq |\beta| + |\varepsilon| = |\beta| + \varepsilon\]
+		\end{comment}
+		Sostituendo $|f(x)| < \varepsilon + |\alpha|$, $|g(x) - \beta| < \varepsilon$, $|f(x) - \alpha| < \varepsilon$:
+		\[|f(x)g(x) - \alpha\beta| < (\varepsilon + |\alpha|)\varepsilon + |\beta|\varepsilon = \varepsilon(\varepsilon + |\alpha| + |\beta|)\]
+		Ora scegliere un $\varepsilon > 0, \eta > 0 \tc \varepsilon(\varepsilon + |\alpha| + |\beta|) < \eta$, che implica:
+		\[|f(x)g(x) - \alpha\beta| < \varepsilon(\varepsilon + |\alpha| + |\beta|) < \eta,\; \forall x \in (U \setminus \{x_0\}) \cap A\]
+		Che per definizione di limite implica che: 
+		\[\exists \lim_{x \rightarrow x_0} f(x)g(x) = \alpha\beta\]
+	\end{proof}
+	
+	\newpage
+	
+	\begin{proof}[Dimostrazione del punto 3.]
+		Per la proprietà due, si ha che il limite di un prodotto è uguale al prodotto dei limiti:
+		\[\lim_{x \rightarrow x_0} \frac{f(x)}{g(x)} = \lim_{x \rightarrow x_0} f(x)\frac{1}{g(x)} = \alpha \frac{1}{\beta}, \beta \not = 0\]
+		bisogna quindi solo dimostrare che:
+		\[\lim_{x \rightarrow x_0} \frac{1}{g(x)} = \frac{1}{\beta}, \beta \not = 0\]
+		quindi per ipotesi:
+		\[\left|\frac{1}{g(x)} - \frac{1}{\beta}\right| = \left|\frac{g(x) - \beta}{\beta g(x)}\right| = \frac{|g(x) - \beta|}{|\beta||g(x)|}\]
+		allora, scegliendo $\varepsilon = \frac{|\beta|}{2}$, per ipotesi:
+		\[\lim_{x \rightarrow x_0} g(x) = \beta\]
+		allora:
+		\[|g(x) - \beta| < \frac{|\beta|}{2} \implies |g(x)| = |\beta + g(x) - \beta| \implies |g(x)| \geq |\beta| + |g(x) - \beta| > \frac{|\beta|}{2}\]
+		segue che:
+		\[\frac{|g(x) - \beta|}{|\beta||g(x)|} < \frac{|g(x) - \beta|}{\frac{|\beta|}{2} |\beta|} = \frac{2}{|\beta|^2}|g(x) - \beta| < \frac{2}{|\beta|^2} \varepsilon\]
+		Ora scegliere un $\varepsilon > 0, \eta > 0 \tc$:
+		\[\frac{2}{|\beta|^2} \varepsilon < \eta \Rightarrow |\frac{1}{g(x)} - \frac{1}{\beta}| < \eta \implies \exists \lim_{x \rightarrow x_0} \frac{1}{g(x)} = \frac{1}{\beta}\]
+		E quindi per il punto 2, si ha che:
+		\[\lim_{x \rightarrow x_0} \frac{f(x)}{g(x)} = \frac{\alpha}{\beta}, \beta \not = 0\]
+	\end{proof}
+	
+	\newpage
+	
+	\section{Teorema del prodotto di funzione limitata per infinitesima}
+	Siano $f,g: A \longrightarrow \mathbb{R}$, $x_0 \in \overline{\mathbb{R}}$ punto di accumulazione di A, se:
+	\[\lim_{x \rightarrow x_0} f(x) = 0 \text{ e } |g(x)| \leq M\]
+	allora:
+	\[\lim_{x \rightarrow x_0} f(x)g(x) = 0\]
+	
+	\begin{proof}
+		\[|f(x)g(x)| = |f(x)||g(x)|\]
+		quindi:
+		\[-M|f(x)| \leq g(x)f(x) \leq M|f(x)|\]
+		poiché:
+		\[\lim_{x \rightarrow x_0} f(x) = 0 \implies \lim_{x \rightarrow x_0} |f(x)| = 0\]
+		allora per il teorema del confronto:
+		\[\lim_{x \rightarrow x_0} -M|f(x)| \leq \lim_{x \rightarrow x_0} g(x)f(x) \leq \lim_{x \rightarrow x_0} M|f(x)|\]
+		Ogni valore $c \in \mathbb{R}$ seppur molto grande, se moltiplicato per $0$ è uguale a $0$, segue che:
+		\[\lim_{x \rightarrow x_0} f(x) g(x) = 0\]
+	\end{proof}	
+	
+	\newpage
+	
+	\chapter{Successioni}
+	
+	Una successione è definita come:
+	\[f: D_N \longrightarrow \mathbb{R}, D_N := \{n \in \mathbb{N} \tc n \geq N\}, \text{ per un certo } N \in \mathbb{N}\]
+	
+	\section{Successione convergente}
+	Sia $(a_n)_n$ una successione, ed $l$ il suo limite per $n \rightarrow +\infty$, allora:
+	\[\lim_{n} a_n = l \in \mathbb{R} \iff \forall \varepsilon > 0, \exists n_0 \in \mathbb{N} \tc |a_n - l| < \varepsilon, \; \forall n \geq n_0\]
+	e quindi $(a_n)_n$ converge a l.
+	
+	\section{Successione divergente}
+	Sia $(a_n)_n$ una successione divergente a $+ \infty \; (- \infty)$, se:
+	\[\lim_{n} a_n = + \infty \; (- \infty) \iff \forall M \in \mathbb{R}, \exists n_0 \in \mathbb{N} \tc a_n > M \; (a_n < M), \; \forall n \geq n_0\]
+	
+	\newpage
+	
+	\section{Teorema della caratterizzazione sequenziale dei limiti (Teorema Ponte)}
+	Sia $f: A \subseteq \mathbb{R} \longrightarrow \mathbb{R}$, e sia $x_0 \in \overline{\mathbb{R}}$ un punto di accumulazione di $A$. Sia $(y_n)_n$ una successione che verifica $(\star)$ definita come segue:
+	\[(\star) \quad y_n \in A, \quad y_n \not = x_0, \; \forall n \in \mathbb{N}, \quad \lim_{n} y_n = x_0\]
+	Allora:
+	\begin{enumerate}[label=\alph*)]
+		\item se $\exists \lim_{x \rightarrow x_0} f(x) = l$, allora $\exists \lim_{n} f(y_n)$ e vale $l$
+		\item se $\displaystyle \forall y_n | (\star), \; \exists \lim_{n} f(y_n) = l \in \overline{\mathbb{R}}$ indipendentemente dalla succssione, allora:
+		\[\exists \lim_{x \rightarrow x_0} f(x) \text{ e vale } l\]
+	\end{enumerate}
+	
+	\begin{proof}[Dimostrazione punto a).]
+		Si considera solo il caso in cui $x_0, l \in \mathbb{R}$. Supponiamo che:
+		\[\exists \lim_{x \rightarrow x_0} f(x) = l, \text{ e sia } (y_n)_n \text{ una successione che soddisfa } (\star)\] 
+		Quindi per definizione di limite, fissato un $\varepsilon > 0, \; \exists \delta > 0 \tc$:
+		\[|f(x) - l| < \varepsilon, \; \forall x \in [(x_0 - \delta, x_0 + \delta) \setminus \{ x_0 \}]\cap A\]
+		Poiché $(y_n)_n$ soddisfa $(\star)$, allora fissato $\eta > 0, \; \exists N \in \mathbb{N} \tc$:
+		\[|y_n - x_0| < \eta, \; \forall n \geq N\]
+		Allora definisco $\eta := \delta > 0$, quindi:
+		\[\exists N \in \mathbb{N} \tc y_n \in [(x_0 - \delta, x_0 + \delta) \setminus \{x_0\}] \cap A, \; \forall n \geq N\]
+		Allora poiché:
+		\[|x - x_0| < \delta \implies |f(x) - l| < \varepsilon\]
+		per n sufficientemente grande si ha che:
+		\[|y_n - x_0| < \delta \overset{\text{per def.}}{\implies} |f(y_n) - l| < \varepsilon, \; \forall n \geq N\]
+		Segue quindi per l'arbitrarietà di $\varepsilon$ che:
+		\[\lim_{n} f(y_n) = l, \; \forall n \geq N\]
+	\end{proof}
+	
+	\newpage
+	
+	\begin{proof}[Dimostrazione punto b).]
+		Suppongo che $\forall y_n \tc (\star), \exists \lim_{n} f(y_n) = l \in \mathbb{R}$, e per assurdo suppongo che:
+		\[\lim_{x \rightarrow x_0} f(x) \not = l\]
+		allora $\exists \varepsilon > 0 \tc \forall \delta > 0, \; \exists x_\delta \in A \tc$:
+		\[|x_\delta - x_0| < \delta, \quad |f(x_\delta) - l| \geq \varepsilon\]
+		Ora scelgo quindi un $\delta_n := \frac{1}{n}$ con cui arrivare alla contraddizione, infatti $\forall n \in \mathbb{N}$ posso definire $y_n := x_{\delta_n} \tc$:
+		\[|y_n - x_0| < \frac{1}{n} \implies |f(y_n) - l| \geq \varepsilon, \; \forall n \in \mathbb{N}^+\]
+		Ottengo quindi una successione $(y_n)_n$ per cui vale:
+		\begin{itemize}
+			\item $y_n \not = x_0$ in quanto:
+			\[|y_n - x_0| < \frac{1}{n} \rightarrow \text{ se } y_n = x_0 \implies 0 < 0\]
+			e quindi avrei una contraddizione
+			\item $\lim_{n} y_n = x_0$ in quanto:
+			\[- \frac{1}{n} < y_n - x_0 < \frac{1}{n}\] 
+			Allora per il teorema del confronto:
+			\[x_0 - 0 < y_n < x_0 + 0 \implies \lim_{n} y_n = x_0\]
+			\item $|y_n - x_0| < \frac{1}{n} \implies |f(y_n) - l| \geq \varepsilon$ come prima.
+		\end{itemize} 
+		Ma ciò contraddice le ipotesi in quanto:
+		\[\lim_{n} f(y_n) = l\]
+	\end{proof}
+	
+	\newpage
+	
+	\section{Teorema sul limite delle successioni monotone}
+	Sia $(a_n)_n$ una successione monotona crescente (risp. decrescente), allora:
+	\[\exists \lim_{n} a_n = l \in \overline{\mathbb{R}}\]
+	ed in particolare, se la successione è limitata $l \in \mathbb{R}$
+	
+	\begin{proof}[Dimostrazione, successione crescente (decrescente) non limitata]
+		Per definizione di crescenza (decrescenza) si ha che:
+		\[a_n \leq a_{n + 1}, \; \forall n \in \mathbb{N} \quad (a_n \geq a_{n + 1})\]
+		e poiché la successione non è limitata superiormente (inferiormente):
+		\[\forall M > 0, \; \exists N \in \mathbb{N} \tc a_N > M \quad (a_N < -M)\]
+		per la monotonia crescente (decrescente) di $(a_n)_n$, si ha che:
+		\[a_n \ge a_N > M \quad (\; a_n \le a_N < -M\;), \quad \forall n \ge N\]
+		quindi, per definizione di limite infinito:
+		\[\lim_{n \to \infty} a_n = +\infty \quad (\lim_{n \to \infty} a_n = -\infty)\]
+	\end{proof}
+	
+	\begin{proof}[Dimostrazione, successione crescente (decrescente) limitata]
+	Per definizione di crescenza (decrescenza) si ha che:
+	\[a_n \leq a_{n + 1}, \; \forall n \in \mathbb{N} \quad (a_n \geq a_{n + 1} )\]
+	e per definizione di limita superiormente (inferiormente):
+	\[\lim_{n} a_n = \sup\{a_n\}, \quad (\lim_{n} a_n = \inf\{a_n\})\]
+	Definisco $A := \{a_n \tc n \in \mathbb{N}\}$ e $L = \sup\{A\}, \quad (L = \inf\{A\})$, allora:
+	\[\forall \varepsilon > 0, \exists N \in \mathbb{N} \tc a_N > L - \varepsilon \quad (a_N < L + \varepsilon)\]
+	per la monotonia crescente di $(a_n)_n$, (monotonia decrescente di $(a_n)_n$), si ha che:
+	\[a_n \geq a_N > L - \varepsilon, \quad (a_n \leq a_N < L + \varepsilon)\]
+	quindi:
+	\[L - \varepsilon < a_n \leq L \rightarrow |a_n - L| < \varepsilon \quad (L \leq a_n < L + \varepsilon \rightarrow |a_n - L| < \varepsilon)\]
+	quindi che per definizione di limite la successione tende al supremo (infimo)
+	\end{proof}
+	
+	\section{Teorema limitatezza delle successioni convergenti}
+	Se $(a_n)_n$ è una successione convergente, allora $(a_n)_n$ è limitata, cioè:
+	\[\exists M \geq 0 \tc |a_n| \leq M, \; \forall n \in \mathbb{N}\]
+	
+	\begin{proof}
+		Sia $l = \lim_{n} a_n$, allora per definizione di limite:
+		\[\forall \varepsilon > 0, \exists N \in \mathbb{N} \tc |a_n - l| < \varepsilon, \; \forall n \geq N\]
+		si ha quindi che, per la disuguaglianza triangolare:
+		\[|a_n| = |a_n - l + l| \leq |a_n - l| + |l| < \varepsilon + |l|, \; \forall n \geq N\]
+		quindi tutti i termini con $n \geq N$ sono minori di $\varepsilon + |l|$, allora basta verificare il numero finito di $n < N$, definisco quindi:
+		\[M = \max\{|a_0|, |a_1|, \cdots, |a_{N - 1}|, \epsilon + |l|\}\]
+		quindi, prendendo il massimo tra tutti i valori prima di $N$, e tutti quelli, dopo che sono per definizione minori di $\varepsilon + |l|$ si ha che:
+		\[|a_n| \leq M, \; \forall n \in \mathbb{N}\]
+	\end{proof}
+		
+	\section{Sotto-successione}
+	Sia $(a_n)_n$ una successione, allora chiameremo sotto-successione o successione estratta di $(a_n)_n$ una successione del tipo $(a_{n_k})_k$, dove $(n_k)_k$ è una successione strettamente crescente di numeri naturali.
+	
+	\newpage
+	
+	\section{Teorema di Bolzano-Weierstrass}
+	Sia $(c_n)_n$ una successione limitata, allora $(c_n)_n$ ammette almeno una sotto-successione convergente.
+	
+	\begin{proof}
+		Per ipotesi $(c_n)_n$ è limitata, allora:
+		\[a_0 := \inf \{c_n\}, \quad b_0 := \sup \{c_n\}\]
+		\[a_0 \leq c_n \leq b_0, \; \forall n \in \mathbb{N}, \; a_0, b_0 \in \mathbb{R}\]
+		\[c_n \in [a_0, b_0], \; \forall n \in \mathbb{N}, \; a_0, b_0 \in \mathbb{R}\]
+		definisco quindi il punto medio tra gli estremi dell'intervallo nel seguente modo:
+		\[c := \frac{a_0 + b_0}{2}\]
+		ora divido l'intervallo iniziale in due sotto-intervalli:
+		\[[a_0, b_0] = [a_0, c] \cup [c, b_0]\]
+		\[[c, b_0]\]
+		e dato che $(c_n)_n$ è limitata allora, $[a_0, b_0]$ è composto da infiniti elementi, quindi dividendo un intervallo con infiniti elementi a metà, avrò almeno un altro intervallo con infiniti elementi, quindi in base quale dei due intervalli ha infiniti elementi definisco $a_1, b_1$ come segue:
+		\begin{itemize}
+			\item Se $[a_0, c]$ ha infiniti elementi allora:
+			\[a_1 = a_0; \quad b_1 = c\]
+			\item Se $[c, b_0]$ ha infiniti elementi allora:
+			\[a_1 = c; \quad b_1 = b_0\]
+			\item Se entrambi hanno infiniti elementi, allora la scelta dell'intervallo non cambia la dimostrazione.
+		\end{itemize}
+		quindi ho un nuovo intervallo con infiniti elementi, prendo il punto medio:
+		\[c :=  \frac{a_1 + b_1}{2} = \frac{a_0 + b_0}{4}\]
+		quindo ho altri 2 sotto-intervalli:
+		\[[a_1, b_1] = [a_1, c] \cup [c, b_1]\]
+		di cui almeno 1 ha infiniti elementi, quindi scelgo $a_2, b_2$ come prima.
+		Procedendo con le ripetizioni ottengo una successione di intervalli:
+		\[[a_0, b_0], [a_1, b_1], \cdots, [a_k, b_k], \cdots\]
+		con le seguenti proprietà:
+		\begin{enumerate}[label=\alph*)]
+			\item $a_0 \leq a_1 \leq a_k \leq a_{k + 1} \leq b_{k + 1} \leq b_k \leq b_1 \leq b_0, \; \forall k \in \mathbb{N}$, quindi $(a_n)_n$ è monotona crescente e limitata, e $(b_n)_n$ è monotona decrescente limitata.
+			\item $b_k - a_k = \frac{b_0 - a_0}{2^k}, \; \forall k \in \mathbb{N}$
+			\item $[a_k, b_k], \; k \in \mathbb{N}$ contiene infiniti elementi di $c_n$
+		\end{enumerate}
+		Usando queste 3 proprietà è possibile estrarre una successione convergente, nel seguente modo:
+		Scelgo il termine $c_0$ come primo termine, e $n_0 = 0$, poi scelgo nell'intervallo successivo il seguente termine tale per cui:
+		\[n_1 > n_0 \tc c_{n_1} \in [a_1, b_1]\]
+		ora scelgo il termine $n_2$ nel seguente intervallo, tale per cui:
+		\[n_2 > n_1 > n_0 \tc c_{n_2} \in [a_2, b_2]\]
+		continuo questo procedimento, ed ottengo che:
+		\[0 = n_0 < n_1 < n_2 < \cdots < n_k < \cdots \tc c_{n_k} \in [a_k, b_k], \; \forall k \in \mathbb{N}\]
+		Allora per la proposizione a) sappiamo che, $(a_n)_n$ è monotona crescente e limitata, e $(b_n)_n$ è monotona decrescente e limitata, (la limitatezza deriva delle ipotesi), e sappiamo anche che ogni successione monotona e limitata ammette limite finito.
+		
+		Per la proposizione b) sappiamo che:
+		\[\lim_{n} b_k - a_k = \lim_{n} \frac{b_0 - a_0}{2^k} = 0 \implies \lim_{n} b_k = l = \lim_{n} a_k\]
+		Allora per definizione di $(c_n)_n$ si ha che:
+		\[a_k \leq c_n \leq b_k\]
+		e per il teorema del confronto, dato che i due limiti degli estremi sono uguali, e "schiacciano" $c_n$ al loro interno, allora anche $c_n$ deve tendere a $l$ 
+	\end{proof}
+	
+	\section{Successione di Cauchy}
+	Sia $(a_n)_n$ una successione, allora si dice di Cauchy (fondamentale) se:
+	\[\forall \varepsilon > 0, \exists n_0 \tc |a_n - a_m| < \varepsilon, \; \forall n,m \geq n_0\]
+	
+	\newpage
+	
+	\section{Lemma: limitatezza delle successioni di Cauchy}
+	Ogni successione di Cauchy è limitata.
+	
+	\begin{proof}
+		Sia $(a_n)_n$ una successione di Cauchy. Per definizione, per ogni $\varepsilon > 0$ esiste $n_0 \in \mathbb{N}$ tale per cui:
+		\[|a_n - a_m| < \varepsilon \qquad \forall n,m \ge n_0\]
+		In particolare, fissato $\varepsilon > 0$, per ogni $n \ge n_0$ si ha
+		\[|a_n| = |a_n - a_{n_0} + a_{n_0}| \le |a_n - a_{n_0}| + |a_{n_0}| < \varepsilon + |a_{n_0}|\]
+		Poiché l'insieme finito $\{|a_0|, |a_1|, \dots, |a_{n_0}|\}$ è limitato, poniamo
+		\[M := \max\{|a_0|, |a_1|, \dots, |a_{n_0 - 1}|, |a_{n_0}| + \varepsilon\}\]
+		si aggiunge $\varepsilon$ all'ultimo termine in quanto così si includono tutti i termini della coda, allora per ogni $n \in \mathbb{N}$ vale
+		\[|a_n| \le M\]
+		e quindi la successione $(a_n)_n$ è limitata.
+	\end{proof}
+	
+	\newpage
+	
+	\section{Teorema del criterio di convergenza di Cauchy}
+	Una successione $(a_n)_n$ è convergente se e solo se è di Cauchy
+	
+	\begin{proof}[Dimostrazione implicazione $(\implies)$]
+		Per definizione di convergenza, se una serie $(a_n)_n$ è convergete, allora:
+		\[\lim_{n} a_n = l \iff \forall \varepsilon > 0, \; \exists N \in \mathbb{N} \tc |a_n - l| < \varepsilon, \; \forall n \ge N\]
+		Scelgo quindi $\overline{\varepsilon} := \frac{\varepsilon}{2}$, quindi:
+		\[|a_n - l| < \overline{\varepsilon} < \varepsilon\]
+		allora:
+		\[|a_n - a_m| = |a_n - a_m + l - l| = |a_n - l - (a_m - a_l)| \le |a_n - l| + |a_m - l| < \overline{\varepsilon} + \overline{\varepsilon} = \varepsilon\]
+		Quindi ogni successione convergente è di Cauchy
+	\end{proof}
+	
+	\begin{proof}[Dimostrazione implicazione inversa$(\impliedby)$]
+		Sia $(a_n)_n$ una successione di Cauchy. Per il lemma di limitatezza delle successioni di Cauchy, $(a_n)_n$ è limitata; quindi, per il teorema di Bolzano--Weierstrass, ammette una sottosuccessione $(a_{n_k})_k$ convergente ad un certo limite $L \in \mathbb{R}$.
+		
+		Resta da dimostrare che l'intera successione $(a_n)_n$ converge a $L$.
+		
+		Fissato $\varepsilon > 0$, poiché $(a_n)_n$ è una successione di Cauchy, esiste $\overline{n} \in \mathbb{N}$ tale che
+		\[|a_n - a_m| < \frac{\varepsilon}{2}, \quad \forall n,m \ge \overline{n}\]
+		D'altra parte, poiché $(a_{n_k})_k$ converge a $L$, esiste $\overline{k} \in \mathbb{N}$ tale che
+		\[|a_{n_k} - L| < \frac{\varepsilon}{2}, \quad \forall k \ge \overline{k}\]
+		Osserviamo che, per definizione di sotto-successione, $(n_k)_k$ è una successione strettamente crescente di numeri naturali; pertanto vale
+		\[n_k \ge k, \quad \forall k \in \mathbb{N}\]
+		In particolare, scegliendo $k = n$, si ha $n_n \ge n$.
+
+		Se $n \ge \overline{n}$, allora sia $n$ che $n_n$ sono maggiori o uguali a $\overline{n}$, e quindi
+		\[|a_n - a_{n_n}| < \frac{\varepsilon}{2}\]			
+		Scegliendo ora
+		\[N = \max\{\overline{n}, \overline{k}\}\]
+		per ogni $n \ge N$ si ha
+		\[|a_n - L| \le |a_n - a_{n_n}| + |a_{n_n} - L|	< \frac{\varepsilon}{2} + \frac{\varepsilon}{2}	= \varepsilon\]
+		Segue quindi che $\lim_{n \to \infty} a_n = L$, e dunque la successione $(a_n)_n$ è convergente.
+	\end{proof}
+
+    \chapter{Continuità}
+    \section{Definizione: continuità}
+    Sia $f: A \longrightarrow \mathbb{R}$, una funzione continua in $x_0 \in A$ se:
+    \[\forall \varepsilon > 0, \exists \delta > 0 \tc |f(x) - f(x_0)| < \varepsilon, \; \forall x \in (x_0 - \delta, x_0 + \delta) \cap A\]
+    Inoltre, $f$ è continua in $A$ se è continua in ogni punto di $A$.
+    
+    \section{Punti di discontinuità}
+    Sia $f: A \longrightarrow \mathbb{R}$, una funzione tale per cui:
+    \begin{itemize}
+        \item Si ha un punto di discontinuità eliminabile se:
+        \[\exists \lim_{x \rightarrow x_0^+} f(x) = l_1 \in \mathbb{R}, \quad \exists \lim_{x \rightarrow x_0^-} f(x) = l_1 \in \mathbb{R}\]
+        Ma vale che:
+        \[l_1 = l_2 \not = f(x_0)\]
+        \item Si ha un punto di discontinuità di tipo salto (di prima specie) se:
+        \[\exists \lim_{x \rightarrow x_0^+} f(x) = l_1 \in \mathbb{R}, \quad \exists \lim_{x \rightarrow x_0^-} f(x) = l_1 \in \mathbb{R}\]
+        Ma vale che:
+        \[l_1 \not = l_2\]       
+        \item Si ha un punto di discontinuità di seconda specie se almeno uno dei due limiti non esiste, oppure esistono entrambi e uno vale $\pm\infty$
+    \end{itemize}
+
+    \section{Teorema sulla continuità di somma, prodotto e quoziente}
+    Siano $f, g$ due funzioni continue in $x_0$, allora le funzioni $f + g$, $fg$, $\frac{f}{g}, \; g(x_0) \not = 0$ sono continue in $x_0$. Il teorema si dimostra usando le proprietà delle operazioni sui limiti.
+
+    \section{Definizione: punti di estremo assoluto}
+    Sia $f: A \longrightarrow \mathbb{R}$, allora $x_0 \in A$ è un punto di massimo assoluto di $f$ in $A$ se:
+    \[f(x) \leq f(x_0), \; \forall x \in A\]
+    Inoltre:
+    \[f(x_0) = M\]
+    Dove $M$ è il massimo assoluto della funzione $f$ in $A$. \newline
+    Sia $f: A \longrightarrow \mathbb{R}$, allora $x_0 \in A$ è un punto di minimo assoluto di $f$ in $A$ se:
+    \[f(x) \geq f(x_0), \; \forall x \in A\]
+    Inoltre:
+    \[f(x_0) = m\]
+    Dove $M$ è il minimo assoluto della funzione $f$ in $A$.
+
+    \section{Teorema di Weierstrass}
+    Sia $f \in C^ 0([a, b])$, allora $f$ assume in $[a, b]$ sia massimo che minimo assoluto.
+    \begin{proof}[Dimostrazione esistenza del massimo.]
+        Prima di tutto bisogna dimostrare che $f$ sia limitata, in questo caso superiormente, suppongo quindi che non lo sia e cerco la contraddizione, quindi:
+        \[\forall n \in \mathbb{N}, \; \exists x_n \in [a, b] \tc f(x_n) \geq n\]
+        Ma poiché $(x_n)_n$ è limitata, allora per il teorema di Bolzano-Weierstrass, si ha che:
+        \[\exists (x_{n_k})_k \tc \lim_{k} x_{n_k} = y\]
+        e dato che $(x_{n_k})_k \in [a, b]$, allora anche $y \in [a, b]$
+        Quindi poiché $f$ è continua vale che:
+        \[\lim_{k} f(x_{n_k}) = f(y) \in \mathbb{R}\]
+        ma ciò, per il teorema dell'unicità del limite, contraddice:
+        \[\lim_{k} f(x_{n_k}) \geq \lim_{k} n_k = +\infty\]
+        in quanto un limite non può assumere valore diversi, nello specifico non può essere reale e infinito allo stesso tempo. Infatti si avrebbe che:
+        \[\lim_{k} f(x_{n_k}) = f(y) \geq \lim_{k} n_k = +\infty\]
+        \[f(y) \in \mathbb{R} \not = +\infty\] 
+        
+        Quindi una volta dimostrato che la funzione sia limitata, bisogna dimostrare che ammetta massimo e minimo:
+        \begin{itemize}
+        	\item Dimostro l'esistenza del massimo, definisco il massimo $M$ come segue:
+        	\[M := \sup_{[a, b]} f(x), \; M \in \mathbb{R}\]
+        	Bisogna quindi dimostrare che:
+        	\[\exists y \in [a, b] \tc f(y) = M\]
+        	Per la caratterizzazione del supremo si ha che:
+        	\[\forall \varepsilon > 0, \exists x \in A \tc M - \varepsilon < f(x) \leq M < M + \varepsilon\]
+        	Definisco $\varepsilon := \frac{1}{n}$, allora si ha che:
+        	\[M - \frac{1}{n} < f(x_n) \leq M < M + \frac{1}{n}\]
+        	quindi che:
+        	\[|f(x_n) - M| < \frac{1}{n}\]
+        	Per il teorema di Bolzano-Weierstrass si ha che $(x_{n_k})_k$ è una sotto-successione convergente ad $y \in [a, b]$ e poiché $f$ è continua si ha che:
+        	\[f(y) = \lim_{k} f(x_{n_k}) \rightarrow M - \frac{1}{n_k} < f(x_{n_k}) \leq M\]
+        	quindi per il teorema del confronto e dell'unicità del limite si ha che $f$ ammette massimo assoluto
+        	
+        	\item Dimostro l'esistenza del minimo, definisco il minimo $m$ come segue:
+        	\[m := \inf_{[a, b]} f(x), \; m \in \mathbb{R}\]
+        	Bisogna quindi dimostrare che:
+        	\[\exists y \in [a, b] \tc f(y) = m\]
+        	Per la caratterizzazione del infimo si ha che:
+        	\[\forall \varepsilon > 0, \exists x \in A \tc m - \varepsilon < m \leq f(x) < m + \varepsilon\]
+        	Definisco $\varepsilon = \frac{1}{n}$, allora si ha che:
+        	\[m - \frac{1}{n} < m \leq f(x_n) < m + \frac{1}{n}\]
+        	quindi che:
+        	\[|f(x_n) - m| < \frac{1}{n}\]
+        	
+        	Per il teorema di Bolzano-Weierstrass si ha che $(x_{n_n})_k$ ha una sotto-successione convergente ad $y \in [a, b]$ e poiché $f$ è continua si ha che:
+        	\[f(y) = \lim_{k} f(x_{n_k}) \rightarrow m \leq f(x_{n_k}) < m + \frac{1}{n_k}\]
+        	E quindi per il teorema del confronto e dell'unicità del limite si ha che $f$ ammette minimo assoluto.
+        \end{itemize}        
+    \end{proof}
+    
+    \section{Teorema degli zeri}
+    Sia $f \in C([a, b])$ una funzione che cambia segno agli estremi, tale per cui:
+    \[f(a)f(b) < 0\]
+    allora $f$ ammette almeno uno zero nell'intervallo aperto, quindi:
+    \[\exists c \in (a, b) \tc f(c) = 0\]
+    \begin{proof}
+    	Dimostro il teorema con il metodo della bisezione, definisco $a_0, b_0, m_0$ come segue:
+    	\[a_0 := a, \quad b_0 := b, \quad m_0 := \frac{a_0 + b_0}{2}\]
+    	Suppongo che $f(a_0) < 0$ e $f(b_0) > 0$, allora se:
+    	\begin{itemize}
+    		\item $f(m_0) > 0$, allora $a_1 = a_0, \; b_1 = m_0, \; m_1 = \frac{a_1 + b_1}{2}$
+    		\item $f(m_0) = 0$, allora $m_0$ è uno zero nell'intervallo e quindi il teorema è dimostrato
+    		\item $f(m_0) < 0$, allora $b_1 = b_0, \; a_1 = m_0, \; m_1 = \frac{a_1 + b_1}{2}$
+    	\end{itemize}
+    	Allora continuo per induzione e costruisco due successioni:
+    	\[(a_n)_n, \; (b_n)_n \tc a_{n_0} \leq a_{n_1} \leq \cdots \leq a_{n_k} \leq \cdots \leq b_{n_k} \leq \cdots \leq b_{n_1} \leq b_{n_0}\]
+    	\[b_n - a_n = \frac{b_0 - a_0}{2^n} \overset{n \rightarrow +\infty}{\longrightarrow} 0\]
+    	Allora si ha che:
+    	\[a_k \leq m_k \leq b_k\]
+    	Dato che $\lim_{n} b_n - a_n = 0$, allora:
+    	\[\lim_{n} b_n = \lim_{n} a_n = l\] 
+    	per le operazioni con i limiti, quindi per il teorema del confronto si ha che:
+    	\[l = \lim_{k} a_k \leq \lim_{k} m_k \leq b_k = l\]
+    	Allora anche il $\lim_{k} c_k = l$, poiché $f$ è continua, $\lim_{k} a_k = l = \lim_{k} b_k$
+    	allora:
+    	\[f(l) = \lim_{k} a_k = \lim_{k} b_k\]
+    	quindi per ipotesi e per la permanenza del segno (in quanto $f(a_n) \leq 0$, allora $f(l) \leq 0$ e $f(b_n) \leq 0$, allora $f(l) \geq 0$):
+    	\[f(a)f(b) < 0 \implies f^2(l) \leq 0 \iff f(l) = 0\]
+    \end{proof}
+    
+    \section{Teorema dei valore intermedi}
+    Sia $f \in C([a, b])$, allora $f$ assume tutti i valori compresi tra $f(a)$ e $f(b)$, quindi:
+    \[\forall y \in [f(a), f(b)]\; \exists c \in [a, b] \tc f(c) = y\]
+    
+    \begin{proof}
+    	Se: 
+    	\[y = f(a) \implies \exists c \in [a, b] \tc f(c) = y, \; c = a\]
+    	\[y = f(b) \implies \exists c \in [a, b] \tc f(c) = y, \; c = b\]
+    	Sennò suppongo che $f(a) < f(b)$, allora, fisso $y \in (f(a), f(b))$ e definisco la funzione $g$ come segue:
+   		\[g(x) = f(x) - y, \; x \in [a, b]\]
+   		Allora $g(x)$ è continua in $[a, b]$, e $g(a) < 0$ poiché $f(a) < y$ e $g(b) > 0$ poiché $f(b) > y$, per il teorema degli zeri si ha:
+   		\[\exists c \in (a, b) \tc g(c) = 0, \; f(c) = y\]
+    \end{proof}
+    
+    \newpage
+    
+    \section{Teorema sull'immagine di intervalli tramite funzioni continue}
+    Sia $I$ un intervallo e $f \in C(I)$, allora $f(I)$ è un intervallo, e se $I = [a, b]$ allora:
+    \[\forall x \in [a, b], f(x) \in [\min_I, \max_I]\]
+    
+    \begin{proof}
+    	Per definizione di intervallo si deve avere che:
+    	\[\forall y_1, y_2 \in f(I), \; y_1 < y_2 \implies \forall y \in (y_1, y_2), \; y \in f(I)\]
+    	Allora per il teorema dei valore intermedi abbiamo che:
+    	\[\exists x_1 \in I \tc f(x_1) = y_1\]
+    	\[\exists x_2 \in I \tc f(x_1) = y_1\]
+    	Poiché $I$ è un intervallo per ipotesi, allora:
+    	\[x_1, x_2 \in I \implies [x_1, x_2] \subseteq I, x_1 < x_2; \quad [x_2, x_1] \subseteq I, x_2 < x_1\] 
+    	Allora per il teorema dei valore intermedi, e dato che $f$ è continua in $I$ e poiché:
+    	\[f(x_1) = y_1 \leq y_2 = f(x_2), \; \exists x \in (x_1, x_2) \tc y = f(x)\]
+    	Poiché $y_1, y_2$ sono arbitrari, allora lo sono anche $x_1, x_2$ e quindi si ha che $f(I)$ è un intervallo.
+    	\newline
+    	In particolare se $I = [a, b]$, quindi chiuso e limitato, allora per il teorema di Weierstrass:
+    	\[\exists m, M \in I; m = \min_I f(x), \; M = \max_I f(x)\]
+    	Segue che:
+    	\[\exists x_m, x_M \in I \tc f(x_m) = m, \; f(x_M) = M\]
+    	Allora per definizione di massimo e minimo assoluto si ha che:
+    	\[m \leq f(x) \leq M \implies f(I) \subseteq [m, M]\]
+    	Bisogna dimostrare che:
+    	\[[m, M] \subseteq f(I)\]
+    	Allora:
+    	\[\forall y \in [m, M], \; \exists x \in I \tc f(x) = y\]
+    	Fisso una $y$ e suppongo che $x_m < x_M$, allora:
+    	\[[x_m , x_M] \in I\]
+    	Poiché $f$ è continua in $[x_m, x_M]$ e poiché:
+    	\[f(x_m) = m \leq y \leq M = f(x_M)\]
+    	implica che:
+    	\[x \in [x_m, x_M] \subset [a, b], \; f(x) = y, \quad y \in f([a, b])\]
+    	Allora si ha che:
+    	\[f(I) = [m, M]\]    	
+    \end{proof}
+    
+    \section{Uniforme continuità}
+    Una funzione $f: A \subseteq \mathbb{R} \longrightarrow \mathbb{R}$ si dice uniformemente continua in $E \subseteq A$ se:
+    \[\forall \varepsilon > 0, \exists \delta > 0 \tc \forall x,y \in E, |x - y| < \delta \implies |f(x) - f(y)| < \varepsilon\]
+    
+    \subsection{Funzione non uniformemente continua}
+    Una funzione $f: A \subseteq \mathbb{R} \longrightarrow \mathbb{R}$ è non uniformemente continua se e solo se: 
+    \[\exists \varepsilon_0 > 0 \tc \forall \delta > 0 \; \exists x, y \in A \tc |x - y| < \delta_n, |f(x) - f(y)| \geq \varepsilon_0\]
+    Oppure usando le successioni:
+    \[\exists \varepsilon_0 > 0 \tc \forall \delta_n > 0 \; \exists (x_n)_n, (y_n)_n \in A \tc |x_n - y_n| < \delta_n, |f(x_n) - f(y_n)| \geq \varepsilon_0, \; \forall n \in \mathbb{N}\]
+    
+    \section{Funzione Lipschitziana}
+    Una funzione $f: A \subseteq \mathbb{R} \longrightarrow \mathbb{R}$ si dice lipschitziana in $E \subseteq A$ se:
+    \[\exists L > 0 \tc \forall x, y \in E, |f(x) - f(y)| \leq L|x - y|\]
+    
+    \subsection{lipschitzianeità $\implies$ uniforme continuità $\implies$ continua}
+    Una funzione $f: A \subseteq \mathbb{R} \longrightarrow \mathbb{R}$ Lipschitziana $\implies$ uniformemente continua in $A$, una funzione uniformemente continua in $A$ $\implies$ continua in $A$.
+    
+    \begin{proof}[Dimostrazione: Lipschitz $\implies$ uniformemente continua]
+    	Per definizione di funzione lipschitziana si ha che:
+    	\[\exists L > 0 \tc \forall x, y \in A ,  |f(x) - f(y)| \leq L|x - y|\]
+    	Prendo $\varepsilon > 0$, e scelgo $\delta = \frac{\varepsilon}{L}$, allora se:
+    	\[|x - y| < \delta\]
+    	allora:
+    	\[|f(x) - f(y)| \leq L|x - y| <x L\delta = \varepsilon\]
+    	Dato che il delta non dipende da $x$ o da $y$, ma solo da $\varepsilon$ allora $f$ è uniformemente continua. 
+    \end{proof}
+    
+    \begin{proof}[Dimostrazione: Uniformemente continua $\implies$ continua]
+    	Per definizione di uniformemente continua si ha che:
+    	\[\forall \varepsilon > 0, \exists \delta > 0 \tc \forall x, y \in A, |x- y| < \delta \implies |f(x) - f(y)| < \varepsilon\]
+    	Allora per dimostrare la continuità in un punto $x_0$, fisso $\varepsilon > 0$, allora:
+    	\[|x - x_0| < \delta \implies |f(x) - f(x_0)| < \varepsilon\]
+    	Ed essendo $x_0$ arbitrario $f$ è continua in $A$.
+    \end{proof}
+    
+    \section{Teorema di Heine-Cantor}
+    Sia $f: [a, b] \longrightarrow \mathbb{R}$ una funzione continua nell'intervallo chiuso e limitato $[a, b]$. Allora $f$ è uniformemente continua.
+    
+    \begin{proof} Supponiamo per assurdo che $f$ non sia uniformemente continua. Allora
+    	\[\exists \varepsilon_0 > 0, \; \exists (x_n)_n,(y_n)_n \subset [a,b] \tc |x_n - y_n| < \frac{1}{n}, \quad |f(x_n) - f(y_n)| \geq \varepsilon_0, \; \forall n \in \mathbb{N}\]
+    	Poiché $(x_n)_n$ è una successione a valori nell'intervallo limitato $[a,b]$, per il teorema di Bolzano-Weierstrass esiste una sotto-successione $(x_{n_k})_k$ tale per cui
+    	\[x_{n_k} \xrightarrow[k\to\infty]{} x \in [a,b]\]
+    	Dalla prima parte della definizione di non uniformemente continuità, usando la disuguaglianza triangolare segue che:
+    	\[|y_{n_k} - x|	= |(y_{n_k} - x_{n_k}) + (x_{n_k} - x)|	\le |y_{n_k} - x_{n_k}| + |x_{n_k} - x|\]
+    	Poiché $|y_{n_k} - x| \le 0 + 0$ si ottiene:
+    	\[|y_{n_k} - x| \xrightarrow[k\to\infty]{} 0\]
+    	cioè
+    	\[y_{n_k} \xrightarrow[k\to\infty]{} x\]
+    	Usando ora la seconda parte della definizione si ha che:
+    	\[\varepsilon_0 \leq |f(x_{n_k}) - f(y_{n_k})| = |f(x_{n_k}) - f(x) - (f(y_{n_k}) - f(x))| \leq |f(x_{n_k}) - f(x)| + |f(y_{n_k}) - f(x)|\] 
+    	Ma per continuità di $f$ si ha che:
+    	\[\lim_{k} |f(x_{n_k}) - f(x)| = 0\]
+    	\[\lim_{k} |f(y_{n_k}) - f(x)| = 0\]
+    	Quindi la disuguaglianza risulta assurda in quanto si ottiene che:
+    	\[\varepsilon_0 < 0\]
+    \end{proof}
+    
+    \chapter{Derivate}
+    \section{Definizione: differenziabilità}
+    Sia una funzione $f: I \longrightarrow \mathbb{R}$ definita su un intervallo $I \subseteq R$ e sia $x_0 \in I$, allora $f$ è \textbf{differenziabile} nel punto $x_0$ se:
+    \[\exists m \in \mathbb{R} \tc \lim_{x \rightarrow x_0} \frac{f(x) - [f(x_0) + m(x - x_0)]}{x - x_0} = 0\]
+    E in tal caso, la retta $y = f(x_0) + m(x - x_0)$ è detta retta tangente al grafico di $f$ nel punto$(x_0, f(x_0))$
+    
+    \section{Definizione: derivabilità}
+    Sia una funzione $f: I \longrightarrow \mathbb{R}$ definita su un intervallo $I \subseteq R$ e sia $x_0 \in I$, allora $f$ è \textbf{derivabile} nel punto $x_0$ se:
+    \[\exists \lim_{x \rightarrow x_0} \frac{f(x) - f(x_0)}{x - x_0} = \lim_{x \rightarrow x_0} \frac{\Delta y}{\Delta x} = l \in \mathbb{R}\]
+    Ovvero esiste finito il limite del rapporto incrementale.
+    
+    \section{Teorema sulla continuità di funzioni derivabili}
+    Sia $f$ una funzione derivabile in $x_0$, allora $f$ è continua in $x_0$.
+    
+    \begin{proof} La dimostrazione del teorema segue direttamente dalla definizione di derivabilità, in quanto per ipotesi si ha che $f$ è derivabile, quindi: 
+    \[\lim_{x \rightarrow x_0} \frac{f(x) - f(x_0)}{x - x_0} = l \in \mathbb{R}\]
+    Quindi per $x \not = x_0$ si ha che:
+    \[f(x) - f(x_0) = \frac{f(x) - f(x_0)}{x - x_0} (x - x_0)\]
+    Applicando il limite ambo i lati si ottiene che:
+    \[\lim_{x \rightarrow x_0} f(x) - f(x_0) = \lim_{x \rightarrow x_0} \frac{f(x) - f(x_0)}{x - x_0} (x - x_0) = l \cdot 0 = 0\]
+    Quindi si ha che:
+    \[\lim_{x \rightarrow x_0} f(x) = f(x_0)\]
+    Ovvero la definizione di continuità in $x_0$.
+    \end{proof}
+    
+    \section{Definizione: derivata sinistra e destra}
+    Sia $f: (a, b) \rightarrow \mathbb{R}$, e sia $x_0 \in (a, b)$, allora $f$ è derivabile a destra (risp. sinistra) in $x_0$ se esiste finito:
+    \[\lim_{x \rightarrow x_0^+} \frac{f(x) - f(x_0)}{x - x_0} = \lim_{x \rightarrow x_0^+} \frac{\Delta y}{\Delta x}, \quad \quad \big(\lim_{x \rightarrow x_0^-} \frac{f(x) - f(x_0)}{x - x_0} = \lim_{x \rightarrow x_0^-} \frac{\Delta y}{\Delta x}\big)\]
+    Quindi una funzione è derivabile in un punto se e solo se:
+    \[f'_+(x) = f'_-(x)\]
+    
+    \section{Punti di non derivabilità}
+    Sia $f: A \longrightarrow \mathbb{R}$, una funzione continua ma non derivabile in $x_0$ allora:
+    \begin{itemize}
+    	\item Si ha un punto di cuspide se:
+    	\[f'_+(x) = +\infty, \; f'_-(x) = -\infty \]
+    	oppure se:
+    	\[f'_+(x) = -\infty, \; f'_-(x) = +\infty \]
+    	\item Si ha un punto angoloso se:
+    	\[f'_+(x) \in \mathbb{R}, \; f'_-(x) \in \mathbb{R}\]
+    	ma:
+    	\[f'_+(x) \not = f'_-(x)\]    
+    	\item Si ha un punto a tangente verticale se:
+    	\[f'_+(x) = f'_-(x) = +\infty\]
+    	oppure se:
+    	\[f'_+(x) = f'_-(x) = -\infty\]
+    \end{itemize}
+    
+    \chapter{Calcolo differenziale e studio di funzioni}
+    
+    \section{Definizione: punti di estremo relativo}
+	Sia $f: A \longrightarrow \mathbb{R}$, allora $x_0 \in A$ è un punto di massimo relativo di $f$ in $A$ se:
+	\[\exists \delta > 0 \tc f(x) \leq f(x_0), \; \forall x \in (x_0 - \delta, x_0 + \delta) \cap A\]
+	Analogamente $x_0 \in A$ si dice punto di minimo relativo di $f$ in $A$ se:
+	\[\exists \delta > 0 \tc f(x) \geq f(x_0), \; \forall x \in (x_0 - \delta, x_0 + \delta) \cap A\]
+	
+	\section{Teorema di Fermat}
+	Sia $f: (a, b) \longrightarrow \mathbb{R}$, e sia $x_0 \in (a, b)$, supponendo che:
+	\begin{itemize}
+		\item $f$ sia derivabile in $x_0$
+		\item $x_0$ sia un punto di estremo relativo di $f$ in $(a, b)$
+	\end{itemize}
+	Allora $f'(x_0) = 0$
+	
+	\begin{proof}
+		Suppongo che $x_0$ sia un punto di massimo relativo, e poiché $x_0 \in (a, b)$, allora per definizione di massimo relativo si ha che:
+		\[\exists \delta > 0 \tc f(x) - f(x_0) \leq 0, \; \forall x \in (x_0 - \delta, x_0 + \delta)\]
+		Quindi il segno del rapporto incrementale di $f$ in $x_0$ è:
+		\[\frac{f(x) - f(x_0)}{x - x_0} \quad \begin{cases}
+			\geq 0, \text{ se } x_0 - \delta < x < x_0 \\
+			\leq 0, \text{ se } x_0 < x < x_0 + \delta
+		\end{cases}
+		\]
+		Per ipotesi $f$ è derivabile in $x_0$, quindi esiste il limite del rapporto incrementale per $x \rightarrow x_0$, e quindi esistono le derivate sinistra e destra e sono uguali, per il teorema della permanenza del segno si ha che:
+		\[f'_-(x_0) \geq 0, \quad f'_-(x_0) \leq 0\]
+		Ma per ipotesi si ha che devono essere uguali, quindi:
+		\[f'_-(x_0) = f'_-(x_0) = f'(x_0) = 0\]
+		Se invece $x_0$ è un punto di minimo relativo si ha che:
+		\[f'_-(x_0) \leq 0, \quad f'_-(x_0) \geq 0\]
+		concludendo ancora che:
+		\[f'_-(x_0) = f'_-(x_0) = f'(x_0) = 0\]
+	\end{proof}
+	
+	\section{Teorema di Rolle}
+	Sia $f: [a, b] \longrightarrow \mathbb{R}$ una funzione tale per cui:
+	\begin{enumerate}[label=\roman*)]
+		\item $f$ sia continua nell'intervallo chiuso $[a, b]$
+		\item $f$ sia derivabile nell'intervallo aperto $(a, b)$
+		\item $f(a) = f(b)$
+	\end{enumerate}
+	Allora:
+	\[\exists c \in (a, b) \tc f'(c) = 0\]
+	
+	\begin{proof}
+		Poiché $f$ è una funzione continua nell'intervallo chiuso e limitato $[a, b]$, allora per il teorema di Weierstrass $f$ ammette in $[a, b]$ un punto $x_0$ di massimo assoluto e $x_1$ di minimo assoluto.
+		Se entrambi i punti cadono agli estremi dell'intervallo, quindi che $a = x_0, b = x_1$, per l'ipotesi (iii) si ha che:
+		\[f(x_0) = f(x_1)\]
+		Segue che la funzione $f$ è costante in quanto il massimo assoluto e il minimo assoluto coincidono, e quindi la derivata prima è nulla in ogni $x \in (a, b)$, dunque basta scegliere un qualsiasi punto $c \in (a, b)$
+		Supponendo che almeno uno dei due punti $x_0, x_1$ non cada agli estremi dell'intervallo $[a, b]$, ad esempio supponendo che:
+		\[a < x_0 < b\]
+		per l'ipotesi (ii) e per il fatto che $x_0 \in (a, b)$ è un punto di massimo assoluto di $f$, e quindi anche relativo dal teorema di Fermat si conclude che:
+		\[f'(x_0) = 0\]
+		e quindi basta scegliere $c = x_0$.
+		
+		Ragionamento analogo per $x_1$, dove basta scegliere $c = x_1$
+	\end{proof}
+	
+	\section{Teorema di Lagrange}
+	Sia $f: [a, b] \longrightarrow \mathbb{R}$ una funzione tale per cui:
+	\begin{enumerate}[label=\roman*)]
+	\item $f$ sia continua nell'intervallo chiuso $[a, b]$
+	\item $f$ sia derivabile nell'intervallo aperto $(a, b)$
+	\end{enumerate}
+	Allora:
+	\[\exists c \in (a, b) \tc f'(c) = \frac{f(b) - f(a)}{b - a}\]
+	
+	\begin{proof}
+		Definisco la funzione ausiliaria:
+		\[g(x) = f(x) - [f(a) + \frac{f(b) - f(a)}{b - a}(x - a)], x \in [a, b]\]
+		La funzione viene definita in questo modo in quanto si vuole applicare il teorema di Rolle per dimostrare il teorema di Lagrange, quindi si costruisce una funzione che coincide con $f$ a meno di una correlazione lineare e che abbia valori uguali agli estremi, si considera quindi la retta secante tra $a$ e $b$, usando la definizione di retta passante per due punti:
+		\[s(x) = f(a) + m(x - a), \; m = \frac{f(b) - f(a)}{b - a}\]
+		\[s(x) = f(a) + \frac{f(b) - f(a)}{b - a}(x - a)\]
+		Si definisce quindi $g(x)$:
+		\[g(x) = f(x) - s(x)\]
+		Quindi la funzione $g$ soddisfa tutte le ipotesi del teorema di Rolle:
+		\begin{itemize}
+			\item $g$ è continua in $[a, b]$ in quanto è differenza di funzioni continue in $[a, b]$
+			\item $g$ è derivabile in $(a, b)$ in quanto è differenza di funzioni derivabili in $(a, b)$
+			\item $g(a) = g(b)$, in quanto:
+			\[g(a) = f(a) - f(a) = 0\]
+			\[g(b) = f(b) - [f(a) + \frac{f(b) - f(a)}{b - a}(b - a)] = f(b) - [f(a) + f(b) - f(a)] = 0\]
+		\end{itemize}
+		Allora per il teorema di Rolle:
+		\[\exists c \in (a, b) \tc g'(c) = 0\]
+		Derivando $g$ si ottiene:
+		\[g'(x) = f'(x) - \frac{f(b) - f(a)}{b - a}\]
+		Allora poiché:
+		\[g'(c) = 0 = f'(c) - \frac{f(b) - f(a)}{b - a} \implies f'(c) = \frac{f(b) - f(a)}{b - a}\]
+	\end{proof}
+	
+	\section{Corollario: Lipschitzianità delle funzioni con derivata limitata}
+	Sia $f$ una funzione derivabile in $I \subseteq Dom(f)$, e:
+	\[|f'(x)| \leq M \; \forall x \in I\]
+	Allora $f$ è Lipschitziana.
+	
+	\begin{proof}
+		Per ipotesi si ha che $f$ è una funzione derivabile in I e che abbia derivata limitata, allora presi arbitrariamente due punti $x, y \in I$, è possibili applicare il teorema di Lagrange a $f$ nell'intervallo $J \subseteq I$ di estremi $x, y$, allora poiché $f$ è continua e derivabile in $J$, per il teorema di Lagrange segue che:
+		\[\exists c \in J \tc f'(c) = \frac{f(x) - f(y)}{x - y}\]
+		poiché $|f'(x)| \leq M, \; \forall x \in I$, segue che:
+		\[|f'(c)| = \big|\frac{f(x) - f(y)}{x - y}\big| \leq M \implies |f(x) - f(y)| \leq M|x - y|, \forall x,y \in I\]
+		Quindi la funzione è lipschitziana.
+	\end{proof}
+	
+	\newpage
+	
+	\section{Corollario: Caratterizzazione delle funzioni costanti}
+	Sia $I \subseteq \mathbb{R}$ un intervallo, e sia $f: I \longrightarrow \mathbb{R}$ una funzione derivabile, allora $f$ è costante \textbf{se e solo se} $f'(x) = 0, \; \forall x \in I$
+	
+	\begin{proof}[Dimostrazione implicazione diretta, funzione costante $\implies f'(x) = 0$]
+		Si dimostra attraverso la definizione di derivata applicata ad $f(x) = k$ e con $x_0 \in I$, in quanto:
+		\[f'(x_0) = \lim_{x \rightarrow x_0} \frac{k - k}{x - x_0} = \lim_{x \rightarrow x_0} \frac{0}{x - x_0} = 0\]
+		Non si ha una forma indeterminata in quanto il numeratore è esattamente 0 e non tende a 0. Poiché $x_0$ è arbitrario implica che ogni $f'(x_0) = 0, \; \forall x_0 \in I$ 
+	\end{proof}
+	\begin{proof}[Dimostrazione implicazione inversa, $f'(x) = 0 \implies$ funzione costante]
+		Suppongo che $f'(x) = 0, \; \forall x \in I$ e devo dimostrare che è costante. Fisso un punto qualsiasi $a \in I$ e per dimostrare che sia costante basta verificare che:
+		\[f(x) - f(a) = 0 \iff f(x) = f(a), \; \forall x \in I\]
+		\begin{itemize}
+			\item se $x = a$, allora segue banalmente che $f(a) = f(a)$.
+			\item se $x < a$, allora poiché $f$ è derivabile in $I$, e quindi è derivabile in $[x, a] \subseteq I$ e per il teorema sulla continuità delle funzioni derivabili segue che $f$ è continua in $I$ e quindi anche in $[x, a]$, allora posso applicare il teorema di Lagrange alla funzione $f$ nell'intervallo $[x, a]$, allora segue che:
+			\[\exists c \in [x, a] \tc f'(c) = \frac{f(x) - f(a)}{x - a}\]
+			Ma poiché per ipotesi si ha che $f'(x) = 0, \; \forall x \in I$, allora segue che:
+			\[f'(c) = \frac{f(x) - f(a)}{x - a} = 0 \iff f(x) - f(a) = 0 \cdot (x - a) \iff f(x) = f(a),\; \forall x \in I\]
+			\item se $x < a$, allora poiché $f$ è derivabile in $I$, e quindi è derivabile in $[a, x] \subseteq I$ e per il teorema sulla continuità delle funzioni derivabili segue che $f$ è continua in $I$ e quindi anche in $[a, x]$, allora posso applicare il teorema di Lagrange alla funzione $f$ nell'intervallo $[a, x]$, allora segue che:
+			\[\exists c \in [a, x] \tc f'(c) = \frac{f(x) - f(a)}{x - a}\]
+			Ma poiché per ipotesi si ha che $f'(x) = 0, \; \forall x \in I$, allora segue che:
+			\[f'(c) = \frac{f(x) - f(a)}{x - a} = 0 \iff f(x) - f(a) = 0 \cdot (x - a) \iff f(x) = f(a),\; \forall x \in I\]
+		\end{itemize}
+	\end{proof}
+	
+	\section{Teorema del test della monotonia}
+	Sia $I \subseteq \mathbb{R}$ un intervallo e sia $f: I \longrightarrow \mathbb{R}$ una funzione derivabile, allora $f$ è monotona crescente (risp. decrescente) in $I$ se e solo se $f'(x) \geq 0$ (risp. $f'(x) \leq 0$), $\forall x \in I$
+	
+	\begin{proof}[Dimostrazione implicazione diretta (crescenza)]
+		Suppongo che $f$ sia derivabile e monotona crescente in $I$, e dimostro che $f'(x_0) \geq 0, \; \forall x_0 \in I$, poiché $f$ è monotona crescente in $I$, abbiamo che:
+		\[f(x) - f(x_0) \begin{cases}
+			\geq 0, \text{ se } x \in I, x > x_0 \\
+			\leq 0, \text{ se } x \in I, x < x_0 \\
+		\end{cases}\]
+		Segue che $f(x) - f(x_0)$ ho lo stesso segno di $x - x_0$ per cui:
+		\[\frac{f(x) - f(x_0)}{x - x_0} \geq 0, \quad \forall x \in I, x \not = x_0\]
+		per ipotesi $f$ è derivabile in $x_0$, allora esiste finito il limite del rapporto incrementale, dal teorema della permanenza del segno e della disuguaglianza precedente si conclude che:
+		\[f'(x_0) \geq 0\]
+	\end{proof}
+	\begin{proof}[Dimostrazione implicazione inversa (crescenza)]
+		Suppongo che $f$ sia derivabile e che $f'(x) \geq 0, \; \forall x \in I$, e voglio dimostrare che f è monotona crescente in $I$ quindi che presi due punti $x_1, x_2 \in I \tc x_1 < x_2$ si ha:
+		\[f(x_1) < f(x_2)\]
+		Applico quindi il teorema di Lagrange alla funzione $f$ (continua e derivabile) nell'intervallo chiuso e limitato $[x_1, x_2]$, allora:
+		\[\exists c \in (x_1, x_2) \tc f'(c) = \frac{f(x_2) - f(x_1)}{x_2 - x_1}\]
+		Ma per ipotesi si ha che:
+		\[f'(c) \geq 0, \quad \quad x_2 - x_1 > 0\]
+		Segue quindi che:
+		\[f(x_2) - f(x_1) \geq 0 \implies f(x_2) \geq f(x_1)\]
+	\end{proof}
+	
+	%TO DO AGGIUNGERE DIMOSTRAZIONE DECRESCENZA
+	
+	\newpage
+	
+	\section{Teorema di Cauchy}
+	Siano $f, g: [a, b] \longrightarrow \mathbb{R}$ due funzioni tale per cui:
+	
+	\begin{enumerate}[label=\roman*)]
+		\item $f, g$ siano continue nell'intervallo chiuso $[a, b]$
+		\item $f, g$ siano derivabili nell'intervallo aperto $(a, b)$
+		\item $g(a) \not = g(b)$
+	\end{enumerate}
+	Allora:
+	\[\exists c \in (a, b) \tc \frac{f'(c)}{g'(c)} = \frac{f(b) - f(a)}{g(b) - g(a)}\]
+	
+	\begin{proof}
+		La dimostrazione del teorema si svolge applicando il teorema di Rolle alla funzione ausiliaria:
+		\[h(x) = f(x) - \frac{f(b) - f(a)}{g(b) - g(a)}g(x)\]
+		La funzione $h(x)$ si costruisce partendo da:
+		\[h(x) = f(x) - k \cdot g(x)\]
+		dove $k$ è una costante determinata in modo che:
+		\[h(a) = h(b)\]
+		Imponendo quindi l'ipotesi del teorema di Rolle, segue che: 
+		\[f(a) - k \cdot g(a) = f(b) - k \cdot g(b)\]
+		Risolvendo in k si ottiene:
+		\[k (- g(a) + g(b)) = f(b) - f(a) \iff k = \frac{f(b) - f(a)}{g(b) - g(a)}\]
+		Ora verifico le ipotesi del teorema di Rolle:
+		\begin{itemize}
+			\item $h(x)$ continua in $[a, b]$ in quanto somma di continue $[a, b]$.
+			\item $h(x)$ derivabile in $(a, b)$ quanto somma di derivabile $(a, b)$.
+			\item $h(a) = h(b)$ per costruzione di $h$.
+		\end{itemize}
+		Allora per il teorema di Rolle:
+		\[\exists c \in (a, b) \tc h'(c) = 0\]
+		Derivando $h$ segue che:
+		\[h'(x) = f'(x) - \frac{f(b) - f(a)}{g(b) - g(a)} \cdot g'(x)\]
+		quindi:
+		\[h'(c) = f'(c) - \frac{f(b) - f(a)}{g(b) - g(a)} \cdot g'(c) = 0, \; c \in (a, b)\]
+		Segue che:
+		\[\frac{f'(c)}{g'(c)} = \frac{f(b) - f(a)}{g(b) - g(a)}, \; c \in (a, b)\]
+	\end{proof}
+	
+	\newpage
+	
+	\section{Teorema di L'H\capitalcircumflex{o}pital ($\frac{0}{0}$)}
+	Siano $f, g: (a, b) \longrightarrow \mathbb{R}$, con $x_0 \in (a, b)$, supponendo che:
+	\begin{enumerate}[label=\roman*)]
+		\item $f(x_0) = g(x_0) = 0$
+		\item $f, g$ derivabili in $(a, b) \setminus \{x_0\}$ e continue in $x_0$
+		\item $g'(x) \not = 0, \; \forall x \in (a, b) \setminus \{x_0\}$
+		\item $\exists \lim_{x \rightarrow x_0} \frac{f'(x)}{g'(x)} = l \in \mathbb{R}$
+	\end{enumerate}
+	Allora:
+	\[g \not = 0, \; \forall x \in (a,b) \setminus \{x_0\}, \quad \quad \exists \lim_{x \rightarrow x_0} \frac{f(x)}{g(x)} = l\]
+	
+	\begin{proof}[Dimostrazione prima tesi]
+		Suppongo per assurdo che:
+		\[\exists \overline{x} \in (a,b) \setminus \{x_0\} \tc g(\overline{x}) = 0\]
+		Allora posso applicare il teorema di Rolle alla funzione $g(x)$ nell'intervallo $[x_0, \overline{x}]$ se $x_0 < \overline{x}$ oppure in $[\overline{x}, x_0]$ se $\overline{x} < x_0$, poiché per ipotesi si ha che $g(x_0) = 0$, quindi i due estremi sono uguali, applicando quindi Rolle (supponendo che $x_0 < \overline{x}$):
+		\[\exists z \in (x_0, \overline{x}) \tc g'(z) = 0 \implies \exists z \in (a, b) \setminus \{x_0\} \tc g'(z) = 0\]
+		Ma ciò contraddice la seconda ipotesi in quanto $g'(x) \not = 0, \; \forall x \in (a, b) \setminus \{x_0\}$.
+		
+		Deve quindi essere vero che $g(x) \not = 0, \; \forall x \in (a, b) \setminus \{x_0\}$ 
+	\end{proof}
+	\begin{proof}[Dimostrazione seconda tesi]
+		Si vuole dimostrare che:
+		\[\exists \lim_{x \rightarrow x_0} \frac{f(x)}{g(x)} = l\]
+		Sapendo che $g(x) \not = 0, \; \forall x \in (a, b) \setminus \{x_0\}$, allora il rapporto tra $f$ e $g$ è ben definito se $x \not = x_0$:
+		\[\exists \frac{f(x)}{g(x)}, x \not = x_0\]
+		Sia quindi $x \in (a,b) \setminus \{x_0\}$, allora considero l'intervallo chiuso $[x_0, x], \; x_0 < x$ oppure $[x, x_0], \; x < x_0$
+		Le due funzioni sono continue in $x_0$ e derivabili in $(a,b) \setminus \{x_0\}$ per ipotesi e quindi sono continue in ogni sotto-intervallo di $(a, b)$
+		Posso quindi applicare il Teorema di Cauchy alle funzioni $f, g$ nell'intervallo $I_x$ (quindi $[x_0, x]$ o $[x, x_0]$), e quindi:
+		\[\exists c(x) \in I_x \tc \frac{f'(c(x))}{g'(c(x))} = \frac{f(x) - f(x_0)}{g(x) - g(x_0)}\]
+		Ma per ipotesi si ha che:
+		\[f(x_0) = g(x_0) = 0 \implies \frac{f'(c(x))}{g'(c(x))} = \frac{f(x)}{g(x)} \forall x \not = x_0\]
+		Poiché $c(x)$ è compreso tra gli estremi di $I_x$, allora:
+		\[|c(x) - x_0| \leq |x - x_0|\]
+		allora se $x \longrightarrow x_0$, necessariamente anche $c(x) \longrightarrow x_0$, per ipotesi sappiamo che:
+		\[\exists \lim_{x \rightarrow x_0} \frac{f'(x)}{g'(x)} = l \in \mathbb{R}\]
+		Poiché $c(x) \longrightarrow x_0$, allora:
+		\[\lim_{x \rightarrow x_0} \frac{f'(x)}{g'(x)} = l \in \mathbb{R} = \lim_{x \rightarrow x_0} \frac{f'(c(x))}{g'(c(x))} = l \in \mathbb{R}\]
+		ma poiché abbiamo dimostrato che:
+		\[\frac{f'(c(x))}{g'(c(x))} = \frac{f(x)}{g(x)}, \; \forall x \not = x_0\]
+		allora passando al limite:
+		\[\lim_{x \rightarrow x_0} \frac{f'(c(x))}{g'(c(x))} = \lim_{x \rightarrow x_0} \frac{f'(x)}{g'(x)} = \lim_{x \rightarrow x_0} \frac{f(x)}{g(x)} = l\]
+	\end{proof}
+	
+	\section{Teorema di L'H\capitalcircumflex{o}pital ($\frac{\infty}{\infty}$)}
+	Siano $f, g: (a, b) \longrightarrow \mathbb{R}$, supponendo che:
+	\begin{enumerate}[label=\roman*)]
+		\item $\lim_{x \rightarrow a^+} f(x)$, $\lim_{x \rightarrow a^+} g(x)$ sono infiniti, oppure $\lim_{x \rightarrow b^-} f(x)$, $\lim_{x \rightarrow b^-} g(x)$ sono infiniti
+		\item $f, g$ derivabili in $(a, b)$
+		\item $g'(x) \not = 0, \; \forall x \in (a, b)$
+		\item $\exists \lim_{x \rightarrow x_0} \frac{f'(x)}{g'(x)} = l \in \mathbb{R}$
+	\end{enumerate}
+	Allora:
+	\[\exists \lim_{x \rightarrow x_0} \frac{f(x)}{g(x)} = l\]
+	
+	\chapter{Convessità e concavità}
+	\section{Definizione: Convessità e concavità}
+	Sia $f: I \longrightarrow \mathbb{R}$, si dice convesse se:
+	\[f((1-\lambda)x_0 + \lambda x_1) \leq (1 - \lambda)f(x_0) + \lambda f(x_1), \; \forall x_0, x_1 \in I, \; \forall \lambda \in [0, 1]\]
+	La stessa funzione si dice strettamente convessa, se la disuguaglianza è verificata in senso stretto, per ogni $x_0 \not = x_1$, e per ogni $\lambda \in (0, 1)$.
+	
+	Si dirà che $f$ è concava (strettamente concava) se $-f$ è convessa (strettamente convessa).
+	
+	\section{Definizione: Combinazione lineare convessa di $x_0$ e $x_1$}
+	Per combinazione lineare convessa si intende:
+	\[t \cdot x_0 + (1 - t) \cdot x_1\;  \forall t \in [0, 1]\]
+	è una combinazione in quanto:
+	\[\lambda_0 \cdot x_0 + \lambda_1 \cdot x_1, \lambda_0, \lambda_1 \in \mathbb{R}\]
+	e lineare in quanto:
+	\[\lambda_0 = t, \quad \lambda_1 = 1 - t\]
+	
+	\section{Teorema sulla continuità delle funzioni convesse}
+	Sia $f: I \longrightarrow \mathbb{R}$ una funzione convessa in $I$, allora $f$ è continua in ogni punto $x_0 \in I$ aperto.
+	
+	\begin{proof}
+		Suppongo che $f$ sia convessa, e:
+		\[f(x) - f(x_0) = \frac{f(x) - f(x_0)}{x - x_0} \cdot (x - x_0) \overset{x \rightarrow x_0}{\longrightarrow} 0 \implies \lim_{x \rightarrow x_0} f(x) - f(x_0) = 0 \implies \lim_{x \rightarrow x_0} f(x) = f(x_0)\]
+		e quindi che $f$ è continua.
+	\end{proof}  
+	
+	\section{Funzioni convesse derivabili due volte}
+	Sia $f: (a, b) \rightarrow \mathbb{R}$ una funzione derivabile due volte in $(a, b)$, allora $f$ è convessa (risp. concava) se e solo se $f''(x) \geq 0$ (risp. $f''(x) \leq 0$) per ogni $x \in (a, b)$ 
+	
+	% TO-DO: FINIRE CONCAVITÀ E CONVESSITÀ
+	
+	\chapter{Formula di Taylor}
+	\section{Teorema della formula di Taylor con resto di Peano}
+	Sia $f : (a,b) \to \mathbb{R}$, $x_0 \in (a,b)$, e sia $f$ derivabile $n$ volte in $x_0$ e $n-1$ volte in $(a,b)$. Definiamo il polinomio di Taylor di ordine $n$ come:
+	\[P_n(x) = \sum_{k=0}^{n} \frac{f^{(k)}(x_0)}{k!}(x - x_0)^k\]
+	Allora:
+	\[f(x) = P_n(x) + o(|x - x_0|^n) \qquad \text{per } x \to x_0\]
+	\subsection*{Caso $n=0$}
+	Se $f$ è derivabile in $x_0$, per il teorema di Lagrange esiste
+	\[z = z(x) \in I_x := 
+	\begin{cases}
+		(x, x_0), & x < x_0,\\
+		(x_0, x), & x > x_0,
+	\end{cases}\]
+	tale che:	
+	\[f(x) - f(x_0) = f'(z)(x - x_0)\]
+	Poiché $z$ è compreso tra $x$ e $x_0$, segue che $z \to x_0$ quando $x \to x_0$.  
+	Essendo $f'$ continua in $x_0$, si ha:	
+	\[f'(z) \longrightarrow f'(x_0)\]
+	Dunque:	
+	\[f'(z)(x - x_0) \longrightarrow f'(x_0)\cdot 0 = 0\]
+	Otteniamo quindi:	
+	\[f(x) = f(x_0) + o(1)\]
+	che è lo sviluppo di Taylor all'ordine $0$ con resto di Peano.
+	
+	
+	\section{Teorema della formula di Taylor con resto di Lagrange}
+	Sia $f : (a,b) \to \mathbb{R}$, $x_0 \in (a,b)$, e sia $f$ derivabile $n+1$ volte in $(a,b)$.  
+	Allora per ogni $x \in (a,b)$ esiste un punto	
+	\[
+	z(x) \in I_x := 
+	\begin{cases}
+		(x, x_0), & x < x_0,\\
+		(x_0, x), & x > x_0,
+	\end{cases}
+	\]
+	tale che:
+	\[f(x) = P_n(x) + \frac{f^{(n+1)}(z(x))}{(n+1)!}(x - x_0)^{n+1}\]
+	dove $P_n$ è il polinomio di Taylor di ordine $n$ in $x_0$:	
+	\[P_n(x) = \sum_{k=0}^{n} \frac{f^{(k)}(x_0)}{k!}(x - x_0)^k\]
+	
+	\chapter{Integrazione}
+	\section{Costruzione dell'integrale di Riemann}
+	Sia $f : [a,b] \longrightarrow \mathbb{R}$ una funzione tale per cui:
+	\begin{itemize}
+		\item $f$ sia limitata
+		\item $f(x) \geq 0 \; \forall x \in [a,b]$
+	\end{itemize}
+	Poiché $f$ è limitata, esiste $M > 0$ tale che:
+	\[0 \leq f(x) \leq M \quad \forall x \in [a,b]\]
+	Si definisce l'insieme sotto-grafico di $f$:
+	\[E = \{(x,y) \in \mathbb{R}^2 \tc x \in [a,b],\ 0 \leq y \leq f(x)\}\]
+	Si osserva che:
+	\[E \subseteq [a,b] \times [0,M]\]
+	Si assume che l'area sia una funzione definita su opportuni sottoinsiemi di $\mathbb{R}^2$ a valori reali non negativi, che soddisfa le seguenti proprietà:
+	\begin{itemize}
+		\item \textbf{Monotonia}: se $A \subset B$, allora $\mathrm{Area}(A) \leq \mathrm{Area}(B)$
+		\item \textbf{Additività}: se $A \cap B = \varnothing$, allora
+		\[
+		\mathrm{Area}(A \cup B) = \mathrm{Area}(A) + \mathrm{Area}(B)
+		\]
+		\item \textbf{Non negatività}: $\mathrm{Area}(A) \geq 0$
+	\end{itemize}
+	In particolare, se $a<b$ e $c<d$, vale:
+	\[\mathrm{Area}([a,b] \times [c,d]) = (b-a)(d-c)\]
+	Sia ora $P$ una partizione di $[a,b]$, cioè una suddivisione di $[a, b]$ in sotto-intervalli:
+	\[[a, b] = [x_0, x_1[ \cup [x_1, x_2[ \cup [x_2, x_3[ \cup \cdots \cup [x_{n-1}, x_n]\]
+	Fissata una partizione $P$ si ha che:
+	\[E = E_1 \cup E_2 \cup E_3 \cup \cdots \cup E_n\]
+	Per ogni $i = 1, \dots, n - 1$ si definisce:
+	\[E_i = \{(x,y) \in \mathbb{R}^2 \tc x \in [x_{i-1},x_i[,\ 0 \leq y \leq f(x)\}\]
+	tranne per $i = n$, dove è definito:
+	\[E_n = \{(x,y) \in \mathbb{R}^2 \tc x \in [x_{n-1},x_n],\ 0 \leq y \leq f(x)\}\]
+	Per ciascun intervallo $[x_{i-1},x_i]$ si pongono:
+	\[m_i = \inf_{x \in [x_{i-1},x_i]} f(x), \quad M_i = \sup_{x \in [x_{i-1},x_i]} f(x)\]
+	Allora segue che:
+	\[\mathrm{Area}(r_i) \leq \mathrm{Area}(E_i) \leq \mathrm{Area}(R_i)\]
+	Dove $r_i, R_i$ sono definiti come segue:
+	\[\mathrm{Area}(r_i) := (x_i - x_{i - 1})m_i, \quad \mathrm{Area}(R_i) := (x_i - x_{i - 1})M_i\]
+	Dalle proprietà dell'area segue che:
+	\[\sum_{i=1}^n m_i (x_i - x_{i-1})
+	\;\leq\;
+	\mathrm{Area}(E)
+	\;\leq\;
+	\sum_{i=1}^n M_i (x_i - x_{i-1})\]
+	Le due somme sono dette rispettivamente \emph{somma inferiore} e \emph{somma superiore} associate alla partizione $P$. Le due somme sono rispettivamente chiamate anche:
+	\[s(f, P) := \sum_{i=1}^n m_i (x_i - x_{i-1}), \quad \quad S(f, P) := \sum_{i=1}^n M_i (x_i - x_{i-1})\]
+	
+	Se la partizione $P$ viene raffinata, quindi vengono aggiungi nuovi punti ottenendo una nuova partizione $P'$, allora l'approssimazione dell'area sarà migliore:
+	\[P := \{x_0, x_1, \cdots, x_n\} \implies P' := \{x_0, \frac{x_0 + x_1}{2}, x_1, \frac{x_1 + x_2}{2}, x_2, \cdots, x_n \}\]  
+	Quindi che:
+	\[s(f, P) \leq s(f, P')\]
+	\[S(f, P) \geq S(f, P')\]
+	
+	Allora si definisce:
+	\[I_-(f) := \sup_{P} s(f, P)\]
+	\[I_+(f) := \inf_{P} S(f, P)\]
+	
+	\newpage
+	
+	\section{Definizione: Integrabilità secondo Riemann}
+	Sia $f: [a, b] \longrightarrow \mathbb{R}$, una funzione limitata, allora si dirà che $f$ è \textbf{integrabile secondo Riemann} nell'intervallo $[a, b]$ se:
+	\[I_-(f) = I_+(f)\]
+	Nello specifico se:
+	\[\forall \varepsilon > 0, \exists P \tc 0 \leq S(f, P) - s(f, P) < \varepsilon\]
+	Inoltre:
+	\[I_a^b (f) = \int_{a}^{b} f(x) dx\]
+	e geometricamente $I(f)$ rappresenta $\mathrm{Area}(E)$, quindi sottesa al grafico di $f$, $x \in [a, b]$.
+	
+	\section{Definizione: Insieme delle funzioni integrabili secondo Riemann}
+	La notazione per l'insieme delle funzioni integrabili secondo Riemann in $[a, b]$ è:
+	\[\mathcal{R}([a, b]) := \{f: [a, b] \longrightarrow \mathbb{R} \text{ integrabili secondo Riemann}\}\]
+	
+	\newpage
+	
+	\section{Teorema sull'integrabilità secondo Riemann}
+	Sia $f: [a, b] \longrightarrow \mathbb{R}$ appartiene a $\mathcal{R}([a, b])$ se:
+	\begin{itemize}
+		\item $f \in \mathcal{C}^0([a, b])$
+		\item $f$ è monotona e limitata.
+	\end{itemize}
+	
+	\begin{proof}[Dimostrazione integrabilità di funzioni continue]
+		Sia $f$ una funzione continua in $[a, b]$, allora per il teorema di Heine-Cantor è uniformemente continua in $[a, b]$, quindi:
+		\[\forall \varepsilon > 0, \exists \delta > 0 \tc \forall x, y \in [a, b], \; |x - y| < \delta, |f(x) - f(y)| < \varepsilon\]
+		Scelgo quindi una partizione $P$ tale per cui:
+		\[x_i - x_{i - 1} < \delta, \forall i\]
+		Allora:
+		\[S(f, P) - s(f, P) = \sum_{i=1}^n (M_i(x_i - x_{i - 1})) - \sum_{i=1}^n (m_i(x_i - x_{i - 1})) \implies\]
+		\[\implies \sum_{i=1}^n ((M_i - m_i)(x_i - x_{i - 1}))\]
+		Poiché $[a, b]$ è un intervallo chiuso e limitato, allora per il Teorema di Weierstrass esistono massimo e minimo assoluti:
+		\[f(x_{i_{min}}) = m_i = \min_{[x_{i - 1}, x_i]} f, \quad \quad f(x_{i_{max}}) = M_i = \max_{[x_{i - 1}, x_i]} f\]
+		e dato che $f$ è continua, allora:
+		\[\lim_{x \rightarrow x_i^-} f(x) = \lim_{x \rightarrow x_i^+} f(x) = f(x_i)\]
+		allora:
+		\[|x_{i_{max}} - x_{i_{min}}| < \delta \implies |f(x_{i_{max}}) - f(x_{i_{min}})| < \varepsilon\]
+		Definendo $f(x_{i_{max}}) = M_i$,  $f(x_{i_{min}}) = m_i$, segue che:
+		\[\implies \sum_{i=1}^n ((M_i - m_i)(x_i - x_{i - 1})) < \varepsilon \sum_{i=1}^n (x_i - x_{i - 1})\]
+		Ma sviluppando la serie si nota che rimangono solo i termini $x_n - x_0$:
+		\[x_1 - x_0 + x_2 - x_1 + x_3 - x_2 + \cdots + x_n = x_n - x_0\]
+		Notando che $x_n = b, x_0 = a$, segue che:
+		\[S(f, P) - s(f, P) < \varepsilon (b - a)\]
+		e scegliendo $\overline{\varepsilon} = \varepsilon(b - a)$ si ha che:
+		\[S(f, P) - s(f, P) < \overline{\varepsilon}\]
+		E quindi $f$ è integrabile
+	\end{proof}
+	
+	\begin{proof}[Dimostrazione integrabilità di funzioni monotone e limitate]
+		Suppongo che $f$ sia crescente, e non costante, in quanto se fosse costante sarebbe continua e quindi integrabile.
+		
+		Prendo quindi una partizione $P$ tale per cui:
+		\[\forall \varepsilon > 0, \; x_i - x_{i - 1} < \varepsilon, \; \forall i \in \{1, \cdots, n\}\]
+		e vedo che:
+		\[S(f, P) - s(f, P) = \sum_{i=1}^{n} (M_i - m_i)(x_i - x_{i - 1})\]
+		Poiché $f$ è crescente, allora il massimo e il minimo saranno definiti come segue:
+		\[M_i = \lim_{x \rightarrow x_i^-} f(x) = \sup_{[x_{i-1},x_i]} f, \quad m_i = \lim_{x \rightarrow x_{i - 1}^+} = \inf_{[x_{i-1},x_i]} f\]
+		Segue che:
+		\[\sum_{i=1}^{n} (M_i - m_i)(x_i - x_{i - 1}) = \sum_{i = 1}^{n} (f_-(x_i) - f_+(x_{i - 1}))(x_i - x_{i - 1})\]
+		Ma per la scelta della partizione si ha che:
+		\[x_i - x_{i - 1} < \varepsilon\]
+		allora segue che:
+		\[\sum_{i = 1}^{n} (f_-(x_i) - f_+(x_{i - 1}))(x_i - x_{i - 1}) < \varepsilon \cdot \sum_{i = 1}^{n} (f_-(x_i) - f_+(x_{i - 1}))\]
+		Sviluppando la somma si nota che:
+		\[f_-(x_1) - f_+(x_0) + f_-(x_2) - f_+(x_1) + f_-(x_3) - f_+(x_2) + \cdots + f_-(x_n) - f_+(x_{n - 1})\]
+		Siccome $f$ è crescente, allora:
+		\[f_-(x_i) \leq f_+ (x_i) \implies f_-(x_i) - f_+ (x_i) \leq 0\]
+		allora:
+		\[S(f, P) - s(f, P) = \cdots < \varepsilon \cdot \sum_{i = 1}^{n} (f_-(x_i) - f_+(x_{i - 1})) \leq \varepsilon \cdot (f(b) - f(a))\]
+		Quindi:
+		\[\forall \varepsilon > 0, \; \exists P \tc 0 \leq S(f, P) - s(f, P) < 0 \implies f \in \mathcal{R}([a, b])
+		\]
+	\end{proof}
+	
+	\newpage
+	
+	\section{Teorema della media integrale}
+	Sia $f: [a, b] \longrightarrow \mathbb{R}$ una funzione continua, allora:
+	\[\exists c \in [a, b] \tc f(c) = \frac{1}{b - a}\cdot \int_{a}^{b}f(x)dx\]
+	
+	\begin{proof}
+		Poiché la funzione è continua in un intervallo chiuso e limitato, allora per il teorema di Weierstrass ammette massimo e minimo assoluti nell'intervallo, si ha quindi che:
+		\[m \leq f(x) \leq M, \; \forall x \in [a, b]\]
+		Dalla proprietà di monotonia dell'integrale segue che:
+		\[\int_{a}^{b} mdx \leq \int_{a}^{b} f(x)dx \leq \int_{a}^{b} Mdx\]
+		Calcolando gli integrali costanti segue che:
+		\[m(b - a) \leq \int_{a}^{b} f(x)dx \leq M(b - a)\]
+		Dividendo tutto per $(b - a) > 0$, segue che:
+		\[m < \frac{1}{b - a}\cdot \int_{a}^{b}f(x)dx < M\]
+		Quindi poiché è appartiene all'intervallo $(m, M)$ per il teorema dei valori intermedi si ha che:
+		\[\exists c \in [a, b] \tc f(c) = \frac{1}{b - a}\cdot \int_{a}^{b}f(x)dx\]
+	\end{proof}
+	
+	\newpage
+	
+	\section{Teorema di Torricelli}
+	Sia $f: [a, b] \longrightarrow \mathbb{R}$ una funzione continua in $[a, b]$, allora la sua funzione integrale $I_f(x)$ è derivabile in $[a, b]$ e:
+	\[I'_f(x) = f(x), \; \forall x \in [a, b]\]
+	
+	\begin{proof}
+		Sia $x \in [a, b]$, per dimostrare che $I_f$ è derivabile bisogna verificare che nel punto $x$ esista finito il limite del rapporto incrementale:
+		\[\lim_{h \to 0^+} \frac{I_f(x + h) - I_f(x)}{h}\]
+		e inoltre bisogna anche dimostrare che vale $f(x)$.
+		
+		Suppongo che $x < b$ e che $h > 0$ allora esplicito il limite del rapporto incrementale, usando la definizione di funzione integrale:
+		\[\frac{1}{h} \cdot \big[\int_{x_0}^{x + h} f(t)dt - \int_{x_0}^{x} f(t)dt\big] = \frac{1}{h} \cdot \int_{x}^{x + h} f(t)dt\]
+		poiché l'ultimo termine è la formula della media integrale applicata ad $[x, x + h]$, allora si ha che:
+		\[\exists x_h \tc f(x_h) = \frac{1}{h} \cdot \int_{x}^{x + h} f(t)dt\]
+		quindi:
+		\[\lim_{h \to 0^+} \frac{I_f(x + h) - I_f(x)}{h} = f(x_h)\]
+		Ora svolgendo il limite per $h \to 0$, dato che:
+		\[x \leq x_h \leq x + h, \; h > 0, \quad x + h \leq x_h \leq x, \; h < 0\]
+		allora per il teorema del confronto vale che:
+		\[\lim_{h \to 0} x_h = x\]
+		e poiché $f$ è continua si ha che:
+		\[\lim_{h \to 0} f(x_h) = f(x)\]
+	\end{proof}
+	
+	\newpage
+	
+	\section{Teorema fondamentale del calcolo integrale}
+	Sia $f: [a, b] \longrightarrow \mathbb{R}$ una funzione continua e sia $G$ una primitiva di $f$ allora:
+	\[\int_{a}^{b} f(x)dx = G(b) - G(a) =: [G(x)]_a^b\]
+	
+	\begin{proof}
+		Sia $I_f$ la funzione integrale di $f$ relativa al punto $a$, per il teorema di Torricelli $I_f$ è una primitiva di $f$ e poiché anche $G(x)$ è una primitiva di $f$ allora:
+		\[I_f(x) = G(x) + c, \quad x \in [a, b]\]
+		Allora poiché l'integrale di un punto é nullo vale che:
+		\[I_f(a) = 0\]
+		quindi:
+		\[0 = G(a) + c \implies c = -G(a)\]
+		Segue che:
+		\[I_f(x) = G(x) - G(a), x \in [a, b]\]
+		Poiché:
+		\[\int_{a}^{b} f(x)dx = I_f(b) = G(b) - G(a)\]
+	\end{proof}
+ 	
+	\chapter{Integrali impropri}
+	\section{Integrali su intervalli illimitati}
+	Sia $f: [a, +\infty) \longrightarrow \mathbb{R}$ integrabile secondo Riemann su ogni intervallo chiuso e limitato $[a, b], b > a$.
+	
+	Si definisce integrale improprio di $f$ in $[a, +\infty)$ come:
+	\[\int_{a}^{+\infty} f(x)dx := \lim_{b \to +\infty} \int_{a}^{b} f(x)dx\]
+	e può esistere, finito o infinito, oppure non esistere.
+	\newline
+	
+	Sia $f: (-\infty, b] \longrightarrow \mathbb{R}$ integrabile secondo Riemann su ogni intervallo chiuso e limitato $[a, b], a < b$.
+	
+	Si definisce integrale improprio di $f$ in $(-\infty, b]$ come:
+	\[\int_{-\infty}^{b} f(x)dx := \lim_{a \to -\infty} \int_{a}^{b} f(x)dx\]
+	e può esistere, finito o infinito, oppure non esistere.
+		
+	\section{Definizione: Integrali impropri su $\mathbb{R}$}
+	Sia $f: \mathbb{R} \longrightarrow \mathbb{R}$ una funzione integrabile in ogni intervallo chiuso e limitato $[a, b], a < b$, allora si dice che $f$ è integrabile in senso improprio su $\mathbb{R}$ se:
+	\[\exists x_0 \in \mathbb{R} \tc \exists \int_{-\infty}^{x_0} f(x)dx, \exists \int_{x_0}^{+\infty} f(x)dx\]
+	Tale definizione è indipendente dalla scelta di $x_0$, e si definisce come segue:
+	\[\int_{-\infty}^{+\infty} f(x)dx = \int_{-\infty}^{x_0} f(x)dx + \int_{x_0}^{+\infty} f(x)dx\]
+	
+	\newpage
+	
+	\section{Definizione: Integrali impropri di funzioni illimitate}
+	Sia $f : [a,b) \longrightarrow \mathbb{R}$ una funzione integrabile secondo Riemann su ogni intervallo chiuso e limitato $[a,c]$ con $a < c < b$, allora $f$ si dice integrabile impropriamente sull'intervallo $[a, b)$, e quindi che l'integrale è convergente se:
+	\[\exists \lim_{h \to 0^+} \int_{a}^{b - h} f(x)dx \in \mathbb{R}\]
+	e in tal caso il valore del limite si indica con:
+	\[\int_{a}^{b} f(x)dx := \lim_{h \to 0^+} \int_{a}^{b - h} f(x)dx\]
+	
+	Analogamente, se $f: (a, b] \longrightarrow \mathbb{R}$ è integrabile secondo Riemann su ogni intervallo chiuso e limitato $[c, b]$ con $a < c < b$, allora $f$ si dice integrabile impropriamente sull'intervallo $(a, b]$, e quindi che l'integrale è convergente se:
+	\[\exists \lim_{h \to 0^+} \int_{a + h}^{b} f(x)dx \in \mathbb{R}\]
+	e in tal caso il valore del limite si indica con:
+	\[\int_{a}^{b} f(x)dx := \lim_{h \to 0^+} \int_{a + h}^{b} f(x)dx\]
+	
+	In tutti gli altri casi si dice che $f$ non è integrabile impropriamente, se il limite esiste ma non finito, allora si dice che l'integrale improprio diverge (a $+\infty$ o a $-\infty$ ).
+	
+	\section{Criteri del confronto}
+	Spesso risulta complicato calcolare una primitiva della funzione integranda e successivamente studiare il limite che definisce un integrale improprio. 
+	Quando non è necessario conoscere il valore dell'integrale, è quindi utile introdurre altri metodi che permettano di stabilire se un integrale improprio converge o diverge.
+	
+	\subsection{Teorema del confronto su semirette}
+	Siano $f, g: [a, +\infty) \longrightarrow \mathbb{R}$ due funzioni integrabili su ogni intervallo del tipo $[a, b], a < b$, supponendo che:
+	\[0 \leq f(x) \leq g(x), \forall x \in [a, b]\]
+	Allora se l'integrale improprio di $g$ su $[a, +\infty)$ converge, allora converge anche l'integrale improprio di $f$, analogamente se l'integrale improprio di $f$ su $[a, +\infty)$ diverge, allora diverge anche l'integrale improprio di $g$.
+	
+	\subsection{Teorema del confronto per funzioni illimitate}
+	Siano $f, g: [a, b) \longrightarrow \mathbb{R}$ due funzioni integrabili su ogni intervallo del tipo $[a, c], \forall c \in (a, b)$, supponendo che:
+	\[0 \leq f(x) \leq g(x), \forall x \in [a, b)\]
+	Se converge l'integrale improprio di $g$ su $[a, b)$, allora converge anche quello di $f$, analogamente se diverge l'integrale improprio di $f$ su $[a, b)$ allora diverge anche quello di $g$
+	
+	\subsection{Teorema del confronto asintotico}
+	Siano $f,g : I \longrightarrow \mathbb{R}$ due funzioni definite su un intervallo $I$ della forma $(a,+\infty)$, $(-\infty,b)$, $(a,b)$ oppure $(a,b]$, integrabili secondo Riemann su ogni intervallo chiuso e limitato contenuto in $I$. 
+	Si supponga che $g(x) \neq 0$ definitivamente e che esista il limite:
+	\[
+	\lim_{x \to x_0} \frac{f(x)}{g(x)} = \ell,
+	\]
+	dove $x_0$ rappresenta l’estremo improprio dell’intervallo $I$ (finito o infinito).
+	
+	Allora valgono i seguenti casi:
+	\begin{itemize}
+		\item se $\ell \in (0,+\infty)$, gli integrali impropri di $f$ e $g$ hanno lo stesso carattere, cioè:
+		\[
+		\int_I f(x)\,dx \text{ converge } \Longleftrightarrow \int_I g(x)\,dx \text{ converge};
+		\]
+		
+		\item se $\ell = 0$ e $\int_I g(x)\,dx$ converge, allora anche $\int_I f(x)\,dx$ converge;
+		
+		\item se $\ell = +\infty$ e $\int_I g(x)\,dx$ diverge, allora anche $\int_I f(x)\,dx$ diverge.
+	\end{itemize}
+	
+	
+	\subsection{Definizione: Funzione assolutamente integrabile}
+	Una funzione $f$ si dice \emph{assolutamente integrabile} se $|f|$ è integrabile impropriamente.
+	
+	\subsection{Teorema dell'assoluta integrabilità}		
+	Sia $f \in \mathcal{R}([a+\varepsilon,b])$ per ogni $\varepsilon>0$, oppure $f \in \mathcal{R}([a,M])$ per ogni $M>0$ sufficientemente grande. 
+	
+	Se $|f|$ è integrabile impropriamente in $(a,b]$ oppure in $[a,+\infty)$, allora:
+	\begin{itemize}
+		\item $f$ è integrabile impropriamente in $(a, b]$ e:
+			\[\bigg|\int_a^{b} f(x)dx\bigg| \; \leq \; \int_a^{b} |f(x)|dx\]
+		\item $f$ è integrabile impropriamente in $[a, +\infty)$ e:
+			\[\bigg|\int_a^{+\infty} f(x)dx\bigg| \; \leq \; \int_a^{+\infty} |f(x)|dx\]
+	\end{itemize}
+	
+	\chapter{Serie numeriche}
+	
+	\section{Definizione di serie numerica}
+	Sia $(a_n)_{n \in \mathbb{N}}$ una successione reale.  
+	Si chiama \emph{serie numerica} associata alla successione $(a_n)$ la notazione:
+	\[
+	\sum_{n=0}^{+\infty} a_n := \lim_{n \to +\infty} \sum_{k=0}^{n} a_k.
+	\]
+	che rappresenta il limite delle somme parziali:
+	\[
+	S_n := \sum_{k=0}^{n} a_k.
+	\]
+	La serie si dice:
+	\begin{itemize}
+		\item \emph{convergente} se esiste finito il limite $\displaystyle \lim_{n \to +\infty} S_n$;
+		\item \emph{divergente} se tale limite è infinito;
+		\item \emph{non convergente} se il limite non esiste.
+	\end{itemize}
+	
+	\section{Serie geometriche}
+	Si chiama \emph{serie geometrica} di ragione $q \in \mathbb{R}$ la serie:
+	\[\sum_{n=0}^{+\infty} q^n\]
+	Le somme parziali della serie geometrica sono date da:
+	\[
+	\sum_{n=0}^{N} q^n =
+	\begin{cases}
+		\dfrac{1 - q^{N+1}}{1 - q}, & \text{se } q \neq 1, \\[8pt]
+		N+1, & \text{se } q = 1
+	\end{cases}
+	\]
+	La serie geometrica converge se e solo se $|q| < 1$, e in tal caso vale:
+	\[\sum_{n=0}^{+\infty} q^n = \frac{1}{1 - q}\]
+	Se $|q| \geq 1$, la serie geometrica diverge.
+		
+	Ad esempio, per $q = \frac{1}{2}$ si ha:
+	\[\sum_{n=0}^{+\infty} \left(\frac{1}{2}\right)^n = 2\]
+	
+	\section{Serie armonica}
+	Si chiama \emph{serie armonica} la serie:
+	\[\sum_{n=1}^{+\infty} \frac{1}{n}\]
+	La serie armonica diverge positivamente, cioè:
+	\[
+	\sum_{n=1}^{+\infty} \frac{1}{n} = +\infty.
+	\]
+	
+	\section{Condizione necessaria di convergenza}
+	Sia $\sum a_n$ una serie numerica, se la serie converge, allora il termine generale tende a zero, cioè:
+	\[\lim_{n \to +\infty} a_n = 0\]
+	Tale condizione è \emph{necessaria ma non sufficiente} per la convergenza di una serie: esistono serie per cui $\lim_{n \to +\infty} a_n = 0$, ma che risultano divergenti, come ad esempio la serie armonica.
+	
+	\newpage
+	
+	\section{Serie a termini non negativi}
+	Una serie $\sum a_n$ si dice \emph{a termini non negativi} se:
+	\[a_n \geq 0 \quad \forall n \in \mathbb{N}\]
+	Per una serie a termini non negativi valgono le seguenti alternative:
+	\begin{itemize}
+		\item la serie converge e la successione delle somme parziali è limitata;
+		\item la serie diverge positivamente, cioè $\displaystyle \sum_{n=0}^{+\infty} a_n = +\infty$.
+	\end{itemize}
+	
+	\subsection{Teorema: Criterio del confronto}
+	Siano $\sum a_n$ e $\sum b_n$ due serie a termini non negativi, tale per cui:
+	\[0 \leq a_n \leq b_n \forall n \in \mathbb{N}\]
+	Allora:
+	\begin{enumerate}[label=\alph*)]
+		\item se $\sum b_n$ è convergente, allora anche $\sum a_n$ è convergente.
+		\item se $\sum a_n$ è divergente, allora anche $\sum b_n$ è divergente.
+	\end{enumerate}
+	
+	\subsection{Teorema: Criterio del confronto asintotico}
+	Siano $\sum a_n$ e $\sum b_n$ due serie a termini non negativi, tale per cui:
+	\[0 \leq a_n \leq b_n \forall n \in \mathbb{N}\]
+	se esiste finito e diverso da 0 il limite:
+	\[\lim_{n \to +\infty} \frac{a_n}{b_n} = l \in \mathbb{R} \setminus \{0\}\]
+	allora le due serie hanno lo stesso carattere.
+	
+	\subsection{Teorema: Criterio della radice}
+	Sia $\sum a_n$ una serie a termini non negativi. Se esiste un numero $l < 1$ tale per cui:
+	\[\sqrt[n]{a_n} \leq l\]
+	definitivamente, allora la serie è convergente. Se invece $a_n \geq 1$ per infiniti indici $n \in \mathbb{N}$, allora la serie è divergente a $+ \infty$
+	
+	\subsection{Teorema: Criterio della radice asintotico}
+	Sia $\sum a_n$ una serie a termini non negativi e supponiamo che esista:
+	\[\lim_{n \to +\infty} \sqrt[n]{a_n} = l\]
+	Allora, se $l < 1$ la serie converge, se $l > 1$ la serie diverge, se $l = 1$ non possiamo affermare nulla.
+	
+	\subsection{Teorema: Criterio del rapporto}
+	Sia $\sum a_n$ una serie a termini non negativi. Se esiste un numero $l < 1$ tale per cui:
+	\[\frac{a_{n + 1}}{a_n} \leq l\]
+	definitivamente, allora la serie è convergente. Se invece si ha che $a_{n + 1} \geq a_n$ definitivamente, allora la serie è divergente.
+	
+	\subsection{Teorema: Criterio del rapporto asintotico}
+	Sia $\sum a_n$ una serie a termini non negativi e supponiamo che esista:
+	\[\lim_{n \to +\infty} \frac{a_{n + 1}}{a_n} = l\]
+	Allora se $l < 1$ la serie è convergente, mentre se $l > 1$ la serie diverge, se $l = 1$ non possiamo affermare nulla.
+	
+	\subsection{Teorema: Criterio della convergenza integrale}
+	Sia data una funzione $f: [M, +\infty) \longrightarrow \mathbb{R}, \; M \in \mathbb{N}$, non negativa e monotona decrescente. Allora:
+	\[\sum_{n = M}^{+\infty} f(n) \; \; \mathrm{converge} \iff \int_{M}^{+\infty} f(x)dx \; \; \mathrm{converge}\]
+	
+	\section{Convergenza semplice e assoluta}
+	\subsection{Definizione: Serie assolutamente convergente}
+	Diremo che la serie $\sum a_n$ è assolutamente convergente se converge la serie a termini non negativi $\sum |a_n|$
+	
+	\subsection{Teorema: Criterio di convergenza assoluta}
+	Se $\sum |a_n|$ è convergente, allora anche $\sum a_n$ è convergente. In altre parole, se una serie è assolutamente converge è convergente (semplicemente).
+	
+	\section{Definizione: Serie a termini di segno alterno}
+	Una serie del tipo $\sum (-1)^n a_n$, con $a_n \geq 0 \forall n \in \mathbb{N}$ si dice serie a termini di segno alterno
+	
+	\section{Teorema: Criterio di Leibniz}
+	Sia $\sum_{n=0}^{+\infty} (-1)^n a_n$ una serie a termini di segno alterno e supponiamo che:
+	\begin{enumerate}[label=\roman*)]
+		\item la successione $(a_n)_n$ sia monotona decrescente
+		\item $\lim_{n \to +\infty} a_n = 0$
+	\end{enumerate}
+	Allora $\sum a_n$ è convergente. Inoltre detta $s$ la sua somma e indicata con $s_n$ la sua somma parziale $n$-esima, si ha che:
+	\[|s - s_n| \leq a_{n - 1}, \; \forall n \in \mathbb{N}\]
+			
+    \chapter{Definizioni e Teoremi in $\mathbb{R}^n$}
+    
+    \section{Definizione: Insieme connesso}
+    Sia $A \subseteq \mathbb{R}^n$ si dice connesso se:
+    \[\forall \underline{x}, \underline{y} \in A \subset \mathbb{R}^n, \exists \gamma_{\underline{x}\underline{y}} \text{ che connette i due vettori senza uscire da } A\] 
+    
+    \section{Definizione: Curva}
+    Sia $\gamma: I \subset \mathbb{R}\longrightarrow \mathbb{R}^n$ si dice 
+    \begin{itemize}
+    	\item continua se è continua in ogni punto di \(I\), quindi se:
+    	\[\lim_{t \to t_0} \gamma(t) = \gamma(t_0), \; \forall t \in I\]
+    	\item curva regolar se:
+    	\[\begin{cases}
+    		\gamma \in \mathcal{C}^1(I) \\
+    		\gamma'(t) \not = 0, \; \forall t \in I
+    	\end{cases}\]
+    \end{itemize}
+    
+    La curva che connette $\underline{x}, \underline{y}$ è definita:
+    \[\gamma: [0, 1] \longrightarrow \mathbb{R}^n \tc \underline{\gamma}(0) = x, \; \underline{\gamma}(1) = y\]
+    
+    \section{Derivabilità}
+    Sia $\gamma: I \subset \mathbb{R}\longrightarrow \mathbb{R}^n$, allora fissato un certo $t_0 \in I$ si ha che:
+    \[\gamma'(t_0) = \lim_{t \to t_0} \frac{\gamma(t) - \gamma(t_0)}{t - t_0} = (\gamma'_1(t_0), \gamma'_2(t_0), \cdots, \gamma'_n(t_0)) := \underline{\gamma}'(t_0)\]
+    ed equivale alla velocità vettoriale e quindi specifica la direzione della curva e quantifica la velocità.
+    
+    La velocità scalare è definita come:
+    \[|\underline{\gamma}'(t_0)|\]
+    
+    E la direzione del moto (tangente al moto) è definita come segue:
+    \[\frac{\underline{\gamma}'(t_0)}{|\underline{\gamma}'(t_0)|}\]
+    
+    \section{Teorema dei valori intermedi}
+	Sia $f : A \subseteq \mathbb{R}^n \to \mathbb{R}$ una funzione continua e sia $A$ connesso.	Allora, per ogni $x,y \in A$,
+	\[[f(x),f(y)] \subseteq f(A)\]
+	
+	\begin{proof}
+		Poiché $A$ è connesso, esiste una curva continua
+		\[\gamma : [0,1] \to A\]
+		tale che $\gamma(0)=x$ e $\gamma(1)=y$	
+			
+		Considero la funzione composta
+		\[h := f \circ \gamma : [0,1] \to \mathbb{R}\]
+		
+		La funzione $h$ è continua in quanto composizione di funzioni continue
+		ed è definita su un intervallo.
+		Per il teorema dei valori intermedi,
+		\[h([0,1]) \text{ è un intervallo di } \mathbb{R}\]
+		Poiché $h(0)=f(x)$ e $h(1)=f(y)$, segue che
+		\[[f(x),f(y)] \subseteq h([0,1]) \subseteq f(A)\]
+	\end{proof}
+	
+	\section{Teorema di Weierstrass}
+	Sia $f : A \subseteq \mathbb{R}^n \to \mathbb{R}$ una funzione continua
+	e sia $A$ chiuso e limitato.
+	Allora $f$ ammette massimo e minimo assoluti su $A$.
+		
+	\begin{proof}
+		Poiché $A$ è chiuso e limitato, esiste una successione
+		$(\underline{x}_k) \subset A$ tale che
+		\[
+		f(\underline{x}_k) \longrightarrow \inf_A f.
+		\]
+		Essendo $A$ limitato, la successione $(\underline{x}_k)$ è limitata in
+		$\mathbb{R}^n$.
+		Per il teorema di Bolzano--Weierstrass, esiste una sottosuccessione
+		$(\underline{x}_{k_j})$ convergente ad un punto $\underline{a} \in \mathbb{R}^n$.
+		Poiché $A$ è chiuso, si ha $\underline{a} \in A$.
+		
+		Per la continuità di $f$,
+		\[
+		f(\underline{x}_{k_j}) \longrightarrow f(\underline{a}).
+		\]
+		Poiché $f(\underline{x}_{k_j}) \to \inf_A f$, per unicità del limite segue che
+		\[
+		f(\underline{a}) = \inf_A f.
+		\]
+		In modo analogo si dimostra l’esistenza del massimo.
+	\end{proof}
+	
+	\newpage
+	
+    \section{Differenziabilità}
+    
+    In questa sezione si introduce la nozione di derivata per funzioni
+    $f : \mathbb{R}^n \to \mathbb{R}$.
+    
+    \subsection{Curve coordinate}
+    
+    Sia $\bar{x} = (\bar{x}_1, \bar{x}_2) \in A \subseteq \mathbb{R}^2$.
+    Definiamo le curve coordinate:
+    \[
+    \gamma_1(t) = (\bar{x}_1 + t, \bar{x}_2), \qquad
+    \gamma_2(t) = (\bar{x}_1, \bar{x}_2 + t),
+    \]
+    definite per $t \in (-\delta, \delta)$, con $\delta > 0$ tale che
+    $\gamma_i(t) \in A$.
+    Si ha inoltre:
+    \[
+    \gamma_1(0) = \gamma_2(0) = \bar{x}.
+    \]
+    Queste curve permettono di studiare il comportamento di $f$
+    lungo le direzioni degli assi cartesiani.
+    
+    \subsection{Derivate parziali}
+    
+    Sia $f : A \subseteq \mathbb{R}^n \to \mathbb{R}$ e $\bar{x} \in A$.
+    La derivata parziale di $f$ rispetto alla variabile $x_i$
+    nel punto $\bar{x}$ è definita come:
+    \[
+    \frac{\partial f}{\partial x_i}(\bar{x})
+    =
+    \lim_{t \to 0}
+    \frac{f(\bar{x} + h) - f(\bar{x})}{t},
+    \]
+    se tale limite esiste ed è finito.
+    
+    \subsection{Gradiente}
+    
+    Se esistono tutte le derivate parziali di $f$ in $\bar{x}$,
+    si definisce il \emph{gradiente} di $f$ nel punto $\bar{x}$ come:
+    \[
+    \nabla f(\bar{x})
+    =
+    \left(
+    \frac{\partial f}{\partial x_1}(\bar{x}),
+    \dots,
+    \frac{\partial f}{\partial x_n}(\bar{x})
+    \right).
+    \]
+    
+    \subsection{Differenziabilità}
+    
+    La funzione $f$ si dice \emph{differenziabile} in $\bar{x} \in A$
+    se esiste un'applicazione lineare
+    $L : \mathbb{R}^n \to \mathbb{R}$ tale che:
+    \[
+    \lim_{h \to 0}
+    \frac{f(\bar{x} + h) - f(\bar{x}) - L(h)}{\|h\|} = 0.
+    \]
+    In tal caso l'applicazione $L$ è unica e si chiama
+    \emph{differenziale} di $f$ in $\bar{x}$.
+    
+    \subsection{Piano tangente}
+    
+    Se $f$ è differenziabile in $\bar{x}$, il grafico di $f$
+    ammette un piano tangente nel punto $(\bar{x}, f(\bar{x}))$,
+    di equazione:
+    \[
+    z = f(\bar{x}) + \nabla f(\bar{x}) \cdot (x - \bar{x}).
+    \]
+    
+    \subsection{Derivata direzionale}
+    
+    Sia $v \in \mathbb{R}^n$ con $\|v\| = 1$.
+    La derivata direzionale di $f$ in $\bar{x}$ lungo $v$ è definita come:
+    \[
+    \partial_v f(\bar{x})
+    =
+    \lim_{t \to 0}
+    \frac{f(\bar{x} + tv) - f(\bar{x})}{t},
+    \]
+    se il limite esiste.
+    
+    Se $f$ è differenziabile in $\bar{x}$, allora:
+    \[
+    \partial_v f(\bar{x}) = \nabla f(\bar{x}) \cdot v.
+    \]
+    Il viceversa, in generale, non è vero.
+    
+    \subsection{Differenziale}
+    
+    Se $f$ è differenziabile in $\bar{x}$, il differenziale di $f$
+    in $\bar{x}$ è l'applicazione lineare:
+    \[
+    df(\bar{x})(h) = \nabla f(\bar{x}) \cdot h,
+    \qquad h \in \mathbb{R}^n.
+    \]
+    
+    \section{Teorema del differenziale totale}
+    
+    Sia $f : A \subseteq \mathbb{R}^n \to \mathbb{R}$.
+    Se $f$ è differenziabile in $\bar{x} \in A$, allora:
+    \begin{itemize}
+    	\item esistono tutte le derivate parziali di $f$ in $\bar{x}$;
+    	\item il differenziale di $f$ in $\bar{x}$ è dato da
+    	\[
+    	df(\bar{x})(h) = \sum_{i=1}^n
+    	\frac{\partial f}{\partial x_i}(\bar{x}) h_i.
+    	\]
+    \end{itemize}
+    
+    \section{Teorema di Fermat}
+    
+    Sia $f : A \subseteq \mathbb{R}^n \to \mathbb{R}$ differenziabile
+    e sia $\bar{x} \in A$ un punto di massimo o minimo locale interno ad $A$.
+    Allora:
+    \[
+    \nabla f(\bar{x}) = 0.
+    \]
+    
+    \begin{proof}
+    	Sia $\bar{x} \in A$ un punto di massimo o minimo locale interno.  
+    	Allora esiste un intorno $U$ di $\bar{x}$ tale che, per ogni $x \in U \cap A$:
+    	\[
+    	f(x) \le f(\bar{x}) \quad \text{o} \quad f(x) \ge f(\bar{x}).
+    	\]
+    	
+    	Per ogni $i = 1, \dots, n$, consideriamo la funzione reale di una variabile:
+    	\[
+    	g_i(t) := f(\bar{x}_1, \dots, \bar{x}_{i-1}, \bar{x}_i + t, \bar{x}_{i+1}, \dots, \bar{x}_n),
+    	\]
+    	che rappresenta la variazione di $f$ lungo la $i$-esima coordinata.  
+    	Poiché $\bar{x}$ è un punto di estremo locale di $f$, $t=0$ è un punto di estremo locale per $g_i$.
+    	
+    	Dal Teorema di Fermat per funzioni di una variabile reale, segue:
+    	\[
+    	g_i'(0) = 0.
+    	\]
+    	
+    	Ma per definizione:
+    	\[
+    	g_i'(0) = \frac{\partial f}{\partial x_i}(\bar{x}).
+    	\]
+    	
+    	Poiché $i$ è arbitrario, otteniamo:
+    	\[
+    	\frac{\partial f}{\partial x_i}(\bar{x}) = 0 \quad \text{per ogni } i = 1, \dots, n,
+    	\]
+    	cioè
+    	\[
+    	\nabla f(\bar{x}) = 0.
+    	\]
+    \end{proof}
+    
+    
+    \section{Formula di Taylor in $\mathbb{R}^n$}
+    
+    Sia $f : A \subseteq \mathbb{R}^n \to \mathbb{R}$, $f \in \mathcal{C}^1(A)$ e derivabile 2 volte in $x_0 \in A$.
+    Allora:
+    \[f(\bar{x}) = f(\bar{x_0}) + \nabla f(\bar{x_0})(\bar{x} - \bar{x_0}) + \frac{D^2f(x_0)}{2}(\bar{x} - \bar{x_0})^2 + o(\|\bar{x} - \bar{x_0}\|^2)\]
+    Dove:
+    \[D^2f(\bar{x_0})\]
+    è la matrice Hessiana composta come segue:
+    \[
+    \renewcommand{\arraystretch}{2} % aumenta lo spazio verticale del 50%
+    \mathcal{H}f(\bar{x_0}) =
+    \begin{pmatrix}
+    	\frac{\partial^2 f}{\partial x_1^2}(\bar{x_0}) & \frac{\partial^2 f}{\partial x_1 \partial x_2}(\bar{x_0}) & \cdots & \frac{\partial^2 f}{\partial x_1 \partial x_n}(\bar{x_0}) \\
+    	\frac{\partial^2 f}{\partial x_2 \partial x_1}(\bar{x_0}) & \frac{\partial^2 f}{\partial x_2^2}(\bar{x_0}) & \cdots & \frac{\partial^2 f}{\partial x_2 \partial x_n}(\bar{x_0}) \\
+    	\vdots & \vdots & \ddots & \vdots \\
+    	\frac{\partial^2 f}{\partial x_n \partial x_1}(\bar{x_0}) & \frac{\partial^2 f}{\partial x_n \partial x_2}(\bar{x_0}) & \cdots & \frac{\partial^2 f}{\partial x_n^2}(\bar{x_0})
+    \end{pmatrix}
+    \]
+	
+\end{document} 
