@@ -1,0 +1,1650 @@
+\documentclass[11pt, a4paper, openright]{book}
+
+\usepackage{bm}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{geometry}
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+\usepackage{caption}
+\captionsetup{justification=centering}
+\usepackage{float}
+\usepackage[hidelinks]{hyperref}
+\usepackage{subcaption}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{yhmath}
+\usepackage{derivative}
+\usepackage{physics}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, calc, decorations.pathreplacing, lindenmayersystems}
+\pgfdeclarelindenmayersystem{Koch curve}{\rule{F -> F+F--F+F}}
+
+
+\setcounter{tocdepth}{3} 
+\setcounter{secnumdepth}{3}
+
+% =================================================================
+% DEFINIZIONE DEGLI AMBIENTI MATEMATICI (amsthm)
+% =================================================================
+
+\theoremstyle{plain}
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{lemma}[teorema]{Lemma}
+\newtheorem{corollario}[teorema]{Corollario}
+\newtheorem{proposizione}[teorema]{Proposizione}
+
+\theoremstyle{definition}
+\newtheorem{definizione}[teorema]{Definizione}
+\newtheorem{esempio}[teorema]{Esempio}
+\newtheorem{esercizio}[teorema]{Esercizio}
+
+\theoremstyle{remark}
+\newtheorem{osservazione}[teorema]{Osservazione}
+
+\renewcommand{\proofname}{Dimostrazione}
+
+\newcommand{\innerprod}[2]{\langle #1, #2 \rangle}
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \vspace*{4cm}
+    
+    \Huge
+    \textbf{Corso di Analisi Vettoriale}
+    
+    \vspace{0.5cm}
+    \LARGE
+    Appunti ed Esempi
+    
+    \vspace{1.5cm}
+    
+    \textit{Basato sulle lezioni di} \\
+    \Large \textbf{Prof.ssa A. Malusa e Prof.ssa F. De Marchis}
+    
+    \vfill
+    
+    \rule{\linewidth}{0.5pt}
+    \vspace{0.5cm}
+    
+    \large
+    Autore: \textbf{Liam Ferretti} \\
+    \today
+    
+\end{titlepage}
+
+\tableofcontents
+
+\chapter{Introduzione Topologica}
+\section{Distanza e Spazi metrici}
+
+\begin{definizione}
+Sia $X$ un insieme, allora una funzione $d$ di distanza su $X$, definita come segue:
+\begin{equation}
+    d: X \times X \longrightarrow \mathbb{R}
+\end{equation}
+è una distanza se e solo se:
+\begin{itemize}
+    \item $d(x, y) \geq 0 ; \quad \forall x, y \in X$ e deve valere che $d(x, y) = 0 \iff x = y$
+    \item $d(x, y) = d(y, x); \quad \forall x, y \in X \Longrightarrow$ la distanza è simmetrica (possono esistere funzioni di distanze non simmetriche, ma non verranno trattate in questo corso).
+    \item $d(x, y) \leq d(x, z) + d(z, y); \quad \forall x, y,z \in X$, quindi si rispetta la disuguaglianza triangolare.
+\end{itemize}
+\end{definizione}
+
+\begin{esempio}[Distanza euclidea in $\mathbb{R}^n$]
+Sia $X = A \subset \mathbb{R}^n$, allora una possibile funzione di distanza $d$ è la distanza euclidea. Siano $x, y$ delle n-uple tali per cui:
+\begin{equation}
+    x = (x_1, \cdots, x_n); \quad \quad y = (y_1, \cdots, y_n)
+\end{equation}
+Allora:
+\begin{equation}
+    d(x, y) = \left(\sum_{k = 1}^{n} (x_k - y_k)^2 \right)^{\frac{1}{2}}
+\end{equation}
+\end{esempio}
+
+\begin{esempio}[Distanza discreta]
+È possibile definire altre tipologie di distanze come la seguente, valida su un qualsiasi insieme $X$:
+\begin{equation}
+    d(x, y) = \begin{cases}
+        0 & x = y \\
+        1 & x \neq y
+    \end{cases}
+\end{equation}
+\end{esempio}
+
+\begin{definizione}[Spazio Metrico]
+    Uno spazio metrico è una coppia composta da un insieme e da una funzione di distanza, come segue:
+    \begin{equation}
+        (X, d)
+    \end{equation}
+    Permette di definire in modo rigoroso tutti i concetti che si basano sulla distanza, come intorni, convergenza, continuità etc etc.
+\end{definizione}
+
+\begin{esempio}[Spazio metrico delle funzioni continue]
+    Sia $X = C^0([a, b]) \Longrightarrow \forall f, g \in X$ $|f - g|$ è continua sul compatto $[a, b]$, quindi per il teorema di Weierstrass ammette massimo, allora:
+    \begin{equation}
+    f, g \in X \implies \|f - g\|_\infty = d(f, g) = \max_{[a, b]} |f(x) - g(x)|
+\end{equation}
+    Tale distanza si dice \textbf{distanza uniforme}. Fissata $f_0 \in X$, l'intorno sferico di raggio $r$ è:
+    \begin{equation}
+        B_r(f_0) = \left\{g \in X \mid \max_{[a, b]} |f_0 - g| < r\right\}
+    \end{equation}
+    ovvero l'insieme delle funzioni continue il cui grafico è contenuto nella "striscia" di semi-ampiezza $r$ attorno al grafico di $f_0$ (\textbf{intorno tubolare} di $f_0$).
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        \draw[-Stealth] (-1.2,0) -- (3.4,0);
+        \draw[-Stealth] (0,-0.6) -- (0,3.0);
+
+        \draw[thick, domain=-0.9:2.7, smooth, variable=\x] plot (\x, {1.1 + 0.12*(\x-0.6)*(\x-0.6)*(\x-0.6)});
+        \draw[orange, dashed, domain=-0.9:2.7, smooth, variable=\x] plot (\x, {1.6 + 0.12*(\x-0.6)*(\x-0.6)*(\x-0.6)});
+        \draw[orange, dashed, domain=-0.9:2.7, smooth, variable=\x] plot (\x, {0.6 + 0.12*(\x-0.6)*(\x-0.6)*(\x-0.6)});
+        \node[right] at (2.7, 2.21) {$f_0$};
+        \node[right, orange] at (2.7, 2.71) {$f_0 + r$};
+        \node[right, orange] at (2.7, 1.71) {$f_0 - r$};
+    \end{tikzpicture}
+    \caption{Intorno tubolare di $f_0$: le funzioni di $B_r(f_0)$ hanno grafico nella striscia tratteggiata.}
+\end{figure}
+\end{esempio}
+
+\begin{osservazione}[$||f - g||_\infty$ è una distanza]
+    Verifichiamo le tre proprietà della definizione:
+    \begin{itemize}
+        \item $\max_{[a, b]} |f - g| \geq 0 \; \forall f, g \in X$, inoltre $\max_{[a, b]} |f - g| = 0 \iff |f(x) - g(x)| = 0 \; \forall x \in [a, b] \iff f = g$.
+        \item $\max_{[a, b]} |f - g| = \max_{[a, b]} |-(f - g)| = \max_{[a, b]} |g - f|$.
+        \item Per ogni $x \in [a, b]$, usando la disuguaglianza triangolare in $\mathbb{R}$:
+        \begin{equation}
+            |f(x) - g(x)| \leq |f(x) - h(x)| + |h(x) - g(x)| \leq \max_{[a, b]} |f - h| + \max_{[a, b]} |h - g|
+        \end{equation}
+        e passando al massimo a sinistra:
+        \begin{equation}
+            \max_{[a, b]} |f - g| \leq \max_{[a, b]} |f - h| + \max_{[a, b]} |h - g|
+        \end{equation}
+    \end{itemize}
+\end{osservazione}
+
+\begin{osservazione}[Peculiarità di $\mathbb{R}^n$]
+    $(\mathbb{R}^n, ||\cdot||)$ rispetto ad un generico spazio metrico ha molta più struttura, infatti vale che:
+    \begin{itemize}
+        \item La distanza euclidea è indotta dalla norma, infatti:
+        \begin{equation}
+            ||x|| = \left(\sum_{k = 1}^{n} x_k^2 \right)^{\frac{1}{2}} \Longrightarrow d(x, y) = ||x - y||            
+        \end{equation}
+        \item La norma è indotta dal prodotto scalare euclideo, infatti:
+        \begin{equation}
+            \innerprod{x}{y} = \sum_{k = 1}^{n} x_ky_k \Longrightarrow ||x|| = \innerprod{x}{x}^{\frac{1}{2}}
+        \end{equation}
+        \item In $\mathbb{R}^n$ tutte le norme sono equivalenti, cioè date due norme $||\cdot||_a$ e $||\cdot||_b$ esistono $c, C > 0$ tali che:
+        \begin{equation}
+            c||x||_a \leq ||x||_b \leq C||x||_a; \quad \forall x \in \mathbb{R}^n
+        \end{equation}
+        segue che ogni intorno sferico rispetto ad una norma contiene ed è contenuto in intorni sferici, con lo stesso centro, rispetto all'altra norma.
+        \item $\mathbb{R}^n$ è uno spazio vettoriale.
+        \item $\mathbb{R}^n$ è completo, cioè ogni successione di Cauchy converge in $\mathbb{R}^n$.
+    \end{itemize}
+    Poiché $\mathbb{R}^n$ è uno spazio vettoriale con prodotto scalare, completo rispetto alla norma indotta, segue che ha la struttura di uno spazio di Hilbert.
+\end{osservazione}
+
+\begin{definizione}[Intorno sferico]
+    Sia $(X, d)$ uno spazio metrico, $x_0 \in X, r > 0$, allora:
+    \begin{equation}
+        B_r(x_0) = \left\{x \in X \; | \; d(x, x_0) < r\right\}
+    \end{equation}
+\end{definizione}
+
+\section{Tipologie di punti in $\mathbb{R}^n$}
+Sia $A \subseteq X, x_0 \in X$, allora tale punto può essere di 3 tipologie:
+\begin{itemize}
+    \item Interno, se:
+    \begin{equation}
+        \exists B_r(x_0) \subseteq A
+    \end{equation}
+
+    \item Esterno, se:
+    \begin{equation}
+        \exists B_r(x_0) \subseteq (X \setminus A)
+    \end{equation}
+
+    \item Di frontiera per A, se:
+    \begin{equation}
+        \forall r > 0, B_r(x_0) \cap A \neq \emptyset, B_r(x_0) \cap (X \setminus A) \neq \emptyset
+    \end{equation}
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        \draw[thick] plot[smooth cycle] coordinates {(0,0) (1.5,-0.6) (3.5,-0.3) (4.2,1) (3,2) (1.5,2.2) (0.2,1.5)};
+        \node at (4.5,0.5) {$A$};
+        \fill[green!50!black] (1.6,0.9) circle (1.5pt);
+        \draw[green!50!black, dotted] (1.6,0.9) circle (0.35);
+        \node[below, green!50!black] at (1.6,0.5) {interno};
+        \fill[green!50!black] (1.5,2.2) circle (1.5pt);
+        \node[above, green!50!black] at (1.5,2.2) {di frontiera};
+        \fill[green!50!black] (4.0,2.4) circle (1.5pt);
+        \node[right, green!50!black] at (4.0,2.4) {esterno};
+    \end{tikzpicture}
+    \caption{Punti interni, esterni e di frontiera per un insieme $A$.}
+\end{figure}
+
+\begin{osservazione}
+    In $\mathbb{R}$ i punti di frontiera di un intervallo sono i suoi estremi.
+\end{osservazione}
+
+\begin{definizione}[Punto di accumulazione]
+    Sia $x_0 \in A \subseteq X$, allora tale punto è di accumulazione per A se:
+    \begin{equation}
+        \forall r > 0 B_r(x_0) \cap \left\{A \setminus \{x_0\}\right\} \neq \emptyset
+    \end{equation}
+\end{definizione}
+
+
+\begin{definizione}[Punto isolato]
+    Sia $x_0 \in A \subseteq X$, allora tale punto è isolato per A se:
+    \begin{equation}
+        \exists r > 0 \mid (B_r(x_0) \setminus \{x_0\}) \cap A = \emptyset
+    \end{equation}
+    oppure:
+    \begin{equation}
+        \exists r > 0 \mid B_r(x_0) \cap A = \{x_0\}
+    \end{equation}
+\end{definizione}
+
+\begin{definizione}[Interno di $A$]
+    L'interno di $A$ è l'insieme di tutti i punti interni ad $A$:
+    \begin{equation}
+        \mathring{A} = \left\{x \in X \mid x \text{ è interno ad } A\right\} 
+    \end{equation}
+\end{definizione}
+
+\begin{definizione}[Frontiera di $A$]
+    La frontiera di $A$ è l'insieme di tutti i punti di frontiera di $A$:
+    \begin{equation}
+        \partial {A} = \left\{x \in X \mid x \text{ è di frontiera per } A\right\} 
+    \end{equation}
+\end{definizione}
+
+\begin{definizione}[Chiusura di $A$]
+    La chiusura di $A$ è l'insieme di tutti i punti appartenenti ad $A$ o di frontiera:
+    \begin{equation}
+        \bar{A} = \left\{x \in X \mid x \in \mathring{A} \cup \partial{A}\right\} 
+    \end{equation}
+\end{definizione}
+
+\begin{definizione}[Insieme aperto]
+    Un insieme $A \subseteq X$ si dice aperto se tutti i suoi punti sono interni.
+\end{definizione}
+
+\begin{esempio}[Insiemi aperti in $\mathbb{R}$]
+    $(a, b)$, $(-\infty, a)$, $(b, \infty)$ sono aperti.
+\end{esempio}
+
+
+\begin{definizione}[Insieme chiuso]
+    Un insieme $A \subseteq X$ si dice chiuso se il suo complementare è aperto.
+\end{definizione}
+
+\begin{esempio}[Insiemi chiusi in $\mathbb{R}$]
+    $[a, b]$, $(-\infty, a]$, $[b, \infty)$ sono chiusi, infatti ad esempio:
+    \begin{equation}
+        \mathbb{R} \setminus [a, b] = (-\infty, a) \cup (b, +\infty)
+    \end{equation}
+    è unione di aperti, quindi aperto.
+\end{esempio}
+
+\begin{esempio}[Insiemi aperti e chiusi in $\mathbb{R}^n$]
+    In $X = \mathbb{R}^n$:
+    \begin{itemize}
+        \item $(a_1, b_1) \times (a_2, b_2) \times \cdots \times (a_n, b_n)$ è aperto.
+        \item $[a_1, b_1] \times [a_2, b_2] \times \cdots \times [a_n, b_n]$ è chiuso.
+        \item $[a_1, b_1] \times (a_2, b_2) \times \cdots \times [a_n, b_n]$ non è né aperto né chiuso.
+    \end{itemize}
+\end{esempio}
+
+\begin{definizione}[Dominio]
+    Un insieme $A \subseteq X$ è un dominio se è la chiusura di un aperto, nello specifico è il più piccolo chiuso più grande di $A$ 
+\end{definizione}
+
+\begin{osservazione}
+    In generale i sotto-insiemi non sono ne aperti ne chiusi, tali proprietà sono fondamentali.
+\end{osservazione}
+
+\begin{esempio}[Insieme né aperto né chiuso]
+    Si consideri in $\mathbb{R}^2$ la regione $A$ compresa tra una retta (tratteggiata, esclusa da $A$) e il grafico di una funzione convessa (continuo, incluso in $A$). Tale insieme:
+    \begin{itemize}
+        \item Non è chiuso, poiché non contiene tutta la sua frontiera.
+        \item Non è aperto, poiché contiene una parte della sua frontiera, i cui punti non sono interni (equivalentemente il complementare non è aperto).
+    \end{itemize}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=0.7]
+        \draw[-Stealth] (-0.5,0) -- (5,0);
+        \draw[-Stealth] (0,-0.5) -- (0,5.4);
+
+        \fill[green!50!black, opacity=0.2] plot[domain=0:4, smooth, variable=\x] (\x, {0.3*\x*\x}) -- (0,0) -- cycle;
+        \draw[thick, domain=0:4, smooth, variable=\x] plot (\x, {0.3*\x*\x});
+        \draw[dashed] (0,0) -- (4,4.8);
+        \node[green!50!black] at (2.6,2.4) {$A$};
+    \end{tikzpicture}
+    \caption{Insieme $A$ né aperto né chiuso.}
+\end{figure}
+\end{esempio}
+
+\paragraph{Proprietà}
+Gli oggetti si creano per dimostrare le proprietà, che andrebbero dimostrate ma non lo faremo!
+\begin{enumerate}
+    \item $A$ è chiuso $\iff A = \bar{A}$
+    \item $A$ è chiuso $\iff \partial A \subseteq A$, quindi se la frontiera è contenuta in $A$
+    \item L'unione di aperti e l'intersezione finita di aperti sono insieme aperti.
+    \item L'intersezione di chiusi e l'unione finita di chiusi sono insieme chiusi.
+    \item \textbf{Solo in $X = \mathbb{R}^n$} i soli insiemi di $\mathbb{R}^n$ sia paerti sia chiusi sono $\mathbb{R}^n$ e $\emptyset$, e ciò vale poiché $\mathbb{R}^n$ è un connesso.
+\end{enumerate}
+
+\begin{esempio}[L'intersezione non finita di aperti può non essere aperta]
+    Sia $A_n = \left(-\frac{1}{n}, \frac{1}{n}\right)$ con $n \in \mathbb{N}$, ognuno di questi è aperto, ma:
+    \begin{equation}
+        \bigcap_{n \in \mathbb{N}} A_n = \{0\}
+    \end{equation}
+    che è chiuso! Quindi l'ipotesi di finitezza nella proprietà 3 è necessaria.
+\end{esempio}
+
+\begin{esempio}[Un intorno di raggio $r$ di $x_0$ è aperto in $X^n$]
+    Scegliendo due punti $x, x_o \in X^n$, allora è possibile definire una distanza $\rho$, come segue:
+    \begin{equation}
+        \rho = \frac{r - d(x, x_0)}{2}
+    \end{equation}
+    Da cui segue che:
+    \begin{equation}
+        B_\rho(x) \subset B_r(x_0)
+    \end{equation}
+    Infatti, usando la disuguaglianza triangolare, $\forall y \in B_\rho(x)$:
+    \begin{equation}
+        d(y, x_0) \leq d(y, x) + d(x, x_0) < \rho + d(x, x_0) = \frac{r + d(x, x_0)}{2} < r
+    \end{equation}
+    dove l'ultima disuguaglianza vale poiché $d(x, x_0) < r$.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        \draw[thick] (0,0) circle (2);
+        \fill (0,0) circle (1.5pt) node[below left] {$x_0$};
+        \draw[orange, thick] (0,0) -- (42:2);
+        \fill (42:1.2) circle (1.5pt) node[below right] {$x$};
+        \draw[green!50!black, dashed] (42:1.2) circle (0.4);
+        \node at (2.2,1.6) {$B_r(x_0)$};
+        \node[green!50!black, above left] at ($(42:1.2)+(0,0.35)$) {$B_\rho(x)$};
+    \end{tikzpicture}
+    \caption{$B_\rho(x) \subset B_r(x_0)$ con $\rho = \frac{r - d(x, x_0)}{2}$.}
+\end{figure}
+\end{esempio}
+
+
+\begin{esempio}[$\{x_0\}$ è chiuso]
+    Equivalentemente bisogna mostrare che $\mathbb{R}^n \setminus \{x_0\}$ è aperto.
+    Scegliendo due punti $x, x_o \in X^n \mid x \neq x_0$, allora è possibile scegliere un interno di raggio $\rho$ tale per cui:
+    \begin{equation}
+        B_\rho(x) \mid \rho < d(x, x_0)
+    \end{equation}
+    da cui segue che $x_0 \notin B_\rho(x)$, quindi $B_\rho(x) \subseteq \mathbb{R}^n \setminus \{x_0\}$.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        \draw[thick] plot[smooth cycle] coordinates {(0,0) (1,0.4) (2,-0.1) (3,0.5) (4,0.1) (4.6,-1) (4.3,-2.2) (3.2,-2.6) (2,-2.4) (0.8,-2.7) (-0.3,-1.8) (-0.5,-0.8)};
+        \fill (1.5,-1.6) circle (1.5pt) node[below] {$x_0$};
+        \fill (3.2,-0.8) circle (1.5pt) node[right] {$x$};
+        \draw[green!50!black, dotted, thick] (3.2,-0.8) circle (0.45);
+        \node at (5.6,-0.3) {$\mathbb{R}^n \setminus \{x_0\}$};
+    \end{tikzpicture}
+    \caption{Ogni $x \neq x_0$ ha un intorno che non contiene $x_0$.}
+\end{figure}
+\end{esempio}
+
+\begin{definizione}[Limitatezza di un insieme]
+    Sia $A \subseteq X$, allora $A$ si dice limitato se:
+    \begin{equation}
+        \exists x_0 \in X, r > 0 \mid A \subseteq B_r(x_0)
+    \end{equation}
+    Quindi devo poter contenere tutto l'insieme considerato con un interno di raggio grande quanto voglio ma finito, e per far si che insieme non sia limitato, allora è semplicemente necessario verificare che esiste una direzione che esplode a $+\infty$.
+\end{definizione}
+
+\chapter{Limiti}
+\section{Limiti di funzioni}
+\begin{definizione}[Limiti nel caso generale]
+    Siano $(X, d_x), (Y, d_y)$ spazi metrici, sia f definite come segue:
+    \begin{equation}
+        f: A \subseteq X \longrightarrow Y
+    \end{equation}
+    sia $x_0$ un punto di accumulazione per $A$.
+    Allora $L \in Y$ è il $\lim_{x \to x_0} f(x)$ se e solo se:
+    \begin{equation}
+        \forall \varepsilon > 0, \exists \delta > 0 \mid d_y(f(x), L) < \varepsilon; \; \forall x \in (A \setminus \{x_0\}) \; d_x(x, x_0) < \delta
+    \end{equation}
+    Da cui segue, nel caso $(X, d_x) = (\mathbb{R}^n, ||\cdot||_n)$ e $(Y, d_y) = (\mathbb{R}^m, ||\cdot||_m)$:
+    \begin{equation}
+        \begin{aligned}
+            f: A \subseteq \mathbb{R}^n &\longrightarrow \mathbb{R}^m \\
+            (x_1, \dots, x_n) &\longmapsto \underset{\text{componenti}}{(f_1(x_1, \dots, x_n), \dots, f_m(x_1, \dots, x_n))}
+        \end{aligned}
+    \end{equation}
+    Quando $m > 1$, allora $f$ si dice una funzione vettoriale le cui m componenti sono funzioni scalari del tipo:
+    \begin{equation}
+        f_i: A \subseteq \mathbb{R}^n \longrightarrow \mathbb{R}
+    \end{equation}
+\end{definizione}
+
+\begin{teorema}\label{teo:limiti_componenti}Il limite $L$ di una funzione vettoriale esiste se e solo se esistono finiti gli m limiti scalari, quindi se ogni limite di $f_i$ esiste finito:
+    \begin{equation}
+        \lim_{x \to x_0 } f(x) = L = (L_1, \cdots, L_m) \iff \forall i \in \{1, \cdots, m\} \lim_{x \to x_0} f_i(x) = L_i
+    \end{equation}
+\end{teorema}
+
+\begin{corollario}Dal teorema precedente segue che per calcolare il limite di una funzione vettoriale, basta saper calcolare i limiti di funzoini scalari, dato che è possibile calcolare il limite componenti per componenti.
+\end{corollario}
+\begin{proof}
+    Usando la stima di base in $\mathbb{R}^m$ segue che:
+    \begin{equation}\label{eq:stima_base}
+        \max_{k = 1, \cdots, m} |x_k| \leq \left(\sum_{k = 1}^{m} (x_k)^2 \right)^\frac{1}{2} \leq \sqrt{m} \max_{k = 1, \cdots, m} |x_k|
+    \end{equation}
+    Bisogna dimostrare entramble le implicazioni:
+    \begin{itemize}
+        \item Implicazione diretta ($\Longrightarrow$): per ipotesi si ha che:
+        \begin{equation}
+            \forall \varepsilon > 0, \exists \delta > 0 \mid ||f(x) - L||_m < \varepsilon; \; \forall x \in (A \setminus \{x_0\}) \; ||x - x_0||_n < \delta
+        \end{equation}
+        Usando la stima di base (\ref{eq:stima_base}) segue che, per ogni componente $i$:
+        \begin{equation}
+            |f_i(x) - L_i| \leq ||f(x) - L||_m < \varepsilon \quad \text{se } x \in (A \setminus \{x_0\}), \; ||x - x_0||_n < \delta
+        \end{equation}
+        Segue che:
+        \begin{equation}
+            \lim_{x \to x_0} f_i(x) = L_i; \quad \forall i = 1, \cdots, m
+        \end{equation}
+        \item Implicazione inversa ($\Longleftarrow$): analoga, usando l'altra metà della stima di base (\ref{eq:stima_base}). Fissato $\varepsilon > 0$, per ogni $i$ esiste $\delta_i$ tale che $|f_i(x) - L_i| < \frac{\varepsilon}{\sqrt{m}}$, allora scegliendo $\delta = \min_i \delta_i$:
+        \begin{equation}
+            ||f(x) - L||_m \leq \sqrt{m} \max_{i = 1, \cdots, m} |f_i(x) - L_i| < \sqrt{m} \frac{\varepsilon}{\sqrt{m}} = \varepsilon
+        \end{equation}
+    \end{itemize}
+\end{proof}
+
+\section{Funzioni continue}
+\begin{definizione}[Funzioni continue]
+    Sia $f: A \subseteq \mathbb{R}^n \longrightarrow \mathbb{R}^m$, $x_0 \in A$, $x_0$ di accumulazione per $A$, allora $f$ si dice continua in $x_0$ se:
+    \begin{equation}
+        \exists \lim_{x \to x_0} f(x) = f(x_0)
+    \end{equation}
+    \begin{itemize}
+        \item Se $x_0$ è isolato per $A$, allora $f$ è sempre continua in $x_0$ per convenzione.
+        \item $f \in C^0(A, \mathbb{R}^m)$ se $f$ è continua in tutti i punti di $A$.
+        \item Se $m = 1 \Longrightarrow f \in C^0(A)$.
+    \end{itemize}
+\end{definizione}
+
+\begin{osservazione}
+    Per il teorema \ref{teo:limiti_componenti} sui limiti segue che:
+    \begin{equation}
+        f: A \subseteq \mathbb{R}^n \longrightarrow \mathbb{R}^m, \; m > 1 \text{ è continua in } x_0 \iff f_i: A \subseteq \mathbb{R}^n \longrightarrow \mathbb{R} \text{ sono continue in } x_0 \; \forall i = 1, \cdots, m
+    \end{equation}
+\end{osservazione}
+
+\begin{teorema}[Controimmagini di aperti]
+    Sia $A \subseteq \mathbb{R}^n$ aperto, $f: A \subseteq \mathbb{R}^n \longrightarrow \mathbb{R}^m$ continua in $A$, allora se $\tilde{A}$ è un aperto di $\mathbb{R}^m$:
+    \begin{equation}
+        f^{-1}(\tilde{A}) := \left\{x \in A \mid f(x) \in \tilde{A}\right\}
+    \end{equation}
+    è aperto in $\mathbb{R}^n$.
+\end{teorema}
+\begin{proof}
+    Preso $x_0 \in f^{-1}(\tilde{A})$, bisogna mostrare che:
+    \begin{equation}
+        \exists B_r(x_0) \mid B_r(x_0) \subseteq f^{-1}(\tilde{A})
+    \end{equation}
+    Per definizione vale che:
+    \begin{equation}
+        f(x_0) := y_0 \in \tilde{A} \Longrightarrow \exists B_\rho(y_0) \mid B_\rho(y_0) \subseteq \tilde{A}
+    \end{equation}
+    poiché $\tilde{A}$ è aperto. Inoltre $f$ è continua, quindi in corrispondenza di $\rho$ so trovare:
+    \begin{equation}
+        r > 0 \mid ||f(x) - y_0|| < \rho; \quad \forall x \in A \mid ||x - x_0|| < r
+    \end{equation}
+    Poiché $A$ è aperto, allora $\exists r' \leq r \mid B_{r'}(x_0) \subseteq A$. Segue che:
+    \begin{equation}
+        B_{r'}(x_0) \subseteq f^{-1}(B_\rho(y_0)) \subseteq f^{-1}(\tilde{A})
+    \end{equation}
+\end{proof}
+
+\begin{osservazione}
+    Non è vero che l'immagine di un aperto tramite una funzione continua è un aperto. Ad esempio $f(x) = k$ costante: l'immagine di ogni sotto-insieme di $\mathbb{R}$ è un singolo valore $\{k\}$, che è chiuso.
+\end{osservazione}
+
+\begin{corollario}[Sottolivelli e sopralivelli]
+    Sia $f: A \subseteq \mathbb{R}^n \longrightarrow \mathbb{R}$ continua in $A$ aperto, allora i seguenti insiemi sono aperti in $\mathbb{R}^n$:
+    \begin{equation}
+        \begin{aligned}
+            \left\{x \in A \mid f(x) < c\right\} &= f^{-1}((-\infty, c)) \quad \text{(sottolivello corrispondente a } c\text{)} \\
+            \left\{x \in A \mid f(x) > c\right\} &= f^{-1}((c, +\infty)) \\
+            \left\{x \in A \mid a < f(x) < b\right\} &= f^{-1}((-\infty, b)) \cap f^{-1}((a, +\infty))
+        \end{aligned}
+    \end{equation}
+\end{corollario}
+
+\begin{esempio}
+    Sia $f(x, y) = y - x^2$, continua in $\mathbb{R}^2$, allora il sopralivello a $0$:
+    \begin{equation}
+        \left\{(x, y) \in \mathbb{R}^2 \mid y - x^2 > 0\right\}
+    \end{equation}
+    cioè la regione strettamente al di sopra della parabola $y = x^2$, è aperto.
+\end{esempio}
+
+\begin{teorema}[Controimmagini di chiusi]
+    Sia $C \subseteq \mathbb{R}^n$ chiuso, $f: C \subseteq \mathbb{R}^n \longrightarrow \mathbb{R}^m$ continua in $C$, allora se $\tilde{C} \subseteq \mathbb{R}^m$ è chiuso $\Longrightarrow f^{-1}(\tilde{C})$ è chiuso.
+\end{teorema}
+
+\begin{corollario}
+    Segue che, con $f: C \longrightarrow \mathbb{R}$ continua e $C$ chiuso, sono tutti chiusi:
+    \begin{equation}
+        \left\{x \in C \mid f(x) \leq k\right\}; \quad \left\{x \in C \mid f(x) \geq k\right\}; \quad \left\{x \in C \mid f(x) = k\right\}
+    \end{equation}
+\end{corollario}
+
+\begin{esempio}[Rettangolo $n$-dimensionale aperto]
+    Sia $A = (a_1, b_1) \times (a_2, b_2) \times \cdots \times (a_n, b_n)$, allora:
+    \begin{equation}
+        A = \bigcap_{k = 1}^{n} A_k; \quad A_k = \left\{x \in \mathbb{R}^n \mid a_k < x_k < b_k\right\}
+    \end{equation}
+    La funzione:
+    \begin{equation}
+        \begin{aligned}
+            g_k: \mathbb{R}^n &\longrightarrow \mathbb{R} \\
+            x &\longmapsto x_k \quad \text{(k-esima componente)}
+        \end{aligned}
+    \end{equation}
+    è continua, quindi $A_k = g_k^{-1}((a_k, b_k))$ è aperto $\Longrightarrow A$ è aperto, poiché intersezione finita di aperti. Analogamente per i chiusi.
+\end{esempio}
+
+\section{Successioni e compattezza}
+\begin{definizione}[Successione]
+    Una successione di punti in uno spazio metrico $(X, d)$ è una funzione:
+    \begin{equation}
+        \begin{aligned}
+            \mathbb{N} &\longrightarrow X \\
+            k &\longmapsto x_k
+        \end{aligned}
+    \end{equation}
+    Una successione si dice convergente se:
+    \begin{equation}
+        \exists \bar{x} \in X \mid \underset{a_k \in \mathbb{R}}{d(x_k, \bar{x})} \longrightarrow 0
+    \end{equation}
+    dove la convergenza è intesa nel senso delle successioni di numeri reali. In questo caso si scrive:
+    \begin{equation}
+        \lim_{k \to +\infty} x_k = \bar{x}
+    \end{equation}
+\end{definizione}
+
+\begin{osservazione}
+    In $\mathbb{R}^n$, con $x_k = (x_{1, k}, x_{2, k}, \cdots, x_{n, k})$, usando la stima di base segue che:
+    \begin{equation}
+        \lim_{k \to +\infty} x_k = \bar{x} \iff \lim_{k \to +\infty} x_{i, k} = \bar{x}_i; \quad \forall i \in \{1, \cdots, n\}
+    \end{equation}
+\end{osservazione}
+
+\begin{esempio}
+    In $\mathbb{R}^2$ sia $x_k = \left(k e^{-k}, \sin(\arctan(k^3))\right)$, allora:
+    \begin{equation}
+        \lim_{k \to +\infty} x_k = (0, 1)
+    \end{equation}
+    dove la prima componente tende a $0$ per la gerarchia degli infiniti, mentre per la seconda $\arctan(k^3) \longrightarrow \frac{\pi}{2}$ e per la continuità di $\sin(x)$ segue $\sin\left(\frac{\pi}{2}\right) = 1$.
+\end{esempio}
+
+\begin{definizione}[Compattezza per successioni]
+    Un sotto-insieme $K$ di uno spazio metrico $(X, d)$ si dice compatto se da \textbf{ogni} successione di punti di $K$ si può estrarre una sottosuccessione convergente ad un $\bar{x} \in K$.
+\end{definizione}
+
+\begin{teorema}[Heine-Borel]
+    Un sotto-insieme $K$ di $\mathbb{R}^n$ è compatto $\iff$ è chiuso e limitato.
+\end{teorema}
+
+\chapter{Curve parametriche}
+\section{Curve parametriche in $\mathbb{R}^n$}
+Una curva parametrica (o traiettoria) associa ad ogni "istante" $t$ di un intervallo di $\mathbb{R}$ un punto $\varphi(t)$ di $\mathbb{R}^n$.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=0.9]
+        \draw[-Stealth] (-0.5,0) -- (3.5,0) node[below] {$\mathbb{R}$};
+        \fill[blue] (1,0) circle (1.5pt) node[below] {$t$};
+        \draw[-Stealth] (5,0) -- (9,0);
+        \draw[-Stealth] (6,-1) -- (6,2.4);
+        \draw[orange, thick] plot[smooth] coordinates {(5.2,0.8) (5.8,1.5) (6.4,1.2) (6.1,0.2) (6.8,0.4) (7.2,1.7) (7.8,1.4) (8.4,1.6)};
+        \fill[orange] (5.2,0.8) circle (1.5pt);
+        \fill[orange] (8.4,1.6) circle (1.5pt);
+        \draw[blue, -Stealth] (1,0) .. controls (1.6,2.2) and (4.6,1.6) .. (6.05,0.25);
+        \fill[blue] (6.1,0.2) circle (1.5pt) node[below right] {$\varphi(t)$};
+    \end{tikzpicture}
+    \caption{Una curva parametrica associa ad ogni $t \in I$ un punto $\varphi(t) \in \mathbb{R}^n$.}
+\end{figure}
+
+\begin{definizione}[Curva parametrica]
+    Una curva parametrica in $\mathbb{R}^n$ è una funzione:
+    \begin{equation}
+        \varphi: I \subseteq \mathbb{R} \longrightarrow \mathbb{R}^n
+    \end{equation}
+    dove $I$ è un intervallo e $\varphi$ è continua in $I$, ossia:
+    \begin{equation}
+        \varphi(t) = (\varphi_1(t), \cdots, \varphi_n(t)) \quad \text{con } \varphi_k \in C^0(I); \; \forall k \in \{1, \cdots, n\}
+    \end{equation}
+    \begin{itemize}
+        \item Se $I = [a, b]$, allora $\varphi(a), \varphi(b)$ sono detti estremi della curva.
+        \item L'insieme:
+        \begin{equation}
+            \varphi(I) = \left\{x \in \mathbb{R}^n \mid \exists t \in I \mid \varphi(t) = x\right\}
+        \end{equation}
+        è detto sostegno della curva.
+    \end{itemize}
+\end{definizione}
+
+\begin{esempio}[Curve cartesiane]
+    Grafici di funzioni reali di una variabile reale: sia $f: [a, b] \longrightarrow \mathbb{R}$ continua, allora:
+    \begin{equation}
+        \varphi(t) = (t, f(t)); \quad t \in [a, b]
+    \end{equation}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        \draw[-Stealth] (-0.4,0) -- (3.6,0);
+        \draw[-Stealth] (0,-0.4) -- (0,2);
+
+        \draw[thick, domain=0.5:3, smooth, variable=\x] plot (\x, {1 + 0.6*sin(2.5*(\x-0.5) r)});
+        \draw (0.5,0.07) -- (0.5,-0.07) node[below] {$a$};
+        \draw (3,0.07) -- (3,-0.07) node[below] {$b$};
+        \node at (1.4,1.85) {$f$};
+    \end{tikzpicture}
+    \caption{Curva cartesiana: grafico di $f$ su $[a, b]$.}
+\end{figure}
+\end{esempio}
+
+\begin{esempio}[Circonferenza centrata in $O$ di raggio $r > 0$]
+    \begin{equation}
+        \varphi(t) = (r\cos t, r\sin t); \quad t \in [0, 2\pi]
+    \end{equation}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        \draw[-Stealth] (-1.7,0) -- (1.7,0);
+        \draw[-Stealth] (0,-1.7) -- (0,1.7);
+
+        \draw[thick] (0,0) circle (1.2);
+        \fill (1.2,0) circle (1.5pt);
+        \draw[orange, dashed] (0,0) -- (50:1.2);
+        \draw[-Stealth, thick] (40:1.2) arc (40:58:1.2);
+        \draw[orange] (0.35,0) arc (0:50:0.35);
+        \node[orange] at (25:0.55) {$t$};
+    \end{tikzpicture}
+    \caption{Circonferenza di centro $O$ e raggio $r$.}
+\end{figure}
+\end{esempio}
+
+\begin{esempio}[Rette in $\mathbb{R}^n$]
+    Siano $x_0 \in \mathbb{R}^n$ e $v \in \mathbb{R}^n$ (vettore direttore), allora:
+    \begin{equation}
+        \mathbb{R}^n \ni x = x_0 + tv; \quad t \in \mathbb{R}
+    \end{equation}
+    il cui sostegno è $\text{Span}(v) + x_0$.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        \draw[-Stealth] (-0.5,0) -- (4,0);
+        \draw[-Stealth] (0,-0.5) -- (0,3);
+
+        \draw[-Stealth, thick] (0,0) -- (1.5,0.6) node[below right] {$v$};
+        \fill (1,1.6) circle (1.5pt) node[above left] {$x_0$};
+        \draw[dashed] (-0.2,1.12) -- (3.25,2.5);
+    \end{tikzpicture}
+    \caption{Retta passante per $x_0$ con vettore direttore $v$.}
+\end{figure}
+\end{esempio}
+
+\begin{esempio}[Segmenti in $\mathbb{R}^n$]
+    Il segmento di estremi $x_0, x_1$ fissati è:
+    \begin{equation}
+        x = (1 - t)x_0 + tx_1; \quad t \in [0, 1]
+    \end{equation}
+    ovvero una combinazione convessa di $x_0$ e $x_1$.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        \draw[thick] (0,0) -- (5,0);
+        \fill (0,0) circle (1.5pt) node[below] {$x_0$};
+        \fill[blue] (2,0) circle (1.5pt) node[below] {$x$};
+        \fill (5,0) circle (1.5pt) node[below] {$x_1$};
+        \draw[orange, decorate, decoration={brace, amplitude=6pt}] (0,0.15) -- (2,0.15);
+    \end{tikzpicture}
+    \caption{Segmento di estremi $x_0$ e $x_1$.}
+\end{figure}
+\end{esempio}
+
+\begin{esempio}[Circonferenza percorsa più volte]
+    Due parametrizzazioni con lo stesso sostegno:
+    \begin{enumerate}
+        \item $(R\cos t, R\sin t); \quad t \in [0, 2\pi] \Longrightarrow$ circonferenza.
+        \item $(R\cos t, R\sin t); \quad t \in [0, 4\pi] \Longrightarrow$ circonferenza percorsa 2 volte.
+    \end{enumerate}
+\end{esempio}
+
+\begin{osservazione}
+    Una curva parametrica non corrisponde al suo sostegno, che può essere percorso $n$ volte o solo in parte.
+\end{osservazione}
+
+\begin{esempio}
+    Sia $\varphi(t) = (\sin t, \sin t)$ con $t \in [0, 2\pi]$, il sostegno è il segmento della retta $y = x$ con $x \in [-1, 1]$, che viene percorso avanti e indietro: da $(0, 0)$ a $(1, 1)$, poi fino a $(-1, -1)$ e infine di nuovo a $(0, 0)$.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.4]
+        \draw[-Stealth] (-1.6,0) -- (1.6,0);
+        \draw[-Stealth] (0,-1.6) -- (0,1.6);
+
+        \draw[orange, thick] (-1.3,-1.3) -- (1.3,1.3);
+        \draw (1,0.07) -- (1,-0.07) node[below] {$1$};
+        \draw (-1,0.07) -- (-1,-0.07) node[below] {$-1$};
+        \draw[violet, -Stealth] (0.05,-0.05) ++(0.1,-0.1) -- (1.05,0.85);
+        \draw[blue, -Stealth] (0.85,1.05) -- (-1.05,-0.85);
+        \draw[green!50!black, -Stealth] (-0.85,-1.05) ++(0.15,-0.15) -- (0.05,-0.25);
+        \node[right] at (1.3,1.3) {$y = x$};
+    \end{tikzpicture}
+    \caption{Il segmento viene percorso avanti e indietro.}
+\end{figure}
+\end{esempio}
+
+\begin{esempio}[Ellisse centrata in $O$ con semiassi $a$ e $b$]
+    \begin{equation}
+        \varphi(t) = (a\cos t, b\sin t); \quad t \in [0, 2\pi]
+    \end{equation}
+    Infatti:
+    \begin{equation}
+        \frac{x^2}{a^2} + \frac{y^2}{b^2} = \frac{a^2\cos^2 t}{a^2} + \frac{b^2\sin^2 t}{b^2} = 1
+    \end{equation}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        \draw[-Stealth] (-2.5,0) -- (2.5,0);
+        \draw[-Stealth] (0,-1.4) -- (0,1.4);
+
+        \draw[thick] (0,0) ellipse (2 and 1);
+        \node[below right] at (2,0) {$a$};
+        \node[above right] at (0,1) {$b$};
+    \end{tikzpicture}
+    \caption{Ellisse di semiassi $a$ e $b$.}
+\end{figure}
+\end{esempio}
+
+\begin{esempio}[Elica cilindrica ed elica conica]
+    Due esempi in $\mathbb{R}^3$:
+    \begin{itemize}
+        \item $\varphi(t) = (\cos t, \sin t, t); \quad t \in \mathbb{R} \Longrightarrow$ elica cilindrica, avvolta sul cilindro $x^2 + y^2 = 1$ con passo $2\pi$.
+        \item $\varphi(t) = (t\cos t, t\sin t, t); \quad t \in \mathbb{R} \Longrightarrow$ elica conica.
+    \end{itemize}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.1]
+        \draw[-Stealth] (-1.6,0) -- (1.8,0);
+        \draw[-Stealth] (0,-0.5) -- (0,3.4);
+        \draw[-Stealth] (0.4,0.3) -- (-1.2,-0.9);
+        \draw[dashed, gray] (0,0) ellipse (1 and 0.3);
+        \draw[dashed, gray] (0,2.26) ellipse (1 and 0.3);
+        \draw[dashed, gray] (-1,0) -- (-1,2.26);
+        \draw[dashed, gray] (1,0) -- (1,2.26);
+        \draw[red, thick, domain=0:12.566, samples=200, smooth, variable=\x] plot ({cos(\x r)}, {0.3*sin(\x r) + 0.18*\x});
+        \draw[red, Stealth-Stealth] (1.3,0) -- (1.3,1.13) node[midway, right] {$2\pi$};
+    \end{tikzpicture}
+    \caption{Elica cilindrica: passo $2\pi$ sul cilindro $x^2 + y^2 = 1$.}
+\end{figure}
+\end{esempio}
+
+\section{Curve chiuse e semplici}
+\begin{definizione}[Curva chiusa e curva semplice]
+    Sia $\varphi: I \longrightarrow \mathbb{R}^n$, $I = [a, b]$, allora la curva:
+    \begin{itemize}
+        \item Si dice chiusa se $\varphi(a) = \varphi(b)$.
+        \item Si dice semplice se $\forall t_1, t_2 \in [a, b]$, con $t_1 \neq t_2$ e almeno uno tra $t_1$ e $t_2$ non estremo, vale che:
+        \begin{equation}
+            \varphi(t_1) \neq \varphi(t_2)
+        \end{equation}
+    \end{itemize}
+    Ad esempio un arco aperto che non si interseca è semplice e non chiuso, una curva che si auto-interseca non è semplice, mentre una curva che si richiude su se stessa senza auto-intersezioni è chiusa e semplice.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=0.9]
+        \begin{scope}
+            \draw[orange, thick] plot[smooth] coordinates {(0,0) (0.3,0.6) (0.9,0.8) (1.2,1.3)};
+            \fill[orange] (0,0) circle (1.5pt); \fill[orange] (1.2,1.3) circle (1.5pt);
+            \node[align=center, font=\footnotesize] at (0.6,-0.6) {(1) non chiusa\\semplice};
+        \end{scope}
+        \begin{scope}[xshift=3cm]
+            \draw[orange, thick, -Stealth] plot[smooth] coordinates {(0,-0.2) (0.2,0.4) (0.7,0.9) (1.2,0.7) (1.1,0.2) (0.6,0.1) (0.25,0.5) (-0.1,0.9)};
+            \fill[orange] (0,-0.2) circle (1.5pt); \fill[orange] (-0.1,0.9) circle (1.5pt);
+            \node[align=center, font=\footnotesize] at (0.6,-0.6) {(2) non chiusa\\non semplice};
+        \end{scope}
+        \begin{scope}[xshift=6cm]
+            \draw[orange, thick, -Stealth] plot[smooth] coordinates {(0,0.8) (0.6,0.8) (1.0,0.4) (0.8,0) (0.45,0.1) (0.5,0.55) (1.0,0.9) (1.6,1.0)};
+            \fill[orange] (0,0.8) circle (1.5pt); \fill[orange] (1.6,1.0) circle (1.5pt);
+            \node[align=center, font=\footnotesize] at (0.8,-0.6) {(3) non chiusa\\non semplice};
+        \end{scope}
+        \begin{scope}[xshift=9.5cm]
+            \draw[orange, thick] plot[smooth cycle] coordinates {(0,0.4) (0.6,0.6) (1.2,0.9) (1.4,0.3) (0.9,-0.1) (0,0) (-0.3,0.5) (0.3,1.1) (1.0,1.3) (1.6,1.0) (1.7,0.2) (1.0,-0.3) (-0.1,-0.2) (-0.4,0.2)};
+            \fill[orange] (0,0.4) circle (1.5pt);
+            \node[align=center, font=\footnotesize] at (0.6,-0.8) {(4) chiusa\\semplice};
+        \end{scope}
+    \end{tikzpicture}
+    \caption{Curve chiuse e semplici.}
+\end{figure}
+\end{definizione}
+
+\begin{osservazione}[Criterio per la semplicità]
+    Se almeno una componente $\varphi_i$ di $\varphi$ è iniettiva, allora la curva è semplice. Infatti, presi $t_1, t_2$ tali che $\varphi(t_1) = \varphi(t_2)$:
+    \begin{equation}
+        \begin{cases}
+            \varphi_1(t_1) = \varphi_1(t_2) \\
+            \varphi_2(t_1) = \varphi_2(t_2) \\
+            \vdots \\
+            \varphi_n(t_1) = \varphi_n(t_2)
+        \end{cases}
+    \end{equation}
+    e se $\varphi_i$ è iniettiva $\Longrightarrow t_1 = t_2$. La condizione è sufficiente ma \textbf{non necessaria} (si veda l'esempio \ref{es:circonferenza_semplice}).
+\end{osservazione}
+
+\begin{esempio}[Esempio fondamentale]\label{es:circonferenza_semplice}
+    $\varphi(t) = (R\cos t, R\sin t)$, $t \in [0, 2\pi]$ è semplice anche se non ha componenti iniettive. Scelgo $t_1, t_2 \in [0, 2\pi]$ e impongo che $\varphi(t_1) = \varphi(t_2)$:
+    \begin{equation}
+        \begin{cases}
+            R\cos(t_1) = R\cos(t_2) \\
+            R\sin(t_1) = R\sin(t_2)
+        \end{cases}
+    \end{equation}
+    Dalla prima equazione segue $t_2 = t_1$ oppure $t_2 = 2\pi - t_1$; nel secondo caso la seconda equazione diventa $\sin(t_1) = -\sin(t_1) \Longrightarrow \sin(t_1) = 0$, quindi $t_1 \in \{0, \pi, 2\pi\}$. Per $t_1 = \pi$ si ha $t_2 = \pi = t_1$, mentre $t_1 = 0, t_2 = 2\pi$ (o viceversa) sono entrambi estremi. Quindi la curva è semplice, chiusa e regolare.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        \draw[-Stealth] (-1.6,0) -- (1.6,0);
+        \draw[-Stealth] (0,-1.6) -- (0,1.6);
+
+        \draw[thick] (0,0) circle (1.2);
+        \draw[orange, dashed] (60:1.2) -- (-60:1.2);
+        \fill[orange] (60:1.2) circle (1.5pt) node[above right] {$t_2 = t_1$};
+        \fill[orange] (-60:1.2) circle (1.5pt) node[below right] {$t_2 = 2\pi - t_1$};
+    \end{tikzpicture}
+    \caption{Punti con lo stesso coseno: solo il primo ha anche lo stesso seno.}
+\end{figure}
+\end{esempio}
+
+\section{Curve equivalenti}
+\begin{definizione}[Parametrizzazioni equivalenti]
+    Siano $\varphi: I \longrightarrow \mathbb{R}^n$ e $\psi: J \longrightarrow \mathbb{R}^n$, diremo che $\varphi$ e $\psi$ sono equivalenti ($\varphi \sim \psi$) se:
+    \begin{equation}
+        \exists g \in C^1(I, J) \text{ biettiva t.c. } g' \neq 0 \text{ in } \mathring{I} \text{ e } \varphi(t) = \psi(g(t)) \; \forall t \in I
+    \end{equation}
+    dove $g$ è un diffeomorfismo. Poiché $g'$ è continua e non si annulla, segue che:
+    \begin{equation}
+        g'(t) > 0 \text{ in } \mathring{I} \quad \text{oppure} \quad g'(t) < 0 \text{ in } \mathring{I}
+    \end{equation}
+    \begin{itemize}
+        \item Se $g'(t) > 0$, $\varphi$ e $\psi$ hanno verso \textbf{concorde}.
+        \item Se $g'(t) < 0$, $\varphi$ e $\psi$ hanno verso \textbf{discorde}.
+    \end{itemize}
+\end{definizione}
+
+\begin{osservazione}
+    Equivalenza $\Longrightarrow$ stesso sostegno, ma non vale il viceversa (es. circonferenza percorsa una o due volte).
+\end{osservazione}
+
+\begin{definizione}[Curva]
+    $[\varphi] :=$ classe di equivalenza della curva parametrica $\varphi$. Tale classe è indicata con $\gamma$, ed è una \textbf{curva}. Le quantità che non dipendono dalla parametrizzazione scelta sono gli invarianti della classe, come ad esempio la lunghezza.
+\end{definizione}
+
+\begin{osservazione}[Utile per gli esercizi]
+    Due curve parametriche semplici, non chiuse e con lo stesso sostegno sono equivalenti.
+\end{osservazione}
+
+\section{Curve regolari}
+\begin{definizione}[Derivata di una curva]
+    $\varphi: I \longrightarrow \mathbb{R}^n$ è derivabile in $I$ se tutte le sue componenti lo sono, e:
+    \begin{equation}
+        \varphi'(t) = (\varphi_1'(t), \varphi_2'(t), \cdots, \varphi_n'(t))
+    \end{equation}
+    $\varphi$ è di classe $C^k$ se ogni componente $\varphi_i \in C^k(I)$.
+\end{definizione}
+
+\begin{proposizione}
+    Siano $\lambda \in C^1(I)$, $\varphi, \psi \in C^1(I, \mathbb{R}^n)$, allora:
+    \begin{itemize}
+        \item $\odv{}{t}\left(\lambda(t)\varphi(t)\right) = \lambda'(t)\varphi(t) + \lambda(t)\varphi'(t)$
+        \item Se $g \in C^1(I, J)$ e $\varphi \in C^1(J, \mathbb{R}^n)$:
+        \begin{equation}
+            \odv{}{t}\left(\varphi(g(t))\right) = \varphi'(g(t))g'(t)
+        \end{equation}
+        \item $\odv{}{t}\innerprod{\varphi(t)}{\psi(t)} = \innerprod{\varphi'(t)}{\psi(t)} + \innerprod{\varphi(t)}{\psi'(t)}$
+    \end{itemize}
+\end{proposizione}
+
+\begin{corollario}
+    Supponendo che $||\varphi(t)|| = c$ costante $\forall t \in I$, allora:
+    \begin{equation}
+        c^2 = \innerprod{\varphi(t)}{\varphi(t)} \Longrightarrow 0 = 2\innerprod{\varphi'(t)}{\varphi(t)}
+    \end{equation}
+    poiché $t \longmapsto \innerprod{\varphi(t)}{\varphi(t)}$ è costante in $I$. Segue che:
+    \begin{equation}
+        \varphi'(t) \perp \varphi(t); \quad \forall t \in I
+    \end{equation}
+\end{corollario}
+
+\begin{definizione}[Curva regolare]
+    Sia $\varphi \in C^1(I, \mathbb{R}^n)$, $\varphi'(t)$ è il suo vettore (velocità) tangente in $\varphi(t)$. Se $\gamma = [\varphi]$ e:
+    \begin{equation}
+        ||\varphi'(t)|| \neq 0; \quad \forall t \in I
+    \end{equation}
+    allora diremo che $\gamma$ è una curva regolare. In tal caso è ben definito il versore tangente:
+    \begin{equation}
+        T(t) = \frac{\varphi'(t)}{||\varphi'(t)||}
+    \end{equation}
+    La condizione $\varphi' \neq 0$ è ciò che garantisce che il sostegno sia "morbido", ovvero senza punti angolosi o cuspidi.
+\end{definizione}
+
+\begin{osservazione}[Invarianza del versore tangente]
+    Se $\psi(t) = \varphi(g(t))$ è una parametrizzazione equivalente, allora $\psi'(t) = g'(t)\varphi'(g(t))$, da cui:
+    \begin{equation}
+        \frac{\psi'(t)}{||\psi'(t)||} = \text{sign}(g'(t))\frac{\varphi'(g(t))}{||\varphi'(g(t))||}
+    \end{equation}
+    quindi la direzione del versore tangente è invariante per parametrizzazioni equivalenti, mentre il verso dipende dall'orientazione.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        \draw[thick] plot[smooth] coordinates {(0,0) (1,0.4) (1.6,1.2) (2.4,1.8) (3.2,1.9)};
+        \fill (1.6,1.2) circle (1.5pt);
+        \node[above left] at (1.6,1.2) {$\varphi(g(t))$};
+        \node[below right] at (1.6,1.2) {$\psi(t)$};
+    \end{tikzpicture}
+    \caption{Parametrizzazioni equivalenti descrivono lo stesso punto.}
+\end{figure}
+\end{osservazione}
+
+\begin{esempio}[Controesempio]
+    $\varphi(t) = (t^3, t^2)$ con $t \in [-1, 1]$, allora $\varphi \in C^1([-1, 1], \mathbb{R}^2)$, ma:
+    \begin{equation}
+        \varphi'(t) = (3t^2, 2t) \Longrightarrow \varphi'(0) = (0, 0)
+    \end{equation}
+    quindi si perde la regolarità: il sostegno presenta una cuspide in $\varphi(0) = (0, 0)$.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.8]
+        \draw[-Stealth] (-1.4,0) -- (1.4,0);
+        \draw[-Stealth] (0,-0.3) -- (0,1.3);
+
+        \draw[thick, domain=-1:1, samples=100, smooth, variable=\x] plot ({\x*\x*\x}, {\x*\x});
+        \fill (0,0) circle (1.5pt) node[below right] {$\varphi(0)$};
+    \end{tikzpicture}
+    \caption{La curva $(t^3, t^2)$ presenta una cuspide nell'origine.}
+\end{figure}
+\end{esempio}
+
+\begin{definizione}[Retta tangente]
+    Sia $\varphi \in C^1([a, b], \mathbb{R}^n)$ regolare, $t_0 \in (a, b)$. Allora la retta tangente alla curva $\gamma = [\varphi]$ in $\varphi(t_0)$ ha parametrizzazione:
+    \begin{equation}
+        r(t) = \varphi(t_0) + \varphi'(t_0)(t - t_0); \quad t \in \mathbb{R}
+    \end{equation}
+\end{definizione}
+
+\section{Lunghezza di una curva}
+Sia $\varphi: [a, b] \longrightarrow \mathbb{R}^n$ una curva e sia:
+\begin{equation}
+    P = \left\{a = t_0, t_1, \cdots, t_k = b\right\}
+\end{equation}
+una partizione di $[a, b]$. La lunghezza della spezzata inscritta nella curva, con vertici nei punti $\varphi(t_i)$, è:
+\begin{equation}
+    \ell(P) = \sum_{i = 1}^{k} ||\varphi(t_{i}) - \varphi(t_{i - 1})||
+\end{equation}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=0.9]
+        \draw[-Stealth] (-0.4,0) -- (4.6,0);
+        \foreach \x in {0,0.3,...,4.0} \draw (\x,0.08) -- (\x,-0.08);
+        \node[below] at (0,-0.1) {$a$};
+        \node[below] at (3.9,-0.1) {$b$};
+        \node[below, green!50!black] at (1.8,-0.1) {$t_{i-1}\;t_i$};
+        \coordinate (P0) at (6,0.3);
+        \coordinate (P1) at (6.4,1.2);
+        \coordinate (P2) at (7.0,1.8);
+        \coordinate (P3) at (7.8,2.1);
+        \coordinate (P4) at (8.5,2.6);
+        \coordinate (P5) at (9.0,3.4);
+        \draw[thick] plot[smooth] coordinates {(6,0.3) (6.4,1.2) (7.0,1.8) (7.8,2.1) (8.5,2.6) (9.0,3.4)};
+        \draw[green!50!black] (P0) -- (P1) -- (P2) -- (P3) -- (P4) -- (P5);
+        \foreach \P in {P0,P1,P2,P3,P4,P5} \fill[green!50!black] (\P) circle (1.5pt);
+        \node[right] at (P0) {$A$};
+        \node[above] at (P5) {$B$};
+        \node[below right, green!50!black, font=\footnotesize] at (P3) {$\varphi(t_{i-1})$};
+        \node[above left, green!50!black, font=\footnotesize] at (P4) {$\varphi(t_i)$};
+        \draw[green!50!black, -Stealth] (0,-0.5) .. controls (2,-1.5) and (5,-1) .. (5.9,0.2);
+        \draw[green!50!black, -Stealth] (3.9,0.2) .. controls (4.5,3) and (7.5,3.8) .. (8.9,3.5);
+    \end{tikzpicture}
+    \caption{Spezzata inscritta nella curva associata alla partizione $P$.}
+\end{figure}
+
+\begin{definizione}[Curva rettificabile]
+    Se:
+    \begin{equation}
+        \ell(\gamma) := \sup\left\{\ell(P) \mid P \text{ partizione di } [a, b]\right\} < +\infty
+    \end{equation}
+    allora diremo che la curva $\gamma = [\varphi]$ è \textbf{rettificabile} e $\ell(\gamma)$ è la lunghezza di $\gamma$.
+\end{definizione}
+
+\begin{osservazione}
+    Due curve equivalenti hanno la stessa lunghezza $\ell = \sup\left\{\ell(P)\right\}$, quindi la lunghezza è un invariante della curva. Inoltre la lunghezza delle spezzate è sempre finita.
+\end{osservazione}
+
+\begin{esempio}[Curva di Koch]
+    I frattali sono oggetti auto-similari che si costruiscono in modo iterativo. Se il numero di iterazioni $n \to +\infty$, la curva di Koch ha lunghezza infinita e non ha un vettore tangente in nessun punto.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \node[left] at (0,-0.0) {$F_0$};
+            \begin{scope}[shift={(0.3,-0.0)}]
+                \draw[thin] [lindenmayer system={Koch curve, axiom=F, order=0, step=4cm, angle=60}] lindenmayer system;
+            \end{scope}
+            \node[left] at (0,-1.6) {$F_1$};
+            \begin{scope}[shift={(0.3,-1.6)}]
+                \draw[thin] [lindenmayer system={Koch curve, axiom=F, order=1, step=1.33333cm, angle=60}] lindenmayer system;
+            \end{scope}
+            \node[left] at (0,-3.2) {$F_2$};
+            \begin{scope}[shift={(0.3,-3.2)}]
+                \draw[thin] [lindenmayer system={Koch curve, axiom=F, order=2, step=0.44444cm, angle=60}] lindenmayer system;
+            \end{scope}
+            \node[left] at (0,-4.8) {$F_3$};
+            \begin{scope}[shift={(0.3,-4.8)}]
+                \draw[thin] [lindenmayer system={Koch curve, axiom=F, order=3, step=0.14815cm, angle=60}] lindenmayer system;
+            \end{scope}
+            \node[left] at (0,-6.4) {$F_4$};
+            \begin{scope}[shift={(0.3,-6.4)}]
+                \draw[thin] [lindenmayer system={Koch curve, axiom=F, order=4, step=0.04938cm, angle=60}] lindenmayer system;
+            \end{scope}
+        \end{tikzpicture}
+++        \caption{Prime iterazioni della curva di Koch.}
+    \end{figure}
+\end{esempio}
+
+Facendo un conto, se $\varphi \in C^1([a, b], \mathbb{R}^n)$:
+\begin{equation}
+    \ell(P) = \sum_{i = 1}^{k} \frac{||\varphi(t_i) - \varphi(t_{i - 1})||}{t_i - t_{i - 1}}(t_i - t_{i - 1})
+\end{equation}
+e per $\sup_i(t_i - t_{i - 1})$ infinitesimo, il rapporto incrementale tende a $||\varphi'||$ e la somma ad un integrale:
+\begin{equation}
+    \ell(P) \longrightarrow \int_{a}^{b} ||\varphi'(t)|| \, dt
+\end{equation}
+
+\begin{teorema}[Rettificabilità delle curve $C^1$]
+    Se $\varphi \in C^1([a, b], \mathbb{R}^n)$, allora $\gamma = [\varphi]$ è rettificabile e:
+    \begin{equation}
+        L(\gamma) = \int_{a}^{b} ||\varphi'(t)|| \, dt
+    \end{equation}
+\end{teorema}
+
+\begin{osservazione}
+    La formula ha senso poiché la norma è una funzione continua, quindi $t \longmapsto ||\varphi'(t)||$ è continua in $[a, b]$ e dunque integrabile. L'integrale di una funzione vettoriale $\varphi \in C^0([a, b], \mathbb{R}^n)$ si definisce componente per componente:
+    \begin{equation}
+        \int_{a}^{b} \varphi(t) \, dt = \left(\int_{a}^{b} \varphi_1(t) \, dt, \cdots, \int_{a}^{b} \varphi_n(t) \, dt\right)
+    \end{equation}
+\end{osservazione}
+
+\begin{esempio}[Lunghezza della circonferenza]
+    $\varphi(t) = (R\cos t, R\sin t)$, $t \in [0, 2\pi]$:
+    \begin{equation}
+        \varphi'(t) = (-R\sin t, R\cos t) \Longrightarrow ||\varphi'(t)|| = \sqrt{R^2} = R
+    \end{equation}
+    \begin{equation}
+        \Longrightarrow L(\gamma) = \int_{0}^{2\pi} R \, dt = 2\pi R
+    \end{equation}
+\end{esempio}
+
+\begin{esempio}
+    $\varphi(t) = \left(\frac{t^2}{\sqrt{2}}, \frac{t^3}{3}, t\right)$, $t \in [0, 1]$.
+    \begin{itemize}
+        \item È semplice, poiché la terza componente $\varphi_3(t) = t$ è iniettiva.
+        \item Non è chiusa, poiché $\varphi_3(t) = t$ è strettamente crescente, quindi $\varphi(0) \neq \varphi(1)$.
+    \end{itemize}
+    \begin{equation}
+        \varphi'(t) = (\sqrt{2}t, t^2, 1) \Longrightarrow ||\varphi'(t)|| = \sqrt{2t^2 + t^4 + 1} = \sqrt{(t^2 + 1)^2} = |t^2 + 1|
+    \end{equation}
+    \begin{equation}
+        \Longrightarrow L(\gamma) = \int_{0}^{1} (t^2 + 1) \, dt = \left.\frac{t^3}{3} + t\right|_0^1 = \frac{4}{3}
+    \end{equation}
+\end{esempio}
+
+\begin{osservazione}[Curve cartesiane]
+    Se $\varphi(t) = (t, f(t))$, $f \in C^1([a, b])$, $t \in [a, b]$, allora $\varphi'(t) = (1, f'(t))$ e:
+    \begin{equation}
+        L(\gamma) = \int_{a}^{b} \sqrt{1 + (f'(t))^2} \, dt
+    \end{equation}
+    Le curve cartesiane non sono chiuse e sono semplici (la prima componente è iniettiva).
+\end{osservazione}
+
+\section{Parametrizzazione naturale}
+Sia $\varphi \in C^1([a, b], \mathbb{R}^n)$ con $||\varphi'(t)|| \neq 0 \; \forall t \in (a, b)$, si definisce l'\textbf{ascissa curvilinea}:
+\begin{equation}
+    \begin{aligned}
+        s: [a, b] &\longrightarrow [0, L(\gamma)] \\
+        t &\longmapsto s(t) = \int_{a}^{t} ||\varphi'(\tau)|| \, d\tau
+    \end{aligned}
+\end{equation}
+che misura la lunghezza dell'arco di curva da $\varphi(a)$ a $\varphi(t)$. Per il teorema di Torricelli (teorema fondamentale del calcolo integrale) $s$ è continua e derivabile, con:
+\begin{equation}
+    s'(t) = ||\varphi'(t)|| > 0
+\end{equation}
+per la regolarità. Quindi $s$ è strettamente crescente, dunque invertibile, e la sua inversa è:
+\begin{equation}
+    t(s): [0, L(\gamma)] \longrightarrow [a, b]
+\end{equation}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        \draw[-Stealth] (-0.3,0) -- (4.6,0);
+        \draw (0.4,0.08) -- (0.4,-0.08) node[below] {$a$};
+        \draw (2,0.08) -- (2,-0.08) node[below] {$t$};
+        \draw (3.9,0.08) -- (3.9,-0.08) node[below] {$b$};
+        \draw[thick, -Stealth] plot[smooth] coordinates {(0,1.4) (0.8,2.2) (2,2.5) (3.2,2.8) (4.2,3.8)};
+        \fill (0,1.4) circle (1.5pt);
+        \fill (2,2.5) circle (1.5pt) node[above] {$\varphi(t)$};
+        \draw[-Stealth] (2,0.15) .. controls (2.4,1) and (2.3,1.8) .. (2.05,2.4);
+        \node at (2.6,1.3) {$\varphi$};
+    \end{tikzpicture}
+    \caption{Ascissa curvilinea: $s(t)$ è la lunghezza dell'arco da $\varphi(a)$ a $\varphi(t)$.}
+\end{figure}
+
+\begin{definizione}[Parametrizzazione nel parametro arco]
+    \begin{equation}
+        \psi(s) = \varphi(t(s))
+    \end{equation}
+    è una parametrizzazione equivalente a $\varphi$, infatti $\psi \sim \varphi$ e di verso concorde.
+\end{definizione}
+
+\begin{osservazione}
+    Usando la derivata della funzione inversa $(f^{-1})'(x) = \frac{1}{f'(f^{-1}(x))}$:
+    \begin{equation}
+        \psi'(s) = \varphi'(t(s)) \cdot t'(s) = \frac{\varphi'(t(s))}{||\varphi'(t(s))||}
+    \end{equation}
+    quindi $||\psi'(s)|| = 1$: la velocità è unitaria e il vettore tangente coincide con il versore tangente.
+\end{osservazione}
+
+\begin{esempio}
+    $\varphi(t) = (R\cos t, R\sin t)$, $t \in [0, 2\pi]$:
+    \begin{equation}
+        s(t) = \int_{0}^{t} R \, d\tau = Rt \Longrightarrow t(s) = \frac{s}{R}
+    \end{equation}
+    Riparametrizzazione nel parametro arco:
+    \begin{equation}
+        \psi(s) = \left(R\cos\left(\frac{s}{R}\right), R\sin\left(\frac{s}{R}\right)\right); \quad s \in [0, 2\pi R] \Longrightarrow ||\psi'(s)|| = 1
+    \end{equation}
+\end{esempio}
+
+\section{Concatenamento e curve regolari a tratti}
+\begin{definizione}[Concatenamento di più curve]
+    Siano $\varphi_1 \in C^0(I, \mathbb{R}^n)$, $\varphi_2 \in C^0(J, \mathbb{R}^n)$, con $I = [a, b]$, $J = [c, d]$ e $\varphi_1(b) = \varphi_2(c)$. Il concatenamento di $\varphi_1$ e $\varphi_2$ è:
+    \begin{equation}
+        (\varphi_1 \oplus \varphi_2)(t) = \begin{cases}
+            \varphi_1(t) & t \in [a, b] \\
+            \varphi_2(t - b + c) & t \in [b, b + d - c]
+        \end{cases}
+    \end{equation}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        \draw[thick, -Stealth] (0,0) -- (1.2,0);
+        \draw[thick] (1.2,0) -- (2,0);
+        \draw[thick, -Stealth] (2,0) -- (2.6,0.6);
+        \draw[thick] (2.6,0.6) -- (3,1);
+        \fill (2,0) circle (1.5pt);
+        \node[below] at (1,0) {$\varphi_1$};
+        \node[below right] at (2.5,0.5) {$\varphi_2$};
+    \end{tikzpicture}
+    \caption{Concatenamento $\varphi_1 \oplus \varphi_2$.}
+\end{figure}
+\end{definizione}
+
+\begin{definizione}[Curva regolare a tratti]
+    Una curva parametrica $\varphi$ si dice \textbf{regolare a tratti} se è il concatenamento di un numero $n$ finito di curve regolari.
+\end{definizione}
+
+\begin{osservazione}
+    La lunghezza di una curva regolare a tratti è la somma delle lunghezze dei "tratti". I singoli tratti possono avere $||\varphi'|| = 0$ negli estremi.
+\end{osservazione}
+
+\begin{esempio}
+    $\varphi(t) = (t^3, t^2)$, $t \in [-1, 1]$ non è regolare, ma è regolare a tratti:
+    \begin{equation}
+        \varphi_1 = (t^3, t^2), \; t \in [-1, 0]; \qquad \varphi_2 = (t^3, t^2), \; t \in [0, 1]
+    \end{equation}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.8]
+        \draw[-Stealth] (-1.4,0) -- (1.4,0);
+        \draw[-Stealth] (0,-0.3) -- (0,1.3);
+
+        \draw[thick, domain=-1:1, samples=100, smooth, variable=\x] plot ({\x*\x*\x}, {\x*\x});
+        \fill (0,0) circle (1.5pt);
+        \fill (-1,1) circle (1.5pt);
+        \fill (1,1) circle (1.5pt);
+        \node[above] at (-0.6,0.75) {$\varphi_1$};
+        \node[above] at (0.6,0.75) {$\varphi_2$};
+    \end{tikzpicture}
+    \caption{La curva $(t^3, t^2)$ come concatenamento di due tratti regolari.}
+\end{figure}
+    \begin{itemize}
+        \item È semplice, poiché $t^3$ (prima componente) è iniettiva.
+        \item Non è chiusa.
+        \item È regolare a tratti, poiché $\varphi \in C^1$ (le componenti sono polinomi) e:
+        \begin{equation}
+            ||\varphi'(t)||^2 = 9t^4 + 4t^2 = t^2\underset{> 0}{(9t^2 + 4)} = 0 \iff t = 0
+        \end{equation}
+    \end{itemize}
+\end{esempio}
+
+\section{Curve in forma polare}
+In $\mathbb{R}^2$, usando le coordinate polari $(\rho, \theta)$, una curva in forma polare è data da:
+\begin{equation}
+    \rho = \rho(\theta); \quad \theta \in [\theta_1, \theta_2]
+\end{equation}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        \draw[-Stealth] (-0.4,0) -- (4,0);
+        \draw[-Stealth] (0,-0.4) -- (0,2.4);
+
+        \draw (0,0) -- (10:3.4);
+        \draw (0,0) -- (40:2.6);
+        \draw[orange, thick] plot[smooth] coordinates {(40:2.1) (33:2.5) (26:2.3) (18:2.9) (10:3.1)};
+        \draw (0.9,0) arc (0:10:0.9) node[right, font=\footnotesize] at (5:0.9) {$\theta_1$};
+        \draw (0.55,0) arc (0:40:0.55);
+        \node[font=\footnotesize] at (28:0.75) {$\theta_2$};
+    \end{tikzpicture}
+    \caption{Curva in forma polare tra gli angoli $\theta_1$ e $\theta_2$.}
+\end{figure}
+Esiste un modo naturale per parametrizzarla:
+\begin{equation}
+    \varphi(t) = (\rho(t)\cos t, \rho(t)\sin t); \quad t \in [\theta_1, \theta_2]
+\end{equation}
+
+\begin{esempio}[Spirale]
+    $\rho(\theta) = \theta$, $\theta \in [0, 4\pi]$ descrive una spirale che compie due giri attorno all'origine.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.1]
+        \draw[-Stealth] (-1.9,0) -- (1.9,0);
+        \draw[-Stealth] (0,-1.9) -- (0,1.9);
+
+        \draw[thick, domain=0:12.566, samples=200, smooth, variable=\x] plot ({0.12*\x*cos(\x r)}, {0.12*\x*sin(\x r)});
+    \end{tikzpicture}
+    \caption{Spirale $\rho(\theta) = \theta$, $\theta \in [0, 4\pi]$.}
+\end{figure}
+\end{esempio}
+
+Se $\rho \in C^1([\theta_1, \theta_2])$, allora:
+\begin{equation}
+    \begin{aligned}
+        \varphi'(t) &= (\rho'(t)\cos t - \rho(t)\sin t, \; \rho'(t)\sin t + \rho(t)\cos t) \\
+        &= \rho'(t)\underset{u}{(\cos t, \sin t)} + \rho(t)\underset{v}{(-\sin t, \cos t)}
+    \end{aligned}
+\end{equation}
+con $\innerprod{u}{v} = 0$ e $||u|| = ||v|| = 1$, quindi:
+\begin{equation}
+    ||\varphi'(t)||^2 = \innerprod{\rho' u + \rho v}{\rho' u + \rho v} = (\rho')^2 + \rho^2
+\end{equation}
+\begin{equation}
+    \Longrightarrow L(\gamma) = \int_{\theta_1}^{\theta_2} \sqrt{(\rho'(t))^2 + \rho^2(t)} \, dt
+\end{equation}
+
+\section{Integrale curvilineo di prima specie}
+\begin{teorema}[Continuità della funzione composta in $\mathbb{R}^n$]
+    Sia $\varphi: [a, b] \longrightarrow \mathbb{R}^n$, $t_0 \in [a, b]$ con $\varphi$ continua in $t_0$ e $\varphi(t_0) = x_0 \in \mathbb{R}^n$. Sia $f: A \subseteq \mathbb{R}^n \longrightarrow \mathbb{R}$, $x_0 \in A$, $f$ continua in $x_0$. Allora:
+    \begin{equation}
+        (f \circ \varphi)(t) = f(\varphi_1(t), \cdots, \varphi_n(t)): [a, b] \longrightarrow \mathbb{R}
+    \end{equation}
+    è continua in $t_0$.
+\end{teorema}
+
+\begin{osservazione}
+    Ricordando che:
+    \begin{equation}
+        \left|\, ||x|| - ||y|| \,\right| \leq ||x - y||; \quad \forall x, y \in \mathbb{R}^n
+    \end{equation}
+    ("manifestazione" della disuguaglianza triangolare), segue che $f(x) = ||x||$ è continua in $\mathbb{R}^n$, inoltre è 1-lipschitziana:
+    \begin{equation}
+        |f(x) - f(y)| \leq L||x - y||; \quad L = 1
+    \end{equation}
+\end{osservazione}
+
+\paragraph{Conseguenze}
+\begin{itemize}
+    \item Applicando il teorema a $f(x) = ||x||$ e $\varphi$ curva parametrica, poiché $f$ è continua in $\mathbb{R}^n$, allora $f(\varphi)$ è continua in $[a, b]$.
+    \item La composizione corrisponde a restringere la funzione $f$ di $n$ variabili ad una curva, ottenendo una funzione di una sola variabile.
+\end{itemize}
+
+\paragraph{Visualizzazione in $\mathbb{R}^2$}
+Sia $f: A \subseteq \mathbb{R}^2 \longrightarrow \mathbb{R}$, il suo grafico è:
+\begin{equation}
+    \Gamma = \left\{(x, y, z) \mid (x, y) \in A, \; z = f(x, y)\right\}
+\end{equation}
+Data una curva $\varphi(t) = (x(t), y(t))$, $t \in [a, b]$, con sostegno in $A$, la curva:
+\begin{equation}
+    (x(t), y(t), f(x(t), y(t)))
+\end{equation}
+giace sul grafico $\Gamma$ e la sua proiezione sul piano è il sostegno di $\varphi$. Se la curva è un segmento dell'asse $x$ si ritrova il caso di Analisi 1, $\int_a^b f(t) \, dt$.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        \draw[-Stealth] (0,0) -- (0,3.6) node[left] {$z$};
+        \draw[-Stealth] (0,0) -- (4.5,0) node[below] {$y$};
+        \draw[-Stealth] (0,0) -- (-1.5,-1.2) node[left] {$x$};
+        \draw[red, thick] plot[smooth cycle] coordinates {(0.4,-0.6) (1.5,-0.4) (2.8,-0.5) (3.3,-1.2) (2.4,-1.8) (1.2,-1.7) (0.3,-1.3)};
+        \fill[red, opacity=0.1] plot[smooth cycle] coordinates {(0.4,-0.6) (1.5,-0.4) (2.8,-0.5) (3.3,-1.2) (2.4,-1.8) (1.2,-1.7) (0.3,-1.3)};
+        \node[red] at (3.6,-1.5) {$A$};
+        \draw[blue, thick] plot[smooth cycle] coordinates {(0.4,1.6) (1.5,2.1) (2.8,1.8) (3.3,1.2) (2.4,0.6) (1.2,0.9) (0.3,1.0)};
+        \fill[blue, opacity=0.1] plot[smooth cycle] coordinates {(0.4,1.6) (1.5,2.1) (2.8,1.8) (3.3,1.2) (2.4,0.6) (1.2,0.9) (0.3,1.0)};
+        \node[blue] at (3.6,1.9) {$\Gamma$};
+        \draw[green!50!black, thick] plot[smooth] coordinates {(0.9,-1.4) (1.6,-1.0) (2.3,-1.1) (2.8,-0.8)};
+        \draw[green!50!black, thick] plot[smooth] coordinates {(0.9,1.1) (1.6,1.7) (2.3,1.3) (2.8,1.5)};
+        \draw[green!50!black, dashed] (0.9,-1.4) -- (0.9,1.1);
+        \draw[green!50!black, dashed] (1.6,-1.0) -- (1.6,1.7);
+        \draw[green!50!black, dashed] (2.3,-1.1) -- (2.3,1.3);
+        \draw[green!50!black, dashed] (2.8,-0.8) -- (2.8,1.5);
+        \node[green!50!black, font=\footnotesize] at (1.0,2.45) {$f(x, y)$};
+        \draw[green!50!black, -Stealth] (1.0,2.3) -- (1.5,1.75);
+        \node[green!50!black, below, font=\footnotesize] at (1.6,-1.0) {$\varphi$};
+    \end{tikzpicture}
+    \caption{La curva $\varphi$ in $A$ e la sua immagine sul grafico $\Gamma$ di $f$.}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=0.9]
+        \draw[-Stealth] (0,-0.5) -- (0,3);
+        \draw[-Stealth] (-0.5,0) -- (4,0);
+        \draw[-Stealth] (0.3,0.25) -- (-1.2,-1);
+        \draw[red, thick] plot[smooth] coordinates {(0.3,-0.8) (1.2,-1.2) (2.2,-0.6) (3,-1.0)};
+        \draw[orange, thick] plot[smooth] coordinates {(0.3,1.0) (1.2,1.4) (2.2,2.1) (3,1.8)};
+        \foreach \x/\ya/\yb in {0.3/-0.8/1.0, 0.75/-1.05/1.2, 1.2/-1.2/1.4, 1.7/-0.95/1.75, 2.2/-0.6/2.1, 2.6/-0.75/2.0, 3/-1.0/1.8}
+            \draw[blue, dashed] (\x,\ya) -- (\x,\yb);
+        \node[red, below] at (1.2,-1.2) {$\gamma$};
+        \end{tikzpicture}
+        \caption{$f$ ristretta alla curva $\gamma$.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=0.9]
+        \draw[-Stealth] (-0.3,0) -- (4,0);
+        \draw[-Stealth] (0,-0.3) -- (0,2.5);
+        \draw[thick, domain=0.6:3.3, smooth, variable=\x] plot (\x, {1.2 + 0.1*(\x-0.6)*(\x-0.6)*(\x-0.6)*0.5 + 0.2*sin(2*\x r)});
+        \draw[dashed] (0.6,0) -- (0.6,1.39);
+        \draw[dashed] (3.3,0) -- (3.3,2.06);
+        \node[below] at (0.6,0) {$a$};
+        \node[below] at (3.3,0) {$b$};
+        \node at (2,0.6) {$\int_a^b f(t) \, dt$};
+        \end{tikzpicture}
+        \caption{Caso di Analisi 1: $\gamma$ è un segmento.}
+    \end{subfigure}
+    \caption{Interpretazione dell'integrale curvilineo di prima specie.}
+\end{figure}
+
+\begin{definizione}[Integrale curvilineo di prima specie]
+    Sia $\gamma = [\varphi]$ una curva regolare, con $\varphi \in C^1([a, b], \mathbb{R}^n)$, e sia $f \in C^0(A)$ tale che il sostegno di $\gamma$ sia contenuto in $A$. Allora:
+    \begin{equation}
+        \int_\gamma f \, ds = \int_{a}^{b} f(\varphi(t)) ||\varphi'(t)|| \, dt
+    \end{equation}
+    è l'integrale curvilineo di prima specie (di funzione).
+\end{definizione}
+
+Si estende anche a curve regolari a tratti, per additività:
+\begin{equation}
+    \int_{\gamma_1 \oplus \gamma_2} f \, ds = \int_{\gamma_1} f \, ds + \int_{\gamma_2} f \, ds
+\end{equation}
+
+\begin{osservazione}
+    Proprietà dell'integrale curvilineo di prima specie:
+    \begin{enumerate}
+        \item Se $f \equiv 1 \Longrightarrow \int_\gamma 1 \, ds = L(\gamma)$.
+        \item L'integrale curvilineo di prima specie è invariante per parametrizzazioni equivalenti, anche con cambiamento di verso di percorrenza della curva.
+    \end{enumerate}
+\end{osservazione}
+
+\begin{esempio}
+    Sia $\varphi(t) = (t^2, e^t\cos t, e^t\sin t)$, $t \in [0, 1]$, $\gamma = [\varphi]$ e $f(x, y, z) = 2\sqrt{x} + y^2 + z^2$. Allora:
+    \begin{equation}
+        \varphi'(t) = \left(2t, e^t(\cos t - \sin t), e^t(\sin t + \cos t)\right) \Longrightarrow ||\varphi'(t)||^2 = 4t^2 + 2e^{2t}
+    \end{equation}
+    La $f$ ristretta alla curva vale $f(\varphi(t)) = 2t + e^{2t}\cos^2 t + e^{2t}\sin^2 t = 2t + e^{2t}$, quindi:
+    \begin{equation}
+        \int_\gamma f \, ds = \int_{0}^{1} (2t + e^{2t})(4t^2 + 2e^{2t})^{\frac{1}{2}} \, dt
+    \end{equation}
+    Sostituendo $\tau = 4t^2 + 2e^{2t}$, $d\tau = (8t + 4e^{2t}) \, dt = 4(2t + e^{2t}) \, dt$:
+    \begin{equation}
+        \int_{2}^{4 + 2e^2} \frac{1}{4}\sqrt{\tau} \, d\tau = \left.\frac{1}{4} \cdot \frac{2}{3}\tau^{\frac{3}{2}}\right|_2^{4 + 2e^2} = \frac{1}{6}\left[(4 + 2e^2)^{\frac{3}{2}} - 2^{\frac{3}{2}}\right]
+    \end{equation}
+\end{esempio}
+
+\paragraph{A cosa servono?}
+Sia $m: \mathbb{R}^3 \longrightarrow \mathbb{R}$ una densità lineare di massa e $\gamma = [\varphi]$ un filo regolare a tratti, allora:
+\begin{itemize}
+    \item Massa del filo:
+    \begin{equation}
+        M_{tot} = \int_\gamma m \, ds
+    \end{equation}
+    \item Coordinate del centro di massa:
+    \begin{equation}
+        x_{cm} = \frac{1}{M_{tot}}\int_\gamma mx \, ds; \quad y_{cm} = \frac{1}{M_{tot}}\int_\gamma my \, ds; \quad z_{cm} = \frac{1}{M_{tot}}\int_\gamma mz \, ds
+    \end{equation}
+    \item Momento di inerzia del filo rispetto ad un asse $r$:
+    \begin{equation}
+        I(\gamma) = \int_\gamma m \, d^2(\cdot, r) \, ds
+    \end{equation}
+    dove $d(\cdot, r)$ è la distanza del punto dall'asse.
+\end{itemize}
+
+\section{Integrale curvilineo di seconda specie}
+Sia $F: \mathbb{R}^3 \longrightarrow \mathbb{R}^3$ un campo vettoriale (ad esempio un campo di forze):
+\begin{equation}
+    (x, y, z) \longmapsto (F_1(x, y, z), F_2(x, y, z), F_3(x, y, z))
+\end{equation}
+e sia $\gamma = [\varphi]$, $\varphi \in C^1([a, b], \mathbb{R}^3)$ regolare.
+
+\begin{definizione}[Lavoro di un campo lungo una curva]
+    Il lavoro del campo $F$ lungo $\gamma$ è:
+    \begin{equation}
+        \begin{aligned}
+            L(F, \gamma) &= \int_\gamma \innerprod{F}{T} \, ds \\
+            &= \int_{a}^{b} \innerprod{F(\varphi(t))}{\frac{\varphi'(t)}{||\varphi'(t)||}} ||\varphi'(t)|| \, dt \\
+            &= \int_{a}^{b} \innerprod{F(\varphi(t))}{\varphi'(t)} \, dt
+        \end{aligned}
+    \end{equation}
+    ed è detto integrale curvilineo di seconda specie.
+\end{definizione}
+
+\begin{osservazione}
+    Se si indica con $-\gamma$ la curva equivalente a $\gamma$ ma con verso discorde, allora:
+    \begin{equation}
+        L(F, -\gamma) = -L(F, \gamma)
+    \end{equation}
+    quindi, a differenza di quello di prima specie, l'integrale di seconda specie dipende dal verso di percorrenza.
+\end{osservazione}
+
+\paragraph{Notazione}
+Se $\gamma$ è anche chiusa (oltre che regolare a tratti) si usa la notazione:
+\begin{equation}
+    \oint_\gamma \innerprod{F}{T} \, ds
+\end{equation}
+detta \textbf{circuitazione} del campo $F$ lungo $\gamma$.
+
+\begin{esempio}[Campo gravitazionale]
+    Il campo gravitazionale generato da una massa $M$ posta in $O$ è:
+    \begin{equation}
+        F(x, y, z) = -MG \frac{1}{(x^2 + y^2 + z^2)^{\frac{3}{2}}}(x, y, z)
+    \end{equation}
+    Sia $\varphi \in C^1([a, b], \mathbb{R}^3)$, $\gamma = [\varphi]$, allora:
+    \begin{equation}
+        \begin{aligned}
+            L(F, \gamma) &= \int_{a}^{b} \innerprod{-MG\frac{\varphi(t)}{||\varphi(t)||^3}}{\varphi'(t)} \, dt \\
+            &= -MG\int_{a}^{b} \frac{1}{||\varphi(t)||^3}\innerprod{\varphi(t)}{\varphi'(t)} \, dt
+        \end{aligned}
+    \end{equation}
+    Si osserva che:
+    \begin{equation}
+        -\frac{1}{||\varphi(t)||^3}\innerprod{\varphi(t)}{\varphi'(t)} = \odv{}{t}\frac{1}{||\varphi(t)||}
+    \end{equation}
+    da cui:
+    \begin{equation}
+        L(F, \gamma) = MG\int_{a}^{b} \odv{}{t}\frac{1}{||\varphi(t)||} \, dt = MG\left(\frac{1}{||\varphi(b)||} - \frac{1}{||\varphi(a)||}\right)
+    \end{equation}
+    Il lavoro dipende solo dagli estremi della curva e non dal percorso.
+\end{esempio}
+
+\chapter{Convessità e connessione}
+\begin{definizione}[Insieme convesso]
+    Sia $A \subseteq \mathbb{R}^n$, $A$ si dice convesso se $\forall x_0, x_1 \in A$ tutto il segmento che congiunge $x_0$ e $x_1$ è contenuto in $A$. Nella pratica:
+    \begin{equation}
+        (1 - t)x_0 + tx_1 \in A; \quad \forall t \in [0, 1]
+    \end{equation}
+    Ad esempio un disco è convesso, mentre una corona circolare o un insieme "a fagiolo" non lo sono.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        \draw[thick] (0,0) circle (1);
+        \draw (-0.5,0.4) -- (0.4,-0.5);
+        \node[font=\footnotesize] at (0,-1.4) {convesso};
+        \begin{scope}[xshift=2cm, yshift=0.1cm]
+            \draw[thick] plot[smooth cycle] coordinates {(0,0) (1,-0.8) (2.5,-0.9) (3.2,0) (2.8,0.8) (2.3,0.6) (1.8,-0.1) (1.3,0.3) (1.0,0.8) (0.4,0.7)};
+            \draw (0.5,0.35) -- (2.65,0.35);
+            \fill (0.5,0.35) circle (1.2pt); \fill (2.65,0.35) circle (1.2pt);
+            \node[font=\footnotesize] at (1.6,-1.5) {non convesso};
+        \end{scope}
+        \begin{scope}[xshift=7cm]
+            \draw[thick] (0,0) circle (1);
+            \draw[thick] (0,0) circle (0.35);
+            \draw (-0.7,-0.2) -- (0.7,0.2);
+            \fill (-0.7,-0.2) circle (1.2pt); \fill (0.7,0.2) circle (1.2pt);
+            \node[font=\footnotesize] at (0,-1.4) {non convesso};
+        \end{scope}
+    \end{tikzpicture}
+    \caption{Un insieme convesso e due insiemi non convessi.}
+\end{figure}
+\end{definizione}
+
+\begin{definizione}[Insieme connesso per archi]
+    $A \subseteq \mathbb{R}^n$ si dice connesso per archi se $\forall x_0, x_1 \in A \; \exists \gamma$ che li congiunge, con sostegno contenuto in $A$.
+\end{definizione}
+
+\begin{osservazione}
+    Se $A$ è convesso $\Longrightarrow A$ è connesso per archi, ma non vale il viceversa: ad esempio la corona circolare non è convessa, ma è connessa per archi (due punti si possono congiungere con un arco di circonferenza).
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        \draw[thick] plot[smooth cycle] coordinates {(0,0) (1,-0.8) (2.5,-0.9) (3.2,0) (2.8,0.8) (2.3,0.6) (1.8,-0.1) (1.3,0.3) (1.0,0.8) (0.4,0.7)};
+        \draw (0.5,0.35) -- (2.65,0.35);
+        \draw[orange, thick] plot[smooth] coordinates {(0.5,0.35) (0.7,-0.3) (1.6,-0.6) (2.5,-0.3) (2.65,0.35)};
+        \fill (0.5,0.35) circle (1.2pt); \fill (2.65,0.35) circle (1.2pt);
+        \begin{scope}[xshift=5.5cm]
+            \draw[thick] (0,0) circle (1);
+            \draw[thick] (0,0) circle (0.35);
+            \draw (-0.7,-0.2) -- (0.7,0.2);
+            \draw[orange, thick] plot[smooth] coordinates {(-0.7,-0.2) (-0.55,0.4) (0,0.65) (0.55,0.5) (0.7,0.2)};
+            \fill (-0.7,-0.2) circle (1.2pt); \fill (0.7,0.2) circle (1.2pt);
+        \end{scope}
+        \node[font=\footnotesize] at (3.8,-1.5) {non convessi, ma connessi per archi};
+    \end{tikzpicture}
+    \caption{Insiemi non convessi ma connessi per archi: i punti si congiungono con un arco (in arancione).}
+\end{figure}
+\end{osservazione}
+
+\begin{definizione}[Insieme stellato]
+    $A \subseteq \mathbb{R}^n$ è stellato se:
+    \begin{equation}
+        \exists x_0 \in A \mid \forall x \in A, \; x \text{ si collega a } x_0 \text{ con un segmento tutto contenuto in } A
+    \end{equation}
+\end{definizione}
+
+\begin{osservazione}
+    Vale la seguente catena di implicazioni, nessuna delle quali si inverte:
+    \begin{equation}
+        \text{convesso} \Longrightarrow \text{stellato} \Longrightarrow \text{connesso per archi}
+    \end{equation}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        \draw[thick] (0,0) circle (1);
+        \node[font=\footnotesize] at (0,0) {convessi};
+        \node at (1.7,0.2) {$\Longrightarrow$};
+        \node at (1.7,-0.3) {$\not\Longleftarrow$};
+        \begin{scope}[xshift=3.6cm]
+            \draw[thick] plot[smooth cycle, tension=0.4] coordinates {(0:1.1) (30:0.75) (60:1.1) (90:0.75) (120:1.1) (150:0.75) (180:1.1) (210:0.75) (240:1.1) (270:0.75) (300:1.1) (330:0.75)};
+            \fill (0,0) circle (1.2pt) node[below, font=\footnotesize] {$x_0$};
+            \node[font=\footnotesize] at (0,1.5) {stellati};
+        \end{scope}
+        \node at (5.5,0.2) {$\Longrightarrow$};
+        \node at (5.5,-0.3) {$\not\Longleftarrow$};
+        \begin{scope}[xshift=7.6cm]
+            \draw[line width=16pt, line cap=round] plot[smooth] coordinates {(1,0.9) (0,1) (-0.6,0.5) (0,0) (0.6,-0.4) (0,-1) (-1,-0.9)};
+            \draw[line width=14pt, line cap=round, white] plot[smooth] coordinates {(1,0.9) (0,1) (-0.6,0.5) (0,0) (0.6,-0.4) (0,-1) (-1,-0.9)};
+            \node[font=\footnotesize] at (0,1.5) {connessi per archi};
+        \end{scope}
+    \end{tikzpicture}
+    \caption{Convesso $\Longrightarrow$ stellato $\Longrightarrow$ connesso per archi.}
+\end{figure}
+\end{osservazione}
+
+\begin{definizione}[Insieme connesso]
+    $A \subseteq \mathbb{R}^n$ si dice connesso se non si può rappresentare come unione $A = A_1 \cup A_2$ di insiemi non vuoti e separati, cioè tali che:
+    \begin{equation}
+        \bar{A_1} \cap A_2 = \emptyset; \quad A_1 \cap \bar{A_2} = \emptyset
+    \end{equation}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        \draw[dashed, thick] (0,0) circle (1);
+        \draw[dashed, thick] (1.5,0.5) circle (0.7);
+        \fill[white] (0,0) circle (0.96);
+        \fill[white] (1.5,0.5) circle (0.66);
+        \node at (0.5,0) {$A$};
+        \draw[-Stealth] (2.5,0.3) -- (3.2,0.3);
+        \node[right] at (3.3,0.3) {connesso};
+    \end{tikzpicture}
+    \caption{Unione di due dischi che si sovrappongono: insieme connesso.}
+\end{figure}
+\end{definizione}
+
+\begin{osservazione}[Disgiunti $\neq$ separati]
+    Essere separati è più forte di essere disgiunti. Ad esempio $A_1 = (0, 1)$ e $A_2 = [1, 2)$ sono disgiunti, ma non separati, poiché $1 \in \bar{A_1} \cap A_2$; infatti la loro unione $(0, 2)$ è connessa.
+\end{osservazione}
+
+\begin{teorema}
+    Se $A$ è connesso per archi $\Longrightarrow A$ è connesso, ma il viceversa è falso in generale.
+\end{teorema}
+
+\begin{teorema}
+    Se $A \subseteq \mathbb{R}^n$ è aperto, allora:
+    \begin{equation}
+        A \text{ è connesso} \iff A \text{ è connesso per archi}
+    \end{equation}
+\end{teorema}
+
+\begin{teorema}
+    Se $A \subseteq \mathbb{R}$ è connesso (per archi) $\Longrightarrow A$ è un intervallo.
+\end{teorema}
+
+\begin{teorema}
+    Sia $f: A \subseteq \mathbb{R}^n \longrightarrow \mathbb{R}^m$ continua in $A$ connesso, allora $f(A)$ è connesso.
+\end{teorema}
+
+\begin{teorema}[Dei valori intermedi per funzioni scalari di più variabili]
+    Se $f: A \subseteq \mathbb{R}^n \longrightarrow \mathbb{R}$ è continua in $A$ connesso, allora $f(A)$ è un intervallo.
+\end{teorema}
+
+\end{document}
