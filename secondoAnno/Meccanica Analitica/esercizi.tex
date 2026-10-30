@@ -1,0 +1,154 @@
+\documentclass[11pt, a4paper, openright]{book}
+
+\usepackage{bm}
+\usepackage[italian]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{geometry}
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+\usepackage{caption}
+\captionsetup{justification=centering}
+\usepackage{float}
+\usepackage[hidelinks]{hyperref}
+\usepackage{subcaption}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{yhmath}
+\usepackage{derivative}
+\usepackage{tikz}
+
+
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+% =================================================================
+% DEFINIZIONE DEGLI AMBIENTI MATEMATICI (amsthm)
+% =================================================================
+
+\theoremstyle{plain}
+\newtheorem{teorema}{Teorema}
+\newtheorem{lemma}[teorema]{Lemma}
+\newtheorem{corollario}[teorema]{Corollario}
+\newtheorem{proposizione}[teorema]{Proposizione}
+\newtheorem{postulato}[teorema]{Postulato}
+
+\theoremstyle{definition}
+\newtheorem{definizione}[teorema]{Definizione}
+\newtheorem{esempio}[teorema]{Esempio}
+\newtheorem{esercizio}[teorema]{Esercizio}
+
+\theoremstyle{remark}
+\newtheorem{osservazione}[teorema]{Osservazione}
+
+\newcommand{\innerprod}[2]{\langle #1, #2 \rangle}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Meccanica Analitica -- Esercizi}}\\[0.3cm]
+    {\large Moti unidimensionali}
+\end{center}
+\vspace{0.5cm}
+\begin{esercizio}[Unicità e teorema di Cauchy-Picard]\label{es:mu1}
+    Si consideri l'equazione
+    \begin{equation}
+        \dot{x} = 3x^{2/3}, \qquad x(0) = 0
+    \end{equation}
+    \begin{enumerate}[label=(\alph*)]
+        \item Trovare due soluzioni distinte.
+        \item Quale ipotesi del teorema di Cauchy-Picard non è soddisfatta, e in quale punto?
+        \item Con la condizione iniziale $x(0) = 1$ la soluzione è unica, almeno localmente? Perché?
+    \end{enumerate}
+\end{esercizio}
+
+\begin{esercizio}[Riduzione al primo ordine]\label{es:mu2}
+    Scrivere l'equazione
+    \begin{equation}
+        m\ddot{s} = -ks - b\dot{s} + F_0\cos(\omega t)
+    \end{equation}
+    come sistema del primo ordine $\dot{\bar{x}} = \bar{X}(\bar{x}, t)$. Quante componenti ha $\bar{x}$? Cosa cambia rispetto all'enunciato del teorema di Cauchy-Picard, data la dipendenza esplicita dal tempo?
+\end{esercizio}
+
+\begin{esercizio}[Velocità che diverge in tempo finito]\label{es:mu3}
+    Sia $m = 1$ e
+    \begin{equation}
+        \ddot{s} = \dot{s}^3, \qquad s(0) = s_0, \quad \dot{s}(0) = v_0 > 0
+    \end{equation}
+    \begin{enumerate}[label=(\alph*)]
+        \item Determinare $v(t)$ e l'istante $t^*$ in cui diverge.
+        \item Determinare $s(t)$ e calcolare $s(t^*)$. Confrontare con l'esempio $F = \dot{s}^2$.
+    \end{enumerate}
+\end{esercizio}
+
+\begin{esercizio}[Attrito quadratico]\label{es:mu4}
+    Si consideri
+    \begin{equation}
+        m\ddot{s} = -k\dot{s}^2, \qquad k > 0, \qquad s(0) = s_0, \quad \dot{s}(0) = v_0 > 0
+    \end{equation}
+    \begin{enumerate}[label=(\alph*)]
+        \item Determinare $v(t)$ e $s(t)$.
+        \item Calcolare $\lim_{t \to +\infty} s(t)$ e confrontare con il caso dell'attrito viscoso.
+        \item Perché la forma fisicamente corretta della forza è $-k|\dot{s}|\dot{s}$?
+    \end{enumerate}
+\end{esercizio}
+
+\begin{esercizio}[Lavoro e forze conservative]\label{es:mu5}
+    Calcolare il lavoro compiuto da $(0, 0)$ a $(1, 1)$ lungo i cammini
+    \begin{itemize}
+        \item $\gamma_1$: il segmento $y = x$;
+        \item $\gamma_2$: da $(0, 0)$ a $(1, 0)$ e poi da $(1, 0)$ a $(1, 1)$;
+    \end{itemize}
+    per le forze
+    \begin{equation}
+        \bar{F}_1 = (2xy, x^2), \qquad \bar{F}_2 = (y, 0)
+    \end{equation}
+    Quale delle due è conservativa? Per quella conservativa determinare l'energia potenziale $U$.
+\end{esercizio}
+
+\begin{esercizio}[Buca di potenziale doppia]\label{es:mu6}
+    Sia $m = 1$ e
+    \begin{equation}
+        U(s) = \frac{s^4}{4} - \frac{s^2}{2}
+    \end{equation}
+    \begin{enumerate}[label=(\alph*)]
+        \item Determinare le posizioni di equilibrio e la loro stabilità.
+        \item Disegnare $U(s)$ e classificare il moto al variare dell'energia: $E < -\frac{1}{4}$, $E = -\frac{1}{4}$, $-\frac{1}{4} < E < 0$, $E = 0$, $E > 0$.
+        \item Per $E = 0$ determinare i punti di inversione e dimostrare che il punto impiega un tempo infinito a raggiungere $s = 0$.
+        \item (Facoltativo) Approssimando $U$ con una parabola attorno a $s = 1$, stimare il periodo delle piccole oscillazioni.
+    \end{enumerate}
+\end{esercizio}
+
+\begin{esercizio}[Verifica del criterio $\beta > 2$]\label{es:mu7}
+    Sia $m = 1$, $s_0 = 1$, $v_0 = 1$.
+    \begin{enumerate}[label=(\alph*)]
+        \item Con $U(s) = -\frac{1}{2}s^4$ calcolare $E$, ricavare $\dot{s}(s)$ dalla conservazione dell'energia e integrare. In quanto tempo il punto raggiunge l'infinito?
+        \item Ripetere con $U(s) = -\frac{1}{2}s^2$. Il risultato è coerente con il criterio $\beta > 2$?
+    \end{enumerate}
+\end{esercizio}
+
+\begin{esercizio}[Calcolo esatto del periodo]\label{es:mu8}
+    \begin{enumerate}[label=(\alph*)]
+        \item Per $U(s) = \frac{1}{2}ks^2$ calcolare
+        \begin{equation}
+            \mathcal{T} = 2\int_{s_2}^{s_3} \frac{\mathrm{d}s'}{\sqrt{\frac{2}{m}(E - U(s'))}}
+        \end{equation}
+        e mostrare che non dipende da $E$.
+        \item Per $U(s) = k|s|$ calcolare $\mathcal{T}(E)$, e verificare il risultato con la cinematica del moto uniformemente accelerato.
+    \end{enumerate}
+\end{esercizio}
+
+\section*{Risultati}
+\begin{enumerate}
+    \item[\ref{es:mu1}.] $x(t) \equiv 0$ e $x(t) = t^3$. La funzione $x^{2/3}$ non è lipschitziana in $x = 0$. Con $x(0) = 1$ sì, poiché lontano da $0$ il campo è $C^1$.
+    \item[\ref{es:mu2}.] $\bar{x} = (s, v)$ ha $2$ componenti. Il campo dipende da $t$: si usa la versione non autonoma del teorema, oppure si aggiunge $t$ come terza variabile con $\dot{t} = 1$.
+    \item[\ref{es:mu3}.] $v(t) = \dfrac{v_0}{\sqrt{1 - 2v_0^2 t}}$, $t^* = \dfrac{1}{2v_0^2}$, $s(t) = s_0 + \dfrac{1}{v_0}\left(1 - \sqrt{1 - 2v_0^2 t}\right)$, quindi $s(t^*) = s_0 + \dfrac{1}{v_0}$ è finito.
+    \item[\ref{es:mu4}.] $v(t) = \dfrac{v_0}{1 + \frac{k v_0}{m}t}$, $s(t) = s_0 + \dfrac{m}{k}\ln\left(1 + \dfrac{k v_0}{m}t\right) \to +\infty$.
+    \item[\ref{es:mu5}.] $\bar{F}_1$: lavoro $1$ lungo entrambi i cammini, $U = -x^2 y$. $\bar{F}_2$: lavoro $\frac{1}{2}$ lungo $\gamma_1$ e $0$ lungo $\gamma_2$, quindi non è conservativa.
+    \item[\ref{es:mu6}.] Equilibri: $s = 0$ instabile ($U = 0$), $s = \pm 1$ stabili ($U = -\frac{1}{4}$). Per $E = 0$ i punti di inversione sono $\pm\sqrt{2}$, e vicino a $s = 0$ l'integrando si comporta come $1/|s|$. Piccole oscillazioni: $U''(1) = 2$, quindi $\mathcal{T} \simeq \frac{2\pi}{\sqrt{2}} = \pi\sqrt{2}$.
+    \item[\ref{es:mu7}.] (a) $E = 0$, $\dot{s} = s^2$, $s(t) = \frac{1}{1 - t}$: raggiunge l'infinito per $t = 1$. (b) $\dot{s} = s$, $s(t) = e^t$: tempo infinito.
+    \item[\ref{es:mu8}.] (a) $\mathcal{T} = 2\pi\sqrt{m/k}$. (b) $\mathcal{T} = \dfrac{4\sqrt{2mE}}{k}$.
+\end{enumerate}
+
+\end{document}

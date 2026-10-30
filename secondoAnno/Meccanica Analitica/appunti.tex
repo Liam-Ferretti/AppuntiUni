@@ -1,0 +1,1345 @@
+\documentclass[11pt, a4paper, openright]{book}
+
+\usepackage{bm}
+\usepackage[italian]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{geometry}
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+\usepackage{caption}
+\captionsetup{justification=centering}
+\usepackage{float}
+\usepackage[hidelinks]{hyperref}
+\usepackage{subcaption}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{yhmath}
+\usepackage{derivative}
+\usepackage{tikz}
+
+
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+% =================================================================
+% DEFINIZIONE DEGLI AMBIENTI MATEMATICI (amsthm)
+% =================================================================
+
+\theoremstyle{plain}
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{lemma}[teorema]{Lemma}
+\newtheorem{corollario}[teorema]{Corollario}
+\newtheorem{proposizione}[teorema]{Proposizione}
+\newtheorem{postulato}[teorema]{Postulato}
+
+\theoremstyle{definition}
+\newtheorem{definizione}[teorema]{Definizione}
+\newtheorem{esempio}[teorema]{Esempio}
+\newtheorem{esercizio}[teorema]{Esercizio}
+
+\theoremstyle{remark}
+\newtheorem{osservazione}[teorema]{Osservazione}
+
+\newcommand{\innerprod}[2]{\langle #1, #2 \rangle}
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \vspace*{4cm}
+
+    \Huge
+    \textbf{Corso di Meccanica Analitica}
+
+    \vspace{0.5cm}
+    \LARGE
+    Appunti ed Esempi
+
+    \vspace{1.5cm}
+
+    \textit{Basato sulle lezioni di} \\
+    \Large \textbf{Prof. Mauro Papinutto}
+
+    \vfill
+
+    \rule{\linewidth}{0.5pt}
+    \vspace{0.5cm}
+
+    \large
+    Autore: \textbf{Liam Ferretti} \\
+    \today
+
+\end{titlepage}
+
+\tableofcontents
+
+\chapter{Postulati della Meccanica Classica}
+\begin{definizione}[Sistema / osservatore Inerziale]
+    Un sistema o osservatore inerziale si dice tale se un punto isolato ha accelerazione nulla sia che si trovi a riposo sia che si muova di moto rettilineo uniforme.
+\end{definizione}
+I postulati della meccanica classica sono:
+\begin{itemize}
+    \item Esiste almeno un osservatore inerziale. Da ciò segue che ne esistono infiniti, poiché ogni sistema che si muove di moto rettilineo uniforme rispetto a un osservatore inerziale è anch'esso inerziale.
+    \item Per due punti materiali isolati che interagiscono fra loro, le accelerazioni dei due punti soddisfano:
+    \begin{equation}
+        \bar{a}(p_1), \bar{a}(p_2) \parallel \bar{p}_1 - \bar{p}_2 \quad \wedge \quad \frac{\bar{a}(p_1) \cdot \bar{a}(p_2)}{\|\bar{a}(p_1)\|\|\bar{a}(p_2)\|} = -1
+    \end{equation}
+    cioè le accelerazioni sono dirette lungo la congiungente e hanno versi opposti. Inoltre il rapporto
+    \begin{equation}
+        \frac{\|\bar{a}(p_2)\|}{\|\bar{a}(p_1)\|}
+    \end{equation}
+    non dipende dal tipo di interazione, ma solo dai due punti: è una proprietà intrinseca della coppia.
+    \item Il postulato precedente permette di definire la massa: fissata una massa campione $m_c$, la massa di un punto $p$ è
+    \begin{equation}
+        m_p = m_c \frac{\|\bar{a}(p_c)\|}{\|\bar{a}(p)\|}
+    \end{equation}
+    da cui segue $m_1\bar{a}_1 = -m_2\bar{a}_2$ (terza legge). Definita la forza come $\bar{F} = m\bar{a}$, l'equazione del moto è:
+    \begin{equation}
+        m\ddot{\bar{r}} = \bar{F}(\bar{r}, \dot{\bar{r}}, t)
+    \end{equation}
+    Assegnate le condizioni iniziali:
+    \begin{equation}
+        \bar{r}(t = 0) = \bar{r}_0 \quad \wedge \quad \dot{\bar{r}}(t = 0) = \bar{v}_0
+    \end{equation}
+    la traiettoria è determinata in modo unico (determinismo), per il teorema di esistenza e unicità delle soluzioni delle equazioni differenziali ordinarie.
+\end{itemize}
+
+Definendo una terna di assi cartesiana come $(O, \hat{i}, \hat{j}, \hat{k})$, dove:
+\begin{equation}
+    \overline{OP} = x\hat{i} + y\hat{j} + z\hat{k} = \bar{r}(t) = x(t)\hat{i} + y(t)\hat{j} + z(t)\hat{k}
+\end{equation}
+
+\begin{definizione}[Spaziotempo di Galilei]
+    Lo spaziotempo è $\mathbb{R} \times \mathbb{R}^3$, con un tempo assoluto: l'intervallo di tempo fra due eventi è lo stesso per tutti gli osservatori. Siano due eventi simultanei con coordinate:
+    \begin{equation}
+        (t, x_1, x_2, x_3) \quad \wedge \quad (t, y_1, y_2, y_3)
+    \end{equation}
+    Allora la loro distanza è quella euclidea:
+    \begin{equation}
+        d_{\bar{x}\bar{y}} = \left(\sum_{k = 1}^{3} (x_k - y_k)^2\right)^{\frac{1}{2}}
+    \end{equation}
+\end{definizione}
+
+\begin{definizione}[Gruppo di Galilei]
+    Il gruppo di Galilei è il gruppo delle trasformazioni
+    \begin{equation}
+        \mathbb{R} \times \mathbb{R}^3 \longrightarrow \mathbb{R} \times \mathbb{R}^3
+    \end{equation}
+    che conservano gli intervalli di tempo e le distanze fra eventi simultanei. Ogni tale trasformazione può essere descritta come composizione di:
+    \begin{itemize}
+        \item Rotazione (3 parametri):
+        \begin{equation}
+            \bar{r}' = A \bar{r}
+        \end{equation}
+        dove vale che:
+        \begin{equation}
+            A \in O(3, \mathbb{R}) \mid AA^T = A^TA = I
+        \end{equation}
+        \item Traslazione temporale e spaziale (1 + 3 parametri), prendendo $(t, \bar{r})$, allora:
+        \begin{equation}
+            (t', \bar{r}') = (t + s, \bar{r} + \bar{b})
+        \end{equation}
+        \item Cambio di sistema di riferimento inerziale, o boost (3 parametri), prendendo $(t, \bar{r})$, allora:
+        \begin{equation}
+            (t', \bar{r}') = (t, \bar{r} + \bar{v}t)
+        \end{equation}
+    \end{itemize}
+    Il gruppo ha quindi in totale 10 parametri.
+\end{definizione}
+
+\begin{postulato}[Principio di relatività galileiana]
+    Siano $n$ punti materiali in grado di interagire tra loro:
+    \begin{equation}
+        (\bar{r}_1, m_1), \cdots, (\bar{r}_n, m_n)
+    \end{equation}
+    Specificando il tempo, le loro posizioni e la velocità in quel determinato tempo:
+    \begin{equation}
+        t_0, \bar{r}_1(t_0), \cdots, \bar{r}_n(t_0), \bar{v}_1(t_0), \cdots, \bar{v}_n(t_0)
+    \end{equation}
+    e note le interazioni tra i punti, due osservatori inerziali qualsiasi (dopo aver trasformato le condizioni iniziali con un elemento del gruppo di Galilei) risolvendo le $n$ equazioni:
+    \begin{equation}
+        m_i\bar{a}_i = \bar{F}_i(\bar{r}_1, \cdots, \bar{r}_n, \bar{v}_1, \cdots, \bar{v}_n, t)
+    \end{equation}
+    devono ottenere la stessa traiettoria per ciascun punto materiale. Le leggi della meccanica hanno cioè la stessa forma in tutti i sistemi inerziali.
+\end{postulato}
+
+Segue che nessun osservatore è in grado di stabilire, con esperimenti meccanici, se è in moto rettilineo uniforme rispetto a un altro, se gli assi sono orientati in modo differente o se l'origine dei tempi è diversa. Le conseguenze sulla forma delle forze sono:
+\begin{itemize}
+    \item Invarianza per traslazioni temporali: le forze non dipendono esplicitamente dal tempo,
+    \begin{equation}
+        m_i\bar{a}_i = \bar{F}_i(\bar{r}_1, \cdots, \bar{r}_n, \bar{v}_1, \cdots, \bar{v}_n)
+    \end{equation}
+    \item Invarianza per traslazioni spaziali (omogeneità dello spazio): le forze dipendono solo dalle differenze di posizione $\bar{r}_k - \bar{r}_j$, altrimenti esisterebbero posizioni privilegiate.
+    \item Invarianza per boost: le forze dipendono solo dalle differenze di velocità $\dot{\bar{r}}_k - \dot{\bar{r}}_j$, altrimenti due osservatori con velocità diverse percepirebbero una realtà differente.
+    \item Isotropia dello spazio: ruotando tutte le differenze,
+    \begin{equation}
+        (\bar{r}_k' - \bar{r}_j') = A(\bar{r}_k - \bar{r}_j), \quad (\dot{\bar{r}}_k' - \dot{\bar{r}}_j') = A(\dot{\bar{r}}_k - \dot{\bar{r}}_j)
+    \end{equation}
+    le forze devono trasformarsi come vettori:
+    \begin{equation}
+        \bar{F}' = A \bar{F}
+    \end{equation}
+\end{itemize}
+
+Da cui segue che, per un sistema isolato di $n$ punti materiali interagenti, l'equazione di Newton diventa:
+\begin{equation}
+    m_i\bar{a}_i = \bar{F}_i\left(\{\bar{r}_k - \bar{r}_j\}_{1 \leq k < j \leq n},\{\dot{\bar{r}}_k - \dot{\bar{r}}_j\}_{1 \leq k < j \leq n}\right)
+\end{equation}
+
+\begin{osservazione}[Allora i problemi del tipo $m\bar{a} = \bar{F}(\bar{r}, \bar{v}, t)$ non sono corretti?]
+    I problemi del tipo:
+    \begin{equation}
+        m\bar{a} = \bar{F}(\bar{r}, \bar{v}, t)
+    \end{equation}
+    sono ancora validi? La risposta è sì, come approssimazione. Si consideri un sistema di $n$ punti materiali in cui gli altri $n - 1$ punti, di massa complessiva $M$, generano la forza sul punto di massa $m$, con:
+    \begin{equation}
+        M \gg m
+    \end{equation}
+    In questo caso l'influenza del punto $m$ sul moto degli altri $n - 1$ è trascurabile, e il loro moto si può considerare noto a priori, indipendente da $m$. La dipendenza di $\bar{F}$ dalle loro posizioni e velocità diventa allora una dipendenza esplicita dal tempo. La dipendenza temporale è quindi una schematizzazione del sistema esterno, non una violazione del principio di relatività.
+\end{osservazione}
+
+\begin{esempio}[Forze elastiche tra due punti materiali]
+    Considerando un sistema di 2 punti materiali $\bar{r}, \bar{o}$ che interagiscono tra loro con una forza elastica allora si ottengono due equazioni differenziali, ovvero:
+    \begin{equation}
+        \begin{cases}
+            m\ddot{\bar{r}} = -k(\bar{r} - \bar{o}) \\
+            M\ddot{\bar{o}} = -k(\bar{o} - \bar{r}) 
+        \end{cases}
+    \end{equation}
+    sapendo che:
+    \begin{equation}
+        \bar{r}_{cm} = \frac{m\bar{r} + M\bar{o}}{m + M} \implies \ddot{\bar{r}}_{cm} = 0
+    \end{equation}
+    Definendo $\mu$ come la massa ridotta del sistema, vale che:
+    \begin{equation}
+        \mu(\ddot{\bar{r}} - \ddot{\bar{r}}_{cm}) = -k(\bar{r} - \bar{r}_{cm})
+    \end{equation}
+    Se $\dot{\bar{r}_{cm}} = 0$, allora è conveniente scegliere tale punto come origine.
+    
+    Inoltre combinando le due equazioni di Newton:
+    \begin{equation}
+        \begin{cases}
+            \ddot{\bar{r}} = -\frac{k}{m}(\bar{r} - \bar{o}) \\
+            \ddot{\bar{o}} = \frac{k}{M}(\bar{r} - \bar{o})
+        \end{cases}
+    \end{equation}
+
+    Sottraendo la seconda equazione alla prima:
+    \begin{align}
+        \ddot{\bar{r}} - \ddot{\bar{o}} & =  -\frac{k}{m}(\bar{r} - \bar{o}) - \frac{k}{M}(\bar{r} - \bar{o}) \\
+        \ddot{\bar{r}} - \ddot{\bar{o}} & =  -\frac{k(m + M)}{mM}(\bar{r} - \bar{o})\\
+        \ddot{\bar{r}} - \ddot{\bar{o}} & =  -\frac{k}{\mu}(\bar{r} - \bar{o})\\
+        \mu(\ddot{\bar{r}} - \ddot{\bar{o}}) & = -k(\bar{r} - \bar{o})
+    \end{align}
+    Questa equazione è valida se ci si trova in un sistema non inerziale centrato in $o$, inoltre è possibile generalizzarla ad una qualsiasi tipologia di forza:
+    \begin{equation}
+        \mu(\ddot{\bar{r}} - \ddot{\bar{o}}) = \bar{F}((\bar{r} - \bar{o}), (\dot{\bar{r}} - \dot{\bar{o}}))
+    \end{equation}
+    Valida nel sistema non inerziale con origini in $o$.
+\end{esempio}
+
+\begin{teorema}[Teorema dell'esistenza e unicità / Teorema di Cauchy-Picard]
+    Sia $A \subseteq \mathbb{R}^\ell$ un aperto e sia
+    \begin{equation}
+        \bar{X} : A \longrightarrow \mathbb{R}^\ell, \quad \bar{X} \in C^1(A)
+    \end{equation}
+    un campo vettoriale a $\ell$ componenti. Si consideri il sistema di equazioni differenziali ordinarie
+    \begin{equation}
+        \dot{\bar{x}} = \bar{X}(\bar{x}), \quad \bar{x}(t) : \mathbb{R} \longrightarrow \mathbb{R}^\ell
+    \end{equation}
+    con la condizione iniziale $\bar{x}(0) = \bar{x}_0 \in A$. Allora:
+    \begin{equation}
+        \exists\, \delta > 0, \ \exists!\ \bar{x} : (-\delta, \delta) \longrightarrow A, \quad \bar{x} \in C^1
+    \end{equation}
+    soluzione di $\dot{\bar{x}} = \bar{X}(\bar{x})$ che soddisfa $\bar{x}(0) = \bar{x}_0$.
+\end{teorema}
+
+\begin{osservazione}[Ipotesi di regolarità]
+    L'ipotesi $\bar{X} \in C^1(A)$ è più forte del necessario:
+    \begin{itemize}
+        \item per la sola \textbf{esistenza} basta che $\bar{X}$ sia continuo, $\bar{X} \in C^0(A)$;
+        \item per l'\textbf{unicità} è necessario che $\bar{X}$ sia localmente lipschitziano (ogni campo $C^1$ lo è).
+    \end{itemize}
+\end{osservazione}
+
+\begin{definizione}[Campo localmente lipschitziano]
+    $\bar{X} : A \to \mathbb{R}^\ell$ si dice localmente lipschitziano se
+    \begin{equation}
+        \forall \bar{x}_0 \in A, \ \exists\, U_0 \subseteq A \text{ intorno di } \bar{x}_0, \ \exists\, K_0 > 0 \mid \|\bar{X}(\bar{x}) - \bar{X}(\bar{y})\| \leq K_0 \|\bar{x} - \bar{y}\| \quad \forall \bar{x}, \bar{y} \in U_0
+    \end{equation}
+\end{definizione}
+
+\begin{osservazione}[Applicazione alle equazioni del moto]
+    Le equazioni del moto sono del secondo ordine, ma il è possibile applicare comunque il teorema, infatit: un sistema di equazioni del secondo ordine in $\ell$ variabili si può sempre ridurre a un sistema del primo ordine in $2\ell$ variabili. Ad esempio:
+    \begin{equation}
+        m\ddot{\bar{r}} = \bar{F}(\bar{r}, \dot{\bar{r}}) \iff
+        \begin{cases}
+            \dot{\bar{r}} = \bar{v} \\
+            \dot{\bar{v}} = \dfrac{\bar{F}(\bar{r}, \bar{v})}{m}
+        \end{cases}
+        \implies
+        \bar{x} = \begin{pmatrix} \bar{r} \\ \bar{v} \end{pmatrix}, \quad
+        \bar{X}(\bar{x}) = \begin{pmatrix} \bar{v} \\ \dfrac{\bar{F}(\bar{r}, \bar{v})}{m} \end{pmatrix}
+    \end{equation}
+    Quindi, se $\bar{F}$ è sufficientemente regolare, vale il teorema di Cauchy-Picard e il moto è determinato in modo unico da posizione e velocità iniziali.
+\end{osservazione}
+
+\begin{esempio}[Perdita del determinismo]
+    Si consideri un moto unidimensionale con $m = 1$ e una forza che dipende dalla velocità:
+    \begin{equation}
+        \ddot{s} = \sqrt{|\dot{s}|}, \qquad s(0) = 0, \quad \dot{s}(0) = 0
+    \end{equation}
+    Ponendo $v = \dot{s}$ si ottiene $\dot{v} = \sqrt{|v|}$ con $v(0) = 0$, che ha (almeno) due soluzioni per $t \geq 0$:
+    \begin{equation}
+        v(t) = 0 \qquad \wedge \qquad v(t) = \frac{t^2}{4}
+    \end{equation}
+    Infatti, per la seconda, $\dot{v} = \frac{t}{2} = \sqrt{\frac{t^2}{4}}$. Entrambe sono valide, quindi si perde il determinismo: la funzione $\sqrt{|v|}$ è continua ma non è lipschitziana in $v = 0$, e l'unicità non è garantita.
+\end{esempio}
+
+\begin{osservazione}[Intervallo di regolarità]
+    Il teorema garantisce la soluzione solo in un intervallo $(-\delta, \delta)$. A seconda della forza, tale intervallo può essere limitato e la soluzione può divergere al suo estremo.
+\end{osservazione}
+
+\begin{esempio}[Soluzione che diverge in tempo finito]
+    Sia $m = 1$ e $F = \dot{s}^2$. Ponendo $v = \dot{s}$, con $v(0) = v_0 > 0$:
+    \begin{equation}
+        \dot{v} = v^2 \implies \int_{v_0}^{v(t)} \frac{\mathrm{d}v}{v^2} = \int_{0}^{t} \mathrm{d}t \implies \frac{1}{v_0} - \frac{1}{v(t)} = t
+    \end{equation}
+    da cui:
+    \begin{equation}
+        v(t) = \frac{1}{v_0^{-1} - t}
+    \end{equation}
+    Per $t \to v_0^{-1}$ la soluzione diverge: il modello non è valido per $t \geq v_0^{-1}$.
+\end{esempio}
+
+% =================================================================
+\chapter{Lavoro ed Energia}
+% =================================================================
+
+\section{Lavoro e teorema delle forze vive}
+
+\begin{definizione}[Potenza e lavoro]
+    Sia $\bar{F}(\bar{r}(t), \bar{v}(t), t)$ la forza agente su un punto materiale lungo il suo moto. Si definisce \textbf{potenza} la quantità
+    \begin{equation}
+        W(t) = \bar{F}(\bar{r}(t), \bar{v}(t), t) \cdot \bar{v}(t)
+    \end{equation}
+    e \textbf{lavoro} compiuto dalla forza tra $t_0$ e $t$:
+    \begin{equation}
+        \mathcal{L}(t) = \int_{t_0}^{t} W(\tau)\, \mathrm{d}\tau = \int_{t_0}^{t} \bar{F} \cdot \underbrace{\bar{v}\, \mathrm{d}\tau}_{\mathrm{d}\bar{r}} = \int_{\bar{r}_0}^{\bar{r}} \bar{F} \cdot \mathrm{d}\bar{r}
+    \end{equation}
+\end{definizione}
+
+\begin{teorema}[Teorema delle forze vive / dell'energia cinetica]
+    Sia $T = \frac{1}{2} m \|\dot{\bar{r}}\|^2$ l'energia cinetica. Lungo le soluzioni di $m\ddot{\bar{r}} = \bar{F}$ vale:
+    \begin{equation}
+        \frac{\mathrm{d}T}{\mathrm{d}t} = W \qquad \text{e quindi} \qquad T(t) - T(t_0) = \mathcal{L}(t)
+    \end{equation}
+\end{teorema}
+\begin{proof}
+    Moltiplicando scalarmente l'equazione del moto per $\dot{\bar{r}}$:
+    \begin{equation}
+        m\dot{\bar{r}} \cdot \ddot{\bar{r}} = \bar{F} \cdot \dot{\bar{r}} = W
+    \end{equation}
+    Poiché $\frac{\mathrm{d}T}{\mathrm{d}t} = m\dot{\bar{r}} \cdot \ddot{\bar{r}}$, integrando tra $t_0$ e $t$:
+    \begin{equation}
+        \int_{t_0}^{t} \bar{F} \cdot \bar{v}\, \mathrm{d}\tau = \int_{t_0}^{t} \frac{\mathrm{d}T}{\mathrm{d}\tau}\, \mathrm{d}\tau = T(t) - T(t_0)
+    \end{equation}
+\end{proof}
+
+\section{Forze posizionali e conservative}
+
+\begin{definizione}[Forza posizionale]
+    Una forza si dice posizionale se dipende solo dalla posizione: $\bar{F} = \bar{F}(\bar{r})$.
+\end{definizione}
+
+\begin{osservazione}
+    Per una forza posizionale il lavoro è un integrale curvilineo lungo la curva $\gamma$ percorsa da $\bar{r}(t_0)$ a $\bar{r}(t)$:
+    \begin{equation}
+        \mathcal{L} = \int\limits_{\gamma(\bar{r}(t_0), \bar{r}(t))} \bar{F}(\bar{r}) \cdot \mathrm{d}\bar{r} = \int\limits_{\gamma} \sum_{i = 1}^{3} F_i(\bar{r})\, \mathrm{d}x_i
+    \end{equation}
+    e dipende quindi solo dalla curva, non dalla legge oraria con cui viene percorsa.
+\end{osservazione}
+
+\begin{definizione}[Forza conservativa ed energia potenziale]
+    Una forza posizionale $\bar{F}$ si dice \textbf{conservativa} se $\int\limits_{\gamma(\bar{r}_A, \bar{r}_B)} \bar{F} \cdot \mathrm{d}\bar{r}$ non dipende dalla curva $\gamma$ ma solo dagli estremi $\bar{r}_A, \bar{r}_B$. In tal caso esiste una funzione $U(\bar{r})$, detta \textbf{energia potenziale}, tale che
+    \begin{equation}
+        \bar{F} = -\nabla U
+    \end{equation}
+    e il lavoro vale:
+    \begin{equation}
+        \int\limits_{\gamma(\bar{r}_A, \bar{r}_B)} \bar{F} \cdot \mathrm{d}\bar{r} = -\int\limits_{\gamma(\bar{r}_A, \bar{r}_B)} \mathrm{d}U = U(\bar{r}_A) - U(\bar{r}_B)
+    \end{equation}
+\end{definizione}
+
+\begin{teorema}[Conservazione dell'energia meccanica]
+    Se $\bar{F}$ è conservativa, lungo le soluzioni dell'equazione del moto l'energia meccanica
+    \begin{equation}
+        E_m = T(t) + U(\bar{r}(t)) = T(t_0) + U(\bar{r}(t_0))
+    \end{equation}
+    si conserva.
+\end{teorema}
+\begin{proof}
+    Per il teorema delle forze vive e la definizione di energia potenziale, tra due istanti in cui il punto si trova in $\bar{r}_A$ e in $\bar{r}_B$:
+    \begin{equation}
+        T(B) - T(A) = \mathcal{L}_{A \to B} = U(\bar{r}_A) - U(\bar{r}_B) \iff T(A) + U(\bar{r}_A) = T(B) + U(\bar{r}_B)
+    \end{equation}
+\end{proof}
+
+% =================================================================
+\chapter{Moti Unidimensionali}
+% =================================================================
+
+Il moto è descritto da un unico parametro $s(t)$, con equazione del moto:
+\begin{equation}
+    m\ddot{s} = f(s, \dot{s}, t), \qquad s(0) = s_0, \quad \dot{s}(0) = \dot{s}_0
+\end{equation}
+
+\section{Forze posizionali}
+
+\begin{proposizione}
+    In una dimensione ogni forza posizionale $f(s) \in C^0$  è conservativa, con energia potenziale
+    \begin{equation}
+        U(s) = -\int_{s_0}^{s} f(\sigma)\, \mathrm{d}\sigma
+    \end{equation}
+\end{proposizione}
+
+Di conseguenza l'energia meccanica si conserva:
+\begin{equation}
+    E = \frac{1}{2} m\dot{s}^2 + U(s) = \frac{1}{2} m\dot{s}_0^2 + U(s_0)
+\end{equation}
+
+\subsection{Regione accessibile}
+Poiché l'energia cinetica è non negativa, dal valore di $E$ si ricava la regione di spazio in cui può trovarsi il punto materiale:
+\begin{equation}
+    \frac{1}{2} m\dot{s}^2 = E - U(s) \geq 0 \implies s \in \{ s' \mid E - U(s') \geq 0 \}
+\end{equation}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.3]
+        \draw[->] (-3.2, 0) -- (3, 0) node[below] {$s$};
+        \draw[->] (-3, -0.3) -- (-3, 4.4) node[left] {$U(s)$};
+        \draw[thick, domain=-2.6:2.6, smooth, samples=100]
+            plot (\x, {-0.6*(\x*\x*\x/3 - \x) + 2});
+        % livello E
+        \draw[blue] (-3, 3) -- (3, 3) node[right] {$E$};
+        \draw[blue, dashed] (-2.28, 3) -- (-2.28, 0) node[below] {$s_{\min}$};
+        % livello E'
+        \draw[red!70!black] (-3, 2) -- (3, 2) node[right] {$E'$};
+        \draw[red!70!black, dashed] (-1.732, 2) -- (-1.732, 0) node[below] {$s_1$};
+        \draw[red!70!black, dashed] (1.732, 2) -- (1.732, 0) node[below] {$s_3$};
+        \draw[red!70!black, dashed] (0, 2) -- (0, 0) node[below] {$s_2$};
+    \end{tikzpicture}
+    \caption{Regione accessibile per due valori dell'energia.}
+\end{figure}
+
+\begin{itemize}
+    \item Con energia $E$ (sopra il massimo locale di $U$) la regione accessibile è $[s_{\min}, +\infty)$: partendo da $s_0$ il punto può avere velocità positiva o negativa, e in ogni caso $s(t) \in [s_{\min}, +\infty)$.
+    \item Con energia $E'$ la regione accessibile è formata da intervalli separati, $[s_1, s_2] \cup [s_3, +\infty)$: il punto resta nell'intervallo che contiene $s_0$.
+\end{itemize}
+
+\subsection{Soluzione per quadratura}
+Dalla conservazione dell'energia:
+\begin{equation}
+    \dot{s} = \pm \sqrt{\frac{2}{m}(E - U(s))} \implies \frac{\mathrm{d}s}{\sqrt{\frac{2}{m}(E - U(s))}} = \pm\, \mathrm{d}t
+\end{equation}
+dove il segno è quello di $\dot{s}_0$. Integrando:
+\begin{equation}
+    \pm t = \int_{s_0}^{s(t)} \frac{\mathrm{d}s}{\sqrt{\frac{2}{m}(E - U(s))}} = g(s(t), s_0, E)
+\end{equation}
+e invertendo:
+\begin{equation}
+    s(t) = h(s_0, t, E)
+\end{equation}
+La formula vale finché $\dot{s}$ non si annulla, cioè finché il punto non raggiunge un punto di inversione dove $E = U(s)$; da lì in poi si cambia segno.
+
+\section{Forze dipendenti dalla velocità}
+Se $f = f(\dot{s})$, l'equazione si risolve per separazione di variabili. Ponendo $v = \dot{s}$, con $f(v) \neq 0$ lungo il moto:
+\begin{equation}
+    m\dot{v} = f(v) \implies \int_{v_0}^{v(t)} \frac{m}{f(v)}\, \mathrm{d}v = \int_{0}^{t} \mathrm{d}t
+\end{equation}
+Detta $G$ una primitiva di $m/f$:
+\begin{equation}
+    G(\dot{s}(t)) - G(v_0) = t \implies \dot{s}(t) = G^{-1}\big(t + G(v_0)\big) = H(t, v_0)
+\end{equation}
+e infine $s(t) = s_0 + \int_0^t H(\tau, v_0)\, \mathrm{d}\tau$.
+
+\begin{esempio}[Attrito viscoso]
+    Si consideri un punto materiale di massa $m$ che si muove lungo una retta soggetto solo a una forza di attrito viscoso:
+    \begin{equation}
+        m\ddot{s} = -b\dot{s}, \qquad b > 0, \qquad s(0) = s_0, \quad \dot{s}(0) = v_0 \neq 0
+    \end{equation}
+    Ponendo $v = \dot{s}$, l'equazione diventa del primo ordine in $v$:
+    \begin{equation}
+        \dot{v} = -v\frac{b}{m}, \qquad v(0) = v_0
+    \end{equation}
+    Il campo $X(v) = -vb/m$ è lineare, quindi $C^1$ e lipschitziano, e per il teorema di Cauchy-Picard la soluzione esiste ed è unica.
+
+    Poiché $v \equiv 0$ è anch'essa una soluzione, per l'unicità la soluzione cercata non può mai assumere il valore $0$, altrimenti da quell'istante esisterebbero due soluzioni con lo stesso dato. Quindi $v(t) \neq 0$ per ogni $t$ e, per continuità, $v(t)$ ha sempre il segno di $v_0$:
+    \begin{equation}
+        \frac{v(t)}{v_0} > 0 \quad \forall t
+    \end{equation}
+    il che permette di dividere per $v$ e garantisce che il logaritmo sia ben definito. Separando le variabili:
+    \begin{equation}
+        \frac{\mathrm{d}v}{\mathrm{d}t} = -v\frac{b}{m} \implies \frac{\mathrm{d}v}{v} = -\mathrm{d}t\frac{b}{m}
+    \end{equation}
+    e integrando tra l'istante iniziale e l'istante $t$:
+    \begin{align}
+        \int_{v_0}^{v(t)} \frac{\mathrm{d}v'}{v'} &= -\frac{b}{m}\int_{0}^{t} \mathrm{d}t' \\
+        \ln|v(t)| - \ln|v_0| &= -\frac{b}{m}t \\
+        \ln\frac{v(t)}{v_0} &= -\frac{b}{m}t
+    \end{align}
+    dove nell'ultimo passaggio si è usato $v(t)/v_0 > 0$. Esponenziando:
+    \begin{equation}
+        v(t) = v_0\, e^{-t\frac{b}{m}}
+    \end{equation}
+    Con la notazione generale, $G(v) = \int \frac{m}{f(v)}\,\mathrm{d}v = -\frac{m}{b} \ln|v|$, e $G(v(t)) = t + G(v_0)$ porta allo stesso risultato, infatti:
+    \begin{equation}
+        \dot{v}(t) = -v_0\frac{b}{m}e^{-t\frac{b}{m}} = -v(t)\frac{b}{m}, \qquad v(0) = v_0
+    \end{equation}
+
+    Integrando la velocità si ottiene la legge oraria:
+    \begin{align}
+        s(t) &= s_0 + \int_{0}^{t} v(t')\, \mathrm{d}t' = s_0 + v_0 \int_{0}^{t} e^{-t'\frac{b}{m}}\, \mathrm{d}t' \\
+        &= s_0 + v_0 \left[-\frac{m}{b}\, e^{-t'\frac{b}{m}}\right]_{0}^{t} = s_0 + v_0\frac{m}{b}\left(1 - e^{-t\frac{b}{m}}\right)
+    \end{align}
+    ovvero:
+    \begin{equation}
+        s(t) = s_0 + \frac{m v_0}{b}\left(1 - e^{-\frac{b}{m}t}\right)
+    \end{equation}
+    che soddisfa $s(0) = s_0$ e $\dot{s}(0) = v_0$.
+
+    Per tempi lunghi:
+    \begin{equation}
+        \lim_{t \to +\infty} v(t) = 0, \qquad \lim_{t \to +\infty} s(t) = s_0 + \frac{m v_0}{b}
+    \end{equation}
+    quindi il punto percorre in totale la distanza finita $\frac{m|v_0|}{b}$, ma non si ferma mai in un tempo finito, poiché $v(t) \neq 0$ per ogni $t$.
+
+    Infine $v(t)$ e $s(t)$ sono definite e finite per ogni $t \in \mathbb{R}$, quindi la soluzione è globale, a differenza dell'esempio con $F = \dot{s}^2$ dove la soluzione divergeva in tempo finito: qui la forza cresce solo linearmente con $v$, e ciò impedisce l'esplosione.
+\end{esempio}
+
+\subsection{Determinazione della tipologia del moto e delle regioni accessibili}
+    Come già visto vale che:
+    \begin{equation}
+        E = \frac{1}{2}m\dot{s}^2 + U(s)
+    \end{equation}
+    da cui segue che:
+    \begin{equation}
+        \int_{0}^{t}dt = \pm \int_{s_0}^{s} \frac{ds'}{\sqrt{\frac{2}{m}(E - U(s'))}}
+    \end{equation}
+    con le seguenti condizioni iniziali:
+    \begin{equation}
+        s(t_0) = s_0, \quad \dot{s}(t_0) = \dot{s}_0
+    \end{equation}
+    Da questa relazione si ricava qualitativamente il tipo di moto conoscendo solo il grafico del potenziale $U(s)$ e il valore dell'energia $E$.
+
+\subsubsection{Raggiungimento di un punto di inversione}
+    Si consideri un punto materiale che parte da $s_0$ con velocità $\dot{s}_0 = v_0 < 0$, e sia $s_1 < s_0$ il primo punto a sinistra di $s_0$ in cui $U(s_1) = E$, con $E - U(s) > 0$ per $s \in (s_1, s_0]$.
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale=1.2]
+            \draw[->] (-3.2, 0) -- (3, 0) node[below] {$s$};
+            \draw[->] (-3, -0.3) -- (-3, 3.4) node[left] {$U(s)$};
+            \draw[thick, domain=-2.6:2.6, smooth, samples=100]
+                plot (\x, {-0.6*(\x*\x*\x/3 - \x) + 1});
+            \draw[blue] (-3.2, 2) -- (3, 2) node[right] {$E$};
+            \draw[blue, dashed] (-2.28, 2) -- (-2.28, 0) node[below] {$s_1$};
+            \fill[orange] (0.4, {-0.6*(0.4*0.4*0.4/3 - 0.4) + 1}) circle (1.5pt);
+            \draw[orange, dashed] (0.4, {-0.6*(0.4*0.4*0.4/3 - 0.4) + 1}) -- (0.4, 0) node[below] {$s_0$};
+            \draw[->, orange, thick] (0.4, 2.25) -- (-0.4, 2.25) node[left] {$v_0 < 0$};
+        \end{tikzpicture}
+        \caption{Punto materiale che si muove verso il punto di inversione $s_1$.}
+    \end{figure}
+
+    In $s_1$ si ha $\sqrt{\frac{2}{m}(E - U(s_1))} = 0$, quindi l'integrando diverge. Per capire se il punto raggiunge $s_1$ in un tempo finito bisogna verificare la convergenza dell'integrale improprio:
+    \begin{equation}
+        t_1 = \int_{0}^{t_1} \mathrm{d}t = -\int_{s_0}^{s_1} \frac{\mathrm{d}s'}{\sqrt{\frac{2}{m}(E - U(s'))}}
+    \end{equation}
+    dove il segno meno è dovuto a $\dot{s} < 0$. Sviluppando $U$ in serie di Taylor attorno a $s_1$:
+    \begin{equation}
+        U(s') = U(s_1) + U'(s_1)(s' - s_1) + \frac{U''(s_1)}{2}(s' - s_1)^2 + o\big((s' - s_1)^2\big)
+    \end{equation}
+    e usando $U(s_1) = E$, poiché $s_1$ è definito da $U(s_1) = E$:
+    \begin{equation}
+        E - U(s') = -U'(s_1)(s' - s_1) - \frac{U''(s_1)}{2}(s' - s_1)^2 + o\big((s' - s_1)^2\big)
+    \end{equation}
+    Poiché a destra di $s_1$ si ha $U < E$ e $U(s_1) = E$, il potenziale è decrescente in $s_1$: se $U'(s_1) \neq 0$, allora $U'(s_1) < 0$ e $-U'(s_1) = |U'(s_1)|$. Quindi:
+    \begin{equation}
+        t_1 = -\int_{s_0}^{s_1} \frac{\mathrm{d}s'}{\sqrt{\frac{2}{m}(s' - s_1)\left(|U'(s_1)| - \frac{U''(s_1)}{2}(s' - s_1) + o(s' - s_1)\right)}}
+    \end{equation}
+    Per $s' \to s_1^+$ si ha $(s' - s_1) \to 0^+$, e il termine dominante nella parentesi è $|U'(s_1)|$:
+    \begin{equation}
+        t_1 \sim -\int_{s_0}^{s_1} \frac{\mathrm{d}s'}{\sqrt{\frac{2}{m}|U'(s_1)|(s' - s_1)}} \sim \int_{s_1}^{s_0} \frac{\mathrm{d}s'}{(s' - s_1)^{\frac{1}{2}}}
+    \end{equation}
+    che converge, poiché l'esponente $\frac{1}{2} < 1$. Il punto raggiunge quindi $s_1$ in un tempo finito. In $s_1$ la velocità è nulla e il punto è soggetto alla forza
+    \begin{equation}
+        F = -\left.\frac{\mathrm{d}U}{\mathrm{d}s}\right|_{s_1} = |U'(s_1)| > 0
+    \end{equation}
+    che lo spinge verso destra: $s_1$ è un \textbf{punto di inversione del moto}.
+
+\subsubsection{Moto verso l'infinito}
+    Se invece $U(s') < E$ per ogni $s' > s_0$ e $v_0 > 0$, il punto non incontra punti di inversione e si allontana verso $+\infty$. Il tempo impiegato è:
+    \begin{equation}
+        t_{\infty} = \int_{0}^{t_\infty} \mathrm{d}t = \int_{s_0}^{+\infty} \frac{\mathrm{d}s'}{\sqrt{\frac{2}{m}(E - U(s'))}}
+    \end{equation}
+    Se l'integrale diverge il tempo è infinito, se converge il punto arriva all'infinito in un tempo finito.
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale=1.0]
+            \draw[->] (-0.2, 0) -- (8, 0) node[below] {$s$};
+            \draw[->] (0, -1.6) -- (0, 2.4) node[left] {$U(s)$};
+            \draw[thick, domain=0.42:7.8, smooth, samples=150]
+                plot (\x, {1/(\x*\x) - 2/\x});
+            \draw[blue] (-0.2, 1) -- (8, 1) node[right] {$E$};
+        \end{tikzpicture}
+        \caption{Potenziale che tende a una costante per $s \to +\infty$.}
+    \end{figure}
+
+    Se $U$ è del tipo in figura, cioè tende a una costante minore di $E$ per $s \to +\infty$, allora $E - U(s')$ tende a una costante positiva, l'integrando tende a una costante non nulla e l'integrale diverge: il punto arriva all'infinito in un tempo infinito.
+
+    L'unico modo per cui l'integrale converge è che
+    \begin{equation}
+        U(s) \longrightarrow -\infty \quad \text{per } s \to +\infty
+    \end{equation}
+    abbastanza velocemente. Assumendo che asintoticamente $U(s) = -\alpha s^\beta$, con $\alpha, \beta > 0$:
+    \begin{equation}
+        \int^{+\infty} \frac{\mathrm{d}s'}{\sqrt{\frac{2}{m}(E - U(s'))}} \sim \int^{+\infty} \frac{\mathrm{d}s'}{\sqrt{\frac{2}{m}\alpha s'^\beta}} \sim \int^{+\infty} \frac{\mathrm{d}s'}{s'^{\frac{\beta}{2}}}
+    \end{equation}
+    che converge se $\frac{\beta}{2} > 1$, ovvero $\beta > 2$. In questo caso il punto raggiunge l'infinito in un tempo finito: tale situazione è non fisica.
+
+\subsubsection{Moto periodico e posizioni di equilibrio}
+    Si consideri un potenziale con un minimo locale in $s_4$ e un massimo locale in $s_5$, e tre diversi valori dell'energia $\tilde{E} < \bar{E} < \hat{E}$.
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale=1.3]
+            \draw[->] (-3.2, 0) -- (3, 0) node[below] {$s$};
+            \draw[->] (-3, -0.3) -- (-3, 2.6) node[left] {$U(s)$};
+            \draw[thick, domain=-2.5:2.6, smooth, samples=100]
+                plot (\x, {-0.6*(\x*\x*\x/3 - \x) + 1});
+            % \hat{E}: massimo locale
+            \draw[blue] (-3.2, 1.4) -- (3, 1.4) node[right] {$\hat{E}$};
+            \draw[blue, dashed] (1, 1.4) -- (1, 0) node[below] {$s_5$};
+            % \bar{E}
+            \draw (-3.2, 1) -- (3, 1) node[right] {$\bar{E}$};
+            \draw[dashed] (-1.732, 1) -- (-1.732, 0) node[below] {$s_2$};
+            \draw[dashed] (0, 1) -- (0, 0) node[below] {$s_3$};
+            \fill (-1.732, 1) circle (1.5pt);
+            \fill (0, 1) circle (1.5pt);
+            % \tilde{E}: minimo locale
+            \draw[green!50!black] (-3.2, 0.6) -- (3, 0.6) node[right] {$\tilde{E}$};
+            \draw[green!50!black, dashed] (-1, 0.6) -- (-1, 0) node[below] {$s_4$};
+            \fill[green!50!black] (-1, 0.6) circle (1.5pt);
+        \end{tikzpicture}
+        \caption{Moto periodico tra $s_2$ e $s_3$, equilibrio stabile in $s_4$ e instabile in $s_5$.}
+    \end{figure}
+
+    Con energia $\bar{E}$ e $s_0 \in [s_2, s_3]$, dove
+    \begin{equation}
+        \bar{E} = U(s_2) = U(s_3), \qquad U'(s_2) \neq 0, \quad U'(s_3) \neq 0
+    \end{equation}
+    il punto oscilla tra i due punti di inversione $s_2$ e $s_3$, che per quanto visto sopra vengono raggiunti in un tempo finito: il moto è \textbf{periodico}. Poiché l'energia dipende da $\dot{s}^2$, il tempo per andare da $s_2$ a $s_3$ è uguale al tempo per tornare, quindi il periodo del moto è:
+    \begin{equation}
+        \mathcal{T} = 2\int_{s_2}^{s_3} \frac{\mathrm{d}s'}{\sqrt{\frac{2}{m}(\bar{E} - U(s'))}}
+    \end{equation}
+    dove si usa $\mathcal{T}$ per non confonderlo con l'energia cinetica $T$.
+
+    Con energia $\tilde{E}$, dove
+    \begin{equation}
+        U'(s_4) = 0, \quad U''(s_4) > 0, \qquad \tilde{E} = U(s_4)
+    \end{equation}
+    l'unica posizione accessibile è $s_4$ e il punto resta fermo: $s(t) = s_4$ per ogni $t$. Un punto con $U'(s^*) = 0$ si dice \textbf{posizione di equilibrio}, e se è un minimo del potenziale l'equilibrio è \textbf{stabile}.
+
+\subsubsection{Equilibrio instabile e moto asintotico}
+    Con energia $E = \hat{E}$, dove
+    \begin{equation}
+        U'(s_5) = 0, \quad U''(s_5) < 0, \qquad \hat{E} = U(s_5)
+    \end{equation}
+    $s_5$ è un massimo del potenziale, cioè una posizione di \textbf{equilibrio instabile}. Seguono tre possibilità:
+    \begin{itemize}
+        \item $s_0 = s_5$ (e $v_0 = 0$): il punto materiale resta fermo se non viene perturbato, $s(t) = s_5$ per ogni $t > 0$.
+        \item $s_0 > s_5$: il moto dipende dalla velocità iniziale:
+        \begin{itemize}
+            \item se $v_0 > 0$ il punto va verso $+\infty$;
+            \item se $v_0 < 0$ il punto tende verso il massimo $s_5$ senza mai raggiungerlo, poiché ci vuole un tempo infinito.
+        \end{itemize}
+        \item $s_0 < s_5$, nella buca di potenziale: il punto tende a $s_5$ senza mai raggiungerlo, eventualmente dopo essere rimbalzato sul punto di inversione a sinistra. Si ha un \textbf{moto asintotico}.
+    \end{itemize}
+
+    Per dimostrare che il tempo per raggiungere $s_5$ è infinito, si consideri ad esempio $s_0 > s_5$ e $v_0 < 0$:
+    \begin{equation}
+        t_{s_5} = \int_{0}^{t_{s_5}} \mathrm{d}t = -\int_{s_0}^{s_5} \frac{\mathrm{d}s'}{\sqrt{\frac{2}{m}(\hat{E} - U(s'))}}
+    \end{equation}
+    Sviluppando in serie di Taylor attorno a $s_5$:
+    \begin{equation}
+        \hat{E} - U(s') = \underbrace{\hat{E} - U(s_5)}_{= 0} - \underbrace{U'(s_5)}_{= 0}(s' - s_5) - \frac{U''(s_5)}{2}(s' - s_5)^2 + O\big((s' - s_5)^3\big)
+    \end{equation}
+    dove il primo termine è nullo per definizione di $\hat{E}$ e il secondo perché $s_5$ è un massimo. Poiché $-\frac{U''(s_5)}{2} > 0$:
+    \begin{align}
+        t_{s_5} &\sim -\int_{s_0}^{s_5} \frac{\mathrm{d}s'}{\sqrt{\frac{2}{m}\left(-\frac{U''(s_5)}{2}\right)(s' - s_5)^2}} \\
+        &\sim \int_{s_5}^{s_0} \frac{\mathrm{d}s'}{\sqrt{(s' - s_5)^2}} = \int_{s_5}^{s_0} \frac{\mathrm{d}s'}{s' - s_5} = +\infty
+    \end{align}
+    poiché l'integrale di $\frac{1}{s' - s_5}$ diverge logaritmicamente. Quindi $t_{s_5} = +\infty$.
+
+    \begin{osservazione}
+        La differenza tra i due casi sta nell'ordine dello zero di $E - U(s)$. In un punto di inversione con $U'(s_1) \neq 0$ lo zero è semplice e l'integrando si comporta come $(s - s_1)^{-1/2}$, che è integrabile: il punto arriva in un tempo finito. In un punto di equilibrio con $U'(s^*) = 0$ lo zero è doppio e l'integrando si comporta come $|s - s^*|^{-1}$, che non è integrabile: il punto ci arriva in un tempo infinito.
+    \end{osservazione}
+
+
+\subsubsection{Curva separatrice nel piano delle fasi}
+    Si consideri un potenziale con un massimo in $s_0$ e un punto materiale con energia $E = U(s_0)$ che parte da $\bar{s} < s_0$ con velocità positiva. Per quanto visto il punto si avvicina a $s_0$ senza mai raggiungerlo. Questo è coerente anche con l'unicità della soluzione del problema di Cauchy: $s(t) \equiv s_0$, $\dot{s}(t) \equiv 0$ è una soluzione, quindi nessun'altra traiettoria può passare per $(s_0, 0)$ in un tempo finito.
+
+    Nel piano delle fasi $(s, \dot{s})$ la curva di livello $E = U(s_0)$ si chiama \textbf{curva separatrice}. Essa è unione di $5$ curve di fase distinte: il punto di equilibrio $(s_0, 0)$ e i quattro rami che vi arrivano o ne partono asintoticamente (due per $t \to +\infty$ e due per $t \to -\infty$). La separatrice divide il piano delle fasi in regioni in cui il moto è qualitativamente diverso:
+    \begin{itemize}
+        \item se $E < U(s_0)$ il punto non supera il massimo: le curve di fase sono due rami disgiunti, uno a sinistra e uno a destra di $s_0$, e il punto torna indietro dopo aver raggiunto un punto di inversione;
+        \item se $E > U(s_0)$ il punto supera il massimo: le curve di fase passano sopra (con $\dot{s} > 0$) o sotto (con $\dot{s} < 0$) il punto di equilibrio senza toccare l'asse $s$.
+    \end{itemize}
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale=1.1]
+            \draw[->] (-3, 0) -- (3, 0) node[below] {$s$};
+            \draw[->] (-2.8, -2.4) -- (-2.8, 2.4) node[left] {$\dot{s}$};
+            % separatrice
+            \draw[red, thick] (-2.2, -2.2) -- (2.2, 2.2);
+            \draw[red, thick] (-2.2, 2.2) -- (2.2, -2.2);
+            \fill[red] (0, 0) circle (2pt) node[below=3pt, black] {$s_0$};
+            \draw[red, thick, ->] (-1.6, 1.6) -- (-0.8, 0.8);
+            \draw[red, thick, ->] (1.6, -1.6) -- (0.8, -0.8);
+            \draw[red, thick, ->] (0.8, 0.8) -- (1.6, 1.6);
+            \draw[red, thick, ->] (-0.8, -0.8) -- (-1.6, -1.6);
+            % E < U(s_0)
+            \draw[blue, domain=-2:2, smooth, samples=60] plot ({-sqrt(\x*\x + 0.8)}, \x);
+            \draw[blue, domain=-2:2, smooth, samples=60] plot ({sqrt(\x*\x + 0.8)}, \x);
+            % E > U(s_0)
+            \draw[green!50!black, domain=-2.2:2.2, smooth, samples=60] plot (\x, {sqrt(\x*\x + 0.8)});
+            \draw[green!50!black, domain=-2.2:2.2, smooth, samples=60] plot (\x, {-sqrt(\x*\x + 0.8)});
+            \node[blue] at (-2.3, 0.3) {\small $E < U(s_0)$};
+            \node[green!50!black] at (0, 1.25) {\small $E > U(s_0)$};
+        \end{tikzpicture}
+        \caption{Curve di fase attorno a un massimo del potenziale; in rosso la separatrice.}
+    \end{figure}
+
+    Il verso di percorrenza è sempre verso destra per $\dot{s} > 0$ e verso sinistra per $\dot{s} < 0$.
+
+\section{Il pendolo semplice}
+
+\subsection{Equazione del moto}
+Si consideri un punto materiale di massa $m$ vincolato a muoversi su una circonferenza di raggio $\ell$ nel piano verticale, soggetto alla forza peso $m\bar{g}$ e alla tensione del filo $\bar{T}$. Usando le coordinate polari con origine nel punto di sospensione e angolo $\theta$ misurato dalla verticale verso il basso:
+\begin{equation}
+    \bar{r} = r\hat{u}_r, \qquad \hat{u}_r = (\sin\theta, -\cos\theta), \qquad \hat{u}_\theta = (\cos\theta, \sin\theta)
+\end{equation}
+Derivando il versore radiale:
+\begin{equation}
+    \frac{\mathrm{d}\hat{u}_r}{\mathrm{d}t} = \dot{\theta}(\cos\theta, \sin\theta) = \dot{\theta}\,\hat{u}_\theta, \qquad \frac{\mathrm{d}\hat{u}_\theta}{\mathrm{d}t} = \dot{\theta}(-\sin\theta, \cos\theta) = -\dot{\theta}\,\hat{u}_r
+\end{equation}
+quindi:
+\begin{equation}
+    \dot{\bar{r}} = \dot{r}\hat{u}_r + r\dot{\theta}\hat{u}_\theta = \ell\dot{\theta}\hat{u}_\theta
+\end{equation}
+dove si è usato il vincolo $r = \ell$, $\dot{r} = 0$. Derivando ancora:
+\begin{equation}
+    \ddot{\bar{r}} = \ell\ddot{\theta}\hat{u}_\theta - \ell\dot{\theta}^2\hat{u}_r
+\end{equation}
+Le forze agenti sono $\bar{T} = -T\hat{u}_r$ e $m\bar{g} = mg\cos\theta\,\hat{u}_r - mg\sin\theta\,\hat{u}_\theta$, quindi:
+\begin{equation}
+    m\ell\left(\ddot{\theta}\hat{u}_\theta - \dot{\theta}^2\hat{u}_r\right) = -T\hat{u}_r + mg\cos\theta\,\hat{u}_r - mg\sin\theta\,\hat{u}_\theta
+\end{equation}
+Proiettando sui due versori:
+\begin{equation}
+    \begin{cases}
+        m\ell\dot{\theta}^2 = T - mg\cos\theta \\
+        m\ell\ddot{\theta} = -mg\sin\theta
+    \end{cases}
+\end{equation}
+La prima equazione determina la tensione del filo, la seconda è l'equazione del moto:
+\begin{equation}
+    \ddot{\theta} + \frac{g}{\ell}\sin\theta = 0
+\end{equation}
+
+\subsection{Energia e classificazione dei moti}
+La forza peso è conservativa e la tensione non compie lavoro (è perpendicolare alla velocità), quindi l'energia si conserva:
+\begin{equation}
+    E = \frac{1}{2}m\ell^2\dot{\theta}^2 - mg\ell\cos\theta
+\end{equation}
+Definendo l'energia adimensionale $e = \frac{E}{mg\ell}$:
+\begin{equation}
+    \dot{\theta}^2 = \frac{2g}{\ell}\left(e + \cos\theta\right)
+\end{equation}
+Il moto è possibile solo dove $e + \cos\theta \geq 0$. Poiché il minimo dell'energia potenziale $U(\theta) = -mg\ell\cos\theta$ vale $-mg\ell$, deve essere $e \geq -1$, cioè $E \geq -mg\ell$. Si distinguono i casi:
+\begin{itemize}
+    \item $e = -1$: $\theta(t) = 0$ per ogni $t$, il pendolo è fermo nella posizione di equilibrio stabile;
+    \item $-1 < e < 1$: il pendolo oscilla tra $-\theta_0$ e $\theta_0$, con $\cos\theta_0 = -e$ (moti di \textbf{librazione});
+    \item $e = 1$: se $\theta = \pi$ e $\dot{\theta} = 0$ il pendolo è fermo nella posizione di equilibrio instabile; se $\theta \neq \pi$ e $\dot{\theta} \neq 0$ il moto è asintotico e il pendolo tende alla posizione verticale verso l'alto in un tempo infinito;
+    \item $e > 1$: $\dot{\theta}$ non si annulla mai e il pendolo compie giri completi (moti di \textbf{rotazione}).
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[xscale=0.6, yscale=1]
+        \draw[->] (-10, 0) -- (10, 0) node[below] {$\theta$};
+        \draw[->] (0, -2.6) -- (0, 2.8) node[left] {$\dot{\theta}$};
+        \foreach \k in {-1, 0, 1} {
+            % librazioni
+            \foreach \e/\a in {-0.5/1.0472, 0/1.5708, 0.5/2.0944} {
+                \draw[orange, domain={-\a}:{\a}, smooth, samples=80]
+                    plot ({\x + 2*pi*\k}, {sqrt(max(0, 2*(\e + cos(\x r))))});
+                \draw[orange, domain={-\a}:{\a}, smooth, samples=80]
+                    plot ({\x + 2*pi*\k}, {-sqrt(max(0, 2*(\e + cos(\x r))))});
+            }
+            \fill[orange] ({2*pi*\k}, 0) circle (2pt);
+        }
+        % separatrice e = 1
+        \draw[blue, thick, domain=-9.42:9.42, smooth, samples=200] plot (\x, {2*cos(\x/2 r)});
+        \draw[blue, thick, domain=-9.42:9.42, smooth, samples=200] plot (\x, {-2*cos(\x/2 r)});
+        % rotazioni e = 1.5
+        \draw[green!50!black, domain=-10:10, smooth, samples=200] plot (\x, {sqrt(2*(1.5 + cos(\x r)))});
+        \draw[green!50!black, domain=-10:10, smooth, samples=200] plot (\x, {-sqrt(2*(1.5 + cos(\x r)))});
+        \foreach \k in {-3, -1, 1, 3} \fill[blue] ({pi*\k}, 0) circle (2pt);
+        \node[below] at (3.14, 0) {\small $\pi$};
+        \node[below] at (6.28, -0.05) {\small $2\pi$};
+        \node[below] at (-3.14, 0) {\small $-\pi$};
+        \node[below] at (-6.28, -0.05) {\small $-2\pi$};
+        \draw[->, green!50!black, thick] (-8.5, {sqrt(2*(1.5 + cos(-8.5 r)))}) -- (-8, {sqrt(2*(1.5 + cos(-8 r)))});
+        \draw[->, green!50!black, thick] (8.5, {-sqrt(2*(1.5 + cos(8.5 r)))}) -- (8, {-sqrt(2*(1.5 + cos(8 r)))});
+    \end{tikzpicture}
+    \caption{Piano delle fasi del pendolo (con $g/\ell = 1$): in arancione le librazioni, in blu la separatrice $e = 1$, in verde le rotazioni.}
+\end{figure}
+
+La separatrice $e = 1$ ha equazione
+\begin{equation}
+    \dot{\theta} = \pm\sqrt{\frac{2g}{\ell}(1 + \cos\theta)} = \pm 2\sqrt{\frac{g}{\ell}}\cos\frac{\theta}{2}
+\end{equation}
+e separa le librazioni (curve chiuse attorno a $\theta = 2k\pi$) dalle rotazioni (curve aperte sopra e sotto). I punti $\theta = (2k+1)\pi$ sono punti di sella.
+
+\subsection{Legge oraria}
+Per ricavare la legge oraria nel caso delle librazioni ($-1 < e < 1$) si pone:
+\begin{equation}
+    y = \sin\frac{\theta}{2} \implies \cos\theta = \cos^2\frac{\theta}{2} - \sin^2\frac{\theta}{2} = 1 - 2y^2, \qquad \dot{y} = \frac{\dot{\theta}}{2}\cos\frac{\theta}{2}
+\end{equation}
+Moltiplicando l'equazione dell'energia per $\frac{1}{4}\cos^2\frac{\theta}{2} = \frac{1}{4}(1 - y^2)$:
+\begin{equation}
+    \dot{y}^2 = \frac{\dot{\theta}^2}{4}\cos^2\frac{\theta}{2} = \frac{g}{2\ell}\left(e + 1 - 2y^2\right)(1 - y^2) = \frac{g}{\ell}\left(k^2 - y^2\right)(1 - y^2), \qquad k^2 = \frac{e + 1}{2}
+\end{equation}
+dove $0 < k < 1$ per le librazioni. Ponendo $\xi = y/k$:
+\begin{equation}
+    \dot{\xi}^2 = \frac{g}{\ell}(1 - \xi^2)(1 - k^2\xi^2) \implies \int_{0}^{y/k} \frac{\mathrm{d}\xi'}{\sqrt{(1 - \xi'^2)(1 - k^2\xi'^2)}} = \sqrt{\frac{g}{\ell}}\,(t - t_0)
+\end{equation}
+dove $t_0$ è un istante in cui $\theta = 0$. L'integrale a primo membro è l'inversa della funzione ellittica di Jacobi $\mathrm{sn}$ (seno amplitudine), quindi:
+\begin{equation}
+    \sin\frac{\theta(t)}{2} = k\,\mathrm{sn}\left(\sqrt{\frac{g}{\ell}}(t - t_0),\ k\right)
+\end{equation}
+Poiché $\mathrm{sn}(u, k)$ ha periodo $4K(k)$, dove $K(k) = \int_0^1 \frac{\mathrm{d}\xi}{\sqrt{(1-\xi^2)(1-k^2\xi^2)}}$ è l'integrale ellittico completo di prima specie, il periodo delle librazioni è
+\begin{equation}
+    \mathcal{T} = 4\sqrt{\frac{\ell}{g}}\,K(k)
+\end{equation}
+che per piccole oscillazioni ($k \to 0$, $K \to \frac{\pi}{2}$) si riduce a $2\pi\sqrt{\ell/g}$.
+
+\section{Piano delle fasi e stabilità}
+
+\subsection{Definizioni}
+\begin{definizione}[Piano delle fasi]
+    Sia il sistema
+    \begin{equation}
+        \begin{cases}
+            \dot{x} = y \\
+            \dot{y} = \dfrac{1}{m}f(x, y, t)
+        \end{cases}
+    \end{equation}
+    Il piano $(x, y) \in \mathbb{R}^2$ si dice \textbf{piano delle fasi} del sistema.
+\end{definizione}
+
+\begin{definizione}[Flusso e curva di fase]
+    Si definisce l'operatore di evoluzione temporale
+    \begin{equation}
+        g^t : A \subseteq \mathbb{R}^2 \longrightarrow \mathbb{R}^2, \qquad (x_0, y_0) \longmapsto (x(t), y(t))
+    \end{equation}
+    che associa al dato iniziale lo stato del sistema al tempo $t$. Per il teorema di Cauchy-Picard $g^t$ è biunivoco. L'insieme $\{g^t(x_0, y_0)\}_t$ si dice \textbf{curva di fase} passante per $(x_0, y_0)$.
+\end{definizione}
+
+Se $f = f(x)$ il sistema è \textbf{autonomo} (non dipende esplicitamente dal tempo) e conservativo, e l'energia si conserva. Si possono allora definire le curve di livello dell'energia:
+\begin{equation}
+    M_e = \left\{(x, y) \in \mathbb{R}^2 \mid E(x, y) = \frac{m y^2}{2} + U(x) = e\right\}
+\end{equation}
+Un insieme di livello $M_e$ può contenere più curve di fase disgiunte, come nel caso della separatrice del pendolo con $e = 1$. $M_e$ è regolare nei punti in cui
+\begin{equation}
+    \nabla E = \left(U'(x),\ m y\right) \neq \bar{0}
+\end{equation}
+e i punti in cui $\nabla E = \bar{0}$ si dicono \textbf{punti critici}.
+
+\begin{definizione}[Punto di equilibrio]
+    Si dice punto di equilibrio del sistema
+    \begin{equation}
+        \begin{cases}
+            \dot{x} = y \\
+            \dot{y} = \dfrac{1}{m}f(x)
+        \end{cases}
+    \end{equation}
+    un punto $(x_0, 0)$ tale che $(x(t), y(t)) = (x_0, 0)$ per ogni $t$ sia una soluzione, cioè tale che $f(x_0) = 0$.
+\end{definizione}
+
+\begin{osservazione}
+    Un punto è di equilibrio se e solo se è un punto critico: $\nabla E = \bar{0}$ equivale a $y = 0$ e $U'(x_0) = -f(x_0) = 0$.
+\end{osservazione}
+
+\subsection{Stabilità}
+\begin{definizione}[Stabilità secondo Lyapunov]
+    Il punto di equilibrio $(x_0, 0)$ si dice \textbf{stabile} se per ogni intorno $U$ di $(x_0, 0)$ esiste un intorno $U' \subseteq U$ di $(x_0, 0)$ tale che per ogni dato iniziale $(x(0), y(0)) \in U'$ si ha
+    \begin{equation}
+        (x(t), y(t)) \in U \quad \forall t > 0
+    \end{equation}
+    La traiettoria non deve necessariamente restare in $U'$, ma non deve uscire da $U$.
+\end{definizione}
+
+\begin{definizione}[Stabilità asintotica]
+    Un punto di equilibrio stabile $(x_0, 0)$ si dice \textbf{asintoticamente stabile} se esiste un intorno $U$ di $(x_0, 0)$ tale che per ogni dato iniziale $(x(0), y(0)) \in U$:
+    \begin{equation}
+        (x(t), y(t)) \xrightarrow{t \to +\infty} (x_0, 0)
+    \end{equation}
+\end{definizione}
+
+\begin{osservazione}
+    La stabilità asintotica può esistere solo in un sistema non conservativo: in un sistema conservativo l'energia è costante lungo il moto, quindi una traiettoria con $E > E(x_0, 0)$ non può tendere a $(x_0, 0)$. Un esempio è l'oscillatore smorzato della sezione successiva.
+\end{osservazione}
+
+\begin{proposizione}[Lagrange-Dirichlet]
+    Se $U(x)$ ha un minimo relativo isolato in $x_0$, allora $(x_0, 0)$ è una posizione di equilibrio stabile.
+\end{proposizione}
+\begin{proof}
+    Supponendo $U(x_0) = 0$, il punto $(x_0, 0)$ è un minimo isolato di $E(x, y) = \frac{1}{2}m y^2 + U(x)$, con $E(x_0, 0) = 0$. Quindi per ogni intorno $U$ di $(x_0, 0)$ (abbastanza piccolo) esiste $\delta > 0$ tale che la componente connessa contenente $(x_0, 0)$ dell'insieme
+    \begin{equation}
+        U' = \{(x, y) \mid E(x, y) < \delta\}
+    \end{equation}
+    è contenuta in $U$. Poiché l'energia si conserva, $U'$ è invariante per evoluzione temporale: una traiettoria che parte in $U'$ resta in $U'$, e quindi in $U$.
+\end{proof}
+
+\begin{osservazione}[Ipotesi di minimo isolato]
+    L'ipotesi che il minimo sia isolato è necessaria. Se $U$ è costante in un intervallo che contiene $x_0$, il minimo non è isolato: un punto che parte vicino a $x_0$ con una velocità piccola ma non nulla si muove di moto uniforme lungo tutto il tratto piatto e si allontana da $x_0$ quanto vuole, quindi l'equilibrio non è stabile.
+\end{osservazione}
+
+\begin{osservazione}[Il contrario non vale]
+    Il viceversa della proposizione non è garantito: esistono equilibri stabili che non sono minimi del potenziale. Un esempio (Fasano-Marmi, capitolo 3, esercizio 1) è
+    \begin{equation}
+        U(x) =
+        \begin{cases}
+            e^{-1/x^2}\sin\dfrac{1}{x}, & x \neq 0 \\
+            0, & x = 0
+        \end{cases}
+    \end{equation}
+    $U$ è di classe $C^\infty$ e $x = 0$ è un punto di equilibrio, ma non è un minimo: in ogni intorno di $0$ la funzione oscilla assumendo valori positivi e negativi. Tuttavia vicino a $0$ si accumulano infiniti massimi e minimi relativi, e le buche di potenziale tra due massimi intrappolano le traiettorie che partono abbastanza vicino all'origine con energia sufficientemente bassa.
+\end{osservazione}
+
+\subsection{Piccole oscillazioni}
+\begin{proposizione}
+    Nelle vicinanze di una posizione di equilibrio stabile $x_0$, con $U'(x_0) = 0$ e $U''(x_0) > 0$, le equazioni del moto si possono approssimare con un sistema lineare.
+\end{proposizione}
+
+Ponendo $\xi = x - x_0$ e $\eta = y$, e sviluppando la forza attorno a $x_0$:
+\begin{equation}
+    f(x) = -U'(x) = -U'(x_0) - U''(x_0)(x - x_0) + O\big((x - x_0)^2\big) = -U''(x_0)\,\xi + O(\xi^2)
+\end{equation}
+il sistema diventa:
+\begin{equation}
+    \begin{cases}
+        \dot{\xi} = \eta \\
+        \dot{\eta} = \dfrac{1}{m}\left(-U''(x_0)\,\xi + O(\xi^2)\right)
+    \end{cases}
+\end{equation}
+Se $\xi$ è sufficientemente piccolo il termine $O(\xi^2)$ è trascurabile in prima approssimazione, e si ottiene l'oscillatore armonico:
+\begin{equation}
+    \ddot{\xi} + \omega^2\xi = 0, \qquad \omega = \sqrt{\frac{U''(x_0)}{m}}
+\end{equation}
+dove $\omega$ è la \textbf{frequenza propria} delle piccole oscillazioni. La soluzione è:
+\begin{equation}
+    \xi(t) = \xi(0)\cos(\omega t) + \frac{\eta(0)}{\omega}\sin(\omega t), \qquad \eta(t) = \dot{\xi}(t) = -\xi(0)\,\omega\sin(\omega t) + \eta(0)\cos(\omega t)
+\end{equation}
+
+Se invece $x_0$ è un massimo ($U''(x_0) < 0$) si ottiene una soluzione iperbolica:
+\begin{equation}
+    \xi(t) = \xi(0)\cosh(\Omega t) + \frac{\eta(0)}{\Omega}\sinh(\Omega t), \qquad \Omega = \sqrt{\frac{|U''(x_0)|}{m}}
+\end{equation}
+che cresce esponenzialmente. In questo caso l'approssimazione lineare vale solo per un tempo limitato: è valida finché il termine successivo dello sviluppo resta trascurabile,
+\begin{equation}
+    \frac{|U'''(x_0)|}{2}\,\xi^2 \ll |U''(x_0)|\,|\xi| \implies |\xi| \ll \left|\frac{U''(x_0)}{U'''(x_0)}\right|
+\end{equation}
+Il tempo $t^*$ di validità dipende quindi dalle condizioni iniziali $\xi(0)$ e $\eta(0)$. Per tempi $t \gg 1/\Omega$ si ha $\xi(t) \simeq \frac{1}{2}\left(\xi(0) + \frac{\eta(0)}{\Omega}\right)e^{\Omega t}$, e imponendo $|\xi(t^*)| \sim \left|\frac{U''(x_0)}{U'''(x_0)}\right|$:
+\begin{equation}
+    t^* \sim \frac{1}{\Omega}\ln\left(\frac{2\left|U''(x_0)/U'''(x_0)\right|}{\left|\xi(0) + \eta(0)/\Omega\right|}\right)
+\end{equation}
+
+\section{Sistemi smorzati e forzati}
+
+\subsection{Oscillatore smorzato}
+Si consideri un punto materiale soggetto a una forza elastica e a una forza di attrito viscoso:
+\begin{equation}
+    f(x, \dot{x}) = -kx - \alpha\dot{x}, \qquad k, \alpha > 0
+\end{equation}
+L'energia
+\begin{equation}
+    E = \frac{m}{2}\dot{x}^2 + \frac{k}{2}x^2
+\end{equation}
+non si conserva. Infatti, moltiplicando l'equazione del moto $m\ddot{x} = -kx - \alpha\dot{x}$ per $\dot{x}$:
+\begin{equation}
+    m\ddot{x}\dot{x} + kx\dot{x} = -\alpha\dot{x}^2 \implies \frac{\mathrm{d}E}{\mathrm{d}t} = \dot{x}\left(m\ddot{x} + kx\right) = -\alpha\dot{x}^2 \leq 0
+\end{equation}
+dove $-\alpha\dot{x}^2 = (-\alpha\dot{x})\,\dot{x} = F_{\mathrm{diss}}\cdot\dot{x}$ è la potenza della forza dissipativa. Il punto di equilibrio $(0, 0)$ diventa un punto \textbf{asintoticamente stabile}.
+
+Definendo
+\begin{equation}
+    \omega^2 = \frac{k}{m}, \qquad \beta = \frac{\alpha}{2m}
+\end{equation}
+l'equazione del moto diventa:
+\begin{equation}
+    \ddot{x} + 2\beta\dot{x} + \omega^2 x = 0
+\end{equation}
+Cercando soluzioni del tipo $x(t) = e^{\lambda t}$:
+\begin{equation}
+    \left(\lambda^2 + 2\beta\lambda + \omega^2\right)e^{\lambda t} = 0 \iff \lambda^2 + 2\beta\lambda + \omega^2 = 0 \iff \lambda_\pm = -\beta \pm \sqrt{\beta^2 - \omega^2}
+\end{equation}
+e le costanti si determinano dalle condizioni iniziali $x(0) = x_0$, $\dot{x}(0) = \dot{x}_0$. Il comportamento dipende dal segno di $\Delta = \beta^2 - \omega^2$.
+
+\subsubsection{Smorzamento forte: $\beta > \omega$}
+Le radici sono reali e negative:
+\begin{equation}
+    x(t) = A_1 e^{-\left(\beta + \sqrt{\beta^2 - \omega^2}\right)t} + A_2 e^{-\left(\beta - \sqrt{\beta^2 - \omega^2}\right)t} \xrightarrow{t \to +\infty} 0
+\end{equation}
+poiché entrambi gli esponenti sono negativi ($\sqrt{\beta^2 - \omega^2} < \beta$). Il moto ha al più un punto di inversione e passa al più una volta per la posizione di equilibrio: infatti
+\begin{equation}
+    x(t^*) = 0 \iff e^{-2\sqrt{\beta^2 - \omega^2}\,t^*} = -\frac{A_2}{A_1}
+\end{equation}
+e poiché il primo membro è strettamente monotono in $t^*$, se esiste un tale $t^*$ è unico.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[xscale=1.6, yscale=1.6]
+        \draw[->] (0, 0) -- (4.2, 0) node[below] {$t$};
+        \draw[->] (0, -0.5) -- (0, 1.7) node[left] {$x(t)$};
+        \draw[blue, thick, domain=0:4, smooth, samples=100]
+            plot (\x, {-0.6547*exp(-3.732*\x) + 1.6547*exp(-0.268*\x)});
+        \draw[orange, thick, domain=0:4, smooth, samples=100]
+            plot (\x, {1.0774*exp(-3.732*\x) - 0.0774*exp(-0.268*\x)});
+        \node[left] at (0, 1) {$x_0$};
+        \node[blue] at (1.6, 1.45) {\small $\dot{x}_0 > 0$};
+        \node[orange] at (1.4, -0.25) {\small $\dot{x}_0 < 0$};
+    \end{tikzpicture}
+    \caption{Moto fortemente smorzato ($\beta = 2\omega$) per due diverse velocità iniziali.}
+\end{figure}
+
+\subsubsection{Smorzamento debole: $\omega > \beta$}
+Le radici sono complesse coniugate:
+\begin{equation}
+    \lambda_\pm = -\beta \pm i\sqrt{\omega^2 - \beta^2}
+\end{equation}
+quindi
+\begin{equation}
+    x(t) = e^{-\beta t}\left(A_1 e^{i\sqrt{\omega^2 - \beta^2}\,t} + A_2 e^{-i\sqrt{\omega^2 - \beta^2}\,t}\right) = B e^{-\beta t}\cos\left(\sqrt{\omega^2 - \beta^2}\,t + c\right)
+\end{equation}
+dove per avere $x(t)$ reale deve essere $A_2 = \bar{A}_1$. Le costanti $B$ e $c$ si ricavano dalle condizioni iniziali:
+\begin{equation}
+    \begin{cases}
+        x(0) = x_0 = B\cos c \\
+        \dot{x}(0) = \dot{x}_0 = -\beta B\cos c - B\sqrt{\omega^2 - \beta^2}\sin c
+    \end{cases}
+\end{equation}
+Per $t \to +\infty$ si ha $x(t) \to 0$, ma il punto passa infinite volte per la posizione di equilibrio, con oscillazioni di ampiezza contenuta tra $\pm B e^{-\beta t}$. Nel piano delle fasi la traiettoria è una spirale che tende all'origine.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        \draw[->] (0, 0) -- (4.2, 0) node[below] {$t$};
+        \draw[->] (0, -1.1) -- (0, 1.2) node[left] {$x(t)$};
+        \draw[violet, dashed, domain=0:4, smooth, samples=80] plot (\x, {exp(-0.5*\x)});
+        \draw[violet, dashed, domain=0:4, smooth, samples=80] plot (\x, {-exp(-0.5*\x)});
+        \draw[blue, thick, domain=0:4, smooth, samples=300] plot (\x, {exp(-0.5*\x)*cos(6*\x r)});
+        \node[violet] at (3.4, 0.45) {\small $Be^{-\beta t}$};
+        \node[violet] at (3.4, -0.45) {\small $-Be^{-\beta t}$};
+    \end{tikzpicture}
+    \hspace{1cm}
+    \begin{tikzpicture}[scale=0.32]
+        \draw[->] (-7, 0) -- (7, 0) node[below] {$x$};
+        \draw[->] (0, -7) -- (0, 7) node[left] {$\dot{x}$};
+        \draw[blue, thick, domain=0:12, smooth, samples=400]
+            plot ({6*exp(-0.15*\x)*cos(\x r)}, {6*exp(-0.15*\x)*(-0.15*cos(\x r) - sin(\x r))});
+    \end{tikzpicture}
+    \caption{Moto debolmente smorzato: legge oraria e spirale nel piano delle fasi.}
+\end{figure}
+
+\subsubsection{Smorzamento critico: $\beta = \omega$}
+Le due radici coincidono, $\lambda = -\beta$, e la soluzione generale è
+\begin{equation}
+    x(t) = e^{-\beta t}\left(A_1 + A_2 t\right)
+\end{equation}
+
+\begin{osservazione}
+    Nei casi di smorzamento debole e critico il tempo caratteristico di decadimento è $\tau = \frac{1}{\beta}$. Nel caso di smorzamento forte il termine che decade più lentamente ha esponente $\beta - \sqrt{\beta^2 - \omega^2} < \beta$, quindi il tempo caratteristico è $\frac{1}{\beta - \sqrt{\beta^2 - \omega^2}} > \frac{1}{\beta}$: aumentando l'attrito oltre il valore critico il ritorno all'equilibrio diventa più lento.
+\end{osservazione}
+
+\subsection{Oscillatore forzato}
+In presenza di una forza periodica nel tempo:
+\begin{equation}
+    \ddot{x} + 2\beta\dot{x} + \omega^2 x = \frac{F(t)}{m}, \qquad F(t) = F(t + T) = F\cos(\Omega t + \gamma), \qquad \Omega = \frac{2\pi}{T}
+\end{equation}
+Poiché $\cos(\Omega t + \gamma) = \mathrm{Re}\left\{e^{i(\Omega t + \gamma)}\right\}$, si risolve l'equazione complessa
+\begin{equation}
+    \ddot{z} + 2\beta\dot{z} + \omega^2 z = \frac{F}{m}e^{i(\Omega t + \gamma)}
+\end{equation}
+e si prende la parte reale della soluzione. Cercando una soluzione particolare del tipo $z_p(t) = b\,e^{i\Omega t}$, con $b \in \mathbb{C}$:
+\begin{equation}
+    \left(-\Omega^2 + 2i\beta\Omega + \omega^2\right)b\,e^{i\Omega t} = \frac{F}{m}e^{i(\Omega t + \gamma)} \implies b = \frac{F}{m}\,\frac{e^{i\gamma}}{\omega^2 - \Omega^2 + 2i\beta\Omega}
+\end{equation}
+Scrivendo $b = Be^{iC}$ con $B, C \in \mathbb{R}$, si ha $z_p(t) = Be^{i(\Omega t + C)}$ e
+\begin{equation}
+    x_p(t) = \mathrm{Re}\{z_p(t)\} = B\cos(\Omega t + C)
+\end{equation}
+con
+\begin{equation}
+    B = \frac{F}{m}\,\frac{1}{\sqrt{(\omega^2 - \Omega^2)^2 + 4\beta^2\Omega^2}}, \qquad C = \gamma - \varphi
+\end{equation}
+dove $\varphi \in (0, \pi)$ è l'argomento di $\omega^2 - \Omega^2 + 2i\beta\Omega$, cioè $\tan\varphi = \frac{2\beta\Omega}{\omega^2 - \Omega^2}$: la risposta è in ritardo di fase rispetto alla forzante, di poco per $\Omega \ll \omega$, di $\frac{\pi}{2}$ per $\Omega = \omega$ e di quasi $\pi$ per $\Omega \gg \omega$.
+La soluzione generale è la somma della soluzione dell'omogenea e di quella particolare:
+\begin{equation}
+    x(t) = x_0(t; \omega, \beta) + x_p(t)
+\end{equation}
+Poiché $x_0(t) \to 0$ con tempo caratteristico dell'ordine di $1/\beta$, per $t \gg \frac{1}{\beta}$ si ha $x(t) \to x_p(t)$: il moto a regime è una funzione periodica con la frequenza $\Omega$ della forzante, indipendentemente dalle condizioni iniziali.
+
+\subsubsection{Risonanza}
+Si studia l'ampiezza $B$ di $x_p$ in funzione di $\Omega$. Ponendo $u = \Omega^2$, il denominatore di $B$ è $D(u) = (\omega^2 - u)^2 + 4\beta^2 u$, e
+\begin{equation}
+    D'(u) = -2(\omega^2 - u) + 4\beta^2 = 0 \iff u = \omega^2 - 2\beta^2
+\end{equation}
+Quindi:
+\begin{itemize}
+    \item se $\omega^2 > 2\beta^2$, $B$ ha un massimo per
+    \begin{equation}
+        \Omega_R = \sqrt{\omega^2 - 2\beta^2}, \qquad B_{\max} = \frac{F}{m}\,\frac{1}{2\beta\sqrt{\omega^2 - \beta^2}}
+    \end{equation}
+    infatti $D(\Omega_R^2) = 4\beta^4 + 4\beta^2(\omega^2 - 2\beta^2) = 4\beta^2(\omega^2 - \beta^2)$;
+    \item se $\omega^2 \leq 2\beta^2$, $D'(u) > 0$ per ogni $u > 0$, quindi $B(\Omega)$ è decrescente in $\Omega$ e non c'è risonanza.
+\end{itemize}
+Al diminuire di $\beta$ il picco si sposta verso $\omega$ e diventa più alto; per $\beta \to 0$ si ha $B \to +\infty$ per $\Omega \to \omega$.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[xscale=3, yscale=0.9]
+        \draw[->] (0, 0) -- (2.6, 0) node[below] {$\Omega/\omega$};
+        \draw[->] (0, 0) -- (0, 6.3) node[left] {$B$};
+        \begin{scope}
+            \clip (0, 0) rectangle (2.5, 6);
+            \draw[green!50!black, domain=0:0.97, smooth, samples=100] plot (\x, {1/abs(1 - \x*\x)});
+            \draw[green!50!black, domain=1.03:2.5, smooth, samples=100] plot (\x, {1/abs(1 - \x*\x)});
+            \foreach \b/\c in {0.1/blue, 0.2/orange, 0.4/magenta, 0.8/gray} {
+                \draw[\c, thick, domain=0:2.5, smooth, samples=200]
+                    plot (\x, {1/sqrt((1 - \x*\x)^2 + 4*\b*\b*\x*\x)});
+            }
+        \end{scope}
+        \draw[dashed] (1, 0) -- (1, 6);
+        \node[below] at (1, 0) {\small $1$};
+        \node[blue] at (1.6, 4.8) {\small $\beta = 0.1\,\omega$};
+        \node[orange] at (1.6, 2.6) {\small $\beta = 0.2\,\omega$};
+        \node[magenta] at (1.6, 1.6) {\small $\beta = 0.4\,\omega$};
+        \node[gray] at (0.35, 0.6) {\small $\beta = 0.8\,\omega$};
+        \node[green!50!black] at (2.0, 1.0) {\small $\beta = 0$};
+    \end{tikzpicture}
+    \caption{Ampiezza a regime in funzione della frequenza della forzante, con $F/m = \omega^2 = 1$.}
+\end{figure}
+
+\section{Esempi}
+
+\begin{esempio}[Potenziale con due minimi]
+    Si consideri il moto di un punto materiale di massa $m$ nel potenziale
+    \begin{equation}
+        U(x) = x^4 + 2x^3 - 2x^2 = x^2\left(x^2 + 2x - 2\right), \qquad E = \frac{1}{2}m\dot{x}^2 + U(x)
+    \end{equation}
+    Per trovare massimi, minimi e flessi si calcola:
+    \begin{equation}
+        U'(x) = 4x^3 + 6x^2 - 4x = 2x\left(2x^2 + 3x - 2\right)
+    \end{equation}
+    che si annulla per $x_1 = 0$ e per
+    \begin{equation}
+        2x^2 + 3x - 2 = 0 \implies x_{2,3} = \frac{-3 \pm \sqrt{9 + 16}}{4} = \frac{-3 \pm 5}{4} \implies x_2 = -2, \quad x_3 = \frac{1}{2}
+    \end{equation}
+    La derivata seconda è $U''(x) = 12x^2 + 12x - 4$, quindi:
+    \begin{equation}
+        U''(x_1) = -4, \qquad U''(x_2) = 20, \qquad U''(x_3) = 5
+    \end{equation}
+    quindi $x_1$ è un massimo relativo, mentre $x_2$ e $x_3$ sono minimi relativi, con
+    \begin{equation}
+        U(x_1) = 0, \qquad U(x_2) = -8, \qquad U(x_3) = -\frac{3}{16}
+    \end{equation}
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[xscale=1.4, yscale=0.3]
+            \draw[->] (-3.2, 0) -- (1.6, 0) node[below] {$x$};
+            \draw[->] (0, -9) -- (0, 9.5) node[left] {$U(x)$};
+            \draw[thick, domain=-3.05:1.35, smooth, samples=200]
+                plot (\x, {\x*\x*\x*\x + 2*\x*\x*\x - 2*\x*\x});
+            \draw[dashed] (-2, 0) -- (-2, -8);
+            \node[above] at (-2, 0) {$x_2$};
+            \draw[dashed] (-0.1, -8) -- (-2, -8);
+            \node[right] at (0, -8) {$-8$};
+            \node[above right] at (0, 0) {$x_1$};
+            \node[below] at (0.5, -0.4) {\small $x_3$};
+        \end{tikzpicture}
+        \caption{Il potenziale $U(x) = x^4 + 2x^3 - 2x^2$; il minimo in $x_3 = \frac{1}{2}$ è molto poco profondo ($U(x_3) = -\frac{3}{16}$).}
+    \end{figure}
+
+    Il moto al variare dell'energia è:
+    \begin{itemize}
+        \item $E > U(x_1) = 0$: moto periodico per $x \in [\bar{x}_1, \bar{x}_2]$, dove $\bar{x}_1 < \bar{x}_2$ sono le soluzioni di $U(x) = E$, con periodo
+        \begin{equation}
+            \mathcal{T} = 2\int_{\bar{x}_1}^{\bar{x}_2} \frac{\mathrm{d}x}{\sqrt{\frac{2}{m}(E - U(x))}}
+        \end{equation}
+        \item $E = U(x_1) = 0$: se $x = x_1$ il punto è fermo (moto statico), altrimenti il moto è asintotico verso $x_1$;
+        \item $U(x_3) < E < U(x_1)$: due possibili moti periodici in regioni disgiunte, attorno a $x_2$ o attorno a $x_3$, a seconda della posizione iniziale;
+        \item $E = U(x_3)$: moto statico in $x_3$, oppure moto periodico attorno a $x_2$ tra i punti di inversione;
+        \item $U(x_2) < E < U(x_3)$: moto periodico attorno a $x_2$;
+        \item $E = U(x_2)$: moto statico in $x_2$;
+        \item $E < U(x_2)$: moto non ammesso, poiché deve essere $E \geq \min_x U(x)$.
+    \end{itemize}
+\end{esempio}
+
+\begin{esempio}[Equilibri con derivata seconda nulla]
+    Si consideri
+    \begin{equation}
+        U(x) = (x^2 - 1)^3
+    \end{equation}
+    Allora:
+    \begin{equation}
+        U'(x) = 3(x^2 - 1)^2 (2x) = 6x(x^2 - 1)^2, \qquad U''(x) = 6(x^2 - 1)^2 + 24x^2(x^2 - 1)
+    \end{equation}
+    Le posizioni di equilibrio sono:
+    \begin{equation}
+        x_1 = 0 \implies U''(x_1) = 6, \qquad x_2 = -1 \implies U''(x_2) = 0, \qquad x_3 = 1 \implies U''(x_3) = 0
+    \end{equation}
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[xscale=2, yscale=1.5]
+            \draw[->] (-1.7, 0) -- (1.7, 0) node[below] {$x$};
+            \draw[->] (0, -1.3) -- (0, 1.6) node[left] {$U(x)$};
+            \draw[thick, domain=-1.45:1.45, smooth, samples=200]
+                plot (\x, {(\x*\x - 1)^3});
+            \node[below] at (-1, 0) {$-1$};
+            \node[below] at (1, 0) {$1$};
+            \node[left] at (0, -1) {$-1$};
+        \end{tikzpicture}
+        \caption{Il potenziale $U(x) = (x^2 - 1)^3$, con due flessi a tangente orizzontale in $x = \pm 1$.}
+    \end{figure}
+
+    In $x_1 = 0$ c'è un minimo, quindi un equilibrio stabile con $U(0) = -1$. In $x = \pm 1$ la derivata seconda è nulla e bisogna guardare l'ordine successivo: vicino a $x = 1$ si ha $(x + 1)^3 \simeq 8$, quindi $U(x) \simeq 8(x - 1)^3$, che è un \textbf{flesso a tangente orizzontale} (analogamente in $x = -1$). Questi equilibri sono instabili: un punto che parte fermo in $1 - \varepsilon$ è soggetto a una forza diretta verso $0$ e si allontana da $x = 1$, fino a raggiungere $-(1 - \varepsilon)$.
+
+    Il moto al variare dell'energia è:
+    \begin{itemize}
+        \item $E = -1$: moto statico in $x = 0$;
+        \item $-1 < E < 0$: moto periodico tra $\pm\sqrt{1 + E^{1/3}}$, dove $E^{1/3} < 0$ è la radice cubica reale;
+        \item $E = 0$: moto statico in $x = \pm 1$, oppure moto asintotico verso $x = 1$ o $x = -1$. Infatti $E - U(x) \simeq 8(1 - x)^3$ ha uno zero triplo in $x = 1$, e l'integrale $\int \frac{\mathrm{d}x}{(1 - x)^{3/2}}$ diverge;
+        \item $E > 0$: moto periodico tra $\pm\sqrt{1 + E^{1/3}}$, che attraversa i flessi in $x = \pm 1$ con velocità non nulla.
+    \end{itemize}
+\end{esempio}
+
+\begin{esercizio}[Fasano-Marmi, Esercizio 3.7.8 -- svolto]
+    Un punto materiale di massa unitaria si muove lungo l'asse $x$ sotto l'azione di un campo di forze conservativo con energia potenziale
+    \begin{equation}
+        U(x) = \frac{x^2}{2} + \frac{x^3}{3}
+    \end{equation}
+    Determinare le posizioni di equilibrio e discuterne la stabilità. Scrivere l'equazione della curva separatrice nel piano delle fasi e disegnare le curve di fase corrispondenti ai valori $0$, $\frac{1}{8}$, $\frac{1}{6}$, $\frac{1}{5}$, $\frac{1}{2}$ dell'energia.
+\end{esercizio}
+
+\textit{Svolgimento.} Le posizioni di equilibrio sono gli zeri di
+\begin{equation}
+    U'(x) = x + x^2 = x(1 + x) = 0 \implies x = 0, \quad x = -1
+\end{equation}
+e la loro stabilità si ricava da $U''(x) = 1 + 2x$:
+\begin{equation}
+    U''(0) = 1 > 0, \qquad U''(-1) = -1 < 0
+\end{equation}
+Quindi $x = 0$ è un minimo, cioè una posizione di equilibrio stabile con $U(0) = 0$, mentre $x = -1$ è un massimo, cioè una posizione di equilibrio instabile con
+\begin{equation}
+    U(-1) = \frac{1}{2} - \frac{1}{3} = \frac{1}{6}
+\end{equation}
+Inoltre $U(x) \to +\infty$ per $x \to +\infty$ e $U(x) \to -\infty$ per $x \to -\infty$.
+
+La separatrice è la curva di livello con l'energia del massimo, $E^* = \frac{1}{6}$:
+\begin{equation}
+    \frac{\dot{x}^2}{2} = \frac{1}{6} - \frac{x^2}{2} - \frac{x^3}{3}
+\end{equation}
+Il secondo membro ha uno zero doppio in $x = -1$, quindi si fattorizza come
+\begin{equation}
+    \frac{1}{6} - \frac{x^2}{2} - \frac{x^3}{3} = -\frac{1}{3}\left(x^3 + \frac{3}{2}x^2 - \frac{1}{2}\right) = -\frac{1}{3}(x + 1)^2\left(x - \frac{1}{2}\right)
+\end{equation}
+come si verifica sviluppando $(x + 1)^2\left(x - \frac{1}{2}\right) = x^3 + \frac{3}{2}x^2 - \frac{1}{2}$. L'equazione della separatrice è quindi:
+\begin{equation}
+    \dot{x} = \pm(x + 1)\sqrt{\frac{1 - 2x}{3}}, \qquad x \leq \frac{1}{2}
+\end{equation}
+Essa passa per il punto di sella $(-1, 0)$, chiude un anello che interseca l'asse $x$ in $x = \frac{1}{2}$ e per $x < -1$ prosegue con due rami aperti che vanno all'infinito. In $x = -1$ le pendenze delle due rette tangenti sono $\pm 1 = \pm\sqrt{|U''(-1)|}$, e l'altezza massima dell'anello si ha in $x = 0$, dove $|\dot{x}| = \frac{1}{\sqrt{3}}$.
+
+Tutte le curve di fase hanno equazione $\dot{x} = \pm\sqrt{2(E - U(x))}$, e i punti di inversione sono le radici reali di $\frac{x^3}{3} + \frac{x^2}{2} = E$:
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{2}
+    \begin{tabular}{>{\centering\arraybackslash}m{1cm} >{\centering\arraybackslash}m{4.4cm} >{\centering\arraybackslash}m{4cm} >{\centering\arraybackslash}m{4cm}}
+        \toprule
+        $E$ & Punti di inversione & Moti limitati & Moti illimitati \\
+        \midrule
+        $0$ & $-\tfrac{3}{2}$, \ $0$ (doppia) & equilibrio in $x = 0$ & ramo aperto, $x \leq -\tfrac{3}{2}$ \\
+        $\tfrac{1}{8}$ & $-1.266$, \ $-0.674$, \ $0.440$ & orbita chiusa, $x \in [-0.674,\ 0.440]$ & ramo aperto, $x \leq -1.266$ \\
+        $\tfrac{1}{6}$ & $-1$ (doppia), \ $\tfrac{1}{2}$ & anello della separatrice & rami della separatrice, $x < -1$ \\
+        $\tfrac{1}{5}$ & $0.542$ & -- & ramo aperto, $x \leq 0.542$ \\
+        $\tfrac{1}{2}$ & $0.806$ & -- & ramo aperto, $x \leq 0.806$ \\
+        \bottomrule
+    \end{tabular}
+    \caption{Punti di inversione e curve di fase per i valori dell'energia richiesti.}
+\end{table}
+Per $E = \frac{1}{5}$ e $E = \frac{1}{2}$ il punto arriva da $-\infty$, rimbalza nel punto di inversione e torna a $-\infty$. Le orbite chiuse ($0 < E < \frac{1}{6}$) sono percorse in senso orario.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[xscale=2.2, yscale=1.6]
+        \draw[->] (-2.3, 0) -- (1.2, 0) node[below] {$x$};
+        \draw[->] (0, -1.9) -- (0, 1.9) node[left] {$\dot{x}$};
+        \begin{scope}
+            \clip (-2.25, -1.85) rectangle (1.15, 1.85);
+            % E = 0
+            \foreach \s in {1, -1}
+                \draw[gray, domain=-2.25:-1.5, smooth, samples=100]
+                    plot (\x, {\s*sqrt(max(0, 2*(0 - \x*\x/2 - \x*\x*\x/3)))});
+            \fill[gray] (0, 0) circle (1.5pt);
+            % E = 1/8
+            \foreach \s in {1, -1} {
+                \draw[blue, domain=-0.67365:0.43969, smooth, samples=150]
+                    plot (\x, {\s*sqrt(max(0, 2*(0.125 - \x*\x/2 - \x*\x*\x/3)))});
+                \draw[blue, domain=-2.25:-1.26604, smooth, samples=100]
+                    plot (\x, {\s*sqrt(max(0, 2*(0.125 - \x*\x/2 - \x*\x*\x/3)))});
+            }
+            % E = 1/6 separatrice
+            \foreach \s in {1, -1}
+                \draw[red, thick, domain=-2.25:0.5, smooth, samples=200]
+                    plot (\x, {\s*(\x + 1)*sqrt(max(0, (1 - 2*\x)/3))});
+            \fill[red] (-1, 0) circle (1.5pt);
+            % E = 1/5
+            \foreach \s in {1, -1}
+                \draw[green!50!black, domain=-2.25:0.54205, smooth, samples=200]
+                    plot (\x, {\s*sqrt(max(0, 2*(0.2 - \x*\x/2 - \x*\x*\x/3)))});
+            % E = 1/2
+            \foreach \s in {1, -1}
+                \draw[violet, domain=-2.25:0.80644, smooth, samples=200]
+                    plot (\x, {\s*sqrt(max(0, 2*(0.5 - \x*\x/2 - \x*\x*\x/3)))});
+        \end{scope}
+        \draw[->, thick, blue] (0.2, 0.452) -- (0.27, 0.405);
+        \draw[->, thick, blue] (0.27, -0.405) -- (0.2, -0.452);
+        \node[gray] at (-1.85, 0.12) {\small $0$};
+        \node[blue] at (0.15, 0.3) {\small $\frac{1}{8}$};
+        \node[red] at (-0.35, 0.72) {\small $\frac{1}{6}$};
+        \node[green!50!black] at (0.66, 0.15) {\small $\frac{1}{5}$};
+        \node[violet] at (0.65, 1.05) {\small $\frac{1}{2}$};
+    \end{tikzpicture}
+    \caption{Curve di fase per $U(x) = \frac{x^2}{2} + \frac{x^3}{3}$; in rosso la separatrice $E = \frac{1}{6}$.}
+\end{figure}
+
+\end{document}
