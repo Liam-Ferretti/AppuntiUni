@@ -1,0 +1,44 @@
+{
+  "descrizione": "Registro dei file già elaborati per aggiornare gli appunti LaTeX a partire da TrascrizioniAudio (Whisper) e Quaderni (PDF scritti a mano). Percorsi relativi a secondoAnno/.",
+  "ultimo_aggiornamento": "2026-10-28T01:40:00+01:00",
+  "materie": {
+    "Termodinamica e Laboratorio": {
+      "tex": "Termodinamica e Laboratorio/appunti.tex",
+      "cartelle_trascrizioni": ["TrascrizioniAudio/Termodinamica", "TrascrizioniAudio (file 'Termo*.txt' nella radice)"],
+      "quaderno": "Quaderni/Termodinamica E Laboratorio.pdf",
+      "quaderno_ultima_pagina_elaborata": 40,
+      "quaderno_pagine_totali_alla_elaborazione": 40,
+      "quaderno_mtime_ms": 1793146500000,
+      "ultima_aggiunta": {
+        "data_lezione": "2026-10-27",
+        "capitolo": "Secondo Principio della Termodinamica + Miscele di Gas",
+        "ultima_sezione_tex": "Legge di Dalton (\\section{Legge di Dalton})",
+        "argomenti": "Enunciati di Clausius e Kelvin-Planck, loro equivalenza, siringa di calore, ciclo di Carnot, rendimento eta = 1 - |Q1/Q2|, legge di Dalton",
+        "prossimo_argomento_annunciato": "Calcolo esplicito del rendimento del ciclo di Carnot (lezione del 28/10)"
+      },
+      "note": "appunti.tex creato da zero il 2026-10-28 trascrivendo tutto il quaderno (pp. 2-40; pp. 1, 25, 35 vuote/copertina)."
+    },
+    "Laboratorio di Fisica Computazionale 1": {
+      "tex": "Lab. Fisica Computazionale/appunti.tex",
+      "cartelle_trascrizioni": ["TrascrizioniAudio/Computazionale"],
+      "quaderno": "Quaderni/Laboratorio Di Fisica Computazionale 1.pdf",
+      "quaderno_ultima_pagina_elaborata": 16,
+      "quaderno_pagine_totali_alla_elaborazione": 16,
+      "quaderno_mtime_ms": 1793146425000,
+      "ultima_aggiunta": {
+        "data_lezione": "2026-10-27",
+        "capitolo": "Metodi Numerici",
+        "ultima_sezione_tex": "Costo computazionale e scelta dell'integratore (\\subsection in \\section{Metodi di Runge-Kutta})",
+        "argomenti": "Eulero, Eulero-Cromer, Verlet, Velocity Verlet (forma matriciale, simpletticità, stabilità), RK2, RK4",
+        "prossimo_argomento_annunciato": ""
+      },
+      "note": "Aggiunti anche capitolo 'Informazioni sul Corso' (bash, git, main in C) dalle pp. 2-4 del quaderno."
+    }
+  },
+  "file_elaborati": [
+    {"path": "TrascrizioniAudio/Termo 27 Ottobre.txt", "materia": "Termodinamica e Laboratorio", "bytes": 47545, "mtime_ms": 1793145010731, "elaborato_il": "2026-10-28"},
+    {"path": "TrascrizioniAudio/Termodinamica/Termo 27 Ottobre.m4a", "materia": "Termodinamica e Laboratorio", "bytes": 70059249, "mtime_ms": 1793130497000, "elaborato_il": "2026-10-28", "nota": "audio sorgente della trascrizione sopra"},
+    {"path": "TrascrizioniAudio/Computazionale/Computazionale .txt", "materia": "Laboratorio di Fisica Computazionale 1", "bytes": 22218, "mtime_ms": 1793137227301, "elaborato_il": "2026-10-28"},
+    {"path": "TrascrizioniAudio/Computazionale/Computazionale .m4a", "materia": "Laboratorio di Fisica Computazionale 1", "bytes": 10272467, "mtime_ms": 1793119544000, "elaborato_il": "2026-10-28", "nota": "audio sorgente della trascrizione sopra"}
+  ]
+}

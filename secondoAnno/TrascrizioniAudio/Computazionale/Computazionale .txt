@@ -1,0 +1,443 @@
+L'argomento di Runge-Kutta è, invece che fare tutto il passo seguendo la derivata nel punto iniziale,
+a mezzo passo, quindi arriva a metà, quindi a questo punto qui mi calcolo la derivata di questo punto qua, quindi conosco la posizione della derivata all'istante temporale iniziale, all'inizio del passo, chi conizia?
+utilizzo la derivata per muovermi di mezzo passo
+qui calcolo la derivata
+che sarà la legge di mezzo
+a questo punto utilizzo questa derivata
+per muovermi da passo iniziale
+che arriva da qua
+utilizzo questa derivata qui
+e il mio fumo si fa in questo modo, e ho quindi un punto giudizionale
+calcolando la derivata a metà del basso
+ora non facciamo la media, prendiamo proprio la derivata schiena
+più o meno di mezzo
+poi andiamo al back
+Aspetta un po' di derivata, a mezzo gosso e poi spostalo in inizio.
+Quindi, sostanzialmente, vuoi avere la vostra equazione differenziale nella cosa di cui
+è uguale a f, x e t
+quindi immaginiamo di avere un'elementazione differenziale nel primo ordine
+d'accordo?
+adesso definiamo k1
+uguale f, xm, n
+Quindi qui è il K1
+La funzione è valutata...
+La velocità
+La velocità
+L'adiolivata prima
+Forza F è venita in grado di bladit
+Perché è funzione che è a mismatch
+Chi è la funzione? La funzione che voglio trovare o la funzione che compare alla velocità differenziale?
+Questa è la funzione differenziale.
+Questa è la funzione differenziale. Quindi capo a me chi è?
+La velocità alta in quando?
+Cioè, allo 7°.
+Cioè, qui io che sto disegnando, chi c'è che ce l'ha semplice da me?
+Free.
+No?
+Free?
+E chi è Fii?
+La derivata di X
+La derivata di X è che io ho la fila con la prima nota del progetto
+Cioè Fii è x punto
+Ok
+E' tipo qua
+Fii è x punto
+L'elevazione è infiniziale
+Ok
+Prendi Fii
+O il buco in mezzo
+Nel tempo questo bisogna avere più di Ladaudience – tra qusta… – specificità.
+Pure con questa trazion rally Liziana – specificità, rispetto pennunktuale e grammatica…
+Usare il parents senso fare, fin posizion는데요 per il passo da arrivare ad un Rox damage
+Poi fare secondamente un passo per arrivare al canto che ne ha la scuola sette e mezzo.
+Quindi io mi chiedo il nome, il tuo nome, il tuo canto, il tuo pranzo, e poi propongo con un ammiricolo di pranzo.
+C'è il conciutto che fa così.
+E' l'equivalente a dividere il passo.
+Esatto.
+Dopo vedrò a te e a lui, come potreste, la procedura di questa procedura.
+Siete felici?
+Intanto definiamolo, poi dopo capiamo come si fa.
+Quindi, un momento.
+Abbiamo detto che ci serve poi la derivata della funzione integrale.
+c'è la funzione che vogliamo trovare a metà del passo
+quindi, definisco un altro coefficiente che è a patrone
+che sarà uguale a phi
+di che cosa secondo voi?
+di n più mezzo
+come ci va n più mezzo?
+allora, perché è che è facile?
+No, non è così.
+Non lo so.
+Guarda che faccio.
+Poi, il tempo è facile quando sei a mezzo basso.
+Giusto.
+Perché non è così.
+E per la potenziale?
+Cioè, è una funzione stessa.
+Perché voi x dt non avete sceso.
+Se non scese x dt, avreste risolto la funzione istanziale.
+x di n più k1 delta t mezzi
+x di n più k1 per delta t mezzi
+questa è la proposta del vostro collega
+e chi è questo qua?
+non vi scrivo grande
+chi è x di n più k1 per delta t mezzi?
+Chi è F1?
+V
+E chi è F1?
+X.
+Quindi questo è come scrivere Xn più X.u
+per Ft
+M
+Chi è questa?
+Quindi sostanzialmente quello che stavi dicendo è fai un passo pari ai 13 e mezzi, usando la derivata di onde voleva la 13 e mezzi, calcoli la funzione in questo fonetto che me la metti dentro la catenella.
+questo punto che mi lamenti dentro a k2 e a questo punto dicevamo, utilizzi k2 che quindi
+che è la derivata da qua da qui, a partire da qua, quindi il sum che è il numero è uguale
+E' buono?
+E' un po' buono, vuoi?
+E' un po' buono?
+Peppe di attacchi
+attenzione, un po' di ciò è fatto sui qualsiasi iniziale
+e quindi forzioni che non c'è niente
+per i tuoi morti
+quindi come risolvere il problema della velocità?
+cioè della forza che dipende dalla velocità?
+se vuoi trovare la sensazione da lui
+no, per te
+Intanto, scusate, è chiaro la domanda che si sta facendo Pietro?
+Qual è la domanda di Pietro?
+In che modo questo algoritmo vi risolve il problema
+se la forza dipende dalla velocità o nel caso dell'uscicatore matematico?
+Oh, intanto, scusate...
+La velocità non dipende dalla forza, l'accelerazione dipende dalla forza.
+E' l'unica vera.
+Seconda.
+facciamo come un lego, scriviamo quelle posizioni tradizionali di secondo ordine con il sistema
+di due posizioni tradizionali di primordine, sostanzialmente in tutta quella velocità,
+Quindi scrivo che il spunto è uguale a 2
+e quindi chiamo il recap 2 due volte
+una per risolvere il primo e l'altra per risolvere il secondo
+Il mondo è più nero.
+La mia questione è una cosa molto interessante.
+Prima c'era un algoritmo di una cosa che deve fare la lucidità,
+però se per te è più poca, poi un algoritmo di una cosa
+che deve fare la lucidità a un basso invenzato.
+Ti ho capito come era una cosa che vi sono dato?
+No.
+Non ci vediamo proprio.
+Qui io non ho messo la ricerca,
+perché la mia ipotesi è di applicare questo algoritmo, una posizione differenziale del primo e del ultimo
+quindi qui K1 è la velocità e questa è la posizione
+ma quando io l'applico, quando l'applico a questa
+quando io l'applico a questa, x diventa la velocità
+perché K1 diventa l'accelerazione
+ma l'accelerazione all'inizio del tempo,
+sto sostanzialmente qua dentro a questo numero E0,
+non ho bisogno delle informazioni alla fine del passo di integrazione,
+mentre qui, per aggiornare V,
+avevo bisogno dell'accelerazione alla fine del passo di integrazione,
+qui sto usando tutte le informazioni che io ho disponibile
+non calcolo a, fi, qui, vi faccio una stima
+come qui
+qui non stavi calcolando a metà del passo dell'integrazione
+mi stai facendo una stima?
+questo l'ho definito così
+ma questa è una stima che mi recitano
+per una soluzione, non è vero?
+ok?
+non ho capito nel sistema
+se t è uguale a x5
+proviamo a sapere che t è uguale a x5
+no, è un'attivazione differenziale
+meno omega x, meno gamma su m
+Qua, ovviamente, la posizione differenziale, qui invece, di volte si è
+che l'una è più gorgona, l'altra è più densa, e specie, il mio sistema di geograzie è più gorgona
+Quindi, scusate la confusione, è un'altra razione finita, risolto per fare il discorso
+che è al pari di un euro, perché per un euro non abbiamo il problema della velocità
+dipendente dalla velocità, posso risolvere questo con un euro?
+Sì.
+Si
+e poi è il problema
+che un leero come un progre
+usa la sua informazione
+inizia il passo per tutte, giusto?
+quindi lo posso fare un leero
+il problema è che un leero è un dimuore
+che vogliono il rumore più preciso
+giusto?
+quindi sto sviluppando un rumore più preciso
+ma che usa soltanto l'informazione a tempo
+Tico N per calcolare Tico N più
+questi qui in mezzo è una stima, non state chiamando FI, state chiamando FI in un punto stimato
+e questa stima sarebbe facendo qualcosa, io volevo
+No, se non pensare più in ordine tra me, sono deciso di poter restare nella prima rete
+per una soluzione senza...
+E questo, tu, in passato proprio, lo dici?
+Il fatto che sia più in ordine, devo rifinare una seconda volta, perché poi c'è l'opzione.
+Ma nel senso, quello che io levo, e lo trovo in un'altra notte, è che se tu li vedi,
+ma che vuol dire il secondo ordine? Faccio, c'è la confusione. La cosa è l'errore che commetti a un impasto, l'altra è l'angoritmo
+pensato per una faccia differenziale in secondo grado, è diverso, cioè abbiamo dimostrato
+che con le nostre belle, l'errore è come T locale e di ordine delta T2, e quindi globale
+E' un euro pensato per le questioni differenziali del primordine, però si diverte per le questioni differenziali del secondo ordine.
+Quindi per applicare un euro per le questioni differenziali del secondo ordine si deve avere una questione differenziale con un sistema di due questioni differenziali del primordine e applicare un euro del O.
+non è un po'
+ok
+l'unica inutta con il mio leo
+è fatta per le porzioni differenziali
+per due uomini
+quindi se vuoi chiamare un'unica inutta due
+queste porzioni differenziali
+la userei per le otte
+una per la posizione e una per la velocità
+questo non ricerca niente
+con l'errore che connessi
+Quindi capiamo che un metodo si è pensato per le facce delle prima ordine, quando il
+modo trattine XNF1 e WNF1 è lo stesso. Invece nella cosa di velocity learning sono due idee
+diverse, da quello capiamo che è una cosa per il secondo ordine.
+che è sviluppato per le posizioni differenziali del secondo grado.
+Ah, se non del secondo ordine, sì, del secondo grado.
+Non è che puoi le fare un po' più sicure, ma se no, facciamo una confusione sulle due posizioni.
+Ok, più velocemente è pensare, più velocemente è il flessiale,
+disegno il tuo grado, ed è globalmente il secondo grado.
+Ok, ok, ok.
+Lo so un po' cos'è?
+Hai preso aria? Proprio come se volessi capire, vai.
+Prendi il coraggio, però continua a non capire.
+Cioè, l'idea è che io sono al 7.
+Io ho le informazioni attente, se mi toccalo c'è un po' di rispetto, vuoi venire all'anima? No, non c'è un po' di rispetto, non c'è un po' di rispetto.
+No, no, allora io ho le informazioni attente, e quindi, da queste informazioni che ti dichiaro, da le informazioni prese, a queste informazioni in corso.
+io la posso nemmeno fare
+dopo che il coloro di basso
+mi dobbiamo mettere un po' di informazione
+in questo momento
+e sviluppo l'interno del coordinate
+e faccio una
+una retta, un tipo di sacretto
+una partita di abitudine
+qui invece io, sulla base di un'informazione
+mi sposto un po'
+mi sposto di mezzo basso
+in mezzo basso stimo
+stimo dove sarei
+e poi dopo mezzo basso
+usando l'evo.
+E poi dopo di informazione, però,
+cosa attico proprio il fatto?
+Cioè, come attico il punto di N,
+la riattico al punto di dettaglio partito.
+Esatto.
+Cioè, via quale è?
+È che...
+Se voi poteste integrare questa, voi avreste
+Tn più o meno Tn, lo quale
+è l'integrale da Tn per Tn più o meno di T
+Io scrivo la differenza in t.
+Quindi xn più 1 lo potesse scrivere come xn più, questo integrale, tn più 1, t per t.
+Ma se io moltiplico di 2Δt qua, vi siete d'accordo che l'integrale di zi con n di zi diviso di
+di t, l'integrale, tn è 3 integrale, di phi e t, diviso per i 3 integrali, questa sostanzialmente
+è il valore migliore di phi, nella vitella dell'integrale, hai il bianco che paga, no?
+io sto prendendo phi, lo sto sommando per tutti i valori che phi assume all'interno dell'intervallo
+e poi sto tenendo l'intervallo, quindi questo è più o meno all'interno dell'intervallo
+quindi il seme più il reno è uguale al seme più il filo meglio all'interno del tuo bambu e il terza filo
+giusto?
+attenzione questo non è approssimamente uguale
+questo è esattamente uguale
+Ok? Se io sapessi calcolare la grande abitudine della mia funzione, la funzione, è troppo semplice, eh?
+Nell'intervallo temporale, mi basterebbe che il corale pontificare questo valore meglio, per adimicere il mio espagno,
+Scusi, e io non potrei essere il primo?
+No, perché l'ho appena indegnato
+No, c'ho appena indegnato.
+C'ho appena indegnato.
+Siamo d'accordo su questo?
+Sì.
+Ottimo.
+Quindi, la proposta di Aolero, del medio del quale
+a prossimo Fico Renne, Alvanore è l'edizio dell'intertampo.
+La proposta di 2.2 è
+A prossimo phi con n, non phi medio con n, non ha un valore all'unicello interpallo, ma ha un valore a metà all'interpallo.
+Cioè, questo è il mio intervallo, ok, la proposta di un'eroe, sono qui, a prossimo phi media,
+che è la derivata della mia funzione, perché qua c'è x, no? E quindi phi è x punto,
+a prossimo il valor medio di x punto, in questo intervallo, è come un valore iniziale,
+e mi muovo fino al punto finale, la proposta è quando il punto 2, no, calcolo la derivata qua, mi muovo il mezzo passo, calcolo il punto P, riporto il punto P e mi muovo direttamente.
+Vedete che K2, sostanzialmente, è la mia stima di fita nelle medie.
+L'idea è che, statisticamente, è meno probabile una volta in stanza, una volta all'ultima,
+statisticamente è meno probabile che la mia media sia più distante da quello che io ho stimato
+rispetto a prendere 5 net, quella sarebbe l'idea.
+No, no.
+Sono statisticamente dei veri problemi.
+Statisticamente è buono,
+ma è comunque in cipazzata di 100, non ci sto spiegando.
+E' una proporzione migliore di telecolaria.
+Ma da là giù si vede dove lo sento qua.
+No, però, però, perché qualcosa si fa.
+Steggono.
+Poi, ma che è?
+L'ho sentito proprio, lo sento qua.
+Questa cosa l'abbiamo vista già nella primissima lezione.
+Non vi ho introdotto l'elettro, lo stiamo semplicemente riferendo.
+Il fatto che ci vede l'esattamento non è che non mette magari tre quarti o un quarto,
+l'esperto vuol dire se è un quattro o un quattro.
+I signori, voi che non stavano fatto questa proposta,
+Dovevo dire che per seguire l'umbre vulta 2, se volete anticipare l'umbre vulta 4,
+muovete le carte nell'umbre vulta 4 per avere molto più di attenzione, così.
+C'è un po' troppo stante di...
+Cioè, è un po' l'unica...
+Avete visto voi, cazzo di ostri?
+No?
+Ok, non potete stare più sull'umbre vulta 2.
+Ok, poi l'umbre vulta 4...
+è molto veloce.
+Allora, tu hai definito K1 come ulteriore, K2 esattamente come ulteriore e di 6 più K1
+il potere più delta t più delta t
+kappa 4
+phi
+phi 7
+più kappa 3
+delta t in mezzo
+più delta t
+più delta t
+Quindi ci metto il tenere, per esempio, e poi in seme 1 mi calcolate come in seme 2 più in seme k1 più in seme 3
+K2 più un terzo, K3 più un terzo, K4 per il terzo
+Due domande, uno, perché K?
+Cominciamo a capire cosa vogliamo dire questi coefficienti, ok?
+Tutte le k sostanzialmente sono approssimazioni della derivata in mezzo al mio intervallo laterale.
+K1 è la derivata all'inizio del mio intervallo, facile, come abbiamo detto prima.
+K2 è una stima della derivata a metà dell'intervallo, usando Euler per arrivare a metà dell'intervallo, prendendo quindi come derivata la derivata iniziale.
+K3 è sostanzialmente la stessa cosa, quindi state sempre stimando la derivata della funzione a metà dell'intervallo temporale muovendogli però del inizio, la xn, non usando K1, ma usando K2.
+Cioè, prima, come vedete tutta due, viene mostrata l'intervallata temporale, avete calcolato la derivata a metà,
+se si torna di indietro, è utilizzato pure la derivata in mezzo per fare tutta questa temporale.
+Qui invece, fate un balletto bellissimo, fate il balletto per calcolare la derivata a metà,
+Tornate via, usate la derivata a metà per la cosa che impenso, che a questo punto sarà
+l'O, perché se per esempio questa derivata qui, per l'italiano qua, la rimettete qui
+e la usate per calcolare la derivata di S, vi calcolate di nuovo la derivata qua,
+quindi è K2, quindi tornate via, usate K2, la derivata a metà e calcolate K3,
+quindi la derivata che avreste avuto in quel punto in mezzo, ci vuole, dobbiamo iniziare,
+Se usate la derivata iniziale per il modo di iniziare questo passo, ma se lo avete arrivato a metà, a quel punto,
+fanno tutto lo step, arrivate quindi alla fine del terreno temporale, il termine più detattivo,
+vi calcolate la derivata in questo punto, dove siete arrivati usando questa derivata qua,
+e poi fate una combinazione lineare di tutte queste vostre stime della derivata.
+ok, è chiaro, come si sente, vedete come, come potete vedere, che in ogni caso sto cercando di stimare il ballo del medico, la derivata del ballo dell'interazione
+con il nero faccio una combinazione lineare di derivate all'inizio del tasso, alla fine del tasso, in mezzo, calcolando come la posso fare
+Ok.
+Ah beh, quanto si sa.
+Ma inventarti un rungo in punta otto?
+Sì.
+Ma guarda, una minaccia lineare
+di otto stime nella punta di rivata,
+lì c'è quasi un fonteballo temporale,
+noi viviamo in fraccini più piccole,
+stime nella punta di rivata,
+ha un pò più di basso, due gondiello,
+se volete, mi mando più, vai e rimandate
+perché non c'è un rungo e cotta al dispari?
+rungo e cotta 3
+non lo so che ci può essere
+e poi perché in k4
+non ci potrebbe essere
+perché poi in k4 siamo delta t e non delta t mezzi?
+è perché la derivata temporale è derivata alla fine del passo
+queste sono due stime della derivata minima
+questa è la stima della derivata all'inizio, questa è la stima della derivata alla fine
+la domanda è giusta che dovete fare tutti quanti
+perché, cioè, come scegliamo la combinazione lineare?
+come scegliamo questa combinazione?
+No, questo è un po' più che per generalizzare un unicuta a n mi serve quella roba
+La mia risposta è lasciatela al lettore
+Perché se ci mettiamo a farlo mi servono 8 di queste navane
+La propria bambina di errore è praticamente 1
+E uno sbratto di conti infinito ma a quale è il senso?
+Sostanzialmente scrivete sullo sviluppo in serie di Taylor
+e poi fa il primo modo che lo sviluppo in serie, qua mettete dei coefficienti abilari che non sapete, scrivete quella con una preliminazione che lo sviluppo in serie interi e quindi ci sono due coefficienti che non sapete.
+Questo è questo, e quando fate il comedia di quello che è l'algoritmo che risponde allo
+sviluppo del Seri Taylor fino al quarto ordine incluso, dovremo fare questi due efficienti.
+Non ho capito quali non sappiamo, hai detto che non sappiamo due coefficienti, non ho capito quali.
+Non sapete quali coefficienti, non sapete sicuramente quali coefficienti è la combinazione lineare.
+Non sapete quali coefficienti è la combinazione lineare.
+Quindi quante coefficienti non sappiamo?
+Non sapete tutte quattro coefficienti.
+Quindi imponete che quello sia equivalente allo sviluppo di Taylor di X.
+Ma questa simmetria che abbiamo nei coefficienti è un caso o la simmetria vale anche per tutti l'unice volta?
+La simmetria viene fuori dal sviluppo di Taylor.
+io non l'ho mai vista usare la mia punta per superare la quarta ordine
+perché ci fermiamo la quarta ordine?
+a parte che è molto lungo
+è già la quarta ordine?
+sì, è sicuramente molto preciso
+Cioè, già mi aspetto che questo sia molto preciso, ma perché non ci sono contesti in
+cui bisogna essere più preciso?
+Il DS è più preciso, ma gli attacchi più piccoli.
+Allora, diciamo che ci sono sostanzialmente due famiglie di usi di questa cosa.
+Quando fate la Recurve Dynamics, i sistemi che conservano l'energia, tipicamente usate la velocità di energia.
+Quando usiamo l'energia e la forza non vi dà più la capacità.
+Quindi, ovviamente se vedete i termini di attrito, l'energia non si consente.
+Però anche se volete simulare la particolare carica e il capomagnetico,
+lo avevo detto io, ma questo è per quattro ordini, per avere domanda per l'esercitazione al territorio, per avere lo stesso errore con l'inverno, quanto deve essere più piccolo il passo in integrazione degli spettacolmi del 24? Per avere lo stesso errore globale.
+se fate una simulazione in cui l'energia si conserva e la forza non dipende specificamente
+ma semplicemente usate velocità e velocità, se invece a primori voi non sapete se la forza dipende dalla velocità
+semplicemente usate velocità e velocità. Quindi, in tessere delle particelle per esempio, dove molto spesso avete particelle cariche
+e molto spesso vedo un campo magnetico
+un integratore di due volte,
+ovvero quando ci si pensa ai 2,24
+i teorici fanno cose un po' più sofisticate
+più spesso divisano, però sicuramente
+quindi questi sono i due angoli di finità
+i due angoli di finità
+Io mi chiedevo, ma Rovincicutta 2 è equivalente a Eulero con Delta Altimazzi?
+Alla stessa domanda di prima.
+Che passo in integrazione devo scegliere tra i primi e tutti a due per avere lo stesso
+il solitore che ha un formato almeno
+è un passo dieci volte più
+uno di livellezzi o pipi
+e quanto deve essere il pipo?
+quando mi si è mostrato più confrontazionalmente
+la mia vista luna
+rispetto al vero segnale
+Quanto fa questa compensazione al vento?
+Sì.
+Sostanzialmente, quante volte chiamate FI?
+Uno, due.
+Per il metruttatore?
+E quanto per il velocino del V?
+Questo mi cambia.
+Due.
+Quante volte chiamate FI?
+Lì, quattro.
+E lì, due.
+No, lì, due.
+No, perché quello risolve solo uno delle direzioni.
+Non esattamente.
+Lì, quattro.
+E lì, due.
+No, lì, due.
+No, perché quello risolve solo uno delle direzioni.
+Lì, quattro.
+E lì, due.
+No, lì, due.
+No, perché quello risolve solo uno delle direzioni.
+Non mi serve solo una delle due posizioni, non mi servono.
+No, no, no, una volta. Tu consigli un giocotà come metodo, non come un piacato a quello.
+Ti ho capito, però quello, allora, prendiamo una volta solo. C'hai capito?
+No, perché il bambino dipende da quello, di rendere la posizione precedente.
+Non ha senso fare un'altra.
+non sono stato la postizione, dovevo arrivare a riuscilarci, dovevo richiamare l'unico gruppo
+quindi altre due vado...
+Eh, per questo è il soldi, perché devi considerare il sistema così
+In quattro, contro due
+E qua invece, se l'implemento nel modo che ho cancellato
+quindi utilizzo quella riflessione di 2M più peso
+la calcolo una volta per percorrere 2M più peso
+e poi la riferisco qui, quindi due
+L'apparitato è un errore globale, non solo non è sequentico, ha un rilancio.
+Determinante della nutrizione.
+E non voglio fare un rilancio.
+Poi abbiamo esattamente il valore, quindi a questo punto non andiamo alla bassinazia.
+Quindi lunghe curta a quattro è anche più costoso?
+Certo, perché tu chiami la tua funzione quattro volte per la posizione e quattro volte per la miniatura, quindi sì, buono.
+E' una versione particolare di Ringerita 4...no, 6...sì, 6.
+che dipende dalla velocità, la risolviamo perché siamo un metodo di tipi o questioni
+interessali del primo grado, che è proprio il momento in cui gli risolviamo.
+Non esisteramente, perché il punto è che è sempre, così sempre, le informazioni all'inizio
+del passo di creazione, nonché tutte le informazioni che fai, che ti cavi, il metodo
+non sono stimili, sostanzialmente gli iniziavano a stimare la derivata in mezzo o in mezzo
+e alla fine la mettiamo in mezzo qua, ma sono stimili, mentre invece qua non è la stima
+che ha corretto il timido, è proprio l'argomente che viene in mezzo, questa non è la stima

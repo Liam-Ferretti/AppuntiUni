@@ -1,0 +1,707 @@
+E' utile che sia reversibile o irreversibile?
+Irreversibile.
+Irreversibile. Perché? Perché sennò, quando ti vedi il vostro problema di solito, sapete che il vostro utile, anche se fa machine language o altro, che ti pare, è sempre 2 più 1 uguale?
+Tre.
+Tre.
+2 più 1 uguale?
+Tre.
+Tre.
+Ah, 2 più 1... No, 2 più 1 ha il binario?
+Eh no, 2 in binario non c'è.
+Ah, effettivamente.
+No, no, non è giusto essere qua in modo che tu...
+Lui è davvero piuttosto...
+Ma quello era il linguaggio macchino,
+penso che lei non abbia mai visto il linguaggio macchino, no?
+Il codice, scusa, i numeri esadecimali...
+Esiste?
+E' feo.
+E' feo.
+Allora, chi ha fatto linguaggio macchino sa cosa sono i numeri esadecimali,
+oppure ha il campo di prese.
+2 più 1 è uguale al fast-princell'alieno con 8 dica
+2 più 1 uguale a 3 è irreversibile perché è atteso, perché 3 non è uguale a 2 più 1
+se spingi il bottone reversibile sul tuo computer, lui fa ok ok scusami se si si, 3 virgola 2
+Perchè 2? Perchè non hai scritto la 2,1? No, basta 1, perchè poi fai 3-2 fa 1
+Quindi lui ti mette un registro qui, va bene?
+E poi dice vabbè, adesso c'è questo 3, adesso fai la... insomma alla fine ti viene fuori un'esponenzialmente crescente credo,
+se volete verificare, e poi prelo se lo senti, prende l'informazione, va bene?
+E il vostro motore da lungo è questo. Questo si chiama il reversible computing, che tra l'altro, il reversible computing individuo è la computazione quantistica, quindi, prima di investire state attenti.
+Esiste comunque, però lo sapete, no, esiste un reversible computing utile che viene usato oggi, giusto? Qual è?
+Allora, i vostri computer a casa vostra non sono reversibili e obbediscono al principio
+di Landauer che è il secondo principio della termodinamica applicata alla termodinamica
+che dice che 2 più 1 è uguale a 3. Ma esistono dei programmatori che utilizzano il 2 più
+1 è uguale a 3,2 sempre, incluso per un periodo mio fratello, poi dopo che ci ha fatto sufficiente
+quantità di soldi a adesso fa qualcos'altro non so cos'è però all'epoca non sapevo che era questo
+però legale un fratello programmatore estremamente ricco a me non ha dato nulla
+è tipo sai quelli lì che sono talmente riti che proprio il fratello neanche i genitori non sanno
+non sappiamo nulla di lui che cosa è questa cosa quella è la reversible computing che si usa
+le criptovalute, le criptovalute sono le tipiche, mio fratello si è staccato al momento giusto
+in cui ha capito che loro fanno soldi e poi molla, e quando è che si è mollato? Quando
+alla fine sono nate delle entità che proteggono le criptovalute, che ovviamente reintroducono
+il 2B1 uguale al 3B perché sennò non si riesce a tornare indietro, troppo complicato,
+Quindi se tu vuoi dei contratti belli precisi, ma ne vuoi tanti, devi smettere di fare dei filatti di qualche uno
+in cui qualche uno si dà una banca e così finisce la criptovaluta.
+Però in teoria, sulla carta, all'origine dei tempi, quando loro stavano vent'anni fa,
+il rapprogrammatore e gli notti si scambiavano favori, si pagavano tra di loro con delle criptovaluta
+e era fatta con due più uno uguale a tre criptovaluta, cioè era reversibile.
+mai nessuno ha mai riuscito a scavare veramente i coin, a andare indietro
+però è il semplice fatto che lo potresti fare, che tutti sono quindi onesti
+ok?
+è la stessa cosa della burocrazia
+c'è un certificato che dice che tu sei nato in quell'anno, nessuno ha mai visto
+però già il fatto che c'è, fa sì che lei quando gli ricorda è nato e non ci guarda giusto
+Ok, va bene, questo è da tutti. Avete capito quindi il secondo percepio della tramoliamica?
+Oh, dice, va bene ragazzi, sono molto felice che lei mi ha spiegato l'origine del secondo percepio della tramoliamica.
+Va bene, sono veramente molto felice, ma a che cosa serve? Va bene, nessuno l'ha detto qua.
+Poi dobbiamo imparare che il tramotere dice a che cosa serve, no?
+A noi fisici dovrebbe non interessare questa cosa, però poi andate a fare un altro mestiere.
+e quindi dovete chiedervi a che cosa serve, a che cosa serve il secondo principio
+poi lo andiamo a vedere
+non ce l'ho scritto nessuna parte, però a che cosa serve il secondo principio?
+infatti uno sa a che cosa serve e poi ora lo annunciamo
+tanto è finito, dì a che cosa serve
+Vi ripeto che i tempi nostri tutto erano fatti praticamente in una settimana, tutto il terzotinario, i testi erano uguali.
+Non capisci quanto capivamo noi il termodinamo. A che serve il secondo principio? Prima fila, ultima fila.
+A che serve il secondo principio? Qualcuno lo sa. Prego.
+Perfetto, perfetto, perfetto. Ha detto bene, vedi? I chimici...
+non so adesso perchè, perchè ho scritto scellerato nel futuro, cioè qual è il progetto che avviene,
+quando un sistema lo lasci da solo, la seconda legge della termodinamica ti dice dove andrà a finire,
+cioè i processi spontanei, perfetto, va bene, non è che lo dovete capire esattamente quello
+che ha detto lui, poi un'altra cosa, questo è per i chimici, poi ingegneri,
+macchine, efficienza, le macchine più, la massima efficienza di una macchina
+Dicono che no, massime e efficienza devono arrivare, massime e efficienza devono arrivare.
+Ripeto, non ce l'ho scritti, quindi dovete continuare voi, ce ne sono un po'.
+Però io mi fermo ad essere un giocatore di chimici, ingegneri, poi quel palazzo,
+quel palazzo ci sta vicino qua.
+Matematici non ci fanno nulla.
+Matematici, precivo e Landauer, poi?
+Biologia.
+Biologia.
+La leudizione.
+Forme complesse sono più comuni
+perché crea un sistema esterno
+che diminuisce
+l'entropia e un interno che lo aumenta.
+Ok, good, good.
+Allora non lo posso scrivere alla magna, perché
+ripeto, ho il mio video che si è appena iscritto,
+quindi poi mi ucciderebbe, però
+sì, secondo me è così come ho detto lei,
+però noi siamo tra fisici e diciamo queste cose senza più ringraziare nessuno
+praticamente lui dice questo, lui dice che il fine ultimo di una cellula
+è quello di creare negentropia
+cioè di improdurre
+all'interno di una superficie di
+vi ricordo che il secondo principio assieme ai meccanismi di meccanismo sono
+una delle poche cose divertenti in fisica, quindi divertitevi
+e poi però...
+a parte la cellula non credo che sia proprio così, secondo me è un po'
+più schiacciata, la guardi al vetrino siccome il calore è ciò che fai con il calorimetro
+anche la cellula è ciò che vedi con il microscopio quindi schiacciata, un po' schiacciata, però
+non troppo perché c'ha uno scheletro la cellula, sapete? Sai anche che c'ha uno scheletro
+la cellula, veramente, come si chiama lo scheletro? Citocheletro, no, traccitocheletro,
+te sa tutto
+dovete venire a stare qui alla prima fila
+così sapete tutto
+la cellula nega entropia, ci siete?
+la cellule sono determinate da un processo di nega entropia
+cioè il sistema complesso ha una entropia più bassa del resto dell'ambiente
+per fare questo non si diventerà in modo di suicidarci
+No? Perché questa è una cosa filosofica, non denti quelli di un certo partito che adesso è un po' più piccolo.
+Istoici?
+Sì.
+Pure la filosofia.
+D'accordo, d'accordo, d'accordo. Vabbè, non passiamo alla filosofia.
+E poi parleremo di filosofia.
+E qui la cellula, una domanda che venne fatta qualche giorno fa alla professoressa di biologia di citologia o istologia, forse è lo stesso esame,
+citologia e istologia, ci hanno due esami diversi, venne fatta una domanda da qualche d'uno e gli chiese perché le cellule sono negentropiche?
+E lei mi sembra che ha risposto, giusto?
+Che stavano dentro degli scarpe che aumentano
+Poi la domanda è diventata, questa è la prima domanda
+La seconda parte della domanda è, ma perché gli esseri viventi sono negentropici?
+Cioè le cellule sono negentropiche, no?
+È difficile avere un essere vivente, è puramente statistico
+che è statistico, avere tutti gli atomi arrangiati nella nostra forma
+e il fatto che possano fare quello che fanno.
+Ok, ma perché le cellule sono negentropiche?
+Capite cosa vuol dire negentropico? Cioè che diminuisce l'entropia.
+Potete chiedere al chat GPT perché le cellule sono negentropiche.
+Vediamo che dice. Che dice?
+La legna alla tavola.
+Ok, e perché gli oggetti viventi hanno bisogno di cose corti per ordinare l'interno delle cellule?
+Quindi un oggetto vivente ha bisogno di processi, per avere i processi deve essere nell'entropico, giusto?
+E quindi le cellule sono nell'entropico, e vedete che il motivo per cui la risposta doveva andare la professoressa di ecologia era
+definiamo oggetti viventi, oggetti che per stabilire dei processi sono negentropici, è la definizione di oggetto vivente.
+Se tu prendi una cosa chiusa può essere o l'informazione può rimanere costante e quindi è fisica, o l'informazione può ridursi all'interno, è biologia.
+Se l'informazione aumenta all'interno non fa parte della scienza, fa parte della stoicismo.
+Ok, cioè non... e questa è la generale, va bene, adesso non lo so a quale altri principi, comunque
+massima, efficienza e cosa succederà nel futuro. C'è un'ultima cosa che vorrei dire io da fisico
+Quale è lo stato di equilibrio finale? Quale è quello? Quello di massima entropia
+per un sistema isolato, lo dico perchè ho visto sulla lavagna quando sono arrivato
+c'era tutto densamente popolato di roba di meccanica statistica, quindi ve lo dico
+per voi, non per me, però a quelli mi diranno questa cosa che ho appena detto.
+Allora, andiamo ad annunciare, ovviamente adesso tutto questo di tutte chiacchere
+che poi, come vi ho fatto notare, tranne tutti i fisici, però non dicevano in pubblico,
+volevano fare una teoria in cui non si dovesse parlare delle cose microscopiche,
+perché non sapevano se esistevano le cose microscopiche,
+e quindi si parla solo di cose macroscopiche.
+Ok, giusto per chiarirci, quindi un processo irreversibile è un processo per il quale
+T non è il quale meno T, va bene? Non si può fare questa operazione e avete capito
+perché giusto avete capito perché mi faccio una domanda così brutale
+prendete una goccetta di colorante
+esistono i coloranti alimentari
+anche per te non vorrei, ci sono dei coloranti di mettere dentro la piscina, piscina pulita d'estate
+mettete un colorante alimentare dentro la piscina di notte, quindi sta tutto illuminato dentro
+Mentre il colorante che succede?
+Il colorante rosso invade tutta la vicina, giusto?
+Se fate un filmato di questo, lo mandate indietro
+non è possibile, perché vedete che il colorante fa così
+e poi è la persona che lo strada, va bene?
+Finché c'è la persona che lo mette dentro, quello può essere irreversibile
+Ma una volta vedete quello che viene chiamato la diffusione
+che è il processo irreversibile per eccellenza
+più di qualsiasi altro processo di cui abbiamo parlato prima
+attrito, calore, è la diffusione
+il processo ovviamente è legato al calore e si chiama diffusione in calore, la diffusione è il processo in assoluto più reversibile che noi conosciamo fisicamente.
+E qual è quindi il motivo, usando il linguaggio che hanno usato qui in prima fila, qual è il motivo per cui è reversibile?
+In quale modo ha a che fare con la non iniettività? Cioè, posso far cadere la goccia in due modi diversi, da due posizioni diverse?
+Hai capito alcune cose del bio della parola?
+Perchè devi chiederti se una persona normale sa cosa vuol dire iniettività.
+Ah, perché c'è nei test per entrare, non ho capito.
+Allora, la tematica è una analisi.
+Iniettività.
+Allora, io ho fatto all'estero, non lo so.
+Ma che?
+La pensione iniettiva.
+Per ogni x, y esiste un x tilde, y tilde tale che...
+Cioè, nel caso del tuo seno ci sono due input diversi,
+cioè due posizioni diverse da cui far partire la goccia,
+che hanno lo stesso output, cioè coloranti.
+Non stai tenendo conto della singola identità,
+della singola particelle, ne stai dicendo che sono solamente rosse,
+però partono tutti dal punto iniziale e tu stai pertendo
+di informazione sul punto iniziale man mano che voi si spartano, ci siete?
+E hai perso questa informazione e quindi hai reso, che poi sarà legato a queste cose che
+lei dice inettività, sarebbe un po' troppo matematica, vabbè questo perché ai tempi
+nostri, non ai tempi nostri, ma quando iniziamo a parlare così i gruppi, teoria dei gruppi,
+queste cose qua, la gente diceva basta, capito?
+Perdo l'informazione dell'inizio, che poi è l'igniettività.
+Io ho sempre detto che il pill cresce del 3% l'anno, quindi non è vero che i studenti siano evitati più stupidi,
+siano evitati più intelligenti, perché il pill la copolazione diminuisce, il pill cresce con più sicuro.
+saranno più intelligenti
+quindi servirebbe anche la parola indiettiva
+e anche stuici
+i due enunciati lo usiamo noi invece sono enunciati senza la parola indiettiva
+di cui l'usiamo nel ripeto, se ne sono tanti di riusciare, uno è il riusciato di Tauss.
+Allora, cosa dice il riusciato di Tauss? Lo leggo perché sono quelle cose astinte, bene?
+è impossibile realizzare una trasformazione termodinamica
+il cui unico risultato è quello di far passare calore
+da un corpo a temperatura inferiore a un corpo a temperatura superiore
+In genere si disegnano due oggetti che sarebbero desorgenti o corpi
+questo si scrive T2 e questo si scrive T1
+normalmente almeno a casa mia, nel mio caso non so come fare a casa mia
+T2 è maggiore di T1, la temperatura di T2
+Allora, quello che dice è che è impossibile questo processo.
+Va bene, è calore che va dal più freddo al più caldo.
+E poi c'è tutto unico risultato.
+E niente altro succede.
+Questo è il rinunciato di Clausius. Questo rinunciato è chiaramente è quindi possibile
+secondo voi portare dell'energia sotto forma di calore da una zona fredda, una zona calda.
+la trivalina ha fatto... vai è possibile o no? è possibile? è possibile portare
+dell'energia sotto forma di calori, da una zona fredda, da una canna? sì, il frigorio, giusto se ti parlo di frigorio, allora non è vero che nient'altro succede
+non cedete, vi devo pagare la polietta, no?
+c'ho il frigo, quindi, no?
+è così, quindi c'ho un'altra macchina
+che fa del lavoro
+prendo del calore dalla sorgente fredda
+e lo toco dalla sorgente calda
+normalmente, per esempio nel vostro frigo, che cos'è il sistema?
+dovete essere, cioè sapete che i fisici possono anche fare gli ingegneri
+tra l'altro dipende da quanto vorrete guadagnare, se all'inizio volete già
+entrare con 2000, 2005 diciamo, dovete essere più basso al vostro stipendio
+l'ingresso, questo dice mia moglie, c'è un'azienda che ha detto guarda, non è proprio così
+se volete guarnire meglio, dovete far finta di essere ingegneri, nel frigo qual è il sistema?
+un frigo di espansione, se te prendi un gas e lo metti in un volume maggiore in modo che si raffreddi
+vabbè adesso sto traducendo, si capisce che lui è un fisico perché con le mani ha fatto così
+Cioè in effetti ha ragione, il sistema è il fluido che si sta espandendo e contraendo, è il fluido, che adesso io non so qual'è il fluido, spero che non, no il freon è quello che serve per isolare, non credo che sia il freon, non credo che puoi fare un ciclo con un freon, c'è un fluido dentro, va bene?
+bene che non mi ricordo come si chiama però è quello dell'area condizionale lo
+so perché si chiama R232, si chiama in un certo modo non mi
+ricordo comunque c'hanno dei simboli dei cosi, dentro il portofrico c'è un
+fluido quel fluido è quello che noi chiamiamo il sistema quando disegniamo
+quando mettiamo M, è la macchina, ecco il fluido, poi come dice bene lui, siccome lui non
+ne importa troppo di quello che c'è dentro il fluido, con le mani ha fatto così,
+pistoni e... certo il fluido è dentro la macchina e lo facciamo espandere e
+comprimere, dando di calore, facendogli scambiare lavoro tramite una superficie,
+una frontiera, va bene? però questo è il fluido, è il... mi
+mi dovrebbe dire freon ma non è così
+perché non è, deve essere un...
+non lo so, non mi ricordo che si chiama
+comunque, chiedete a qualcuno quello di là
+il lavoro come è in frigorifero?
+positivo o negativo?
+il lavoro come è in frigorifero?
+Il lavoro è positivo? No, però ho fatto bene a rispondere, almeno non stiamo sui due ore, è negativo.
+Perché è negativo? Adesso lo potete vedere nel secondo principio, però perché è negativo?
+Perché devi fare del lavoro, per adesso non lo so, perché deve dimostrarmi che il secondo principio mi dice questo.
+però se come pago la bolletta
+prego, pago la bolletta, il che vuol dire che sto facendo il lavoro sul...
+ah, allora c'è
+lui dice, non ho capito, è giusto questo
+io gli ho detto, frico, qual è il sistema?
+uno dice, ma questo è il sistema, potrebbe essere la stanza, la cucina, la lampadina, no?
+vabbè io dico qual è il sistema rispetto al secondo principio termodinamica
+allora il frigo detto da punto di vista termodinamico
+la sorgente fredda è la zona dentro del frigo
+tipo un formaggio, non so che c'è dentro del frigo
+la zona calda, la sorgente calda è la vostra cucina
+il sistema che sta facendo l'eventuale lavoro
+è un oggetto che si espande e si contrae, e il sistema è ciò che sta dentro questo oggetto che si espande e si contrae,
+questa è la frontiera, ed è un liquido, vorrei dire il nome, non ricordo qual è il nome, se lei guarda, vi dirà
+qual è il nome del liquido, del flu, insomma della sostanza che fa sti cicli.
+Io non lo voglio sapere, perché la mia più cervella è altamente irreversibile.
+Non è un sistema isolato, sta facendo l'apporto dell'esterno, c'è una presa elettrica che
+gli dà l'energia dell'esterno, non è un sistema isolato, ho capito quello che vuole
+dire, all'inizio dei tempi abbiamo iniziato la lezione dicendo che l'entropia aumenta
+dell'universo sistema isolato giusto? ok dimenticatelo, il secondo principio è quello che abbiamo annunciato in trance
+quello che ha annunciato lui è una conseguenza del secondo principio
+che è un sistema isolato, l'entropiome, è una conseguenza, non è il secondo principio
+capito? il secondo principio è questo qua, l'annunciato in trance
+ok? Giusto per chiarire. Cioè uno ti dice cos'è il secondo principio e tu dici
+ah l'entropia dell'universo aumenta? È vero, è una conseguenza del secondo principio
+ma non è il secondo principio. Però, vi dovrebbe fare un ultimo studio filosofico se...
+però non è così, non è l'enunciato che viene dato, l'enunciato fondamentale è questo di Clausius
+e dici ma null'altro succede, ma la macchina fa dei cicli, sapete che i frichi fanno dei cicli, giusto?
+qua fuori c'è, secondo me, all'ingresso, non so se si sente perché c'è troppo pesino, ma sentite la sera?
+sentite un ciclo qua fuori, lo fa anche il vostro frico, solo che l'hanno talmente insonorizzato che non si sente
+si sente dal bagno al suo a casa sua ok comunque se andate a casa e vi
+mettete veramente a ascoltare il vostro frigo vedete che si respira e sta
+facendo il ciclo quindi che vuol dire? Ciclo vuol dire che torna su se stesso
+questa è la definizione di macchina tranne quando la darne in presto della vostra
+la figlia si rompe il fanalino, non è stata lei, la macchina torna su se stessa, quindi che vuol dire null'altro succede?
+dove è null'altro per rispondere a lui? è arrivata l'energia da fuori, la corrente elettrica, per questo non è chiuso questo sistema
+il corrente elettrico, è chiuso, può essere chiuso dal punto di vista della materia
+ma non è isolato, vabbè è chiuso ma non è isolato, quindi non è violato il principio
+di denunciato dei causi, perché il calore viene trasportato da qui a qui, ma non viene
+violato il secondo principio, il prossimo enunciato, questo sono i due enunciati che
+che ci interessa, è l'enunciato di Kelvin Plunk
+Kelvin è quello di Kelvin, è Lord Kelvin
+e Plunk è quel Plunk lì
+è quello che nel Natale dicono
+Natale del... o 1900 o 1899, 1900
+è come dire 50% più 1, non vuol dire 51%
+quindi era il Natale del 2000, quindi non era una cosa...
+e il Natale del 1899 era finissimo, invece il Natale del 2000
+comunque era il Natale del 1900
+nel Natale del 1900 si girò verso sua figlia e disse
+ha scoperto una cosa fondamentale ed era la quantizzazione, il politico di quantizzazione di riuscire da non dici, per spiegare il corpo nero
+però nel frattempo, giocherellando, così, magari prima o dopo, non so, ha annunciato il secondo principio
+è impossibile, tutti e due sono depressivi, questo è impossibile e quest'altro anche questo è depresso
+inizia così, è impossibile realizzare
+una trasformazione termodinamica
+il cui unico risultato
+sia quello di assorbire calore da una sola sorgente
+e di trasformarlo integralmente in laboratorio
+tradizionalmente si disegna così, tradizionalmente vuol dire, io lo disegno così
+c'è una macchina, c'è un'unica sorgente, c'è una macchina a temperatura 2, non importa se è il maggiore o il minore perché è un'unica temperatura, quindi sarà quello che è
+questo processo qua è impossibile
+questo è uguale a questo, guardalo bene
+qui c'è i due sorgenti, qui c'è i due sorgenti
+questo cosa qua è impossibile, scusate non ho detto
+ricordatemi sempre che sono proprio depressive
+quindi è impossibile, sulle miei punti c'è proprio una bella X sopra, perché per capire
+noi quando ci introdussero a noi il secondo principio, a parte ci avevamo 3 microsecondi per capirlo
+Quando ci è introdotto il secondo principio, in realtà è stato sviluppato il secondo
+principio prima del primo principio, che se ne importa chiamalo come di pare, però il
+motivo era perché c'era un motivo pratico, apparentemente all'epoca, quindi fine 800,
+non lo so se 1870 e fino a 800 può essere, c'era un impero mondiale che non erano gli
+americani, non erano gli cinesi, non erano neanche gli italiani, ma erano gli inglesi,
+lo sa tutto, alla cerola chi l'ha detto, quindi c'erano gli inglesi, che erano un impero mondiale
+e si basava, l'impero mondiale degli inglesi si basava su che cosa? Sulla marina mercantile
+obilitare quello che è. E ovviamente essendo loro un impero, insomma, fregavano a destra
+e a manca, giustamente, e avevano dei porti, cioè la maggior parte dei porti li odiavano,
+quindi appena vedevano una nave britannica, pum, sparavano subito i cannoni. La prova
+appena la vedevano, neanche c'era... tranne tutto l'insieme di punti che connettevano
+l'intero mondo, va bene? E vi dico un esempio di punto che c'era, che è incredibile, ma
+era Napoli. Napoli era lo scoperto, non so dove, Napoli inredì quei Borboni, come ce l'aveva con non so chi,
+con i francesi, quello so, perché i Borboni poi i francesi, ma i francesi hanno fatto la rivoluzione,
+aveva la testa a un Borbone suo, amico suo, e quindi alla fine ce l'aveva coi Borboni,
+e cioè i Borboni ce l'avevano coi francesi, insomma Napoli era un porto a favore degli inglesi,
+quindi loro andavano lì, ed era un porto ricco e potente, e l'ideale però gli inglesi segretamente
+non volevano avere niente a che fare con nessuno, cioè volevano mai dover atterrare,
+quello era il loro scopo, allora andarono dal loro ammiraglio a dire si può avere
+un oggetto che non ha mai bisogno di atterrare, dice no perché dobbiamo
+rifornirci, rifornirci di che? beh tra l'altro ci sono le nuove navi a vapore che
+vanno più veloci, abbiamo bisogno di rifornirci di carburante, quello ha detto
+ma che carburante? perché ricordatevi che le navi poi a un certo punto dopo la
+la seconda rivoluzione industriale, hanno cominciato a fare così le navi, non facevano più così le navi
+Dice, dove prendiamo l'energia? La prendiamo dall'oceano
+Ma che stai dicendo? L'oceano, l'oceano c'ha energia? Sì, perché l'oceano è più o meno a 16 gradi, 15 gradi
+Non so se c'era il global warming, comunque era intorno ai 15 gradi
+E 15 gradi è caldo, certo, se vieni dall'Olanda, eccetera, l'Olanda stanno a 15 gradi ad agosto
+però normalmente stanno a 15 gradi per l'ora è caldo, io sono... vabbè, non vi dico cosa, comunque a Toronto 15 gradi è restato
+quindi 15 gradi è caldo, perché non si può usare il calore dell'acqua per fare un motore?
+Kelvin Planck, va bene, Lord Kelvin quindi tra lazzi con l'ammiragliato
+Lord Pelton e Plank
+Plank, secondo me Plank non ha niente a che fare con i...
+Plank era tutto tedesco
+Che era Plank?
+Non so io, tedesco
+Bavarese
+Bavarese, Bavarese
+Ok, Plank era Bavarese
+e quindi non ci aveva bisogno
+non so cosa c'entra questa cosa
+comunque si, era Bavarese sicuramente
+e voleva dire che non puoi usare l'acqua del luogo
+perché si avvioleresti il coso, non lo puoi fare, sennò...
+Allora, adesso vi faccio una domanda, è possibile, giusto per...
+è possibile estrarre dal mare a 15 gradi, uniformemente a 15 gradi,
+è possibile estrarre del lavoro positivo?
+C'è la barca, si trova una temperatura diversa.
+No, la barca è tutta a 15 gradi, lì è estate, 15 gradi, tutto è a 15 gradi, tutto.
+Se si muove il mare, con l'energia meccanica.
+No, è dinamica. No, abbiamo detto che da questo momento in poi non si usa più il vento, le mare, solo cose che fanno turbine.
+Da un certo momento in poi solo turbine, il tenare con delle turbine.
+Un battello.
+un battello, eh, un battello, sennò l'America non esisteva senza i treni e i battelli
+ma se soltanto le vole intubare
+no, niente, non, l'ammiradio non vuole sapere nulla di roba strana, di roba pelle, deve essere combustione
+deve essere roba non combustione, termodinamica
+e non per fare un po' di risalto
+posso farlo, si o no?
+Ora vi faccio un certo che posso fare, posso costruire la famosa siringa di calore
+e la siringa di calore, adesso mi hai fatto venire il dubbio se lo vuoi fare, è tutto a 15 gradi
+sì sì è tutto a 15 gradi, credo che sia vero, posso costruire una siringa di calore
+una siringa di calore che ha un effetto quello di fare la luce
+te la faccio, la siri per il cilindro
+traduzionale
+mare a temperatura T2
+che tra l'altro è 15 gradi
+ci metto sopra un cilindro
+diatermico
+il cilindro diatermico c'è dentro un gas
+questo lo puoi fare, anche lui è a 15 gradi
+sopra il gas ci sono dei presenti
+Poi c'è la pressione esterna, sto sulla nave, che faccio, tolgo il pesetto, vai, questo va su, tolgo la pressione, va su, ecco, ho estratto da un'unica sorgente il lavoro positivo, siete?
+vai, perché questo sicuramente è estrarre il lavoro positivo
+perché ho alzato quel cosetto di lavoro positivo da un unico assorgente, un monotera
+cos'è che dice il nostro amico qui che è venuto qua?
+questo disegno qua, cosa vuol dire questo disegno?
+è un ciclo, cioè null'altro deve succedere
+Qui invece che è successo? Ho fatto una estrazione, dopo che l'ho estratto, faccio come capito quelli lì che non voglio dire niente, capito? Quelli che usano la cucina, non dico che voi siete così, anzi voi siete super collaborativi, però usano la cucina e poi se ne vanno, tipo qualcuno che conosco io.
+E quello che viene dopo si trova la cucina, tutta sporca, giusto?
+Quello che viene dopo, dopo che ha estratto sta... poi si ritrova il pistone che sta qua, giusto?
+E allora
+continua a togliere pesetti, diceva, sono finiti i pesetti, è lì ma il pistone, ci sei? Ma il risultato di tutto questo
+sentate a vedere, se vi ricordate qualcosa della isotherma
+vi ricordate di isotherma per un gas perfetto?
+perfetto, è una cosa fatta così, se la fai reversibile, io lo dico fai reversibile,
+ecco, il primo che è arrivato ha fatto questo lavoro positivo, il secondo la vuoi a pedalare,
+è un impervole che va giù, a certo punto il pistone arriva su fino a, capito, a, ci
+sono gli alderi in queste navi, non lo so, comunque molto alto e alla fine dice basta,
+il pistone, perchè stava su, quindi qual'è il proprio concetto?
+è che non ha fatto un ciclo, infatti il nostro amico
+che ha un inflante dice non è l'unico risultato,
+cioè il processo non è per il cui unico risultato,
+se l'avete scritto bene, il unico risultato
+sia ancora questo, quindi ecco fatto, e tra l'altro dice qui,
+adesso non so come, probabilmente lo dice il mio cucino, dice che il renunciato di Kelvin
+Plante ti dice anche, ah no no è logico è logico, che il più semplice motore
+quante sorgenti ha? 2, perché il motore impossibile ce n'ha una, il che vuol dire
+che il conduce funziona, allora il più semplice ce n'ha due, ci siete? infatti in gran
+parte dei motori ce n'hanno solo due, per esempio in un motorino quale sono le due
+temperature, motorino sarebbe l'equivalente del ciao, quelli con motoro a scoppio, la temperatura
+dell'esplosione, della combustione del carburante dentro il cilindro e la temperatura dell'ambiente,
+uno direbbe non proprio dell'ambiente, la temperatura del radiatore esterno perché del
+del liquido raffreddato, adesso questi 2 elunciati sono equivalenti, come non sono tutti elunciati
+quindi non so se quello lì non è equivalente perchè non comprende tutto
+ma invece queste sono letteralmente equivalenti
+e sono logicamente equivalenti
+e tradizionalmente, non so se l'avete fatto all'isceva, però tradizionalmente
+è esercizio di logica di mostrare che sono equivalenti
+e quindi può essere ad un esame e qualcuno ti chiede
+mi faccia vedere che sono equivalenti questi due denunciati
+Allora, il modo di dimostrare che sono equivalenti, secondo me non è l'unico modo,
+secondo me, hai visto i testi americani, i temolfani, però in quelli italiani
+utilizzano questa seguente affermazione logica, adesso io l'ho scritta qui in tutta insiemistica
+quindi devo vedere...
+Ok, io scrivo così. Questo è grave.
+non lo so, non lo so che cosa scrivo
+A è equivalente a B, se A implica B e B implica A
+ovvio, non c'è bisogno di scrivere
+era ovvio, è la definizione di equivalenza
+A vuol dire che se A implica B e B implica A
+ma incredibilmente, questo vediamo se qualcuno lo sa
+se a implica b vuol dire che c'è la stessa cosa che dire che il negato di a come è rispetto al negato di b, direzione inverso
+e quindi analogamente che B implica è la stessa cosa che è dire che B negato e A negato non è implicato
+questa è una cosa che impari se fai test logici, impari questa similità, va bene?
+ed è vera, è una questione insemistica, te la disegni e fai insemistica
+Dici ma perché fai questo? Perché in realtà la cosa più semplice per dimostrare l'equivalenza è fare la negazione delle possibilità, cioè è possibile fare, cioè essere ottimisti e poi verificare che hai sbagliato, così ti senti meglio.
+Allora, quello che si fa normalmente è questo. Prendi Klausus, c'hai T1, adesso non hai bisogno di farlo però, con il 2 è maggiore di 2.
+Klausus si dice che questo è impossibile, che questa cosa qui è impossibile.
+tra l'altro il calore è positivo
+che è il tuo implant che invece ti dice
+allora adesso neghiamo Clausius
+cosa vuol dire che nego Clausius?
+secondo me che nego Clausius vuol dire questo
+che se questo è il T2
+questo è il T1 sempre nella relazione che abbiamo detto
+ecco e tiro su
+questo calore qua
+e lo considero positivo
+e null'altro succede
+questo calore qua lo chiamerò 1 con il meno
+diciamo allora è negativo, no no, ti te l'adevo
+sto dicendo che c'è un calore postivo che viene portato da sotto a sopra
+3 J, 3 J di R
+lo chiamo meno 1 per motivi meno
+poi qui metto una macchina
+ci sei?
+questa macchina
+è una macchina consentita
+dal teorema
+cioè una macchina che lavora tra due sorgenti, e quindi fa un lavoro positivo, e qui c'hanno due, e qui c'hanno due macchine.
+Questa macchina preleva del calore dalla temperatura calda, eccelle del calore alla temperatura fredda, e fa del lavoro positivo,
+e tra l'altro per ogni motivi delta U della mia macchina è uguale a 0
+e per ogni macchina vuol dire il fluido che sta dentro
+che poi abbiamo scoperto come si chiama
+e questo è il lavoro, siccome delta U di ogni ciclo deve essere uguale a Q-L
+delta U è 0 quindi il calore deve essere uguale al lavoro
+ma quindi il lavoro deve essere uguale a Q1 più Q2, visto in termini della macchina ricordatevi
+incentriamo la nostra, coperiziamo sul fluido, quindi il frigorifero per noi è questo ben detto fluido
+che sta facendo così, come è q1? q2 è positivo, giusto?
+perché stai assorbendo valore e qui q1 è negativo, giusto?
+quindi questo lavoro qua in realtà è uguale al modulo di q2, no?
+meno il modulo di 1. Io eviterai di scrivere queste cose qua, però lo fai, mi cucini e mi scrivono
+perché per me già questi hanno il segno corretto, però se non esco lo puoi scrivere così
+questo c'è il segno più qua, il segno meno qua, questo è il lavoro fatto dalla macchina dal gattore
+Nota bene che io, questo stesso calore che arrivo qua, artificialmente lo faccio ripompare in su qua
+da chi? violando clausus quindi c barrato mi dà questo processo qua, ma stai sicuro che meno 1 è positivo?
+sì, guardalo perchè rispetto a questo oggetto qua, questo oggetto qua è negativo quindi meno 1 è positivo
+il risultato qual è di questo? è una violazione di chelmen flamme, perchè? perchè a questo punto questa sorgente qua
+questa qua non è necessaria, io farò così, non nessuno lo disegna mai, faccio così e non ho più bisogno della sorgente T1
+e quindi ho fatto lavoro positivo con una sola sorgente, ho violato P, e questa è l'operazione che faccio
+all'allocamento si può fare la stessa preparamento per fare l'opposto
+come è che violando Kelvin Plunk posso tranquillamente fare
+come si fa l'opposto, cioè l'altra cosa
+se io qui violo Kelvin Plunk, quindi c'è un kT per rado
+cosa vuol dire che c'è un kT per rado?
+che c'è però una mattina
+che prende del calore, da una temperatura che vedremo fino a uno, e questo la chiamo T2
+il calore è da questa qui, e questo assorbe del calore 1
+che trasforma tutto il lavoro, che magicamente è positivo
+perché quello dice la relazione per le mani
+questo è un lavoro positivo, indovina cosa posso farci con questo lavoro positivo
+lo ficco dentro, una
+Ehm, scusate, non c'è bisogno di fare nulla, questo è un lavoro positivo, adesso vi dico una cosa
+Quando c'è un lavoro meccanico, posso trasformarlo tutto in calore su una qualsiasi sorgente?
+esempio, lavoro meccanico, mga, faccio cascare tutto a temperatura 15 gradi
+perché è estate, 15 gradi, cade, è diventato tutto calore
+quindi si può fare, quello che non si può fare è lo opposto, fare lavoro positivo
+quindi questo lavoro qua lo posso usare banalmente per trasferirlo, trasformarlo tutto in calore
+P2 positivo che va a finire qua. Cioè negativo per il sistema, questo lavoro qua lo posso trasformare.
+Il risultato finale qual è? Vedi? La martine è tornata a festezza, non è successo nulla, non è rimascolatura.
+Il lavoro è stato tutt'ora trasformato in calore. Il risultato è che l'ho trasportato.
+una quantità di valore da dentro di un vasco a punta
+avvenire di questo dimostra che questo la ecci qua
+il risultato finale è sempre lo stesso
+che sono equivalenti a me
+ti faccio notare una cosa
+giusto un dettaglio che abbiamo usato qua
+che è bene ricordare
+Questo qua, adesso non so perché lo disegno così, comunque così, non l'ho disegnato per
+certe cose, è solo per ricordartelo. Cosa mi dice Kelvin Planck? Che quell'oggetto
+lì non può essere l maggiore di 0 e quindi non può essere q1 maggiore di 0
+cioè quello che mi dice Kevin Plank e mi dice che l1 deve essere minore o uguale a 0
+e quindi q1 deve essere minore o uguale a 0
+dici ma perché sei così sicuro di questo?
+perché la macchina fa un delta u uguale a 0 e quindi sarà sempre q uguale a l
+perché dici questo o è terminale, non è che lo dico io, perché dici lavoro positivo
+e mi fai un esempio di questa cosa che il lavoro diventa tutto calore e te l'ho appena fatto
+quello della bolsa che cade sul tavolo, va bene?
+era giusto solo per dirlo, quello che non è possibile è l'opposto
+calore trasformarlo integralmente in lavoro e nulla altro, cioè
+Dicevo che dici integralmente, perché in generale ci potrebbe essere un'altra sorgente più fredda, no?
+Quindi una parte la dico.
+e...
+ok
+adesso
+il prossimo passaggio di questo è considerare un caso specifico
+Il caso specifico è il più semplice tra i motori termici, è un motore termico tra due sorgenti, come si chiama il motore termico tra i sorgenti? Non lo so, come si chiama il motore termico tra i sorgenti reversibile? Ciclo di Carnot
+Quindi il motore più semplice in versione reversibile è il ciclo di Carnot perché ha due sorgenti
+il ciclo di Carnot, vi faccio notare che lo puoi fare con qualsiasi sistema
+vi dico subito che i cicli di Carnot si usano industrialmente
+non lo so personalmente, ma lo so perché ho letto da qualche parte
+vediamo se qualcuno lo sa, magari lui lo sa
+il ciclo di Carnot dove viene usato industrialmente
+non nei motori a scoppio, i motori a scoppio sono fatti tutti di ciclo 8
+8 diesel, 8 e diesel mi sembra, sono i due cicli
+8 e diesel sono i due più comunemente usati
+e quindi il ciclo di Carnot non viene usato industrialmente?
+oppure viene usato nel libro di testo solo per spiegarti qualcosa?
+cioè dove viene usato il ciclo di Carnot?
+industrialmente e viene usato e direi che il ciclo di Carnot
+in assoluto più usato per fare energia, o comunque se non lo è lo sarà nel prossimo
+futuro. Io mi sono iscritto a fisica un paio d'anni
+dopo che gli italiani hanno votato per abolire l'energia nucleare, fisica pur essendo tutti
+totalmente diciamo progressivi, all'epoca si chiamavano in maniera diversa, eravamo
+erano tutti pro nucleare, ma gli italiani hanno votato per abolire il nucleare,
+perché era appena successo il Cerno, e adesso diciamo un po' la situazione è cambiata,
+il ciclo di Carnot è utilizzato per, è proprio nei centri nucleari, sono fatte
+tutta Cicco di Garnot e cos'è il liquido, il fluido che viene usato nel Cicco di Garnot?
+Acqua pesante, non pesante, proprio l'acqua, l'acqua, l'acqua pesante eventualmente
+sta nel nucleo, ma il Cicco di Garnot, quello non te lo dicono, se lo studi poi non lo puoi
+non può dire a nessuno come si fa, ma la parte esterna, la parte termodinamica, è
+si raffreddano il, come si chiama, il nucleo, come si chiama il nucleo, si raffredda quello
+sul nave spaziale, si raffredda il nucleo, il nucleo, cosa è successo nel nucleo?
+Ho detto di chiedere ai particolari, però si raffredda il nucleo nell'acqua, l'acqua
+quindi si scalda e che fa l'acqua che si scalda? Evapora, va bene? E l'evaporazione
+dell'acqua, poi piano piano ricondensa, vabbè evaporando si espande, fa lavoro, poi ricondensa
+e si rimette dentro. Il ciclo è fatto su due temperature che sono mantenute costanti
+dalla transizione di fase dell'acqua, una è l'ebollizione se vuoi e l'altra è la condensazione,
+sono due processi totalmente stabiliti, quindi la temperatura numero uno è l'evoluzione dell'acqua
+che è a contatto ovviamente con il nucleo e bolle a pressione atmosferica a 100 gradi,
+va bene, quindi comincia a bolle, per quello vedi bolle bolle bolle e poi c'è un condensatore,
+cioè praticamente lo metti a contatto con il lago, quello lì rii questi
+questi quelli che si scoprono, vapore, condensano, ci siete? e arrivano nel ciclo
+ovviamente nessuno ha voglia di fare questo condensatore quindi fanno uscire
+fuori come sulle macchine a vapore dei cowboy, tu vedi questi, quindi il
+vapore va su chi se ne frega e prendono l'acqua dal lago o dal fiume, capito?
+non ne frega niente la condensazione però sui libri di testo è un ciclo è tutto
+chiuso e non si sporca nulla perché nessuno deve sapere che magari dell'acqua
+evaporata è stata a contatto con un nucleo radiattivo
+secondo me no a parte io dico non lo so secondo me no perché è schermato quello
+che becca è solo il calore. Io non ci metto la mano sul fuoco. Secondo me sì, sennò non
+andremo mai sulla luna. No, sulla luna ci andiamo. Capito insomma il futuro, il primo bisogno
+di energia. Cosima. Ah, quello è dopo il cosima. Si, si, può essere. Secondo me, da quello
+che mi hai insegnato a me, è tutto schermato e quello che si trasmette è solo il calore.
+Poi, se c'è anche una parere, è molto importante.
+Vabbè, riformiamo, giuse, l'aggettore.
+Spero che non sia l'aggettore.
+E li capite cosa vuol dire?
+Allora, qual è questo?
+Allora, pivu.
+Quindi il ciclo di Carnot, l'esempio che si studia per un reattore nucleare,
+questo è il ciclo di Carnot per un reattore nucleare.
+quindi c'avete la parte liquida, fredda, elaborazione a 100 gradi, la parte fattica
+il ciclo di Carnot che studiavamo io è più brutto
+ed è il ciclo di Carnot fatto con un gas perfetto
+perchè è quello che si è inventato originalmente il Carnot
+il cui fine ultimo non era di questo inore, è per lo chiaro
+ma era che si è inventato per il composto
+che c'ha in questo tempo, è in uno, è in due
+e come è fatto il ciclo di Carnot?
+è fatto così
+c'è un'iniziale espansione reversibile di suo termo
+poi c'è un'espansione adiabatica, senti? un raso perfetto
+poi c'è una compressione reversibile adiabatica
+e di suo termo
+e poi c'è una compressione adiabatica fino alla temperatura di cui vuoi
+si definisce il rendimento del motore, ah ti faccio notare, adesso disegnerò delle freccette
+il calore dove viene scagnato, qui, qui, qui o qui, viene scagnato solo qui e qui, perchè?
+perchè queste non sono abatiche, ci siete? Ok, qui l'ingegneria di questa qui è una...
+Questa qui è una turbina e questa è una poppa, una compressione
+Invece qui, questa qui è un'espansione agli albatri e questa è una compressione agli albatri, sono la stessa cosa
+e il calore viene scaldato solo qui e qui, qui il calore, il disegno, deve disegnare una freccia che entra o esce qui
+secondo me il calore che è qui entra nel mio sistema, perchè? perchè ho un'espansione isotherma
+se ho un gas perfetto, vi faccio notare che delta U vale a Q-L, che quindi vuol dire anche AB, AB, AB
+vi siete? e delta u per un gas perfetto quant'è? un risoterma? 0, perchè?
+perchè il gas perfetto è perfetto
+si, per il sperimento di già
+quindi 0, quindi QAB è uguale a LAB
+e LAB è positivo, certo, l'area là sotto è positiva, quindi QAB è positiva
+e qui com'è esattamente lo stesso motivo negativo, quindi Q, questo scrive Q, cigghi è negativo
+perché, stessa cosa di prima, nell'altro verso è una compressione isoterma
+se l'alcool è meno di 4 e più di 4, quindi, allora adesso si definisce, questa è una definizione
+vale sempre anche questo, si definisce l'efficienza o il rendimento di una macchina termica
+l'avete definito così, una macchina termica, macchina termica è una macchina che lavora così
+lavora, cosa significa lavora? Lav più Lpc più Lcd più Lda
+puoi fare insomma i lavori sì, perché ha una grandezza estensiva
+L del ciclo è così, nessuno scrive mai ciclo ma L sul ciclo
+e si definisce il lavoro fatto di un ciclo diviso, se scrivessi qui il calore totale scambiato che mi verrebbe questo rapporto?
+Se io scrivessi qua sotto Q totale scambiato quanto verrebbe L diviso Q totale per un ciclo?
+1, quindi non serve a nulla quella cosa lì, va bene?
+e allora come si definisce?
+si definisce mettendo sotto il Q assorbito
+però secondo me il Q assorbito è negativo per ovvi motivi
+no, il Q assorbito come è positivo o negativo?
+no, è positivo, quindi basterebbe così
+non so perché qualcuno ha paura di questo e ci mette un moto
+diciamo Q assorbito secondo me però per ovvi motivi è positivo
+Quindi Q assorbito, dice per chi c'è visto Q assorbito?
+Cioè, qual è il motivo per cui ci metti Q assorbito?
+Beh, in secondo, la finalità originale di un termodinamico era trasformare del calore tutto il lavoro.
+Non ci sei riuscito perché c'è il primo principio, vabbè, qualcosa del genere, o sei il secondo principio.
+Allora, comunque, il calore che volevo originariamente trasformare era questo qua.
+poi ti faccio vedere che se tu riuscissi a creare un bank, ti verrebbe eto con l'euro
+tutto il lavoro sarebbe da fronte intorno, tutto il lavoro è da fronte intorno
+Ora, a causa proprio di come è fatto il secondo principio della terza dinamica e quindi a causa proprio di come è in generale descritto questo principio
+2 sarebbe, in questa è più 2, 2 secondo me è 2ab e 1, che lo sobbiamo con la temperatura fredda, secondo me è ucb
+e correttamente questo è positivo e questo è negativo
+e questo oggetto qua fa lavoro
+questo è lo schematizzazione di quello che sta avvenendo là
+se è vero questo, il lavoro in generale è possibile come?
+2
+e tu assorbito, in generale questo qui è il 2
+una volta adesponibilizzato
+quindi il risultato di tutto questo è che il rendimento è 1 più 1 diviso 1
+questa cosa qua non ti deve sconvolgere che ci sia un più qua
+perchè ovviamente stanno assondendo il fatto, ovvio, che però un gruppo di vini di chiarezza non si messe mai
+è 1 meno, e qui ci posso mettere il modulo di, se non ci posso mettere per esempio qui q2,
+ci posso mettere il modulo di q2 e tanto q2 è positivo il suo modulo, ma se metto il modulo a q1,
+vi sapete che il modulo di un numero negativo è meno, eh, scusate, sostituire con 1,
+quindi questo è in generale il rendimento
+il risultato adesso sarà poi che noi faremo
+la volta prossima, domani mattina faremo il conticino esplicito di questo
+e quindi avremo il produrre
+se riusciamo avremo il produrre, non è mai di caso
+una cosa che non ho fatto, un paio di esercizi che non ho fatto, sono tre minuti,
+comunque ve lo dico, vi faccio l'esercizio in maniera molto semplice,
+visto che sul registro del corso, ricordatevi che quello che si è scritto sul registro del corso
+non fa parte delle possibili domande, c'è al certo punto la legge di Dalton.
+che è molto importante per i vari motivi
+cosa dice la legge di D'Alba?
+dice questo
+che se voi avete in un contenitore di volume U
+Istante alla temperatura T, volume 2, temperatura T e ci avete questo contenitore
+e ci mettete N1 moli di un DAS, per esempio N1 moli di O2, la pressione quanto sarà?
+B
+U
+U
+RT
+N2
+H2
+D
+H2
+H2
+N2
+H2
+N2 moli di H2, le metto qua dentro, qual'è la pressione di queste N2 moli?
+Cioè, posso scrivere di nuovo t2 uguale n2 rt, che mi sembra una cosa logica?
+Dico.
+E la questione è la scopo delle questioni presentate.
+Ok, però c'è quella leggerità.
+Non ci sono interazioni tra particelle.
+Ok, capito? Non ci sono interazioni tra particelle, ripeto è una falsità perché sennò non ci sarebbe l'equilibrio.
+sarebbe l'equilibrio, c'è un minimo di interazioni, ma principalmente c'è interazioni con la parete,
+la parete sta ad una certa temperatura, per cui c'è la temperatura che è uguale,
+se non fosse la temperatura diversa vi vorrei dare la domanda, no?
+però se sta alla stessa temperatura non si pone questa domanda?
+quindi se io non metto il secondo gas non succede nulla, ci siete?
+quelle reazioni chimiche non parte al primo anno o qualcuno l'ha fatta, ma non sappiamo come?
+e va bene, quindi questo lo potete fare, potete mettere qualsiasi pn'esima, pns'iesima, gillesima
+e non fare n gillesima e r
+va bene, questo lo potete mettere perché sono completamente trasparenti se volete in uno l'altro
+è il modello di gas perfetto
+ma allora, domanda
+Se io adesso vado a misurare la pressione qua dentro, che misuro?
+T1 più T2 più T3
+T1 più T2 più T3 è tutto P
+Quindi la pressione sarà uguale a la solubatoria di tutte le pressioni di esime
+Vabbè, per il che va a dare una Rene non riescono ad usare M
+Ok, non so che altro si usa per ciò che è M, M è una massa
+Quindi questa è la pressione, quindi questa qui e questa pressione qua
+La pressione di questo e quindi deve essere vera qui, la cosa vuol dire questo?
+Questo vuol dire che questo è il suo nomadore in cui ha parlato una denne di n,i,r,t e sono le risonanze
+Quindi è quello che ha detto Ludi, che le pressioni, una cosa è, ogni pressione è proporzionale a qualche posto.
