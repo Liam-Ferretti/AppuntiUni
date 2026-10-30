@@ -1,0 +1,284 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{0.6em}{}
+\setlist[enumerate,1]{itemsep=4pt, topsep=4pt}
+
+\title{100 esercizi di ripasso\\Algebra Lineare e Geometria}
+\date{\today}
+\author{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\noindent
+20 esercizi per ciascuna delle 5 fasi del percorso. Le soluzioni in fondo al
+documento danno solo il risultato finale, non lo svolgimento --- usale per
+autoverifica dopo aver risolto, non prima.
+
+\vspace{0.3cm}
+
+% ============================================================
+\section{Fase 1 --- Combinazioni lineari e indipendenza lineare}
+% ============================================================
+\begin{enumerate}
+  \item Determina se $(1,2)$ e $(3,6)$ sono linearmente indipendenti in $\mathbb R^2$.
+  \item Determina se $(1,0,1),(0,1,1),(1,1,0)$ sono linearmente indipendenti in $\mathbb R^3$.
+  \item Per quali $k\in\mathbb R$ i vettori $(1,2,k),(2,5,1),(0,1,1)$ sono linearmente dipendenti?
+  \item Scrivi $(4,5)$ come combinazione lineare di $(1,1)$ e $(1,-1)$, se possibile.
+  \item Il vettore $(2,3,-1)$ appartiene a $\mathrm{span}\{(1,1,0),(0,1,1)\}$? Giustifica.
+  \item Trova una base per $\mathrm{span}\{(1,2,3),(2,4,6),(1,0,1)\}$ e determinane la dimensione.
+  \item Determina se $(1,1,0,0),(0,1,1,0),(0,0,1,1),(1,0,0,1)$ sono linearmente indipendenti in $\mathbb R^4$.
+  \item I polinomi $1+x,\ x+x^2,\ 1+x^2$ sono linearmente indipendenti in $\mathbb R_2[x]$?
+  \item Le matrici $\begin{pmatrix}1&0\\0&0\end{pmatrix}, \begin{pmatrix}0&1\\1&0\end{pmatrix}, \begin{pmatrix}0&0\\0&1\end{pmatrix}$ sono linearmente indipendenti in $\mathbb R^{2\times2}$?
+  \item Per quali valori di $k$ l'insieme $\{(1,k),(k,1)\}$ è una base di $\mathbb R^2$?
+  \item Dati $v_1=(1,-1,2)$, $v_2=(2,1,0)$, $v_3=(0,-3,4)$, verifica se $v_3\in\mathrm{span}\{v_1,v_2\}$ e, in caso affermativo, trova i coefficienti espliciti.
+  \item Possono $4$ vettori in $\mathbb R^3$ essere linearmente indipendenti? Motiva in generale.
+  \item Trova tutti i valori di $t$ per cui $(1,t,0),(t,1,0),(0,0,1)$ formano una base di $\mathbb R^3$.
+  \item $(1,2,-1)$ e $(2,4,-2)$ sono proporzionali? Cosa implica questo per la loro indipendenza?
+  \item Dato $W=\mathrm{span}\{(1,1,1),(1,2,3)\}\subset\mathbb R^3$, determina $\dim W$ e un'equazione cartesiana di $W$.
+  \item $\{(1,0,0),(0,1,0),(0,0,1),(1,1,1)\}$ è una base di $\mathbb R^3$? (attenzione al numero di vettori)
+  \item Dati $u=(1,2,3)$, $v=(0,1,2)$, $w=(1,0,1)$, determina se sono indipendenti e, se sì, esprimi $(2,3,4)$ nella base che formano.
+  \item Sia $V=\mathbb R_3[x]$. Verifica se $1,\ (x-1),\ (x-1)^2,\ (x-1)^3$ formano una base di $V$.
+  \item Determina la dimensione di $\mathrm{span}\{(1,1,0,1),(2,2,0,2),(0,1,1,0)\}$ in $\mathbb R^4$.
+  \item Dimostra: se $v_1,\dots,v_k$ sono linearmente indipendenti e $w\notin\mathrm{span}\{v_1,\dots,v_k\}$, allora $v_1,\dots,v_k,w$ sono linearmente indipendenti.
+\end{enumerate}
+
+% ============================================================
+\section{Fase 2 --- Applicazioni lineari, nucleo e immagine}
+% ============================================================
+\begin{enumerate}
+  \item Verifica, dalla definizione, se $f(x,y)=(x+y,\,x-y,\,2x)$ è lineare.
+  \item Verifica se $g(x,y)=(x+1,\,y)$ è lineare. Motiva.
+  \item Trova la matrice associata a $f:\mathbb R^2\to\mathbb R^3$, $f(x,y)=(x+y,\,x-y,\,2y)$.
+  \item Data $A=\begin{pmatrix}1&2\\2&4\end{pmatrix}$, calcola $\ker(f_A)$ e $\mathrm{Im}(f_A)$.
+  \item Data $A=\begin{pmatrix}1&1&2\\2&1&3\\1&0&1\end{pmatrix}$, trova $\ker$ e $\mathrm{Im}$, verifica rango-nullità.
+  \item Trova la matrice associata alla rotazione di $90°$ in $\mathbb R^2$.
+  \item Sia $f(x,y,z)=(x+y,\,y+z,\,x+2y+z)$. Trova $\ker(f)$.
+  \item Per la $f$ dell'esercizio precedente: è iniettiva? È suriettiva?
+  \item Trova nucleo e immagine dell'operatore derivata $D:\mathbb R_3[x]\to\mathbb R_3[x]$ (polinomi di grado $\le3$).
+  \item Sia $T:\mathbb R^4\to\mathbb R^2$ con matrice $\begin{pmatrix}1&0&1&2\\0&1&-1&1\end{pmatrix}$. Trova $\dim\ker T$ usando rango-nullità, senza risolvere il sistema.
+  \item Data $A=\begin{pmatrix}2&-1\\4&-2\end{pmatrix}$, esibisci esplicitamente un vettore non nullo nel nucleo.
+  \item Costruisci la matrice della proiezione ortogonale sull'asse $x$ in $\mathbb R^3$, e verifica che $\ker$ e $\mathrm{Im}$ siano ortogonali.
+  \item Sia $f(x,y,z)=(x-y,\,y-z,\,z-x)$. L'immagine è contenuta in un piano: trovane l'equazione.
+  \item Dimostra che la composizione di due applicazioni lineari è lineare, e scrivi la matrice di $g\circ f$ date le matrici $A,B$ di $f,g$.
+  \item Dati $A=\begin{pmatrix}1&2\\3&6\end{pmatrix}$, $B=\begin{pmatrix}1&0\\0&2\end{pmatrix}$, calcola $\ker(f_A\circ f_B)$.
+  \item Trova un'applicazione lineare $f:\mathbb R^3\to\mathbb R^3$ con $\ker(f)=\mathrm{span}\{(1,1,1)\}$ e $\dim(\mathrm{Im}\,f)=2$.
+  \item Esiste un'applicazione lineare $f:\mathbb R^2\to\mathbb R^3$ suriettiva? Motiva con rango-nullità.
+  \item Esiste un'applicazione lineare $f:\mathbb R^3\to\mathbb R^2$ iniettiva? Motiva.
+  \item Sia $A=\begin{pmatrix}1&0&-1\\2&1&0\\0&1&2\end{pmatrix}$. Calcola $\ker(f_A)$ e la relazione di dipendenza tra le colonne che ne segue.
+  \item Dimostra che $\ker(f)=\{0\}\iff f$ è iniettiva, per una generica applicazione lineare $f$.
+\end{enumerate}
+
+% ============================================================
+\section{Fase 3 --- Rango, determinante, invertibilità}
+% ============================================================
+\begin{enumerate}
+  \item Calcola il rango di $\begin{pmatrix}1&2&3\\2&4&6\\1&1&1\end{pmatrix}$.
+  \item Calcola il rango di $\begin{pmatrix}1&0&2&1\\0&1&-1&2\\1&1&1&3\end{pmatrix}$.
+  \item Per quali $k$ la matrice $\begin{pmatrix}1&2\\3&k\end{pmatrix}$ ha rango 1?
+  \item Calcola $\det\begin{pmatrix}2&3\\1&4\end{pmatrix}$.
+  \item Calcola $\det\begin{pmatrix}1&2&3\\0&1&4\\5&6&0\end{pmatrix}$ con Laplace.
+  \item Ricalcola lo stesso determinante triangolando con Gauss, e verifica che coincida.
+  \item Per quali $k$ la matrice $\begin{pmatrix}1&2\\k&4\end{pmatrix}$ è invertibile?
+  \item Calcola $\det\begin{pmatrix}1&2&0&0\\3&4&0&0\\0&0&1&1\\0&0&2&3\end{pmatrix}$ sfruttando la struttura a blocchi.
+  \item Trova l'inversa di $\begin{pmatrix}2&5\\1&3\end{pmatrix}$ con la formula diretta.
+  \item Trova l'inversa di $\begin{pmatrix}1&2&0\\0&1&0\\2&0&1\end{pmatrix}$ con Gauss-Jordan.
+  \item Verifica, senza calcolare esplicitamente $A^{-1}$, se $A=\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}$ è invertibile.
+  \item Sapendo $\det(A)=3$ per $A\in\mathbb R^{3\times3}$, calcola $\det(2A)$.
+  \item Sapendo $\det(A)=4$, $\det(B)=-1$, calcola $\det(A^2B^{-1})$.
+  \item Dimostra che se $A$ è ortogonale allora $\det(A)=\pm1$.
+  \item Dimostra, usando le proprietà del determinante, che una matrice con due righe uguali ha determinante nullo.
+  \item Calcola il rango di $\begin{pmatrix}1&1&1\\1&2&3\\1&4&9\end{pmatrix}$ (matrice di Vandermonde).
+  \item Trova per quali $k$ il sistema $\begin{cases}x+ky=1\\kx+y=1\end{cases}$ ha soluzione unica.
+  \item Data $A=\begin{pmatrix}1&2\\0&3\end{pmatrix}$, calcola $A^{-1}$ e verifica $AA^{-1}=I$.
+  \item Dimostra che, se $A$ è invertibile, $\det(A^{-1})=1/\det(A)$.
+  \item Calcola rango e determinante di $\begin{pmatrix}1&2&1\\2&5&4\\1&3&3\end{pmatrix}$, e verifica la coerenza tra i due.
+\end{enumerate}
+
+% ============================================================
+\section{Fase 4 --- Autovalori, autovettori, matrici simmetriche e ortogonali}
+% ============================================================
+\begin{enumerate}
+  \item Trova autovalori e autovettori di $\begin{pmatrix}3&0\\0&5\end{pmatrix}$.
+  \item Trova autovalori e autovettori di $\begin{pmatrix}2&1\\1&2\end{pmatrix}$.
+  \item Trova autovalori e autovettori di $\begin{pmatrix}0&1\\1&0\end{pmatrix}$, e verifica che siano ortogonali.
+  \item Trova autovalori e autovettori di $\begin{pmatrix}1&2\\0&3\end{pmatrix}$: sono ortogonali? Perché sì/no?
+  \item Determina se $\begin{pmatrix}2&1\\0&2\end{pmatrix}$ è diagonalizzabile.
+  \item Trova gli autovalori (anche complessi) di $\begin{pmatrix}0&-2\\2&0\end{pmatrix}$.
+  \item Trova autovalori e autospazi di $\begin{pmatrix}2&0&0\\0&2&0\\0&0&3\end{pmatrix}$.
+  \item Diagonalizza ortogonalmente $\begin{pmatrix}5&2\\2&2\end{pmatrix}$: trova $Q$ e $D$ con $A=QDQ^\top$.
+  \item Verifica che $\begin{pmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{pmatrix}$ è ortogonale per ogni $\theta$.
+  \item Sapendo che $A$ è simmetrica $3\times3$ con autovalori $1,2,3$, calcola $\det(A)$ e $\mathrm{tr}(A)$.
+  \item Trova autovalori e autospazi di $\begin{pmatrix}4&1&1\\1&4&1\\1&1&4\end{pmatrix}$ (un autovalore è ripetuto).
+  \item Per la matrice dell'esercizio precedente, costruisci una base ortonormale di autovettori con Gram-Schmidt dove serve.
+  \item Se $A$ ha autovalore $0$, cosa puoi dire su $\det(A)$ e su $\ker(A)$?
+  \item Trova gli autovalori di $A^2$ sapendo che $A$ ha autovalori $2,-1,3$.
+  \item Trova $A'=P^{-1}AP$ per $A=\begin{pmatrix}1&1\\0&2\end{pmatrix}$, $P=\begin{pmatrix}1&1\\0&1\end{pmatrix}$: è diagonale?
+  \item Verifica se $\begin{pmatrix}1&2\\2&4\end{pmatrix}$ è diagonalizzabile e, in caso, diagonalizzala.
+  \item Trova gli autovalori di $\begin{pmatrix}2&5&7\\0&-1&3\\0&0&4\end{pmatrix}$ e spiega perché si leggono a vista.
+  \item Data $A$ simmetrica $2\times2$ con $\mathrm{tr}(A)=4$ e $\det(A)=3$, trova i due autovalori senza conoscere $A$.
+  \item Dimostra che, se $Q$ è ortogonale, $\|Qv\|=\|v\|$ per ogni $v$.
+  \item Trova la matrice del cambio di base dalla base canonica a $\{(1,1),(1,-1)\}$ in $\mathbb R^2$, e usala per trovare le coordinate di $(5,-1)$ in questa base.
+\end{enumerate}
+
+% ============================================================
+\section{Fase 5 --- Forme bilineari, forme quadratiche, prodotto scalare}
+% ============================================================
+\begin{enumerate}
+  \item Scrivi la forma quadratica associata a $M=\begin{pmatrix}2&1\\1&3\end{pmatrix}$ esplicitamente in $x,y$.
+  \item Classifica la definitezza di $M=\begin{pmatrix}1&0\\0&4\end{pmatrix}$.
+  \item Classifica $M=\begin{pmatrix}2&1\\1&2\end{pmatrix}$ con il criterio di Sylvester.
+  \item Classifica la stessa $M$ dell'esercizio precedente calcolando gli autovalori: il risultato coincide?
+  \item Classifica $M=\begin{pmatrix}-1&0\\0&-3\end{pmatrix}$.
+  \item Classifica $M=\begin{pmatrix}1&2\\2&1\end{pmatrix}$.
+  \item Classifica $M=\begin{pmatrix}1&1&0\\1&2&1\\0&1&1\end{pmatrix}$ con Sylvester.
+  \item Verifica il risultato dell'esercizio precedente calcolando gli autovalori di $M$.
+  \item Determina per quali $k$ la matrice $\begin{pmatrix}k&1\\1&k\end{pmatrix}$ è definita positiva.
+  \item Determina per quali $k$ la forma quadratica $Q(x,y)=x^2+kxy+y^2$ è definita positiva.
+  \item Calcola il prodotto scalare tra $v=(1,2,-1)$ e $w=(3,0,2)$.
+  \item Verifica la disuguaglianza di Cauchy-Schwarz sui vettori dell'esercizio precedente.
+  \item Trova $\cos\theta$ tra $v=(1,1,0)$ e $w=(1,0,1)$.
+  \item Determina se $v=(1,2,3)$ e $w=(3,-3,1)$ sono ortogonali.
+  \item Applica Gram-Schmidt a $u_1=(1,1,0)$, $u_2=(1,0,1)$ per ottenere una base ortogonale dello stesso span.
+  \item Normalizza la base ortogonale trovata nell'esercizio precedente.
+  \item Data $B(v,w)=v_1w_1-v_2w_2$ su $\mathbb R^2$, verifica che è bilineare simmetrica ma non definita.
+  \item Classifica la matrice Hessiana $H=\begin{pmatrix}2&0\\0&-2\end{pmatrix}$ in un punto critico: che tipo di punto è?
+  \item Classifica $H=\begin{pmatrix}6&2\\2&2\end{pmatrix}$ con Sylvester, e concludi sulla natura del punto critico.
+  \item Dimostra, usando Cauchy-Schwarz, la disuguaglianza triangolare $\|v+w\|\le\|v\|+\|w\|$.
+\end{enumerate}
+
+\newpage
+% ============================================================
+\section*{Risposte finali (solo risultati)}
+% ============================================================
+
+\subsection*{Fase 1}
+\footnotesize
+1) dipendenti\quad
+2) indipendenti ($\det=-2$)\quad
+3) dipendenti sse $k=0$\quad
+4) $(4,5)=\tfrac92(1,1)-\tfrac12(1,-1)$\quad
+5) NO, non appartiene\quad
+6) dim $=2$, base $\{(1,2,3),(1,0,1)\}$\quad
+7) dipendenti ($\det=0$, rango 3)\quad
+8) indipendenti ($\det=2$)\quad
+9) indipendenti\quad
+10) base sse $k\neq\pm1$\quad
+11) SÌ: $v_3=2v_1-v_2$\quad
+12) mai: la dimensione di $\mathbb R^3$ è 3\quad
+13) base sse $t\neq\pm1$\quad
+14) sì, $v_2=2v_1$: dipendenti\quad
+15) $\dim W=2$, equazione $x-2y+z=0$\quad
+16) NO: 4 vettori in uno spazio di dim.\ 3 sono sempre dipendenti\quad
+17) indipendenti ($\det=2$); $(2,3,4)=2u-v+0w$\quad
+18) sì, è sempre base (matrice triangolare, $\det=1$)\quad
+19) dim $=2$ ($v_2=2v_1$)\quad
+20) dimostrazione (vedi Fase 1 nel percorso svolto)
+\normalsize
+
+\subsection*{Fase 2}
+\footnotesize
+1) lineare\quad
+2) non lineare ($g(0,0)\neq0$)\quad
+3) $\begin{pmatrix}1&1\\1&-1\\0&2\end{pmatrix}$\quad
+4) $\ker=\mathrm{span}\{(-2,1)\}$, $\mathrm{Im}=\mathrm{span}\{(1,2)\}$\quad
+5) $\ker=\mathrm{span}\{(-1,-1,1)\}$, rango $=2$\quad
+6) $\begin{pmatrix}0&-1\\1&0\end{pmatrix}$\quad
+7) $\ker=\mathrm{span}\{(1,-1,1)\}$\quad
+8) né iniettiva né suriettiva (rango 2)\quad
+9) $\ker=$ costanti (dim 1), $\mathrm{Im}=$ polinomi grado $\le2$ (dim 3)\quad
+10) rango effettivo $=2$, $\dim\ker=2$\quad
+11) $(1,2)$\quad
+12) $\ker=\mathrm{span}\{(0,1,0),(0,0,1)\}$, $\mathrm{Im}=\mathrm{span}\{(1,0,0)\}$\quad
+13) piano $x+y+z=0$\quad
+14) dimostrazione; matrice di $g\circ f$ è $BA$\quad
+15) $\ker=\mathrm{span}\{(-4,1)\}$\quad
+16) es.: proiezione lungo $(1,1,1)$ su un piano complementare\quad
+17) NO: $\dim\mathrm{Im}\le2<3$\quad
+18) NO: $\dim\ker\ge1>0$\quad
+19) $\ker=\mathrm{span}\{(1,-2,1)\}$, $c_3=2c_2-c_1$\quad
+20) dimostrazione (vedi Fase 2 nel percorso svolto)
+\normalsize
+
+\subsection*{Fase 3}
+\footnotesize
+1) rango $2$\quad
+2) rango $2$\quad
+3) $k=6$\quad
+4) $\det=5$\quad
+5--6) $\det=1$\quad
+7) invertibile sse $k\neq2$\quad
+8) $\det=-2$ ($=(-2)\times1$)\quad
+9) $\begin{pmatrix}3&-5\\-1&2\end{pmatrix}$\quad
+10) $\begin{pmatrix}1&-2&0\\0&1&0\\-2&4&1\end{pmatrix}$\quad
+11) $\det=0$: NON invertibile\quad
+12) $24$\quad
+13) $-16$\quad
+14) dimostrazione ($\det(A)^2=1$)\quad
+15) dimostrazione\quad
+16) $\det=2$, rango $3$\quad
+17) $k\neq\pm1$\quad
+18) $\begin{pmatrix}1&-2/3\\0&1/3\end{pmatrix}$\quad
+19) dimostrazione\quad
+20) rango $2$, $\det=0$ (coerenti)
+\normalsize
+
+\subsection*{Fase 4}
+\footnotesize
+1) $\lambda=3\to(1,0)$; $\lambda=5\to(0,1)$\quad
+2) $\lambda=1\to(-1,1)$; $\lambda=3\to(1,1)$\quad
+3) $\lambda=\pm1\to(\mp1,1)$, ortogonali\quad
+4) $\lambda=1\to(1,0)$; $\lambda=3\to(1,1)$: NON ortogonali (matrice non simmetrica)\quad
+5) NON diagonalizzabile (mol.\ geom.\ 1 $<$ mol.\ alg.\ 2)\quad
+6) $\lambda=\pm2i$\quad
+7) $\lambda=2$ (mol.\ 2, autospazio $\{x_3=0\}$); $\lambda=3\to(0,0,1)$\quad
+8) $\lambda=1\to(-1,2)$, $\lambda=6\to(2,1)$ (normalizzati per $Q$)\quad
+9) verifica diretta $Q^\top Q=I$\quad
+10) $\det=6$, $\mathrm{tr}=6$\quad
+11) $\lambda=3$ (mol.\ 2, piano $x+y+z=0$); $\lambda=6\to(1,1,1)$\quad
+12) Gram-Schmidt su $(-1,1,0),(-1,0,1)$\quad
+13) $\det(A)=0$, $\ker(A)\neq\{0\}$\quad
+14) $4,1,9$\quad
+15) $A'=\begin{pmatrix}1&0\\0&2\end{pmatrix}$, diagonale\quad
+16) diagonalizzabile: $\lambda=0\to(-2,1)$, $\lambda=5\to(1,2)$\quad
+17) $\lambda=2,-1,4$ (diagonale, matrice triangolare)\quad
+18) $\lambda=1,3$\quad
+19) dimostrazione ($\|Qv\|^2=v^\top Q^\top Qv=v^\top v$)\quad
+20) $P=\begin{pmatrix}1&1\\1&-1\end{pmatrix}$, coordinate $(2,3)$
+\normalsize
+
+\subsection*{Fase 5}
+\footnotesize
+1) $Q(x,y)=2x^2+2xy+3y^2$\quad
+2) definita positiva\quad
+3) definita positiva (minori $2,3>0$)\quad
+4) autovalori $1,3>0$: coincide\quad
+5) definita negativa\quad
+6) indefinita ($\det=-3<0$)\quad
+7) semidefinita positiva (minori $1,1,0$)\quad
+8) autovalori $0,1,3$: coincide\quad
+9) $k>1$\quad
+10) $-2<k<2$\quad
+11) $1$\quad
+12) $|1|\le\sqrt{78}\approx8{,}83$: verificata\quad
+13) $\cos\theta=1/2$\quad
+14) sì, ortogonali (prodotto scalare $=0$)\quad
+15) $w_1=(1,1,0)$, $w_2=(\tfrac12,-\tfrac12,1)$\quad
+16) $\big(\tfrac{\sqrt2}{2},\tfrac{\sqrt2}{2},0\big)$, $\big(\tfrac{\sqrt6}{6},-\tfrac{\sqrt6}{6},\tfrac{\sqrt6}{3}\big)$\quad
+17) indefinita ($B(e_1,e_1)=1$, $B(e_2,e_2)=-1$)\quad
+18) sella (autovalori di segno opposto)\quad
+19) definita positiva (minori $6,8>0$): minimo locale\quad
+20) dimostrazione (vedi Fase 5 nel percorso svolto)
+\normalsize
+
+\end{document}

@@ -1,0 +1,64 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+
+% --- checklist: casella vuota (da fare) o spuntata (confermato) ---
+\newlist{checklist}{itemize}{2}
+\setlist[checklist]{label=$\square$, leftmargin=1.5em, itemsep=5pt, topsep=4pt}
+\setlist[itemize,2]{label=$-$, leftmargin=2.2em, itemsep=1pt, topsep=1pt}
+\newcommand{\done}{\item[$\blacksquare$]}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{0.6em}{}
+
+\title{Argomenti di Geometria e Algebra Lineare\\da recuperare per i corsi del II anno}
+\date{\today}
+\author{Liam Ferretti}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+
+% ============================================================
+\section{Analisi Vettoriale --- confermato (prof.ssa Francesca De Marchis)}
+% ============================================================
+\begin{checklist}
+  \item Prodotto matrice/matrice e matrice/vettore
+  \item Prodotto scalare tra vettori \textit{(verrà comunque reintrodotto a lezione)}
+  \item Calcolo del determinante di una matrice
+  \item Concetto di rango di una matrice
+  \item Matrici (o forme quadratiche) definite positive, negative, semidefinite
+        positive/negative e indefinite, con caratterizzazione in termini di
+        autovalori \textit{(verranno comunque richiamate a lezione)}
+  \item Calcolo del Jacobiano
+  \item Ripasso Analisi in $\mathbf{R}^n$
+\end{checklist}
+
+\vspace{0.4cm}
+
+% ============================================================
+\section{Meccanica Analitica --- confermato (prof.ssor Mauro Papinutto)}
+% ============================================================
+\begin{checklist}
+  \item Condizioni di indipendenza lineare di un insieme di vettori
+  \item Applicazioni lineari e loro nucleo
+  \item Rango di una matrice
+  \item Matrici simmetriche
+  \item Matrici ortogonali
+  \item Problema agli autovalori e autovettori
+  \item Diagonalizzazione di matrici simmetriche
+  \item Forme quadratiche e segnatura
+\end{checklist}
+
+\vspace{0.4cm}
+\noindent\textit{Nota: da Termodinamica e Laboratorio e da Laboratorio di Fisica
+Computazionale~1 non erano emersi collegamenti diretti significativi.}
+
+\end{document}
