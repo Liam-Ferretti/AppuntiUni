@@ -104,4 +104,20 @@
 }
 
 
+\usepackage{fancyhdr}
+\usepackage{lastpage} % opzionale, se vuoi "Pagina X di Y"
+
+\pagestyle{fancy}
+\fancyhf{} % pulisce header e footer
+
+% Capitolo centrato
+\fancyhead[C]{\nouppercase{\leftmark}}
+
+% Numero pagina alternato
+\fancyhead[RO]{\thepage} % Right Odd  (destra pagine dispari)
+\fancyhead[LE]{\thepage} % Left  Even (sinistra pagine pari)
+
+% Linea sopra
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
 

@@ -6,3 +6,38 @@
 *.txss2
 *.bbl
 *.blg
+**/.tmp.driveupload/
+*.m4a
+venv/
+.venv/
+# --- Ambienti, temporanei, file generati ---
+venv/
+.venv/
+__pycache__/
+*.pyc
+.tmp.driveupload/
+.downloader_state.json
+desktop.ini
+*.fdb_latexmk
+*.fls
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+
+# --- Audio e modelli (le trascrizioni .txt restano) ---
+*.mp3
+*.m4a
+*.wav
+*.ogg
+*.opus
+*.mp4
+*.webm
+*.pt
+*.bin
+
+# --- Repo annidati ---
+secondoAnno/Lab. Fisica Computazionale/Esercitazioni/lfc-2627-esercitazione-2-group-66/
+secondoAnno/Lab. Fisica Computazionale/Esercitazioni/lfc-2627-esercitazione-3-group-53/
+secondoAnno/Termodinamica e Laboratorio/
