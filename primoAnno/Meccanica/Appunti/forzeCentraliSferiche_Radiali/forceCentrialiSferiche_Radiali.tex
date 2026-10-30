@@ -1,0 +1,119 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage{bm}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{geometry}
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+\usepackage{caption}
+\captionsetup{justification=centering}
+\usepackage{float}
+\usepackage[hidelinks]{hyperref}
+\usepackage{subcaption}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{yhmath}
+\usepackage{derivative}
+\usepackage{physics}
+
+\usepackage{selectp}
+
+\begin{document}
+
+\section*{Dimostrazioni di Conservativit\`a e Calcolo dei Fattori di Scala}
+
+\subsection*{1. Caso Cilindrico (Simmetria Cilindrica)}
+Le coordinate cilindriche $(r, \theta, z)$ sono legate alle coordinate cartesiane $(x, y, z)$ dalle relazioni:
+\begin{equation*}
+    x = r\cos\theta, \quad y = r\sin\theta, \quad z = z
+\end{equation*}
+Il vettore posizione $\vec{r}$ si scrive quindi come:
+\begin{equation*}
+    \vec{r} = r\cos\theta\hat{i} + r\sin\theta\hat{j} + z\hat{k}
+\end{equation*}
+
+\subsubsection*{Calcolo dei Fattori di Scala}
+I fattori di scala $h_i$ si calcolano come il modulo del vettore derivato rispetto a ciascuna coordinata:
+\begin{itemize}
+    \item \textbf{Fattore $h_r$:}
+    \begin{equation*}
+        \frac{\partial \vec{r}}{\partial r} = \cos\theta\hat{i} + \sin\theta\hat{j} \implies h_r = \left| \frac{\partial \vec{r}}{\partial r} \right| = \sqrt{\cos^2\theta + \sin^2\theta} = 1
+    \end{equation*}
+    \item \textbf{Fattore $h_\theta$:}
+    \begin{equation*}
+        \frac{\partial \vec{r}}{\partial \theta} = -r\sin\theta\hat{i} + r\cos\theta\hat{j} \implies h_\theta = \left| \frac{\partial \vec{r}}{\partial \theta} \right| = \sqrt{(-r\sin\theta)^2 + (r\cos\theta)^2} = r
+    \end{equation*}
+    \item \textbf{Fattore $h_z$:}
+    \begin{equation*}
+        \frac{\partial \vec{r}}{\partial z} = \hat{k} \implies h_z = \left| \frac{\partial \vec{r}}{\partial z} \right| = \sqrt{1} = 1
+    \end{equation*}
+\end{itemize}
+
+\subsubsection*{Metodo A: Test del Rotore}
+Sia una forza radiale a simmetria cilindrica $\vec{F} = F_r(r)\hat{u}_r$. Impostiamo la matrice col fattore esterno $1/(h_r h_\theta h_z) = 1/r$:
+\begin{equation*}
+    \vec{\nabla} \times \vec{F} = \frac{1}{r} 
+    \begin{vmatrix} 
+        \hat{u}_r & r\hat{u}_\theta & \hat{u}_z \\ 
+        \frac{\partial}{\partial r} & \frac{\partial}{\partial \theta} & \frac{\partial}{\partial z} \\ 
+        F_r(r) & 0 & 0 
+    \end{vmatrix} = \vec{0}
+\end{equation*}
+Le derivate parziali di $F_r(r)$ rispetto a $\theta$ e $z$ sono nulle poich\'e la forza dipende solo da $r$.
+
+\subsubsection*{Metodo B: Lavoro Infinitesimo}
+Lo spostamento infinitesimo \`e $d\vec{r} = h_r dr\hat{u}_r + h_\theta d\theta\hat{u}_\theta + h_z dz\hat{u}_z = dr\hat{u}_r + rd\theta\hat{u}_\theta + dz\hat{u}_z$. Il lavoro infinitesimo risulta:
+\begin{equation*}
+    dW = \vec{F} \cdot d\vec{r} = \big(F_r(r)\hat{u}_r\big) \cdot \big(dr\hat{u}_r + rd\theta\hat{u}_\theta + dz\hat{u}_z\big) = F_r(r)dr
+\end{equation*}
+L'integrale dipende solo dalle posizioni radiali iniziale e finale, provando la conservativit\`a.
+
+\newpage
+
+\subsection*{2. Caso Sferico (Forze Centrali)}
+Le coordinate sferiche $(r, \theta, \phi)$ sono legate alle cartesiane da:
+\begin{equation*}
+    x = r\sin\theta\cos\phi, \quad y = r\sin\theta\sin\phi, \quad z = r\cos\theta
+\end{equation*}
+Il vettore posizione \`e $\vec{r} = r\sin\theta\cos\phi\hat{i} + r\sin\theta\sin\phi\hat{j} + r\cos\theta\hat{k}$.
+
+\subsubsection*{Calcolo dei Fattori di Scala}
+\begin{itemize}
+    \item \textbf{Fattore $h_r$:}
+    \begin{equation*}
+        \frac{\partial \vec{r}}{\partial r} = \sin\theta\cos\phi\hat{i} + \sin\theta\sin\phi\hat{j} + \cos\theta\hat{k} \implies h_r = \sqrt{\sin^2\theta(\cos^2\phi+\sin^2\phi)+\cos^2\theta} = 1
+    \end{equation*}
+    \item \textbf{Fattore $h_\theta$:}
+    \begin{equation*}
+        \frac{\partial \vec{r}}{\partial \theta} = r\cos\theta\cos\phi\hat{i} + r\cos\theta\sin\phi\hat{j} - r\sin\theta\hat{k} \implies h_\theta = \sqrt{r^2\cos^2\theta(\cos^2\phi+\sin^2\phi)+r^2\sin^2\theta} = r
+    \end{equation*}
+    \item \textbf{Fattore $h_\phi$:}
+    \begin{equation*}
+        \frac{\partial \vec{r}}{\partial \phi} = -r\sin\theta\sin\phi\hat{i} + r\sin\theta\cos\phi\hat{j} + 0\hat{k} \implies h_\phi = \sqrt{r^2\sin^2\theta(\sin^2\phi+\cos^2\phi)} = r\sin\theta
+    \end{equation*}
+\end{itemize}
+
+\subsubsection*{Metodo A: Test del Rotore}
+Sia la forza centrale $\vec{F} = F_r(r)\hat{u}_r$. Inseriamo lo Jacobiano esterno $1/(h_r h_\theta h_\phi) = 1/(r^2\sin\theta)$:
+\begin{equation*}
+    \vec{\nabla} \times \vec{F} = \frac{1}{r^2 \sin\theta} 
+    \begin{vmatrix} 
+        \hat{u}_r & r\hat{u}_\theta & r\sin\theta\hat{u}_\phi \\ 
+        \frac{\partial}{\partial r} & \frac{\partial}{\partial \theta} & \frac{\partial}{\partial \phi} \\ 
+        F_r(r) & 0 & 0 
+    \end{vmatrix} = \vec{0}
+\end{equation*}
+Essendo $F_r$ indipendente dagli angoli, le derivate parziali rispetto a $\theta$ e $\phi$ svaniscono.
+
+\subsubsection*{Metodo B: Lavoro Infinitesimo}
+Lo spostamento infinitesimo \`e $d\vec{r} = dr\hat{u}_r + rd\theta\hat{u}_\theta + r\sin\theta d\phi\hat{u}_\phi$. Il prodotto scalare fornisce:
+\begin{equation*}
+    dW = \vec{F} \cdot d\vec{r} = F_r(r)dr \implies W_{A \to B} = \int_{r_A}^{r_B} F_r(r)dr
+\end{equation*}
+L'indipendenza del lavoro dalle coordinate angolari $\theta$ e $\phi$ chiude la dimostrazione.
+
+\end{document}

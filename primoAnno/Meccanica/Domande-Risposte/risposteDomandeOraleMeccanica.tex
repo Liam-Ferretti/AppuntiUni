@@ -1,0 +1,1024 @@
+% ============================================================
+%  Risposte alle Domande d'Esame — Corso di Meccanica
+%  Professori Mazzarello e Spagnolo
+% ============================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{bm}
+\usepackage{geometry}
+\usepackage[colorlinks=true,linkcolor=black]{hyperref}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{xcolor}
+
+\geometry{top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+
+% ---- vettori e versori ----
+\renewcommand{\vec}[1]{\bm{#1}}
+\newcommand{\uv}[1]{\hat{\bm{#1}}}
+\newcommand{\vt}{\hat{\bm{t}}}
+\newcommand{\vn}{\hat{\bm{n}}}
+\newcommand{\er}{\hat{\bm{e}}_r}
+\newcommand{\ephi}{\hat{\bm{e}}_\varphi}
+\newcommand{\ez}{\hat{\bm{e}}_z}
+\newcommand{\rhat}{\hat{\bm{r}}}
+\newcommand{\om}{\vec{\omega}}
+\newcommand{\CM}{\mathrm{cm}}
+
+% ---- ambienti teorema ----
+\theoremstyle{plain}
+\newtheorem{teorema}{Teorema}[section]
+\theoremstyle{definition}
+\newtheorem{definizione}{Definizione}[section]
+\theoremstyle{remark}
+\newtheorem{osservazione}{Osservazione}[section]
+
+% ---- box enfasi ----
+\newcommand{\importante}[1]{%
+  \medskip\noindent
+  \fcolorbox{blue!50!black}{blue!5}{\parbox{0.97\linewidth}{#1}}%
+  \medskip}
+
+\begin{document}
+
+% ===============================================================
+\begin{titlepage}
+  \centering\vspace*{2.5cm}
+  {\LARGE\bfseries Risposte alle Domande d'Esame\par}\vspace{0.6cm}
+  {\Large Corso di Meccanica\par}\vspace{0.3cm}
+  {\large Professori Mazzarello e Spagnolo\par}\vfill
+  {\itshape Raccolta completa per argomento, con dimostrazioni e commenti fisici.}\vspace{1.2cm}
+\end{titlepage}
+
+\tableofcontents\newpage
+
+% ===============================================================
+\section{Cinematica del punto e rappresentazione intrinseca}
+% ===============================================================
+
+\subsection{Ascissa curvilinea}
+
+Fissata una traiettoria $\mathcal{C}$ nello spazio, si sceglie un punto di
+riferimento $P_0\in\mathcal{C}$ e un verso positivo di percorrenza.
+\begin{definizione}
+L'\textbf{ascissa curvilinea} $s(t)$ è la lunghezza d'arco con segno percorsa
+dal punto $P_0$ al punto $P(t)$ lungo $\mathcal{C}$:
+\[
+  s(t)=\int_{P_0}^{P(t)}\mathrm{d}\ell\,.
+\]
+\end{definizione}
+Associare a ogni punto della traiettoria uno scalare $s$ significa
+\emph{parametrizzare intrisecamente} la curva: l'informazione sulla forma della
+traiettoria è codificata in $\mathcal{C}$ stessa, mentre $s$ descrive
+\emph{dove} si trova il punto su di essa, in modo indipendente dal sistema di
+riferimento cartesiano. Il moto è quindi descritto da un'unica funzione
+scalare $s(t)$ (o equivalentemente $\theta(t)$ per il pendolo, ecc.).
+
+Per un corpo vincolato a muoversi lungo $\mathcal{C}$, lo spostamento
+infinitesimo è $\mathrm{d}\vec{r}=\vt\,\mathrm{d}s$ e il lavoro elementare di
+una forza $\vec{F}$ diventa:
+\[
+  \mathrm{d}W = \vec{F}\cdot\mathrm{d}\vec{r} = F_t\,\mathrm{d}s\,,
+\]
+dove $F_t=\vec{F}\cdot\vt$ è la componente tangenziale: solo questa componente
+compie lavoro sul moto vincolato.
+
+\subsection{Grandezze intrinseche: versori, raggio di curvatura e cerchio
+osculatore}
+
+\paragraph{Versore tangente.}
+\[
+  \vt(s)=\frac{\mathrm{d}\vec{r}}{\mathrm{d}s}\,,\qquad |\vt|=1\,.
+\]
+\paragraph{Velocità sempre tangente.}
+Applicando la regola di derivazione composta:
+\[
+  \vec{v}=\frac{\mathrm{d}\vec{r}}{\mathrm{d}t}
+         =\frac{\mathrm{d}\vec{r}}{\mathrm{d}s}\cdot\frac{\mathrm{d}s}{\mathrm{d}t}
+         =\dot{s}\,\vt = v\,\vt\,.
+\]
+Poiché $\vt$ è per costruzione tangente a $\mathcal{C}$, la velocità è
+\emph{sempre} tangente alla traiettoria, indipendentemente dalla sua forma.
+
+\paragraph{Versore normale e raggio di curvatura.}
+Derivando $|\vt|^2=1$ rispetto a $s$ si ottiene
+$\vt\cdot\frac{\mathrm{d}\vt}{\mathrm{d}s}=0$, cioè $\frac{\mathrm{d}\vt}{\mathrm{d}s}$
+è \emph{perpendicolare} a $\vt$. Si definisce il \textbf{versore normale
+principale} $\vn$ e il \textbf{raggio di curvatura} $\mathcal{R}$ mediante:
+\[
+  \frac{\mathrm{d}\vt}{\mathrm{d}s}=\frac{\vn}{\mathcal{R}}\,,\qquad \mathcal{R}>0\,.
+\]
+Il \textbf{cerchio osculatore} è il cerchio di raggio $\mathcal{R}$ tangente a
+$\mathcal{C}$ nel punto $P$ e con centro $C$ nella direzione di $\vn$: è il
+cerchio che meglio approssima la curva al second'ordine in quel punto
+(contatto di ordine 2).
+
+\subsection{Decomposizione dell'accelerazione in componente tangenziale e
+normale}
+
+Derivando $\vec{v}=v\,\vt$ rispetto al tempo:
+\[
+  \vec{a}
+    =\dot{v}\,\vt + v\,\dot{\vt}
+    =\dot{v}\,\vt + v\,\frac{\mathrm{d}\vt}{\mathrm{d}s}\,\dot{s}
+    =\underbrace{\dot{v}}_{a_t}\vt
+     +\underbrace{\frac{v^2}{\mathcal{R}}}_{a_n}\vn\,.
+\]
+\begin{itemize}
+  \item $a_t=\ddot{s}$: modifica il \emph{modulo} della velocità.
+  \item $a_n=v^2/\mathcal{R}$: \textbf{accelerazione centripeta}, modifica la
+    \emph{direzione} di $\vec{v}$; è diretta verso il centro del cerchio
+    osculatore e compare ogni volta che la traiettoria è curva ($\mathcal{R}<\infty$),
+    in qualunque sistema di riferimento inerziale.
+\end{itemize}
+
+\subsection{Derivata temporale di un vettore in sistemi fisso e mobile;
+relazioni di Poisson}
+
+Sia $S'$ un sistema di riferimento mobile che ruota con velocità angolare
+$\om$ rispetto al sistema fisso $S$, e sia $\{\hat{\bm{e}}_1',\hat{\bm{e}}_2',\hat{\bm{e}}_3'\}$
+la terna solidale con $S'$.
+
+\paragraph{Perché $\dot{\hat{\bm{e}}}_i=\om\times\hat{\bm{e}}_i$.}
+Poiché $|\hat{\bm{e}}_i|=1$, la derivata è perpendicolare al versore; in una
+rotazione infinitesima $\mathrm{d}\vec{\varphi}=\om\,\mathrm{d}t$ lo
+spostamento del versore è $\mathrm{d}\hat{\bm{e}}_i=\mathrm{d}\vec{\varphi}\times\hat{\bm{e}}_i$,
+dunque $\dot{\hat{\bm{e}}}_i=\om\times\hat{\bm{e}}_i$.
+Queste sono le \textbf{relazioni di Poisson}: descrivono come cambiano nel
+tempo, visti dal sistema fisso, i versori solidali con il sistema mobile.
+
+\paragraph{Derivata di un vettore generico.}
+Sia $\vec{A}=\sum_i A_i'\,\hat{\bm{e}}_i'$ (componenti in $S'$). Vista da $S$:
+\[
+  \left.\frac{\mathrm{d}\vec{A}}{\mathrm{d}t}\right|_S
+  =\left.\frac{\mathrm{d}\vec{A}}{\mathrm{d}t}\right|_{S'}+\om\times\vec{A}\,.
+\]
+La differenza tra le due derivate è $\om\times\vec{A}$: il termine aggiuntivo
+cattura il fatto che in $S$ anche i versori di riferimento cambiano nel tempo.
+
+\subsection{Leggi di trasformazione di velocità e accelerazione}
+
+Sia $O'$ l'origine di $S'$, con posizione $\vec{r}_{O'}$ in $S$, e sia
+$\vec{r}'$ la posizione della particella in $S'$.
+
+\paragraph{Velocità.}
+\[
+  \vec{v}=\dot{\vec{r}}_{O'}+\left.\frac{\mathrm{d}\vec{r}'}{\mathrm{d}t}\right|_S
+         =\vec{v}_{O'}+\vec{v}'+\om\times\vec{r}'
+         \equiv \vec{v}'+\vec{v}_\mathrm{tr}\,,
+\]
+dove $\vec{v}_\mathrm{tr}=\vec{v}_{O'}+\om\times\vec{r}'$ è la
+\textbf{velocità di trascinamento} (velocità che avrebbe un punto solidale con
+$S'$ che istantaneamente coincide con la particella).
+
+\paragraph{Accelerazione.}
+Derivando ancora:
+\[
+  \vec{a}=\vec{a}'+\underbrace{\dot{\vec{v}}_{O'}
+          +\dot{\om}\times\vec{r}'+\om\times(\om\times\vec{r}')}_{\vec{a}_\mathrm{tr}}
+          +2\om\times\vec{v}'\,.
+\]
+Il termine $2\om\times\vec{v}'$ è l'\textbf{accelerazione di Coriolis};
+$\vec{a}_\mathrm{tr}$ è l'accelerazione di trascinamento.
+
+\subsection{Coordinate cilindriche: versori e loro derivate}
+
+In coordinate $(r,\varphi,z)$, la terna ortonormale mobile è $\{\er,\ephi,\ez\}$
+con $\er$ radiale, $\ephi$ azimutale, $\ez$ assiale. Le derivate temporali,
+usando le relazioni di Poisson con $\om=\dot\varphi\,\ez$, sono:
+\[
+  \dot{\er}=\dot\varphi\,\ephi\,,\qquad
+  \dot{\ephi}=-\dot\varphi\,\er\,,\qquad
+  \dot{\ez}=\vec{0}\,.
+\]
+Derivando $\vec{r}=r\,\er+z\,\ez$:
+\begin{align*}
+  \vec{v}&=\dot r\,\er + r\dot\varphi\,\ephi + \dot z\,\ez\,,\\
+  \vec{a}&=(\ddot r-r\dot\varphi^2)\,\er+(r\ddot\varphi+2\dot r\dot\varphi)\,\ephi+\ddot z\,\ez\,.
+\end{align*}
+Il termine $-r\dot\varphi^2\,\er$ è l'accelerazione centripeta; il termine
+$2\dot r\dot\varphi\,\ephi$ è l'accelerazione di Coriolis intrinseca delle
+coordinate cilindriche (non forza, ma termine cinematico).
+
+% ===============================================================
+\section{Sistemi di riferimento non inerziali e forze apparenti}
+% ===============================================================
+
+\subsection{Sistemi inerziali e non inerziali}
+
+Un sistema di riferimento è \textbf{inerziale} se in esso i principi della
+dinamica di Newton valgono nella loro forma originale (in particolare, un
+corpo libero si muove di moto rettilineo uniforme). Un sistema $S'$ in moto
+traslatorio accelerato o in rotazione rispetto a un sistema inerziale $S$ è
+\textbf{non inerziale}.
+
+\subsection{Seconda legge in un sistema non inerziale e forze apparenti}
+
+Dalla legge di trasformazione dell'accelerazione, sostituendo in $\vec{F}=m\vec{a}$
+(valida nel sistema inerziale $S$):
+\[
+  m\vec{a}'=\vec{F}
+            -m\vec{a}_{O'}
+            -m\dot{\om}\times\vec{r}'
+            -m\om\times(\om\times\vec{r}')
+            -2m\om\times\vec{v}'\,.
+\]
+Le quantità aggiuntive, che \emph{non} derivano da interazioni fisiche reali
+ma dalla non inerzia del sistema, sono le \textbf{forze apparenti} (pseudo-forze):
+\begin{itemize}
+  \item $-m\vec{a}_{O'}$: forza di trascinamento traslazionale.
+  \item $-m\dot{\om}\times\vec{r}'$: forza di Eulero (compare se $|\om|$ o la
+    sua direzione variano nel tempo).
+  \item $\vec{F}_\mathrm{cf}=-m\om\times(\om\times\vec{r}')$: \textbf{forza centrifuga}.
+  \item $\vec{F}_\mathrm{Cor}=-2m\om\times\vec{v}'$: \textbf{forza di Coriolis}.
+\end{itemize}
+
+\subsection{Accelerazione e velocità di trascinamento}
+
+L'\textbf{accelerazione di trascinamento}
+$\vec{a}_\mathrm{tr}=\vec{a}_{O'}+\dot{\om}\times\vec{r}'+\om\times(\om\times\vec{r}')$
+è l'accelerazione che avrebbe un punto \emph{solidale} con $S'$, coincidente
+istantaneamente con la particella. Essa tiene conto della traslazione
+accelerata di $O'$, della variazione di $\om$ e dell'accelerazione centripeta
+dovuta alla rotazione.
+
+\subsection{Forza centrifuga: definizione, significato fisico e conservatività}
+
+\[
+  \vec{F}_\mathrm{cf}=-m\om\times(\om\times\vec{r}')=m\omega^2\vec{\rho}'\,,
+\]
+dove $\vec{\rho}'$ è la componente di $\vec{r}'$ perpendicolare all'asse di
+rotazione, diretta verso l'esterno. La forza centrifuga è quindi radiale
+rispetto all'asse, diretta centrifugamente, e aumenta con la distanza dall'asse.
+
+\paragraph{Conservatività.}
+Con l'asse di rotazione orientato lungo $z$, si ha
+$\vec{F}_\mathrm{cf}=m\omega^2(x'\hat{\bm{x}}+y'\hat{\bm{y}})
+=-\nabla\left(-\tfrac{1}{2}m\omega^2\rho'^2\right)$,
+dunque la forza centrifuga è conservativa con \textbf{potenziale centrifugo}:
+\[
+  U_\mathrm{cf}=-\frac{1}{2}m\omega^2\rho'^2\,.
+\]
+La condizione necessaria è che $\om$ sia costante (modulo e direzione). Se
+$\om$ varia nel tempo, compare la forza di Eulero che, in generale, non è
+conservativa.
+
+\subsection{Forza di Coriolis}
+
+\[
+  \vec{F}_\mathrm{Cor}=-2m\om\times\vec{v}'\,.
+\]
+È perpendicolare sia alla velocità relativa $\vec{v}'$ sia all'asse $\om$.
+\paragraph{La forza di Coriolis non compie lavoro:}
+\[
+  P_\mathrm{Cor}=\vec{F}_\mathrm{Cor}\cdot\vec{v}'
+               =-2m(\om\times\vec{v}')\cdot\vec{v}'=0\,,
+\]
+perché il prodotto misto $(\vec{A}\times\vec{B})\cdot\vec{B}=0$ sempre.
+La forza di Coriolis devia la traiettoria ma non modifica la velocità scalare.
+Fisicamente è responsabile della deviazione dei venti (cicloni, anticicloni)
+e della rotazione del piano di Foucault.
+
+\subsection{Forze apparenti in coordinate cilindriche}
+
+Per un sistema ruotante con $\om=\omega\ez$, le componenti delle forze
+apparenti in coordinate cilindriche sono:
+\begin{align*}
+  \text{centrifuga: }&\vec{F}_\mathrm{cf}=m\omega^2 r'\,\er\,,\\
+  \text{Coriolis: }&\vec{F}_\mathrm{Cor}=-2m\omega\dot r'\,\ephi + 2m\omega r'\dot\varphi'\,\er\,.
+\end{align*}
+
+% ===============================================================
+\section{Forze, lavoro, conservatività ed energia potenziale}
+% ===============================================================
+
+\subsection{Lavoro e lavoro infinitesimo}
+
+Il \textbf{lavoro} compiuto da $\vec{F}$ lungo un percorso da $A$ a $B$:
+\[
+  W_{A\to B}=\int_A^B\vec{F}\cdot\mathrm{d}\vec{r}\,.
+\]
+Il \textbf{lavoro infinitesimo} $\mathrm{d}W=\vec{F}\cdot\mathrm{d}\vec{r}$
+può essere riscritto in coordinate cartesiane come
+$F_x\,\mathrm{d}x+F_y\,\mathrm{d}y+F_z\,\mathrm{d}z$.
+
+\subsection{Definizione e caratteristiche delle forze conservative}
+
+\begin{definizione}
+Una forza $\vec{F}$ è \textbf{conservativa} se il lavoro lungo qualunque
+percorso chiuso è nullo:
+$\oint_\gamma\vec{F}\cdot\mathrm{d}\vec{r}=0$ per ogni curva chiusa $\gamma$.
+\end{definizione}
+Le seguenti condizioni sono equivalenti:
+\begin{enumerate}[label=(\roman*)]
+  \item $\oint\vec{F}\cdot\mathrm{d}\vec{r}=0$ (circuitazione nulla).
+  \item $\nabla\times\vec{F}=\vec{0}$ (rotore nullo).
+  \item $\exists\, U(\vec{r}):\;\vec{F}=-\nabla U$ (esiste un potenziale).
+\end{enumerate}
+
+\paragraph{Da circuitazione nulla a rotore nullo.}
+Per il teorema di Stokes, per qualsiasi superficie $\Sigma$ con bordo $\partial\Sigma$:
+\[
+  \oint_{\partial\Sigma}\vec{F}\cdot\mathrm{d}\vec{r}
+  =\iint_\Sigma(\nabla\times\vec{F})\cdot\mathrm{d}\vec{S}\,.
+\]
+Se la circuitazione è nulla per ogni curva chiusa $\partial\Sigma$, l'integrale
+del rotore è nullo per ogni superficie $\Sigma$: poiché $\Sigma$ è arbitraria,
+si conclude $\nabla\times\vec{F}=\vec{0}$ in ogni punto.
+
+\paragraph{Forza conservativa come gradiente di un potenziale.}
+Dal rotore nullo (in un dominio semplicemente connesso) segue che
+$\vec{F}\cdot\mathrm{d}\vec{r}$ è una differenziale esatta, e si può definire
+$U(\vec{r})=-\int_{\vec{r}_0}^{\vec{r}}\vec{F}\cdot\mathrm{d}\vec{r}'$,
+da cui $\vec{F}=-\nabla U$.
+
+\subsection{Dimostrazione che forze specifiche sono (o non sono) conservative}
+
+\paragraph{Forza centrale a simmetria sferica: $\vec{F}=f(r)\rhat$.}
+\[
+  \mathrm{d}W=\vec{F}\cdot\mathrm{d}\vec{r}=f(r)\rhat\cdot\mathrm{d}\vec{r}=f(r)\,\mathrm{d}r\,,
+\]
+che è differenziale esatta di $U(r)=-\int f(r)\,\mathrm{d}r$. Dunque è
+conservativa. Equivalentemente, $\nabla\times(f(r)\rhat)=0$ per simmetria
+sferica (verifica diretta in coordinate sferiche).
+
+\paragraph{Forza centrale a simmetria cilindrica: $\vec{F}=f(\rho)\er$.}
+Analogamente, $\mathrm{d}W=f(\rho)\,\mathrm{d}\rho$ è esatta, con
+$U=-\int f(\rho)\,\mathrm{d}\rho$.
+
+\paragraph{Forza elastica: $\vec{F}=-kx\,\hat{\bm{x}}$.}
+$\nabla\times\vec{F}=\vec{0}$ (componenti non dipendono dalle variabili
+perpendicolari all'asse), con $U=\tfrac{1}{2}kx^2$.
+
+\paragraph{Attrito viscoso: $\vec{F}=-b\vec{v}$.}
+La forza dipende dalla velocità, non dalla posizione: non è definita nello
+spazio delle posizioni, dunque non può essere scritta come gradiente di un
+potenziale. Il rotore non è nullo (la forza cambia direzione con $\vec{v}$).
+Il lavoro lungo un ciclo non è nullo e dipende dal percorso specifico.
+
+\paragraph{Attrito radente dinamico.}
+$\vec{F}_d=-\mu_d N\,\hat{v}$: fa sempre lavoro negativo ($\mathrm{d}W<0$),
+dissipa energia cinetica.
+
+\subsection{Energia potenziale, equilibrio stabile e instabile}
+
+\begin{definizione}
+L'\textbf{energia potenziale} $U(\vec{r})$ è la funzione scalare definita (a
+meno di una costante) da $\vec{F}=-\nabla U$.
+\end{definizione}
+
+Una posizione $x_0$ è di \textbf{equilibrio} se $F(x_0)=0$, cioè
+$U'(x_0)=0$.
+
+\paragraph{Studio della stabilità via espansione di Taylor.}
+Intorno a $x_0$, con $\xi=x-x_0$:
+\[
+  U(x_0+\xi)=U(x_0)+\frac{1}{2}U''(x_0)\xi^2+O(\xi^3)\,,\qquad
+  F(\xi)\approx -U''(x_0)\xi\,.
+\]
+
+\begin{itemize}
+  \item \textbf{Equilibrio stabile} se $U''(x_0)>0$ (minimo di $U$): la forza
+    è di richiamo ($F=-k_\mathrm{eff}\xi$, $k_\mathrm{eff}>0$). Una perturbazione
+    piccola genera moto oscillatorio attorno a $x_0$.
+  \item \textbf{Equilibrio instabile} se $U''(x_0)<0$ (massimo di $U$): la forza
+    è repulsiva, allontana il punto da $x_0$. Una perturbazione piccola cresce
+    esponenzialmente.
+\end{itemize}
+
+\paragraph{Perché la derivata seconda determina la stabilità.}
+Fisicamente: attorno a un minimo di $U$, qualunque spostamento dal punto di
+equilibrio aumenta $U$ e la forza conservativa richiama il sistema verso il
+minimo. Attorno a un massimo, qualunque spostamento diminuisce $U$ e la forza
+spinge il sistema sempre più lontano. Matematicamente, il segno di $U''$
+determina se la costante di richiamo effettiva è positiva (oscillazione) o
+negativa (divergenza).
+
+\subsection{Moto intorno ai punti di equilibrio}
+
+Attorno a un equilibrio stabile, l'equazione del moto è
+$m\ddot\xi=-U''(x_0)\xi$, cioè quella di un oscillatore armonico con
+$\omega_0=\sqrt{U''(x_0)/m}$. Attorno a un equilibrio instabile,
+$m\ddot\xi=|U''(x_0)|\xi$ con soluzione $\xi(t)=A e^{\alpha t}+Be^{-\alpha t}$,
+$\alpha=\sqrt{|U''(x_0)|/m}$.
+
+\subsection{Teorema delle forze vive (lavoro–energia)}
+
+\begin{teorema}[Forze vive]
+Il lavoro totale compiuto su un punto materiale è uguale alla variazione
+della sua energia cinetica:
+\[
+  W_{A\to B}=T_B-T_A=\Delta T\,.
+\]
+\end{teorema}
+\begin{proof}
+Da $m\ddot{\vec{r}}=\vec{F}_\mathrm{tot}$, si moltiplica scalarmente per
+$\vec{v}$:
+\[
+  \vec{F}_\mathrm{tot}\cdot\vec{v}=m\vec{v}\cdot\dot{\vec{v}}=\frac{\mathrm{d}}{\mathrm{d}t}\!\left(\frac{mv^2}{2}\right)=\frac{\mathrm{d}T}{\mathrm{d}t}\,.
+\]
+Integrando nel tempo da $A$ a $B$:
+$W_{A\to B}=\int_{t_A}^{t_B}\vec{F}\cdot\vec{v}\,\mathrm{d}t=T_B-T_A$.
+\end{proof}
+
+\paragraph{Conservazione dell'energia meccanica.}
+Per forze conservative $\vec{F}=-\nabla U$:
+$W_{A\to B}=U_A-U_B$, dunque $T_B-T_A=U_A-U_B$, ovvero:
+\[
+  E=T+U=\mathrm{const}\,.
+\]
+
+% ===============================================================
+\section{Oscillazioni e pendolo semplice}
+% ===============================================================
+
+\subsection{Oscillatore armonico: equazione del moto e significato dei
+parametri}
+
+L'equazione dell'oscillatore armonico semplice è:
+\[
+  m\ddot x+kx=0 \implies \ddot x+\omega_0^2 x=0\,,\quad\omega_0=\sqrt{\frac{k}{m}}\,.
+\]
+La soluzione generale è:
+\[
+  x(t)=A\cos(\omega_0 t+\phi)\,,
+\]
+con \textbf{ampiezza} $A$ e \textbf{fase iniziale} $\phi$ determinati dalle
+condizioni iniziali. Il parametro $\omega_0$ è la \textbf{pulsazione propria}:
+il moto è periodico con periodo $T_0=2\pi/\omega_0$ e frequenza
+$\nu_0=\omega_0/(2\pi)$.
+
+\paragraph{Come si arriva all'oscillatore armonico da un equilibrio stabile.}
+Attorno a un equilibrio stabile $x_0$ (con $U'(x_0)=0$, $U''(x_0)>0$),
+ponendo $\xi=x-x_0$ e sviluppando al second'ordine:
+\[
+  U(\xi)\approx U_0+\tfrac{1}{2}k_\mathrm{eff}\xi^2\,,\quad
+  F(\xi)\approx -k_\mathrm{eff}\xi\,,\quad
+  k_\mathrm{eff}=U''(x_0)>0\,.
+\]
+L'equazione del moto $m\ddot\xi=-k_\mathrm{eff}\xi$ è quella dell'oscillatore
+armonico con $\omega_0=\sqrt{k_\mathrm{eff}/m}$.
+
+\paragraph{Equilibrio instabile.}
+Con $U''(x_0)<0$, la forza è $F=|k_\mathrm{eff}|\xi$, con soluzione
+$\xi=Ae^{\alpha t}+Be^{-\alpha t}$ ($\alpha>0$): moto esponenzialmente
+divergente, non oscillatorio.
+
+\subsection{Oscillatore smorzato: regimi e attraversamento dell'equilibrio}
+
+Con smorzamento viscoso $-b\dot x$:
+\[
+  \ddot x+2\gamma\dot x+\omega_0^2 x=0\,,\qquad\gamma=\frac{b}{2m}\,.
+\]
+L'equazione caratteristica è $\lambda^2+2\gamma\lambda+\omega_0^2=0$, con
+$\Delta=\gamma^2-\omega_0^2$.
+
+\begin{description}[leftmargin=2em]
+  \item[Sottosmorzato ($\gamma<\omega_0$, $\Delta<0$):]
+    $\lambda=-\gamma\pm i\omega_1$, $\omega_1=\sqrt{\omega_0^2-\gamma^2}$.
+    \[x(t)=e^{-\gamma t}(A\cos\omega_1 t+B\sin\omega_1 t)\,.\]
+    Moto oscillatorio con ampiezza decrescente; il sistema \emph{passa infinite
+    volte} per l'equilibrio.
+
+  \item[Criticamente smorzato ($\gamma=\omega_0$, $\Delta=0$):]
+    $\lambda=-\gamma$ radice doppia.
+    \[x(t)=(A+Bt)e^{-\gamma t}\,.\]
+    Nessuna oscillazione; il sistema raggiunge l'equilibrio nel \emph{tempo
+    minimo}. Può passare per $x=0$ \emph{al più una volta}, e solo se $A$ e
+    $B$ hanno segni opportuni.
+
+  \item[Sovrasmorzato ($\gamma>\omega_0$, $\Delta>0$):]
+    $\lambda_{1,2}=-\gamma\pm\beta$, $\beta=\sqrt{\gamma^2-\omega_0^2}>0$.
+    \[x(t)=e^{-\gamma t}(Ae^{\beta t}+Be^{-\beta t})\,.\]
+    Nessuna oscillazione; il ritorno all'equilibrio è più lento che nel caso
+    critico. Può passare per $x=0$ \emph{al più una volta} o \emph{mai},
+    secondo le condizioni iniziali.
+\end{description}
+
+\subsection{Oscillatore forzato e risonanza}
+
+Con forzante armonica:
+\[
+  \ddot x+2\gamma\dot x+\omega_0^2 x=\frac{F_0}{m}\cos(\omega t)\,.
+\]
+In regime stazionario (transitorio esaurito) la soluzione particolare è
+$x_p=D\cos(\omega t+\delta)$ con:
+\[
+  D(\omega)=\frac{F_0/m}{\sqrt{(\omega_0^2-\omega^2)^2+4\gamma^2\omega^2}}\,.
+\]
+$D(\omega)$ è massima (condizione di \textbf{risonanza}) a:
+\[
+  \omega_r=\sqrt{\omega_0^2-2\gamma^2}<\omega_0\quad
+  (\text{per }\gamma<\omega_0/\sqrt{2})\,.
+\]
+Per $\gamma\to 0$ l'ampiezza di risonanza diverge: $D\to\infty$.
+
+\subsection{Pendolo semplice}
+
+Massa puntiforme $m$ appesa a filo ideale di lunghezza $L$, angolo $\theta$
+dalla verticale.
+
+\paragraph{Via rappresentazione intrinseca.}
+L'ascissa curvilinea è $s=L\theta$. La componente tangenziale del peso è
+$F_t=-mg\sin\theta$. La componente normale è bilanciata dalla tensione.
+\[
+  m\ddot s=-mg\sin\theta \implies L\ddot\theta=-g\sin\theta
+  \implies \ddot\theta+\frac{g}{L}\sin\theta=0\,.
+\]
+
+\paragraph{Via momento angolare rispetto al fulcro $O$.}
+$\vec{L}_O=mL^2\dot\theta\,\hat{\bm{e}}_\perp$;
+$\vec{\tau}_O=-mgL\sin\theta\,\hat{\bm{e}}_\perp$.
+La seconda equazione cardinale $\dot{\vec{L}}_O=\vec{\tau}_O$ dà:
+$mL^2\ddot\theta=-mgL\sin\theta$, ovvero la stessa equazione.
+
+\paragraph{Via energia meccanica.}
+$E=\tfrac{1}{2}mL^2\dot\theta^2+mgL(1-\cos\theta)=\mathrm{const}$.
+Derivando rispetto al tempo:
+$mL^2\dot\theta\ddot\theta+mgL\sin\theta\,\dot\theta=0\implies\ddot\theta=-\tfrac{g}{L}\sin\theta$.
+
+\paragraph{Approssimazione per piccoli angoli.}
+Per $|\theta|\ll1$: $\sin\theta\approx\theta$, $\cos\theta\approx1-\theta^2/2$.
+L'equazione diventa lineare:
+\[
+  \ddot\theta+\frac{g}{L}\theta=0\,,\qquad
+  \omega_0=\sqrt{\frac{g}{L}}\,,\qquad
+  T_0=2\pi\sqrt{\frac{L}{g}}\,.
+\]
+L'approssimazione è necessaria perché l'equazione originale $\ddot\theta=-\tfrac{g}{L}\sin\theta$
+è \emph{non lineare} e non ammette soluzioni analitiche elementari; la
+linearizzazione la riconduce all'oscillatore armonico con periodo
+indipendente dall'ampiezza (isocronia di Galileo), valida per
+$|\theta|\lesssim 10^\circ$.
+
+% ===============================================================
+\section{Sistemi di punti, centro di massa ed equazioni cardinali}
+% ===============================================================
+
+\subsection{Centro di massa: definizione e proprietà cinematiche}
+
+\begin{definizione}
+Il \textbf{centro di massa} di un sistema di $N$ punti materiali è:
+\[
+  \vec{r}_\CM=\frac{1}{M}\sum_{i=1}^N m_i\vec{r}_i\,,\qquad M=\sum_i m_i\,.
+\]
+Per un corpo continuo: $\vec{r}_\CM=\frac{1}{M}\int\vec{r}\,\mathrm{d}m$.
+\end{definizione}
+
+La \textbf{quantità di moto totale} è:
+\[
+  \vec{Q}=\sum_i m_i\vec{v}_i=M\dot{\vec{r}}_\CM=M\vec{v}_\CM\,.
+\]
+Il CM si muove come se tutta la massa $M$ fosse concentrata in esso.
+
+\paragraph{Centro di massa con asse di simmetria.}
+Se il sistema ha un asse di simmetria geometrica, le contribuzioni di masse
+simmetricamente disposte rispetto all'asse si cancellano nelle direzioni
+perpendicolari, quindi il CM giace sull'asse di simmetria.
+
+\subsection{Prima equazione cardinale}
+
+\begin{teorema}[Prima equazione cardinale]
+\[
+  \dot{\vec{Q}}=M\vec{a}_\CM=\vec{F}^\mathrm{est}\,.
+\]
+\end{teorema}
+\begin{proof}
+Per il secondo principio applicato a ciascun punto:
+$m_i\vec{a}_i=\vec{F}_i^\mathrm{est}+\sum_{j\neq i}\vec{F}_{ij}$.
+Sommando su tutti i punti:
+$M\vec{a}_\CM=\vec{F}^\mathrm{est}+\sum_{i}\sum_{j\neq i}\vec{F}_{ij}$.
+Per il terzo principio di Newton $\vec{F}_{ij}+\vec{F}_{ji}=\vec{0}$, quindi
+$\sum_{i,j,i\neq j}\vec{F}_{ij}=\vec{0}$ e le \emph{forze interne si elidono}.
+\end{proof}
+Il CM si muove come un punto materiale di massa $M$ soggetto alla sola
+risultante delle forze esterne. Un sistema può ruotare senza risultante
+esterna nulla, ma il suo CM mantiene il moto rettilineo uniforme (o stazionario).
+
+\subsection{Seconda equazione cardinale}
+
+\[
+  \dot{\vec{L}}_O=\vec{M}_O^\mathrm{est}\,,
+\]
+dove $\vec{L}_O=\sum_i\vec{r}_i\times m_i\vec{v}_i$ e $\vec{M}_O^\mathrm{est}$
+è la risultante dei momenti delle forze esterne rispetto a $O$. Le forze
+interne, se centrali (terzo principio in forma forte), non contribuiscono.
+
+\subsection{Teoremi di König}
+
+Sia $\vec{v}_i=\vec{v}_\CM+\vec{v}'_i$ la scomposizione tra moto del CM e
+moto relativo al CM (per definizione $\sum_i m_i\vec{v}'_i=\vec{0}$ e
+$\sum_i m_i\vec{r}'_i=\vec{0}$).
+
+\begin{teorema}[König per l'energia cinetica]
+\[
+  T=\underbrace{\frac{1}{2}Mv_\CM^2}_{T_\CM}+\underbrace{\sum_i\frac{1}{2}m_iv_i'^2}_{T'}\,.
+\]
+\end{teorema}
+\begin{proof}
+$T=\tfrac{1}{2}\sum_i m_i|\vec{v}_\CM+\vec{v}'_i|^2
+  =\tfrac{1}{2}Mv_\CM^2
+  +\vec{v}_\CM\cdot\underbrace{\sum_i m_i\vec{v}'_i}_{=\vec{0}}
+  +T'$.
+\end{proof}
+L'energia cinetica totale si separa nel contributo del moto del CM e nel
+contributo del moto relativo al CM (energia cinetica interna).
+
+\begin{teorema}[König per il momento angolare]
+\[
+  \vec{L}_O=\underbrace{\vec{r}_\CM\times M\vec{v}_\CM}_{\text{orbitale}}
+            +\underbrace{\sum_i m_i\vec{r}'_i\times\vec{v}'_i}_{\vec{L}'=\text{spin}}\,.
+\]
+\end{teorema}
+\begin{proof}
+$\vec{L}_O=\sum_i m_i(\vec{r}_\CM+\vec{r}'_i)\times(\vec{v}_\CM+\vec{v}'_i)$.
+I termini misti $\vec{r}_\CM\times\sum m_i\vec{v}'_i$ e
+$(\sum m_i\vec{r}'_i)\times\vec{v}_\CM$ sono nulli per la proprietà del CM.
+\end{proof}
+
+% ===============================================================
+\section{Corpo rigido e rotazione attorno ad asse fisso}
+% ===============================================================
+
+\subsection{Cinematica del moto rigido rispetto ad asse fisso}
+
+\begin{definizione}
+Un \textbf{corpo rigido} è un sistema di punti per cui
+$|\vec{r}_i-\vec{r}_j|=\mathrm{const}$ per ogni coppia $(i,j)$.
+\end{definizione}
+
+Per la rotazione attorno all'asse fisso $\hat{\bm{z}}$, con velocità angolare
+$\om=\omega\ez$:
+\[
+  \vec{v}_i=\om\times\vec{r}_i\,,\qquad |\vec{v}_i|=\omega\rho_i\,,
+\]
+dove $\rho_i$ è la distanza del punto $i$ dall'asse. L'equazione del moto di
+ogni punto del corpo può essere scritta come
+$\vec{r}_i(t)=R_z(\theta(t))\,\vec{r}_i(0)$, con $\dot\theta=\omega$.
+
+\paragraph{Quando può ruotare senza forze esterne?}
+La prima equazione cardinale richiede $\vec{F}^\mathrm{est}=M\vec{a}_\CM$.
+Se il CM si trova sull'asse di rotazione, $\vec{a}_\CM=\vec{0}$ e non è
+necessaria alcuna forza esterna netta per mantenere il moto. Se il CM è
+fuori dall'asse, occorre una forza centripeta che lo mantenga in rotazione.
+
+\paragraph{Quando può ruotare senza momenti esterni?}
+La seconda equazione cardinale richiede $\vec{M}^\mathrm{est}=\dot{\vec{L}}$.
+Se l'asse è un asse principale di inerzia (vedi oltre), $\vec{L}$ è parallelo
+a $\vec{\omega}$, $\dot{\vec{L}}$ è nullo se $\omega=\mathrm{const}$, e non
+occorre alcun momento esterno.
+
+\subsection{Momento di inerzia: definizione e significato fisico}
+
+\begin{definizione}
+Il \textbf{momento di inerzia} rispetto all'asse $z$ è:
+\[
+  I=\sum_i m_i\rho_i^2=\int\rho^2\,\mathrm{d}m\,.
+\]
+\end{definizione}
+Misura la resistenza del corpo alla variazione della velocità angolare: è
+l'analogo rotazionale della massa. L'energia cinetica di rotazione è
+$T_\mathrm{rot}=\tfrac{1}{2}I\omega^2$.
+
+\subsection{Momento angolare parallelo e perpendicolare all'asse}
+
+Il momento angolare totale rispetto a un polo $P$ sull'asse di rotazione è:
+\[
+  \vec{L}_P=\sum_i m_i\vec{r}_{Pi}\times(\om\times\vec{r}_{Pi})
+           =\sum_i m_i\bigl[\om\,r_{Pi}^2-\vec{r}_{Pi}(\vec{r}_{Pi}\cdot\om)\bigr]\,.
+\]
+Scomponendo $\vec{r}_{Pi}=\vec{\rho}_i+z_i\ez$ ($\vec{\rho}_i$ perpendicolare
+all'asse):
+
+\begin{itemize}
+  \item Componente \textbf{parallela} all'asse:
+    \[L_z=\sum_i m_i\rho_i^2\,\omega=I\omega\,.\]
+  \item Componente \textbf{perpendicolare} all'asse:
+    \[
+      \vec{L}_\perp=-\omega\sum_i m_i z_i\vec{\rho}_i\,.
+    \]
+\end{itemize}
+
+\paragraph{Quando si annulla la componente perpendicolare?}
+$\vec{L}_\perp=\vec{0}$ sse $\sum_i m_i z_i\vec{\rho}_i=\vec{0}$, cioè
+quando l'asse di rotazione è un \textbf{asse principale di inerzia} (autovettore
+del tensore di inerzia $\overline{\overline{I}}$, con componenti
+$I_{\alpha\beta}=\sum_i m_i(\delta_{\alpha\beta}r_i^2-r_{i\alpha}r_{i\beta})$).
+Gli assi di simmetria geometrica sono automaticamente assi principali.
+
+Se $\vec{L}_\perp\neq\vec{0}$, il vettore $\vec{L}$ precede attorno all'asse
+e i cuscinetti devono esercitare una coppia per mantenere l'asse fisso.
+
+\paragraph{CM sull'asse di rotazione.}
+Se il CM è sull'asse, la forza centripeta necessaria a mantenerlo in orbita è
+nulla: la reazione traslazionale dei cuscinetti è nulla. Se in più l'asse è
+principale, anche la coppia dei cuscinetti è nulla: il corpo ruota senza
+alcun vincolo attivo.
+
+\subsection{Seconda equazione cardinale per la rotazione}
+
+Rispetto al CM (o a un polo fisso sull'asse):
+\[
+  \dot{L}_z=\tau_z^\mathrm{est} \implies I\dot\omega=\tau_z^\mathrm{est}\,.
+\]
+Questa equazione scalare è l'analogo rotazionale di $F=ma$.
+
+\subsection{Teorema di Poinsot}
+
+\begin{teorema}[Poinsot]
+Un corpo rigido libero (nessun momento esterno) evolve in modo che il vettore
+$\vec{L}$ rimanga costante nello spazio, mentre $\vec{\omega}$ descrive un
+cono nello spazio (\emph{cono spaziale}) e un cono nel corpo (\emph{cono del
+corpo}), che rotolano l'uno sull'altro senza scorrimento.
+\end{teorema}
+
+Poiché $\dot{\vec{L}}=\vec{0}$, il momento angolare è fisso. Tuttavia
+$\vec{\omega}$ non è in generale parallelo a $\vec{L}$ (solo per rotazione
+attorno a un asse principale): questo genera i \textbf{moti giroscopici}
+(precessione e nutazione) osservati in trottole libere e giroscopi.
+
+% ===============================================================
+\section{Puro rotolamento, attrito statico e teorema di Huygens-Steiner}
+% ===============================================================
+
+\subsection{Moto di puro rotolamento}
+
+\begin{definizione}
+Un corpo di raggio $R$ è in \textbf{puro rotolamento} su una superficie piana
+se il punto di contatto ha velocità istantanea nulla:
+\[
+  v_\CM=\omega R\,.
+\]
+\end{definizione}
+
+\paragraph{Dimostrazione che il punto di contatto $C$ è ferma.}
+$\vec{v}_C=\vec{v}_\CM+\om\times(\vec{r}_C-\vec{r}_\CM)=v_\CM\hat{\bm{x}}+\omega\ez\times(-R\hat{\bm{y}})=v_\CM\hat{\bm{x}}-\omega R\hat{\bm{x}}=\vec{0}$ (usando $v_\CM=\omega R$).
+
+\paragraph{Asse di istantanea rotazione.}
+Poiché $C$ è istantaneamente fermo, il corpo ruota istantaneamente attorno
+all'asse passante per $C$: questo è l'\textbf{asse di istantanea rotazione}.
+La velocità di un qualunque punto $P$ del corpo vale:
+$\vec{v}_P=\om\times(\vec{r}_P-\vec{r}_C)$, come per una pura rotazione
+attorno a $C$.
+
+\subsection{Energia cinetica nel puro rotolamento}
+
+Dal teorema di König:
+\[
+  T=\frac{1}{2}Mv_\CM^2+\frac{1}{2}I_\CM\omega^2
+   =\frac{1}{2}\!\left(M+\frac{I_\CM}{R^2}\right)v_\CM^2\,.
+\]
+Usando l'asse di istantanea rotazione e il teorema di Huygens-Steiner
+($I_C=I_\CM+MR^2$):
+\[
+  T=\frac{1}{2}I_C\omega^2\,.
+\]
+
+\subsection{Equazioni cardinali e ruolo dell'attrito}
+
+La prima equazione cardinale (asse $x$):
+\[
+  Ma_\CM=F^\mathrm{est}-f\,,
+\]
+la seconda rispetto al CM:
+\[
+  I_\CM\alpha=fR\,,
+\]
+con il vincolo $a_\CM=\alpha R$.
+
+L'attrito statico $f$ è \emph{essenziale} per il puro rotolamento: fornisce
+la coppia che produce l'accelerazione angolare. La componente $\phi_x$ della
+reazione vincolare (rispetto all'asse orizzontale) corrisponde proprio
+all'attrito statico. L'attrito non compie lavoro perché il punto di contatto
+è istantaneamente fermo.
+
+\paragraph{Convenienza del polo $C$.}
+Calcolando i momenti rispetto al punto di contatto $C$, l'attrito ha braccio
+nullo e scompare dall'equazione:
+$I_C\alpha=\tau_C^\text{(forze esterne senza attrito)}$.
+
+\subsection{Teorema di Huygens-Steiner}
+
+\begin{teorema}[Huygens-Steiner o degli assi paralleli]
+Dati due assi paralleli, uno passante per il CM a distanza $d$ dall'altro:
+\[
+  I_P=I_\CM+Md^2\,.
+\]
+\end{teorema}
+\begin{proof}
+Sia $\vec{\rho}'_i=\vec{\rho}_i-\vec{\rho}_\CM$ la proiezione perpendicolare
+all'asse di ogni punto nel sistema del CM, e $\vec{d}=\vec{\rho}_\CM-\vec{\rho}_P$.
+\begin{align*}
+  I_P&=\sum_i m_i|\vec{\rho}_i-\vec{\rho}_P|^2
+      =\sum_i m_i|\vec{\rho}'_i+\vec{d}|^2\\
+     &=\sum_i m_i\rho_i'^2
+       +2\vec{d}\cdot\underbrace{\sum_i m_i\vec{\rho}'_i}_{=\vec{0}}
+       +Md^2
+      =I_\CM+Md^2\,.
+\end{align*}
+Il termine lineare si annulla perché $\sum_i m_i\vec{\rho}'_i=\vec{0}$ per
+definizione del CM.
+\end{proof}
+Conseguenza: fra tutti gli assi paralleli a una data direzione, $I$ è minima
+per l'asse passante per il CM.
+
+% ===============================================================
+\section{Gravitazione, campi centrali e leggi di Keplero}
+% ===============================================================
+
+\subsection{Forza gravitazionale come forza centrale conservativa}
+
+\[
+  \vec{F}=-\frac{GMm}{r^2}\rhat\,,
+\]
+è una forza centrale a simmetria sferica, quindi conservativa (cfr.\
+Sez.~\ref{sec:forze}) con potenziale:
+\[
+  U(r)=-\frac{GMm}{r}\,.
+\]
+
+\subsection{Conservazione del momento angolare nei campi centrali}
+
+Per qualunque forza centrale $\vec{F}=f(r)\rhat$:
+\[
+  \dot{\vec{L}}=\vec{r}\times\vec{F}=\vec{r}\times f(r)\rhat=\vec{0}\implies\vec{L}=\mathrm{const}\,.
+\]
+Il moto è quindi confinato nel piano perpendicolare a $\vec{L}$.
+
+\subsection{Energia meccanica e potenziale efficace}
+
+In coordinate polari nel piano orbitale:
+\[
+  E=\frac{1}{2}m\dot r^2+\frac{L^2}{2mr^2}-\frac{GMm}{r}
+   =\frac{1}{2}m\dot r^2+U_\mathrm{eff}(r)\,.
+\]
+Il \textbf{potenziale efficace} $U_\mathrm{eff}=\frac{L^2}{2mr^2}-\frac{GMm}{r}$
+ha un minimo che corrisponde all'orbita circolare; orbite legate ($E<0$)
+sono ellittiche.
+
+\subsection{Leggi di Keplero}
+
+\begin{enumerate}
+  \item \textbf{Prima legge (orbite ellittiche):} Ogni pianeta orbita su
+    un'ellisse con il Sole in uno dei fuochi. Segue dall'integrazione
+    dell'equazione del moto con $F\propto1/r^2$.
+
+  \item \textbf{Seconda legge (legge delle aree):} Il raggio vettore
+    pianeta-Sole spazza aree uguali in tempi uguali:
+    \[
+      \frac{\mathrm{d}A}{\mathrm{d}t}=\frac{L}{2m}=\mathrm{const}\,.
+    \]
+    È la diretta conseguenza della conservazione del momento angolare:
+    $\mathrm{d}A=\tfrac{1}{2}|r\,\mathrm{d}\varphi|\cdot r=\tfrac{1}{2}r^2\,\mathrm{d}\varphi$
+    e $L=mr^2\dot\varphi$.
+
+  \item \textbf{Terza legge (periodi):} Il quadrato del periodo orbitale è
+    proporzionale al cubo del semiasse maggiore:
+    \[
+      T^2=\frac{4\pi^2}{GM}\,a^3\,.
+    \]
+    Si ottiene integrando la seconda legge sull'area dell'ellisse
+    $A=\pi ab$, usando le relazioni tra $a,b,L,E$.
+\end{enumerate}
+
+% ===============================================================
+\section{Fluidi}
+% ===============================================================
+
+\subsection{Grandezze fondamentali dei fluidi}
+
+Un fluido è descritto da: \textbf{densità} $\rho(\vec{r},t)$ [kg/m$^3$],
+\textbf{pressione} $p(\vec{r},t)$ [Pa] (scalare, isotropa negli stati
+d'equilibrio), \textbf{campo di velocità} $\vec{v}(\vec{r},t)$.
+
+\subsection{Equazione della statica dei fluidi}
+
+All'equilibrio la forza netta su ogni elemento di volume è nulla:
+\[
+  \nabla p=\rho\,\vec{g}\,.
+\]
+Per un fluido incompressibile ($\rho=\mathrm{const}$) con $\vec{g}=-g\hat{\bm{z}}$:
+\[
+  \frac{\mathrm{d}p}{\mathrm{d}z}=-\rho g\,.
+\]
+
+\subsection{Legge di Stevino e sua dimostrazione}
+
+\begin{teorema}[Stevino]
+In un fluido incompressibile in equilibrio, la differenza di pressione tra due
+punti separati verticalmente da $h$ è:
+\[
+  \Delta p=\rho g h\,.
+\]
+\end{teorema}
+\begin{proof}
+Si isola un cilindretto di fluido di sezione $A$ e spessore $\mathrm{d}z$ a
+quota $z$. Le forze che agiscono su di esso sono: pressione dal basso
+($p(z)\,A$, verso l'alto), pressione dall'alto ($-p(z+\mathrm{d}z)\,A$),
+peso ($-\rho g A\,\mathrm{d}z$). Equilibrio:
+\[
+  p(z)A-p(z+\mathrm{d}z)A-\rho g A\,\mathrm{d}z=0
+  \implies \mathrm{d}p=-\rho g\,\mathrm{d}z\,.
+\]
+Integrando tra $z_1$ e $z_2=z_1+h$:
+$p(z_1)-p(z_2)=\rho g h$, cioè $\Delta p=\rho g h$.
+\end{proof}
+
+\subsection{Legge di continuità}
+
+Esprime la conservazione della massa:
+\[
+  \frac{\partial\rho}{\partial t}+\nabla\cdot(\rho\vec{v})=0\,.
+\]
+Per fluido incompressibile in regime stazionario ($\partial\rho/\partial t=0$,
+$\rho=\mathrm{const}$): $\nabla\cdot\vec{v}=0$. Per un condotto con sezione
+$A(x)$ variabile:
+\[
+  A_1 v_1=A_2 v_2=\mathrm{const}\,.
+\]
+La portata volumetrica $Q=Av$ si conserva: dove la sezione si restringe, la
+velocità aumenta.
+
+\subsection{Equazione di Bernoulli}
+
+\begin{teorema}[Bernoulli]
+Per un fluido ideale (incomprimibile, non viscoso), in moto stazionario, lungo
+una linea di flusso:
+\[
+  p+\frac{1}{2}\rho v^2+\rho gz=\mathrm{const}\,.
+\]
+\end{teorema}
+\textbf{Significato fisico:} i tre termini rappresentano rispettivamente
+l'energia di pressione, l'energia cinetica e l'energia potenziale per unità
+di volume. L'equazione è la conservazione dell'energia per unità di volume
+lungo una streamline.
+
+\textbf{Condizioni di validità:}
+fluido incomprimibile, non viscoso (ideale), moto stazionario, applicata
+lungo la stessa linea di flusso (non valida tra streamline diverse per fluidi
+rotazionali).
+
+% ===============================================================
+\section{Onde e principio di sovrapposizione}
+% ===============================================================
+
+\subsection{Equazione di D'Alembert}
+
+L'\textbf{equazione delle onde} in una dimensione è:
+\[
+  \frac{\partial^2 u}{\partial x^2}=\frac{1}{v^2}\frac{\partial^2 u}{\partial t^2}\,,
+\]
+dove $v$ è la velocità di propagazione del disturbo. È un'equazione alle
+derivate parziali del secondo ordine, lineare e iperbolica.
+
+\paragraph{Soluzione generale.}
+La soluzione generale (D'Alembert, 1747) è:
+\[
+  u(x,t)=f(x-vt)+g(x+vt)\,,
+\]
+somma di un'onda progressiva $f(x-vt)$ (viaggia nella direzione $+x$) e di
+un'onda regressiva $g(x+vt)$ (viaggia nella direzione $-x$), con $f$ e $g$
+funzioni arbitrarie determinate dalle condizioni iniziali (profilo e velocità
+del disturbo a $t=0$).
+
+\subsection{Onde trasversali su una corda tesa}
+
+Sia $\mathcal{T}$ la tensione e $\mu$ la densità lineare (massa/lunghezza)
+della corda. Per un elemento di corda di lunghezza $\mathrm{d}x$, le
+componenti trasversali delle tensioni alle due estremità danno una forza netta:
+$\mathrm{d}F_y=\mathcal{T}\frac{\partial^2 y}{\partial x^2}\mathrm{d}x$.
+Per il secondo principio: $\mu\,\mathrm{d}x\,\frac{\partial^2 y}{\partial t^2}=\mathcal{T}\frac{\partial^2 y}{\partial x^2}\mathrm{d}x$, cioè:
+\[
+  \frac{\partial^2 y}{\partial x^2}=\frac{\mu}{\mathcal{T}}\frac{\partial^2 y}{\partial t^2}\,,
+\]
+che è l'equazione di D'Alembert con \textbf{velocità di propagazione}:
+\[
+  v=\sqrt{\frac{\mathcal{T}}{\mu}}\,.
+\]
+Aumentando la tensione o riducendo la densità lineare, l'onda si propaga più
+rapidamente.
+
+\subsection{Principio di sovrapposizione}
+
+\begin{teorema}[Sovrapposizione]
+Se $u_1$ e $u_2$ sono soluzioni dell'equazione di D'Alembert, allora
+$u=\alpha u_1+\beta u_2$ è anch'essa una soluzione, per ogni
+$\alpha,\beta\in\mathbb{R}$.
+\end{teorema}
+\begin{proof}
+L'equazione di D'Alembert è \emph{lineare omogenea}. Definendo l'operatore
+$\mathcal{L}=\frac{\partial^2}{\partial x^2}-\frac{1}{v^2}\frac{\partial^2}{\partial t^2}$,
+la proprietà di linearità dà:
+$\mathcal{L}(\alpha u_1+\beta u_2)=\alpha\mathcal{L}u_1+\beta\mathcal{L}u_2=0$.
+\end{proof}
+\textbf{Significato fisico:} le onde si sommano algebricamente quando si
+incontrano (interferenza costruttiva o distruttiva), continuano indisturbate
+dopo l'incontro e non interagiscono tra loro. Il principio vale solo in regime
+lineare: per onde di grande ampiezza (regime non lineare) la sovrapposizione
+non è più valida e compaiono fenomeni come la formazione di shock.
+
+\end{document}

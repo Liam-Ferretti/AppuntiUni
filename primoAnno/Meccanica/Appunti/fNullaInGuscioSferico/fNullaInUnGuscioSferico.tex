@@ -1,0 +1,184 @@
+\documentclass[11pt]{article}
+
+\usepackage{bm}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{geometry}
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+\usepackage{caption}
+\captionsetup{justification=centering}
+\usepackage{float}
+\usepackage[hidelinks]{hyperref}
+\usepackage{subcaption}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{yhmath}
+\usepackage{derivative}
+\usepackage{physics}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teorema}
+\begin{document}
+
+\title{Forza gravitazionale nulla in un guscio sferico omogeneo}
+\author{Liam Ferretti}
+\maketitle
+
+Sia $p$ un generico punto interno ad un guscio sferico omogeneo, allora la forza gravitazionale risultante è nulla.
+
+\begin{proof}
+    Sia $\vec{q}$ un punto appartenente alla superficie di un guscio sferico omogeneo sottile, sia $\vec{p}$ un punto interno al guscio, allora è possibile senza perdere di generalità orientare una terna destrorsa di assi cartesiani in modo tale che il punto $\vec{p}$ giaccia sul semi asse $z$ positivo, segue che $\vec{p}$ e $\vec{q}$ sono definiti come segue:
+    \begin{equation}
+        \vec{p} := (0, 0, z_0), \quad \quad \vec{q} := (R\sin\theta\cos\varphi, R\sin\theta\sin\varphi, R\cos\theta)
+    \end{equation}
+    nella quale:
+    \begin{equation}
+        0 \leq z_0 < R, \quad \quad \theta \in [0, \pi], \quad \quad \varphi \in [0, 2\pi]
+    \end{equation}
+    Allora è possibile definire z come la distanza tra p e q:
+    \begin{equation}
+        \vec{z} = \vec{p} - \vec{q} = (- R\sin\theta\cos\varphi, - R\sin\theta\sin\varphi, z_0 - R\cos\theta)
+    \end{equation}
+    \begin{equation}
+        \implies |z| = \sqrt{R^2 + z_0^2 - 2Rz_0\cos\theta} 
+    \end{equation}
+    Sapendo che:
+    \begin{equation}
+        dA = R^2\sin\theta d\theta d\varphi \implies dM = \sigma dA = \sigma R^2 \sin\theta d\theta d\varphi
+    \end{equation}
+    Allora vale che:
+    \begin{equation}
+        dF = G\frac{mdM}{|z|^3}\vec{z}
+    \end{equation}
+    allora è possibile studiare le componenti $x, y, z$ nel seguente modo:
+    \begin{equation}
+        \begin{cases}
+            \displaystyle dF_x = \frac{-Gm\sigma R^3\sin^2\theta\cos\varphi}{(R^2 + z_0^2 - 2Rz_0\cos\theta)^{3/2}}d\theta d\varphi \\[1.2em]
+            \displaystyle dF_y = \frac{-Gm\sigma R^3\sin^2\theta\sin\varphi}{(R^2 + z_0^2 - 2Rz_0\cos\theta)^{3/2}}d\theta d\varphi \\[1.2em]
+            \displaystyle dF_z = \frac{Gm\sigma R^2 (z_0 - R\cos\theta)\sin\theta}{(R^2 + z_0^2 - 2Rz_0\cos\theta)^{3/2}}d\theta d\varphi
+        \end{cases}
+    \end{equation}
+    Allora integrando la componente x della forza, segue che:
+    \begin{align}
+        F_x & = \int dF_x \\
+            & = \int_{0}^{\pi}\int_{0}^{2\pi} \frac{-Gm\sigma R^3\sin^2\theta\cos\varphi}{(R^2 + z_0^2 - 2Rz_0\cos\theta)^{3/2}}d\theta d\varphi \\
+            & = -Gm\sigma R^3 \int_{0}^{\pi} \frac{\sin^2\theta}{(R^2 + z_0^2 - 2Rz_0\cos\theta)^{3/2}}d\theta \int_{0}^{2\pi} \cos\varphi d\varphi \\
+            & = -Gm\sigma R^3 \int_{0}^{\pi} \frac{\sin^2\theta}{(R^2 + z_0^2 - 2Rz_0\cos\theta)^{3/2}}d\theta \cdot \left[\eval{\sin\varphi}_{0}^{2\pi}\right] \\
+            & = -Gm\sigma R^3 \int_{0}^{\pi} \frac{\sin^2\theta}{(R^2 + z_0^2 - 2Rz_0\cos\theta)^{3/2}}d\theta \cdot 0 \\
+            & = 0
+    \end{align}
+    Analogamente integrando la componente lungo y segue che:
+    \begin{align}
+        F_y & = \int dF_y \\
+            & = \int_{0}^{\pi}\int_{0}^{2\pi} \frac{-Gm\sigma R^3\sin^2\theta\sin\varphi}{(R^2 + z_0^2 - 2Rz_0\cos\theta)^{3/2}}d\theta d\varphi \\
+            & = -Gm\sigma R^3 \int_{0}^{\pi} \frac{\sin^2\theta}{(R^2 + z_0^2 - 2Rz_0\cos\theta)^{3/2}}d\theta \int_{0}^{2\pi} \sin\varphi d\varphi \\
+            & = -Gm\sigma R^3 \int_{0}^{\pi} \frac{\sin^2\theta}{(R^2 + z_0^2 - 2Rz_0\cos\theta)^{3/2}}d\theta \cdot \left[\eval{-\cos\varphi}_{0}^{2\pi}\right] \\
+            & = -Gm\sigma R^3 \int_{0}^{\pi} \frac{\sin^2\theta}{(R^2 + z_0^2 - 2Rz_0\cos\theta)^{3/2}}d\theta \cdot 0 \\
+            & = 0
+    \end{align}
+
+    Integrando invece la componente $z$, si ottiene:
+    \begin{align}
+        F_z & = \int dF_z \\
+            & = \int_{0}^{\pi} \int_{0}^{2\pi} \frac{Gm\sigma R^2 (z_0 - R\cos\theta)\sin\theta}{(R^2 + z_0^2 - 2Rz_0\cos\theta)^{3/2}}d\theta d\varphi \\
+            & = 2\pi Gm\sigma R^2 \cdot \int_{0}^{\pi} \frac{(z_0 - R\cos\theta)\sin\theta}{(R^2 + z_0^2 - 2Rz_0\cos\theta)^{3/2}}d\theta
+    \end{align}
+
+    Imponendo la prima sostituzione:
+    \begin{equation}
+        u = \cos\theta \implies du = -\sin\theta d\theta
+    \end{equation}
+    I vecchi estremi di integrazione cambiano come segue:
+    \begin{align}
+        \theta = 0 & \implies u = \cos(0) = 1 \\
+        \theta = \pi & \implies u = \cos(\pi) = -1 
+    \end{align}
+
+    Sostituendo nell'integrale si ha:
+    \begin{align}
+        F_z & = - 2\pi Gm\sigma R^2 \cdot \int_{1}^{-1} \frac{z_0 - Ru}{(R^2 + z_0^2 - 2Rz_0 u)^{3/2}}du \\
+            & = 2\pi Gm\sigma R^2 \cdot \int_{-1}^{1} \frac{z_0 - Ru}{(R^2 + z_0^2 - 2Rz_0 u)^{3/2}}du 
+    \end{align}
+
+    Per calcolare esplicitamente la primitiva dell'integrale indefinito:
+    \begin{equation}
+        J = \int \frac{z_0 - Ru}{(R^2 + z_0^2 - 2Rz_0 u)^{3/2}}du
+    \end{equation}
+    Imponendo t come segue:
+    \begin{equation}
+        t = R^2 + z_0^2 - 2Rz_0 u \implies dt = -2Rz_0 \, du \implies du = -\frac{dt}{2Rz_0}
+    \end{equation}
+    segue che:
+    \begin{equation}
+        2Rz_0 u = R^2 + z_0^2 - t \implies Ru = \frac{R^2 + z_0^2 - t}{2z_0}
+    \end{equation}
+    Il numeratore diventa quindi:
+    \begin{equation}
+        z_0 - Ru = z_0 - \frac{R^2 + z_0^2 - t}{2z_0} = \frac{2z_0^2 - R^2 - z_0^2 + t}{2z_0} = \frac{z_0^2 - R^2 + t}{2z_0}
+    \end{equation}
+
+    Riscriviamo l'integrale $J$ in funzione di $t$ separando i termini:
+    \begin{align}
+        J & = \int \frac{\frac{z_0^2 - R^2 + t}{2z_0}}{t^{3/2}} \left( -\frac{dt}{2Rz_0} \right) \\
+        & = -\frac{1}{4Rz_0^2} \int \left( (z_0^2 - R^2)t^{-3/2} + t^{-1/2} \right) dt
+    \end{align}
+
+    Integrando singolarmente le potenze di $t$:
+    \begin{align}
+        J & = -\frac{1}{4Rz_0^2} \left[ (z_0^2 - R^2) \left( \frac{t^{-1/2}}{-1/2} \right) + \frac{t^{1/2}}{1/2} \right] \\
+        & = -\frac{1}{4Rz_0^2} \left[ -\frac{2(z_0^2 - R^2)}{\sqrt{t}} + 2\sqrt{t} \right] \\
+        & = \frac{z_0^2 - R^2}{2Rz_0^2\sqrt{t}} - \frac{\sqrt{t}}{2Rz_0^2}
+    \end{align}
+
+    Riconducendo tutto ad un unico denominatore comune $2Rz_0^2\sqrt{t}$:
+    \begin{equation}
+        J = \frac{(z_0^2 - R^2) - t}{2Rz_0^2\sqrt{t}}
+    \end{equation}
+
+    Ripristiniamo la variabile $u$ sostituendo nuovamente $t = R^2 + z_0^2 - 2Rz_0 u$ al numeratore:
+    \begin{align}
+        (z_0^2 - R^2) - (R^2 + z_0^2 - 2Rz_0 u) & = z_0^2 - R^2 - R^2 - z_0^2 + 2Rz_0 u \\
+                                            & = 2Rz_0 u - 2R^2 = 2R(z_0 u - R)
+    \end{align}
+
+    da cui segue che:
+    \begin{equation}
+        J = \frac{2R(z_0 u - R)}{2Rz_0^2 \sqrt{R^2 + z_0^2 - 2Rz_0 u}} = \frac{z_0 u - R}{z_0^2 \sqrt{R^2 + z_0^2 - 2Rz_0 u}}
+    \end{equation}
+
+    Tornando all'integrale definito $F_z$:
+    \begin{equation}
+        F_z = 2\pi Gm\sigma R^2 \cdot \left[ \frac{z_0 u - R}{z_0^2 \sqrt{R^2 + z_0^2 - 2Rz_0 u}} \right]_{-1}^{1}
+    \end{equation}
+
+    Raccogliendo la costante $z_0^2$ a denominatore e sostituendo i limiti superiore e inferiore:
+    \begin{align}
+        F_z & = \frac{2\pi Gm\sigma R^2}{z_0^2} \cdot \left[ \frac{z_0(1) - R}{\sqrt{R^2 + z_0^2 - 2Rz_0(1)}} - \frac{z_0(-1) - R}{\sqrt{R^2 + z_0^2 - 2Rz_0(-1)}} \right] \\
+         & = \frac{2\pi Gm\sigma R^2}{z_0^2} \cdot \left[ \frac{z_0 - R}{\sqrt{(z_0 - R)^2}} - \frac{-z_0 - R}{\sqrt{(z_0 + R)^2}} \right]
+    \end{align}
+    \begin{align}
+        \sqrt{(z_0 - R)^2} = |z_0 - R| & = R - z_0 \\
+        \sqrt{(z_0 + R)^2} = |z_0 + R| & = z_0 + R
+    \end{align}
+
+    \begin{align}
+        F_z & = \frac{2\pi Gm\sigma R^2}{z_0^2} \cdot \left[ \frac{z_0 - R}{R - z_0} - \frac{-(z_0 + R)}{z_0 + R} \right] \\
+            & = \frac{2\pi Gm\sigma R^2}{z_0^2} \cdot \left[ -1 - (-1) \right] \\
+            & = \frac{2\pi Gm\sigma R^2}{z_0^2} \cdot 0 \\
+            & = 0
+    \end{align}
+
+    Da cui segue che:
+    \begin{equation}
+        F = (0, 0, 0)
+    \end{equation}
+    Nel caso in cui $z_0 = 0$ lo sviluppo per $F_z$ non è più valido poichè si dividerebbe per 0, ma tale caso si risolve banalemente per simmetria.
+
+    In conclusione, la forza totale agente sul punto interno al guscio sferico è nulla.
+\end{proof}
+
+\end{document}

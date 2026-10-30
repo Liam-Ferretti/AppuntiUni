@@ -1,0 +1,56 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage{bm}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{geometry}
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+\usepackage{caption}
+\captionsetup{justification=centering}
+\usepackage{float}
+\usepackage[hidelinks]{hyperref}
+\usepackage{subcaption}
+\usepackage{verbatim}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{enumitem}
+\usepackage{yhmath}
+
+\title{Calcolo del centro di massa di un semidisco}
+\author{Liam Ferretti}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+
+Assumendo una densità superficiale costante $\sigma$, la coordinata del centro di massa lungo l'asse di simmetria è data da:
+\begin{equation}
+    y_c = \frac{\int_{A} y \, dm}{M} = \frac{\sigma \int_{A} y \, dA}{\sigma A}
+\end{equation}
+Considerando come elemento infinitesimo $dA$ una semicorona circolare di raggio $r$ e spessore $dr$:
+\begin{align}
+    dA & = \frac{1}{2}\pi(r + dr)^2 - \frac{1}{2}\pi r^2 \\
+    & = \pi rdr + \frac{1}{2}\pi dr^2
+\end{align}
+Trascurando il termine di ordine superiore, si ottiene:
+\begin{equation}
+    dA = \pi rdr
+\end{equation}
+Assumo (forse erroneamente) che per l'elemento infinitesimo $dA$, la coordinata sia pari al raggio $r$ della semicorona.
+\begin{align}
+    y_c & = \frac{\sigma \int_{0}^{R} \pi r^2dr}{\sigma \int_{0}^{R} \pi rdr} \\
+    & = \frac{\sigma \pi}{\sigma \pi} \frac{R^3/3}{R^2/2} \\
+    & = \frac{2}{3}R
+\end{align}
+
+Credo che il mio errore possa originare nella scelta di y, in quanto la vera posizione del centro di massa è si proporzionale al raggio ma c'è un fattore moltiplicativo equivalente a $\frac{2}{\pi}$, poichè dimensionalmente il risultato è coerente con una lunghezza, ma non è il valore noto.
+
+Nello specifico credo che il mio errore risieda nel considerare l'intero contributo dell'elemento $dA$ concentrato a distanza $r$, senza pesare la distribuzione della massa lungo la semicirconferenza.
+
+\end{document}

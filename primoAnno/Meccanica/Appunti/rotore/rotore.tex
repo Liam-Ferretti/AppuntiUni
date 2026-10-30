@@ -1,0 +1,46 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage{amsmath}
+
+\begin{document}
+ 
+\section*{Calcolo del Rotore in Coordinate Curvilinee Ortogonali}
+
+\subsection*{1. Definizione delle coordinate}
+Identifichiamo le tre variabili indipendenti del sistema di coordinate ortogonali:
+\begin{equation*}
+    (q_1, q_2, q_3)
+\end{equation*}
+
+\subsection*{2. Calcolo dei fattori di scala}
+Per ogni coordinata, definiamo il fattore di scala (o coefficiente di Lamé) $h_i$, che rappresenta il rapporto tra lo spostamento fisico infinitesimo $ds_i$ e la variazione della coordinata $dq_i$:
+\begin{equation*}
+    h_i = \frac{ds_i}{dq_i} \quad \text{per } i=1,2,3
+\end{equation*}
+
+\subsection*{3. Scomposizione del campo vettoriale}
+Esprimiamo il campo vettoriale $\vec{F}$ lungo i versori ortogonali normalizzati $(\hat{u}_1, \hat{u}_2, \hat{u}_3)$:
+\begin{equation*}
+    \vec{F} = F_1(q_1, q_2, q_3) \hat{u}_1 + F_2(q_1, q_2, q_3) \hat{u}_2 + F_3(q_1, q_2, q_3) \hat{u}_3
+\end{equation*}
+
+\subsection*{4. Costruzione della matrice del rotore}
+Impostiamo l'equazione del rotore utilizzando il fattore di normalizzazione esterno (il reciproco del determinante dello Jacobiano) e la matrice formale:
+\begin{equation*}
+    \vec{\nabla} \times \vec{F} = \frac{1}{h_1 h_2 h_3} 
+    \begin{vmatrix} 
+        h_1 \hat{u}_1 & h_2 \hat{u}_2 & h_3 \hat{u}_3 \\ 
+        \frac{\partial}{\partial q_1} & \frac{\partial}{\partial q_2} & \frac{\partial}{\partial q_3} \\ 
+        h_1 F_1 & h_2 F_2 & h_3 F_3 
+    \end{vmatrix}
+\end{equation*}
+
+\subsection*{5. Sviluppo del determinante}
+Risolvendo il determinante lungo la prima riga e semplificando i fattori esterni con quelli dei versori estratti, otteniamo l'espressione analitica finale per il rotore:
+\begin{align*}
+    \vec{\nabla} \times \vec{F} = 
+    &\frac{1}{h_2 h_3} \left( \frac{\partial (h_3 F_3)}{\partial q_2} - \frac{\partial (h_2 F_2)}{\partial q_3} \right) \hat{u}_1 \\
+    + &\frac{1}{h_1 h_3} \left( \frac{\partial (h_1 F_1)}{\partial q_3} - \frac{\partial (h_3 F_3)}{\partial q_1} \right) \hat{u}_2 \\
+    + &\frac{1}{h_1 h_2} \left( \frac{\partial (h_2 F_2)}{\partial q_1} - \frac{\partial (h_1 F_1)}{\partial q_2} \right) \hat{u}_3
+\end{align*}
+
+\end{document}
