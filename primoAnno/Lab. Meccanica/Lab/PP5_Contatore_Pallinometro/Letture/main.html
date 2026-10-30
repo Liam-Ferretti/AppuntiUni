@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pallinometro (Macchina di Galton) con Fisica Smorzata</title>
+    <style>
+        :root {
+            --bg-color: #121217;
+            --panel-bg: #1e1e26;
+            --accent-blue: #3498db;
+            --accent-red: #e74c3c;
+            --accent-orange: #f39c12;
+            --text-main: #e0e6ed;
+            --border-color: #2e2e3a;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: var(--bg-color); color: var(--text-main); display: flex; flex-direction: column; align-items: center; padding: 20px; min-height: 100vh; }
+
+        h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-blue); }
+        .subtitle { font-size: 0.9rem; color: #a1a1aa; margin-bottom: 25px; max-width: 600px; text-align: center; }
+
+        .container { display: flex; gap: 20px; width: 100%; max-width: 1100px; }
+        
+        .controls { flex: 1; display: flex; flex-direction: column; gap: 20px; min-width: 300px; }
+        .panel { background-color: var(--panel-bg); padding: 18px; border-radius: 10px; border: 1px solid var(--border-color); }
+        .panel h3 { font-size: 0.95rem; text-transform: uppercase; margin-bottom: 15px; border-bottom: 2px solid var(--border-color); padding-bottom: 8px; color: #f8fafc; }
+
+        .slider-group { margin-bottom: 12px; }
+        label { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 6px; color: #cbd5e1; }
+        label span { font-family: monospace; font-weight: bold; background: #000; padding: 2px 6px; border-radius: 4px; }
+        input[type="range"] { width: 100%; cursor: pointer; accent-color: var(--accent-blue); }
+
+        .physics-note { background-color: rgba(243, 156, 18, 0.1); border-left: 3px solid var(--accent-orange); color: #fbd38d; padding: 10px 14px; font-size: 0.8rem; line-height: 1.4; border-radius: 4px; }
+
+        button { background-color: var(--accent-red); color: white; border: none; padding: 12px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: background 0.15s; text-transform: uppercase; font-size: 0.85rem; }
+        button:hover { background-color: #c0392b; }
+
+        .canvas-area { flex: 2; display: flex; justify-content: center; position: relative; }
+        .canvas-frame { background-color: #000000; border: 4px solid var(--panel-bg); border-radius: 10px; box-shadow: 0 15px 30px rgba(0,0,0,0.5); overflow: hidden; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+
+    <h1>Pallinometro con Fisica Smorzata</h1>
+    <p class="subtitle">Analisi cinetica della rottura della simmetria con elasticità ridotta e alto attrito.</p>
+
+    <div class="container">
+        <div class="controls">
+            <div class="panel">
+                <h3>Parametri di Configurazione</h3>
+                <div class="slider-group">
+                    <label>Altezza Frontale h₁ (Pendenza): <span id="h1Val">60 mm</span></label>
+                    <input type="range" id="h1Range" min="20" max="120" value="60">
+                </div>
+                <div class="slider-group">
+                    <label>Inclinazione Laterale h₂ (Sx ↑): <span id="h2Val">10 mm</span></label>
+                    <input type="range" id="h2Range" min="-40" max="40" value="10">
+                </div>
+            </div>
+
+            <div class="panel">
+                <h3>Analisi Fisica (Stimata)</h3>
+                <p><strong>Angolo di Deviazione:</strong> <span id="angleCalc">0.0°</span></p>
+                <p><strong>Probabilità Bivio ($p_{dx}$):</strong> <span id="probCalc">50.0%</span></p>
+                <div class="physics-note" style="margin-top: 15px;">
+                    <strong>Fisica Modificata:</strong> L'elasticità dei pioli è stata ridotta (basso rimbalzo) e l'attrito superficiale aumentato. Le palline si fermano rapidamente all'impatto.
+                </div>
+            </div>
+
+            <button id="resetBtn">Svuota Pallinometro</button>
+        </div>
+
+        <div class="canvas-area">
+            <div class="canvas-frame">
+                <canvas id="galtonCanvas" width="560" height="650"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('galtonCanvas');
+        const ctx = canvas.getContext('2d');
+        const resetBtn = document.getElementById('resetBtn');
+
+        // Configurazione Fisica - *** MODIFICATA PER RIDURRE I RIMBALZI ***
+        let h1, h2;
+        const e_restitution = 0.15; // Coefficiente di restituzione molto basso (rimbalzo smorzato)
+        const high_friction = 0.95; // Frizione molto alta (perdita di velocità orizzontale)
+        const f_interaction_k = 0.55; // Costante geometrica di deriva laterale
+
+        const ballRadius = 3.6;
+        const pegRadius = 3.2;
+        let numRows = 11;
+        let numBins = numRows + 2;
+        let binWidth = canvas.width / numBins;
+
+        let pegs = [];
+        let bins = [];
+        let balls = [];
+
+        // UI Updates
+        function getSliders() {
+            h1 = parseInt(document.getElementById('h1Range').value);
+            h2 = parseInt(document.getElementById('h2Range').value);
+            document.getElementById('h1Val').innerText = `${h1} mm`;
+            document.getElementById('h2Val').innerText = `${h2} mm`;
+
+            // Calcolo teorico
+            let angle = Math.atan2(h2, h1);
+            let probRight = Math.max(0, Math.min(1, 0.5 + f_interaction_k * (h2/h1)));
+            
+            document.getElementById('angleCalc').innerText = `${(angle * 180 / Math.PI).toFixed(1)}°`;
+            document.getElementById('probCalc').innerText = `${(probRight * 100).toFixed(1)}%`;
+        }
+
+        // Setup Iniziale
+        function initSystem() {
+            pegs = []; bins = []; balls = [];
+            const startY = 90;
+            const rowHeight = 35;
+            const centerX = canvas.width / 2;
+
+            // Inizializzazione Pioli
+            for (let r = 0; r < numRows; r++) {
+                let nPegs = r + 1;
+                let rowW = (nPegs - 1) * binWidth;
+                let rowStartX = centerX - rowW / 2;
+                for (let p = 0; p < nPegs; p++) {
+                    pegs.push({ x: rowStartX + p * binWidth, y: startY + r * rowHeight });
+                }
+            }
+
+            // Inizializzazione Bin
+            for (let i = 0; i < numBins; i++) {
+                bins.push({ x: i * binWidth, width: binWidth, count: 0, topY: canvas.height - 10 });
+            }
+        }
+
+        // Spawn Palline
+        function spawnBall() {
+            if (balls.length > 500) return;
+            balls.push({
+                x: canvas.width / 2 + (Math.random() - 0.5) * 6,
+                y: 30,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: 0,
+                stopped: false,
+                color: `hsl(${210 + Math.random() * 30}, 80%, 65%)`
+            });
+        }
+
+        // Loop di Simulazione Cinetica
+        function updatePhysics() {
+            getSliders();
+            
+            // Accelerazioni basate sulla pendenza
+            let ay = (h1 / 80) * 0.16;
+            let ax = (h2 / 40) * 0.06;
+
+            for (let i = 0; i < balls.length; i++) {
+                let b = balls[i];
+                if (b.stopped) continue;
+
+                b.vy += ay; b.vx += ax;
+                
+                // *** APPLICAZIONE FRIZIONE ALTA ***
+                b.vx *= high_friction;
+                b.vy *= 0.995; // Leggera frizione verticale
+
+                b.x += b.vx; b.y += b.vy;
+
+                // Urto Pioli
+                for (let p of pegs) {
+                    let dx = b.x - p.x; let dy = b.y - p.y;
+                    let dist = Math.sqrt(dx*dx + dy*dy);
+                    let minDist = ballRadius + pegRadius;
+
+                    if (dist < minDist) {
+                        // Risoluzione Collisione con forte smorzamento (Restituzione e Frizione)
+                        let nx = dx / dist; let ny = dy / dist;
+                        let tx = -ny; let ty = nx; // Vettore Tangente
+
+                        // Riposizionamento
+                        b.x = p.x + nx * minDist; b.y = p.y + ny * minDist;
+
+                        // Componenti velocità (Normale e Tangenziale)
+                        let v_norm = b.vx * nx + b.vy * ny;
+                        let v_tan = b.vx * tx + b.vy * ty;
+
+                        // *** MODIFICA CORE: RIMBALZO SMORZATO ***
+                        // La velocità Normale viene ridotta drasticamente dall'elasticità bassa (e_restitution)
+                        // La velocità Tangenziale viene ridotta dall'attrito alto (high_friction)
+                        b.vx = -(v_norm * e_restitution) * nx + (v_tan * high_friction) * tx;
+                        b.vy = -(v_norm * e_restitution) * ny + (v_tan * high_friction) * ty;
+
+                        // Riduzione Caos stocastico (per una fisica meno frenetica)
+                        b.vx += (Math.random() - 0.5) * 0.15;
+                    }
+                }
+
+                // Pareti
+                if (b.x < ballRadius) { b.x = ballRadius; b.vx = -b.vx * e_restitution; }
+                if (b.x > canvas.width - ballRadius) { b.x = canvas.width - ballRadius; b.vx = -b.vx * e_restitution; }
+
+                // Ingresso nei Canali (Bin)
+                if (b.y > 470) {
+                    let idx = Math.floor(b.x / binWidth);
+                    idx = Math.max(0, Math.min(numBins - 1, idx));
+                    let bin = bins[idx];
+
+                    // Controllo arresto sul fondo o su altre palline
+                    if (b.y > bin.topY - ballRadius * 1.5) {
+                        b.y = bin.topY;
+                        b.vx = 0; b.vy = 0;
+                        b.stopped = true;
+                        bin.topY -= (ballRadius * 1.7); // Altezza di impilamento ridotta
+                    }
+                }
+            }
+        }
+
+        // Funzione di Rendering Grafico
+        function draw() {
+            ctx.fillStyle = '#000000';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Struttura imbuto
+            ctx.strokeStyle = '#2d2d3a'; ctx.lineWidth = 4; ctx.beginPath();
+            ctx.moveTo(canvas.width/2 - 20, 10); ctx.lineTo(canvas.width/2 - 5, 50); ctx.lineTo(canvas.width/2 - 5, 70);
+            ctx.moveTo(canvas.width/2 + 20, 10); ctx.lineTo(canvas.width/2 + 5, 50); ctx.lineTo(canvas.width/2 + 5, 70);
+            ctx.stroke();
+
+            // Separatori Canali
+            for (let i = 1; i < numBins; i++) {
+                ctx.beginPath(); ctx.moveTo(i * binWidth, 480); ctx.lineTo(i * binWidth, canvas.height - 10); ctx.stroke();
+            }
+
+            // Pioli (Pegs)
+            ctx.fillStyle = '#a1a1aa';
+            for (let p of pegs) { ctx.beginPath(); ctx.arc(p.x, p.y, pegRadius, 0, Math.PI*2); ctx.fill(); }
+
+            // Palline
+            for (let b of balls) {
+                ctx.fillStyle = b.color; ctx.beginPath(); ctx.arc(b.x, b.y, ballRadius, 0, Math.PI*2); ctx.fill();
+            }
+        }
+
+        let tick = 0;
+        function runSim() {
+            tick++; if (tick % 6 === 0) spawnBall();
+            updatePhysics(); draw(); requestAnimationFrame(runSim);
+        }
+
+        resetBtn.addEventListener('click', () => { balls = []; initSystem(); });
+        document.querySelectorAll('input[type="range"]').forEach(s => s.addEventListener('input', getSliders));
+
+        initSystem();
+        runSim();
+    </script>
+</body>
+</html>
